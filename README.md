@@ -29,6 +29,16 @@ CDQI adds a few extension methods to `NSManagedObjectContext`. However, most of 
 
 There are several others, but they are likely to be less clear to a reader of your code. The difference between the two is that the first one does not have an associated `NSManagedObjectContext` while the second does. Read the section below on executing a query to find out how to specify a MOC for the first option.
 
+## Prerequisites
+
+In order for an entity to be usable by CDQI, its model class must be a subclass of `NSManagedObject` and implement the very simple `EntityMetadata` protocol:
+
+    protocol EntityMetadata {
+        static var entityName: String { get }
+    }
+
+Return the name of the entity in `entityName` and you're off to the races.
+
 ## Filtering
 
 Unsurprisingly, the `filter` method is used to filter a query:
@@ -132,3 +142,5 @@ The chainable query methods (`filter`, `order`, `context`, etc.) return an insta
     let sortedHighSalaryEmployeeLastNameSmithQuery = sortedHighSalaryEmployeeQuery.filter("lastName = %@", "Smith")
 
 Each subsequent assignment has _absolutely no effect on the previous one_. In other words, creating `sortedHighSalaryEmployeeQuery` does not alter `highSalaryEmployeeQuery` in the slightest.
+
+
