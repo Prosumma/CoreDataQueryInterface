@@ -22,7 +22,7 @@ or this…
 
 ## Starting a query
 
-CDQI adds a few extension methods to `NSManagedObjectContext`. However, most of the action occurs on the `Query<E>` type, which we'll discuss later. To get started with a query, you have a couple of recommended options:
+CDQI adds a few extension methods to `NSManagedObjectContext`. However, most of the action occurs on the `Query<E>` returned by `from` in the methods below. To get started with a query, you have a couple of recommended options:
 
     let query = Query.from(Employee)
     let query = managedObjectContext.from(Employee)
