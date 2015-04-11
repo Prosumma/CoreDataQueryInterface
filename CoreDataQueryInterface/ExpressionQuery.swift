@@ -56,13 +56,13 @@ public struct ExpressionQuery<E where E: EntityMetadata, E: AnyObject>: QueryTyp
     // MARK: Expressions
     
     public func select(expressions: [AnyObject]) -> ExpressionQuery<E> {
-        return ExpressionQuery<E>(builder: self.builder)
+        return ExpressionQuery<E>(builder: self.builder.select(expressions))
     }
     
     public func groupBy(expressions: [AnyObject]) -> ExpressionQuery<E> {
-        return ExpressionQuery<E>(builder: self.builder)
-    }    
-        
+        return ExpressionQuery<E>(builder: self.builder.groupBy(expressions))
+    }
+    
     // MARK: Query Execution
     
     public func all(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> [[String: AnyObject]]? {

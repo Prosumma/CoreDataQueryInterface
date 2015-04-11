@@ -16,6 +16,7 @@ public struct QueryBuilder<E where E: EntityMetadata, E: AnyObject> {
     public private(set) var sortDescriptors = [AnyObject]()
     public private(set) var managedObjectContext: NSManagedObjectContext!
     public private(set) var propertiesToFetch = [AnyObject]()
+    public private(set) var propertiesToGroupBy = [AnyObject]()
     
     internal func request(_ resultType: NSFetchRequestResultType = .ManagedObjectResultType) -> NSFetchRequest {
         let request = NSFetchRequest(entityName: E.entityName)
@@ -27,7 +28,10 @@ public struct QueryBuilder<E where E: EntityMetadata, E: AnyObject> {
         request.fetchLimit =  Int(fetchLimit)
         request.fetchOffset = Int(fetchOffset)
         request.sortDescriptors = sortDescriptors.count == 0 ? nil : sortDescriptors
-        request.propertiesToFetch = propertiesToFetch.count == 0 ? nil : propertiesToFetch
+        if resultType == .DictionaryResultType {
+            request.propertiesToFetch = ExpressionParser<E>.parse(propertiesToFetch, managedObjectContext: managedObjectContext)
+            request.propertiesToGroupBy = propertiesToGroupBy.count == 0 ? nil : ExpressionParser<E>.parse(propertiesToGroupBy, managedObjectContext: managedObjectContext)
+        }
         return request
     }
     
@@ -58,6 +62,18 @@ public struct QueryBuilder<E where E: EntityMetadata, E: AnyObject> {
     public func order(sortDescriptors: [AnyObject]) -> QueryBuilder<E> {
         var builder = self
         builder.sortDescriptors += sortDescriptors.map() { $0 is String ? NSSortDescriptor(key: $0 as! String, ascending: true) : $0 }
+        return builder
+    }
+    
+    public func select(expressions: [AnyObject]) -> QueryBuilder<E> {
+        var builder = self
+        builder.propertiesToFetch += expressions
+        return builder
+    }
+    
+    public func groupBy(expressions: [AnyObject]) -> QueryBuilder<E> {
+        var builder = self
+        builder.propertiesToGroupBy += expressions
         return builder
     }
 }
