@@ -12,7 +12,7 @@ extension NSManagedObjectContext {
     
     public func from<E: EntityMetadata where E: AnyObject>(entity: E.Type) -> EntityQuery<E> {
         var query = EntityQuery.from(entity)
-        query.managedObjectContext = self
+        query.builder.managedObjectContext = self
         return query
     }
     

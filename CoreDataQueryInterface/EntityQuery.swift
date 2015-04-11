@@ -9,25 +9,8 @@
 import CoreData
 
 public struct EntityQuery<E: EntityMetadata where E: AnyObject>: SequenceType {
-    
-    public var predicates = [NSPredicate]()
-    public var fetchLimit: UInt = 0
-    public var fetchOffset: UInt = 0
-    public var sortDescriptors = [AnyObject]()
-    public var managedObjectContext: NSManagedObjectContext!
-    
-    private var request: NSFetchRequest {
-        let request = NSFetchRequest(entityName: E.entityName)
-        switch predicates.count {
-        case 0: break
-        case 1: request.predicate = predicates[0]
-        default: request.predicate = NSCompoundPredicate(type: .AndPredicateType, subpredicates: predicates)
-        }
-        request.fetchLimit =  Int(fetchLimit)
-        request.fetchOffset = Int(fetchOffset)
-        request.sortDescriptors = sortDescriptors.count == 0 ? nil : sortDescriptors
-        return request
-    }
+
+    internal var builder: RequestBuilder<E> = RequestBuilder()
     
     // MARK: Query Interface (Chainable Methods)
     
@@ -37,51 +20,51 @@ public struct EntityQuery<E: EntityMetadata where E: AnyObject>: SequenceType {
     
     public func context(managedObjectContext: NSManagedObjectContext) -> EntityQuery<E> {
         var query = self
-        query.managedObjectContext = managedObjectContext
+        query.builder.managedObjectContext = managedObjectContext
         return query
     }
     
     public func filter(predicate: NSPredicate) -> EntityQuery<E> {
         var query = self
-        query.predicates.append(predicate)
+        query.builder.predicates.append(predicate)
         return query
     }
     
     public func filter(format: String, arguments: CVaListPointer) -> EntityQuery<E> {
         var query = self
-        query.predicates.append(NSPredicate(format: format, arguments: arguments))
+        query.builder.predicates.append(NSPredicate(format: format, arguments: arguments))
         return query
     }
     
     public func filter(format: String, argumentArray: [AnyObject]?) -> EntityQuery<E> {
         var query = self
-        query.predicates.append(NSPredicate(format: format, argumentArray: argumentArray))
+        query.builder.predicates.append(NSPredicate(format: format, argumentArray: argumentArray))
         return query
     }
     
     public func filter(format: String, _ args: CVarArgType...) -> EntityQuery<E> {
         return withVaList(args) {
             var query = self
-            query.predicates.append(NSPredicate(format: format, arguments: $0))
+            query.builder.predicates.append(NSPredicate(format: format, arguments: $0))
             return query
         }
     }
     
     public func limit(limit: UInt) -> EntityQuery<E> {
         var query = self
-        query.fetchLimit = limit
+        query.builder.fetchLimit = limit
         return query
     }
     
     public func offset(offset: UInt) -> EntityQuery<E> {
         var query = self
-        query.fetchOffset = offset
+        query.builder.fetchOffset = offset
         return query
     }
     
     public func order(sortDescriptors: [AnyObject]) -> EntityQuery<E> {
         var query = self
-        query.sortDescriptors = query.sortDescriptors + sortDescriptors.map() { $0 is String ? NSSortDescriptor(key: $0 as! String, ascending: true) : $0 }
+        query.builder.sortDescriptors += sortDescriptors.map() { $0 is String ? NSSortDescriptor(key: $0 as! String, ascending: true) : $0 }
         return query
     }
     
@@ -92,7 +75,7 @@ public struct EntityQuery<E: EntityMetadata where E: AnyObject>: SequenceType {
     // MARK: Query Execution
     
     public func all(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> [E]? {
-        return (managedObjectContext ?? self.managedObjectContext)!.executeFetchRequest(request, error: error) as! [E]?
+        return (managedObjectContext ?? self.builder.managedObjectContext)!.executeFetchRequest(builder.request, error: error) as! [E]?
     }
     
     public func first(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> E? {
@@ -100,7 +83,7 @@ public struct EntityQuery<E: EntityMetadata where E: AnyObject>: SequenceType {
     }
     
     public func count(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> UInt? {
-        let recordCount = (managedObjectContext ?? self.managedObjectContext)!.countForFetchRequest(request, error: error)
+        let recordCount = (managedObjectContext ?? self.builder.managedObjectContext)!.countForFetchRequest(builder.request, error: error)
         return recordCount == NSNotFound ? nil : UInt(recordCount)
     }
     

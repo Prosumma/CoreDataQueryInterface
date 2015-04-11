@@ -52,7 +52,7 @@ class CoreDataQueryInterfaceTests: XCTestCase {
     }
     
     func testReverseSort() {
-        let woggams = Query.from(Woggam)
+        let woggams = EntityQuery.from(Woggam)
         let names = woggams.order(NSSortDescriptor(key: "name", ascending: false)).all(managedObjectContext: managedObjectContext)!.map() { $0.name }
         XCTAssertEqual(names, ["thgib", "idribnagong", "eggafnord"], "")
     }
@@ -67,7 +67,7 @@ class CoreDataQueryInterfaceTests: XCTestCase {
     }
     
     func testFilter() {
-        let woggams = Query.from(Woggam)
+        let woggams = EntityQuery.from(Woggam)
         XCTAssertEqual(7, woggams.filter("name == %@", "eggafnord").first(managedObjectContext: managedObjectContext)?.size ?? 0, "The query to get the size of eggafnord failed.")
     }
     
