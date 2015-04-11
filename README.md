@@ -1,4 +1,4 @@
-# CoreDataQueryInterface
+# Core Data Query Interface
 
 Core Data Query Interface is a type-safe, fluent, mostly immutable query library for working with Core Data.
 
@@ -17,5 +17,7 @@ or this…
     if let employees = managedObjectContext.from(Employee).sort("startDate").limit(100).all() {
         // blah blah
     }
+
+## Query<E>
 
 
