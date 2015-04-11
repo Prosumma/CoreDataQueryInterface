@@ -9,52 +9,78 @@ Which would you rather write? This…
     request.fetchLimit = 100
     request.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: true)]
     if let employees = managedObjectContext.executeFetchRequest(request, nil) as! [Employee]? {
-        // blah blah
+        for employee in employees {
+            debugPrintln(employee.name)
+        }
     }
 
 or this…
 
-    if let employees = managedObjectContext.from(Employee).sort("startDate").limit(100).all() {
-        // blah blah
+    for employee in managedObjectContext.from(Employee).sort("startDate").limit(100) {
+        debugPrintln(employee.name)
     }
 
 ## Starting a query
 
 CDQI adds a few extension methods to `NSManagedObjectContext`. However, most of the action occurs on the `Query<E>` type, which we'll discuss later. To get started with a query, you have a couple of recommended options:
 
-    let employees = Query.from(Employee)
-    let employees = managedObjectContext.from(Employee)
+    let query = Query.from(Employee)
+    let query = managedObjectContext.from(Employee)
 
 There are several others, but they are likely to be less clear to a reader of your code. The difference between the two is that the first one does not have an associated `NSManagedObjectContext` while the second does. Read the section below on executing a query to find out how to specify a MOC for the first option.
 
 ## Filtering
 
-Unsurprisingly, the `filter` function is used to filter a query:
+Unsurprisingly, the `filter` method is used to filter a query:
 
-    employees.filter("salary > %@", salary)
-    employees.filter(predicate)
+    query.filter("salary > %@", salary)
+    query.filter(predicate)
 
 Filters are cumulative. A logical 'and' is assumed to be between each successive predicate. The following two filters are equivalent.
 
-    employees.filter("salary > %@", salary).filter("startDate > %@", cutoffDate)
-    employees.filter("(salary > %@) AND (startDate > %@)", salary, cutoffDate)
+    query.filter("salary > %@", salary).filter("startDate > %@", cutoffDate)
+    query.filter("(salary > %@) AND (startDate > %@)", salary, cutoffDate)
 
 ## Ordering
 
-The `order` function takes a list of `String` or `NSSortDescriptor` objects. (The result of passing any other kind of object is undefined.)
+The `order` method takes a list of `String` or `NSSortDescriptor` objects. (The result of passing any other kind of object is undefined.)
 
-    employees.order("name", NSSortDescriptor(key: "startDate", ascending: false))
+    query.order("name", NSSortDescriptor(key: "startDate", ascending: false))
 
 Like filters, subsequent calls to `order` simply append more sort descriptors to the list, so the above is exactly equivalent to:
 
-    employees.order("name").order(NSSortDescriptor(key: "startDate", ascending: false))
+    query.order("name").order(NSSortDescriptor(key: "startDate", ascending: false))
 
 ## Limiting and Offsetting
 
 Pretty straightforward:
 
-    employees.limit(5).offset(10)
+    query.limit(5).offset(10)
 
 ## Executing a Query
+
+An expression like `query.filter("salary > %@", salary)` doesn't immediately return a filtered list of query. One of the simplest ways to work with the list of query is to iterate:
+
+    for employee in query.filter("salary > %@", salary) {
+        debugPrintln(employee.name)
+    }
+
+The result of the `filter` method (and most others) is a `Query<E>`, which implements `SequenceType`. The act of iterating builds and executes an `NSFetchRequest` on the underlying `NSManagedObjectContext`. (Of course, this won't work if your query doesn't specify an `NSManagedObjectContext`. See the section on specifying a managed object context for more on that.)
+
+This approach should only be used if you know for certain that your query won't fail with an `NSError`. If your query does fail, the iteration approach fails silently: it just doesn't iterate. A safer approach, using the `all` method, is shown below:
+
+    var error: NSError?
+    let query = managedObjectContext.from(Employee)
+    if let employee = query.filter("salary > %@", salary).all(error: &error) {
+        for employee in query {
+            debugPrintln(employee.name)
+        }
+    }
+
+ Besides the implicit execution that occurs as a result of iteration, there are three methods that can be used to execute the underlying query: `all`, `first`, and `count`, whose meanings should be obvious. Each of them has roughly the same signature, differing only in their result types.
+
+    func all(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> [E]?
+    func first(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> E?
+    func count(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> UInt?
 
 
