@@ -18,7 +18,12 @@ or this…
         // blah blah
     }
 
-## Query&lt;E&gt;
+## Starting a query
 
-The heart of CDQI is a struct called `Query<E>`. 
+CDQI adds a few extension methods to `NSManagedObjectContext`. However, most of the action occurs on the `Query<E>` type, which we'll discuss later. To get started with a query, you have a couple of recommended options:
 
+- `let employees = Query.from(Employee)`
+- `let employees = managedObjectContext.from(Employee)`
+(There are several others, but they are likely to be less clear to a reader of your code.)
+
+The difference between the two is that the first one does not have an associated `NSManagedObjectContext` while the second does. 
