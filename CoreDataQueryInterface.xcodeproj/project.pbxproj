@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F371EDEA1AD913B9007D1F32 /* NSManagedObjectContextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E481AD8D9640045E578 /* NSManagedObjectContextExtensions.swift */; };
+		F371EDEB1AD913BD007D1F32 /* EntityMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E3F1AD8C6400045E578 /* EntityMetadata.swift */; };
+		F371EDEC1AD913BF007D1F32 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E421AD8C6990045E578 /* Query.swift */; };
 		F375B9A21AD8C53500575538 /* CoreDataQueryInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = F375B9A11AD8C53500575538 /* CoreDataQueryInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F375B9A81AD8C53500575538 /* CoreDataQueryInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F375B99C1AD8C53500575538 /* CoreDataQueryInterface.framework */; };
 		F375B9AF1AD8C53500575538 /* CoreDataQueryInterfaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375B9AE1AD8C53500575538 /* CoreDataQueryInterfaceTests.swift */; };
@@ -297,6 +300,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F371EDEA1AD913B9007D1F32 /* NSManagedObjectContextExtensions.swift in Sources */,
+				F371EDEC1AD913BF007D1F32 /* Query.swift in Sources */,
+				F371EDEB1AD913BD007D1F32 /* EntityMetadata.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
