@@ -22,8 +22,8 @@ or this…
 
 CDQI adds a few extension methods to `NSManagedObjectContext`. However, most of the action occurs on the `Query<E>` type, which we'll discuss later. To get started with a query, you have a couple of recommended options:
 
-- `let employees = Query.from(Employee)`
-- `let employees = managedObjectContext.from(Employee)`
+    let employees = Query.from(Employee)
+    let employees = managedObjectContext.from(Employee)
 
 There are several others, but they are likely to be less clear to a reader of your code. The difference between the two is that the first one does not have an associated `NSManagedObjectContext` while the second does. Read the section below on executing a query to find out how to specify a MOC for the first option.
 
@@ -31,18 +31,30 @@ There are several others, but they are likely to be less clear to a reader of yo
 
 Unsurprisingly, the `filter` function is used to filter a query:
 
-- `employees.filter("salary > %@", salary)`
-- `employees.filter(predicate)`
+    employees.filter("salary > %@", salary)
+    employees.filter(predicate)
 
 Filters are cumulative. A logical 'and' is assumed to be between each successive predicate. The following two filters are equivalent.
 
-- `employees.filter("salary > %@", salary).filter("startDate > %@", cutoffDate)`
-- `employees.filter("(salary > %@) AND (startDate > %@)", salary, cutoffDate)`
+    employees.filter("salary > %@", salary).filter("startDate > %@", cutoffDate)
+    employees.filter("(salary > %@) AND (startDate > %@)", salary, cutoffDate)
 
-# Ordering
+## Ordering
 
 The `order` function takes a list of `String` or `NSSortDescriptor` objects. (The result of passing any other kind of object is undefined.)
 
-- `employees.order("name", NSSortDescriptor(key: "startDate", ascending: false)
+    employees.order("name", NSSortDescriptor(key: "startDate", ascending: false))
+
+Like filters, subsequent calls to `order` simply append more sort descriptors to the list, so the above is exactly equivalent to:
+
+    employees.order("name").order(NSSortDescriptor(key: "startDate", ascending: false))
+
+## Limiting and Offsetting
+
+Pretty straightforward:
+
+    employees.limit(5).offset(10)
+
+## Executing a Query
 
 
