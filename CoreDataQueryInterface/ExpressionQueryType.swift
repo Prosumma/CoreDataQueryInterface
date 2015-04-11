@@ -9,9 +9,8 @@
 import CoreData
 
 public protocol ExpressionQueryType {
-    
     typealias ExpressionQueryType
     
     func select(attributes: [AnyObject]) -> ExpressionQueryType
-    
+    func groupBy(attributes: [AnyObject]) -> ExpressionQueryType
 }

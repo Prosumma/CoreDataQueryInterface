@@ -76,6 +76,10 @@ public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: QueryType, E
         return ExpressionQuery<E>(builder: self.builder)
     }
     
+    public func groupBy(attributes: [AnyObject]) -> ExpressionQuery<E> {
+        return ExpressionQuery<E>(builder: self.builder)
+    }
+    
     // MARK: Query Execution
     
     public func all(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> [E]? {

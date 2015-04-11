@@ -8,7 +8,7 @@
 
 import CoreData
 
-public struct ExpressionQuery<E where E: EntityMetadata, E: AnyObject>: QueryType {
+public struct ExpressionQuery<E where E: EntityMetadata, E: AnyObject>: QueryType, ExpressionQueryType {
     public var builder = ResultBuilder<E>()
     
     // MARK: Query Interface (Chainable Methods)
@@ -62,6 +62,16 @@ public struct ExpressionQuery<E where E: EntityMetadata, E: AnyObject>: QueryTyp
     public func order(sortDescriptors: AnyObject...) -> ExpressionQuery<E> {
         return order(sortDescriptors)
     }
+    
+    // MARK: Expressions
+    
+    public func select(attributes: [AnyObject]) -> ExpressionQuery<E> {
+        return ExpressionQuery<E>(builder: self.builder)
+    }
+    
+    public func groupBy(attributes: [AnyObject]) -> ExpressionQuery<E> {
+        return ExpressionQuery<E>(builder: self.builder)
+    }    
         
     // MARK: Query Execution
     
