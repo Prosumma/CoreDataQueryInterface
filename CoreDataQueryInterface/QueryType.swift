@@ -17,7 +17,7 @@ public protocol QueryType: SequenceType {
     typealias EntityQueryType
     typealias ResultType
     
-    var builder: ResultBuilder<EntityType> { get set }
+    var builder: QueryBuilder<EntityType> { get set }
     
     static func from(EntityType.Type) -> EntityQueryType
     
