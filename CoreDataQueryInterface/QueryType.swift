@@ -11,12 +11,10 @@ import CoreData
 /**
 The protocol to which query providers must conform.
 */
-public protocol Query: SequenceType {
+public protocol QueryType: SequenceType {
     
     typealias EntityType: EntityMetadata, AnyObject
     typealias EntityQueryType
-    typealias ExpressionQueryType
-    typealias ManagedObjectIDQueryType
     typealias ResultType
     
     var builder: ResultBuilder<EntityType> { get set }
@@ -32,10 +30,6 @@ public protocol Query: SequenceType {
     func offset(offset: UInt) -> EntityQueryType
     func order(sortDescriptors: [AnyObject]) -> EntityQueryType
     func order(sortDescriptors: AnyObject...) -> EntityQueryType
-    
-    func select(properties: [AnyObject]) -> ExpressionQueryType
-    
-    func ids() -> ManagedObjectIDQueryType
     
     func all(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> [ResultType]?
     func first(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> ResultType?

@@ -8,7 +8,7 @@
 
 import CoreData
 
-public struct ManagedObjectIDQuery<E where E: EntityMetadata, E: AnyObject> {
+public struct ManagedObjectIDQuery<E where E: EntityMetadata, E: AnyObject>: QueryType {
     public var builder = ResultBuilder<E>()
     
     // MARK: Query Interface (Chainable Methods)
@@ -70,11 +70,18 @@ public struct ManagedObjectIDQuery<E where E: EntityMetadata, E: AnyObject> {
         return ManagedObjectIDQuery<E>()
     }
     
-    // Object IDs
+    // Mark: Query Types
+    
+    public func entities() -> EntityQuery<E> {
+        return EntityQuery<E>(builder: self.builder)
+    }
+    
+    public func expressions() -> ExpressionQuery<E> {
+        return ExpressionQuery<E>(builder: self.builder)
+    }
     
     public func ids() -> ManagedObjectIDQuery<E> {
-        var query = ManagedObjectIDQuery<E>(builder: self.builder)
-        return query
+        return ManagedObjectIDQuery<E>(builder: self.builder)
     }
     
     // MARK: Query Execution

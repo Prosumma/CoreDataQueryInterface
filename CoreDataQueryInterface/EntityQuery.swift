@@ -8,7 +8,7 @@
 
 import CoreData
 
-public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: Query {
+public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: QueryType, ExpressionQueryType {
 
     public var builder = ResultBuilder<E>()
     
@@ -64,17 +64,16 @@ public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: Query {
         return order(sortDescriptors)
     }
     
-    // MARK: Expressions
-    
-    public func select(properties: [AnyObject]) -> ExpressionQuery<E> {
-        return ExpressionQuery<E>()
-    }
-    
-    // Object IDs
+    // MARK: Object IDs
     
     public func ids() -> ManagedObjectIDQuery<E> {
-        var query = ManagedObjectIDQuery<E>(builder: self.builder)
-        return query
+        return ManagedObjectIDQuery<E>(builder: self.builder)
+    }
+    
+    // MARK: Expressions
+    
+    public func select(attributes: [AnyObject]) -> ExpressionQuery<E> {
+        return ExpressionQuery<E>(builder: self.builder)
     }
     
     // MARK: Query Execution
