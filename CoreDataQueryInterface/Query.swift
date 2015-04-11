@@ -69,7 +69,7 @@ public struct Query<E: EntityMetadata where E: AnyObject>: SequenceType {
     }
     
     public func first(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> E? {
-        limit(1).all(managedObjectContext: managedObjectContext, error: error)?.first
+        return limit(1).all(managedObjectContext: managedObjectContext, error: error)?.first
     }
     
     // MARK: SequenceType
