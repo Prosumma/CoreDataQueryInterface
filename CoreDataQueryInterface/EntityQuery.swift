@@ -8,7 +8,7 @@
 
 import CoreData
 
-public struct Query<E: EntityMetadata where E: AnyObject>: SequenceType {
+public struct EntityQuery<E: EntityMetadata where E: AnyObject>: SequenceType {
     
     public var predicates = [NSPredicate]()
     public var fetchLimit: UInt = 0
@@ -31,35 +31,35 @@ public struct Query<E: EntityMetadata where E: AnyObject>: SequenceType {
     
     // MARK: Query Interface (Chainable Methods)
     
-    public static func from(E.Type) -> Query<E> {
-        return Query<E>()
+    public static func from(E.Type) -> EntityQuery<E> {
+        return EntityQuery<E>()
     }
     
-    public func context(managedObjectContext: NSManagedObjectContext) -> Query<E> {
+    public func context(managedObjectContext: NSManagedObjectContext) -> EntityQuery<E> {
         var query = self
         query.managedObjectContext = managedObjectContext
         return query
     }
     
-    public func filter(predicate: NSPredicate) -> Query<E> {
+    public func filter(predicate: NSPredicate) -> EntityQuery<E> {
         var query = self
         query.predicates.append(predicate)
         return query
     }
     
-    public func filter(format: String, arguments: CVaListPointer) -> Query<E> {
+    public func filter(format: String, arguments: CVaListPointer) -> EntityQuery<E> {
         var query = self
         query.predicates.append(NSPredicate(format: format, arguments: arguments))
         return query
     }
     
-    public func filter(format: String, argumentArray: [AnyObject]?) -> Query<E> {
+    public func filter(format: String, argumentArray: [AnyObject]?) -> EntityQuery<E> {
         var query = self
         query.predicates.append(NSPredicate(format: format, argumentArray: argumentArray))
         return query
     }
     
-    public func filter(format: String, _ args: CVarArgType...) -> Query<E> {
+    public func filter(format: String, _ args: CVarArgType...) -> EntityQuery<E> {
         return withVaList(args) {
             var query = self
             query.predicates.append(NSPredicate(format: format, arguments: $0))
@@ -67,25 +67,25 @@ public struct Query<E: EntityMetadata where E: AnyObject>: SequenceType {
         }
     }
     
-    public func limit(limit: UInt) -> Query<E> {
+    public func limit(limit: UInt) -> EntityQuery<E> {
         var query = self
         query.fetchLimit = limit
         return query
     }
     
-    public func offset(offset: UInt) -> Query<E> {
+    public func offset(offset: UInt) -> EntityQuery<E> {
         var query = self
         query.fetchOffset = offset
         return query
     }
     
-    public func order(sortDescriptors: [AnyObject]) -> Query<E> {
+    public func order(sortDescriptors: [AnyObject]) -> EntityQuery<E> {
         var query = self
         query.sortDescriptors = query.sortDescriptors + sortDescriptors.map() { $0 is String ? NSSortDescriptor(key: $0 as! String, ascending: true) : $0 }
         return query
     }
     
-    public func order(sortDescriptors: AnyObject...) -> Query<E> {
+    public func order(sortDescriptors: AnyObject...) -> EntityQuery<E> {
         return order(sortDescriptors)
     }
     

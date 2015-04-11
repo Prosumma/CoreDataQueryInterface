@@ -10,14 +10,14 @@ import CoreData
 
 extension NSManagedObjectContext {
     
-    public func from<E: EntityMetadata where E: AnyObject>(entity: E.Type) -> Query<E> {
-        var query = Query.from(entity)
+    public func from<E: EntityMetadata where E: AnyObject>(entity: E.Type) -> EntityQuery<E> {
+        var query = EntityQuery.from(entity)
         query.managedObjectContext = self
         return query
     }
     
-    public func query<E: EntityMetadata where E: AnyObject>() -> Query<E> {
-        return Query.from(E)
+    public func query<E: EntityMetadata where E: AnyObject>() -> EntityQuery<E> {
+        return EntityQuery.from(E)
     }
     
     public func newManagedObject<E: EntityMetadata>() -> E {
