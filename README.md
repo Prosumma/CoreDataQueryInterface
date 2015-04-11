@@ -1,6 +1,6 @@
 # Core Data Query Interface
 
-Core Data Query Interface is a type-safe, lazy, fluent query library for working with Core Data.
+Core Data Query Interface is a type-safe, lazy, fluent library for working with Core Data.
 
 Which would you rather write? This…
 
