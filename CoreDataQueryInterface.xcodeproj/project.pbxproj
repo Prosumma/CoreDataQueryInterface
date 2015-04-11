@@ -10,6 +10,10 @@
 		F375B9A21AD8C53500575538 /* CoreDataQueryInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = F375B9A11AD8C53500575538 /* CoreDataQueryInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F375B9A81AD8C53500575538 /* CoreDataQueryInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F375B99C1AD8C53500575538 /* CoreDataQueryInterface.framework */; };
 		F375B9AF1AD8C53500575538 /* CoreDataQueryInterfaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375B9AE1AD8C53500575538 /* CoreDataQueryInterfaceTests.swift */; };
+		F3B66E401AD8C6400045E578 /* EntityMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E3F1AD8C6400045E578 /* EntityMetadata.swift */; };
+		F3B66E411AD8C6400045E578 /* EntityMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E3F1AD8C6400045E578 /* EntityMetadata.swift */; };
+		F3B66E431AD8C6990045E578 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E421AD8C6990045E578 /* Query.swift */; };
+		F3B66E441AD8C6990045E578 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E421AD8C6990045E578 /* Query.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +33,8 @@
 		F375B9A71AD8C53500575538 /* CoreDataQueryInterfaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataQueryInterfaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F375B9AD1AD8C53500575538 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F375B9AE1AD8C53500575538 /* CoreDataQueryInterfaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataQueryInterfaceTests.swift; sourceTree = "<group>"; };
+		F3B66E3F1AD8C6400045E578 /* EntityMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityMetadata.swift; sourceTree = "<group>"; };
+		F3B66E421AD8C6990045E578 /* Query.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,8 @@
 			children = (
 				F375B9A11AD8C53500575538 /* CoreDataQueryInterface.h */,
 				F375B99F1AD8C53500575538 /* Supporting Files */,
+				F3B66E3F1AD8C6400045E578 /* EntityMetadata.swift */,
+				F3B66E421AD8C6990045E578 /* Query.swift */,
 			);
 			path = CoreDataQueryInterface;
 			sourceTree = "<group>";
@@ -209,6 +217,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3B66E431AD8C6990045E578 /* Query.swift in Sources */,
+				F3B66E401AD8C6400045E578 /* EntityMetadata.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +227,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F375B9AF1AD8C53500575538 /* CoreDataQueryInterfaceTests.swift in Sources */,
+				F3B66E441AD8C6990045E578 /* Query.swift in Sources */,
+				F3B66E411AD8C6400045E578 /* EntityMetadata.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +335,7 @@
 		F375B9B31AD8C53500575538 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -332,12 +345,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		F375B9B41AD8C53500575538 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -399,6 +414,7 @@
 				F375B9B41AD8C53500575538 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F375B9B51AD8C53500575538 /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfaceTests" */ = {
 			isa = XCConfigurationList;
@@ -407,6 +423,7 @@
 				F375B9B71AD8C53500575538 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
