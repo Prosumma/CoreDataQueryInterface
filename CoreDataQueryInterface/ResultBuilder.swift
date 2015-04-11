@@ -8,16 +8,16 @@
 
 import CoreData
 
-public struct RequestBuilder<E where E: EntityMetadata, E: AnyObject> {
+public struct ResultBuilder<E where E: EntityMetadata, E: AnyObject> {
     
-    public var predicates = [NSPredicate]()
-    public var fetchLimit: UInt = 0
-    public var fetchOffset: UInt = 0
-    public var sortDescriptors = [AnyObject]()
-    public var managedObjectContext: NSManagedObjectContext!
-    public var propertiesToFetch = [AnyObject]()
+    internal var predicates = [NSPredicate]()
+    internal var fetchLimit: UInt = 0
+    internal var fetchOffset: UInt = 0
+    internal var sortDescriptors = [AnyObject]()
+    internal var managedObjectContext: NSManagedObjectContext!
+    internal var propertiesToFetch = [AnyObject]()
     
-    public var request: NSFetchRequest {
+    internal var request: NSFetchRequest {
         let request = NSFetchRequest(entityName: E.entityName)
         switch predicates.count {
         case 0: break
@@ -30,5 +30,6 @@ public struct RequestBuilder<E where E: EntityMetadata, E: AnyObject> {
         request.propertiesToFetch = propertiesToFetch.count == 0 ? nil : propertiesToFetch
         return request
     }
+    
     
 }

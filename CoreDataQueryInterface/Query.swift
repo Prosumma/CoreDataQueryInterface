@@ -9,32 +9,32 @@
 import CoreData
 
 /**
-The interface that conforming query builders must implement.
-
-This is really just a sanity check to enforce uniformity.
+The protocol to which query providers must conform.
 */
-public protocol Query {
+public protocol Query: SequenceType {
     
-    typealias EntityType
-    typealias EntityResultType
-    typealias ExpressionResultType
-    typealias ExecutionResultType
+    typealias EntityType: EntityMetadata, AnyObject
+    typealias EntityQueryType
+    typealias ExpressionQueryType
+    typealias ResultType
     
-    static func from(EntityType.Type) -> EntityResultType
+    var builder: ResultBuilder<EntityType> { get set }
     
-    func context(managedObjectContext: NSManagedObjectContext) -> EntityResultType
-    func filter(predicate: NSPredicate) -> EntityResultType
-    func filter(format: String, arguments: CVaListPointer) -> EntityResultType
-    func filter(format: String, argumentArray: [AnyObject]?) -> EntityResultType
-    func filter(format: String, _ args: CVarArgType...) -> EntityResultType
-    func limit(limit: UInt) -> EntityResultType
-    func offset(offset: UInt) -> EntityResultType
-    func order(sortDescriptors: [AnyObject]) -> EntityResultType
-    func order(sortDescriptors: AnyObject...) -> EntityResultType
+    static func from(EntityType.Type) -> EntityQueryType
     
-    func select(properties: [AnyObject]) -> ExpressionResultType
+    func context(managedObjectContext: NSManagedObjectContext) -> EntityQueryType
+    func filter(predicate: NSPredicate) -> EntityQueryType
+    func filter(format: String, arguments: CVaListPointer) -> EntityQueryType
+    func filter(format: String, argumentArray: [AnyObject]?) -> EntityQueryType
+    func filter(format: String, _ args: CVarArgType...) -> EntityQueryType
+    func limit(limit: UInt) -> EntityQueryType
+    func offset(offset: UInt) -> EntityQueryType
+    func order(sortDescriptors: [AnyObject]) -> EntityQueryType
+    func order(sortDescriptors: AnyObject...) -> EntityQueryType
     
-    func all(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> [ExecutionResultType]?
-    func first(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> ExecutionResultType?
+    func select(properties: [AnyObject]) -> ExpressionQueryType
+    
+    func all(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> [ResultType]?
+    func first(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> ResultType?
     func count(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> UInt?
 }

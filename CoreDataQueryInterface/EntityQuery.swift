@@ -8,9 +8,9 @@
 
 import CoreData
 
-public struct EntityQuery<E: EntityMetadata where E: AnyObject>: Query, SequenceType {
+public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: Query {
 
-    internal var builder = RequestBuilder<E>()
+    public var builder = ResultBuilder<E>()
     
     // MARK: Query Interface (Chainable Methods)
     
@@ -31,23 +31,15 @@ public struct EntityQuery<E: EntityMetadata where E: AnyObject>: Query, Sequence
     }
     
     public func filter(format: String, arguments: CVaListPointer) -> EntityQuery<E> {
-        var query = self
-        query.builder.predicates.append(NSPredicate(format: format, arguments: arguments))
-        return query
+        return filter(NSPredicate(format: format, arguments: arguments))
     }
     
     public func filter(format: String, argumentArray: [AnyObject]?) -> EntityQuery<E> {
-        var query = self
-        query.builder.predicates.append(NSPredicate(format: format, argumentArray: argumentArray))
-        return query
+        return filter(NSPredicate(format: format, argumentArray: argumentArray))
     }
     
     public func filter(format: String, _ args: CVarArgType...) -> EntityQuery<E> {
-        return withVaList(args) {
-            var query = self
-            query.builder.predicates.append(NSPredicate(format: format, arguments: $0))
-            return query
-        }
+        return withVaList(args) { self.filter(NSPredicate(format: format, arguments: $0)) }
     }
     
     public func limit(limit: UInt) -> EntityQuery<E> {
@@ -75,9 +67,7 @@ public struct EntityQuery<E: EntityMetadata where E: AnyObject>: Query, Sequence
     // MARK: Expressions
     
     public func select(properties: [AnyObject]) -> ExpressionQuery<E> {
-        var query = ExpressionQuery<E>(builder: self.builder)
-        query.builder.propertiesToFetch += properties
-        return query
+        return ExpressionQuery<E>()
     }
     
     // MARK: Query Execution

@@ -44,7 +44,7 @@ class CoreDataQueryInterfaceTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
+        
     func testSort() {
         let woggams = managedObjectContext.from(Woggam)
         let names = woggams.order("name").all()!.map() { $0.name }
@@ -68,7 +68,7 @@ class CoreDataQueryInterfaceTests: XCTestCase {
     
     func testFilter() {
         let woggams = EntityQuery.from(Woggam)
-        XCTAssertEqual(7, woggams.filter("name == %@", "eggafnord").first(managedObjectContext: managedObjectContext)?.size ?? 0, "The query to get the size of eggafnord failed.")
+        XCTAssertEqual(7, woggams.filter(NSPredicate(format: "name == %@", "eggafnord")).first(managedObjectContext: managedObjectContext)?.size ?? 0, "The query to get the size of eggafnord failed.")
     }
     
 }
