@@ -59,7 +59,7 @@ Pretty straightforward:
 
 ## Executing a Query
 
-An expression like `query.filter("salary > %@", salary)` doesn't immediately return a filtered list of query. One of the simplest ways to work with the list of query is to iterate:
+An expression like `query.filter("salary > %@", salary)` doesn't immediately return a filtered list of employees. One of the simplest ways to work with the list of employees is to iterate:
 
     for employee in query.filter("salary > %@", salary) {
         debugPrintln(employee.name)
@@ -82,5 +82,18 @@ This approach should only be used if you know for certain that your query won't 
     func all(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> [E]?
     func first(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> E?
     func count(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> UInt?
+
+Some examples:
+
+    let query = managedObjectContext.from(Employee)
+    // Get a count
+    debugPrintln(query.count())
+    // Create a new query based on the first one
+    let firstNameGregoryQuery = query.filter("firstName = %@", "Gregory")
+    // Find the first one with sorting, criteria, and a little paranoia
+    var error: NSError?
+    debugPrintln(firstNameGregoryQuery.sort("lastName").first(error: &error))
+    // Confidently get all records as an array
+    let employees = firstNameGregoryQuery.all()!
 
 
