@@ -10,12 +10,12 @@ import CoreData
 
 public struct QueryBuilder<E where E: EntityMetadata, E: AnyObject> {
     
-    internal var predicates = [NSPredicate]()
-    internal var fetchLimit: UInt = 0
-    internal var fetchOffset: UInt = 0
-    internal var sortDescriptors = [AnyObject]()
-    internal var managedObjectContext: NSManagedObjectContext!
-    internal var propertiesToFetch = [AnyObject]()
+    public private(set) var predicates = [NSPredicate]()
+    public private(set) var fetchLimit: UInt = 0
+    public private(set) var fetchOffset: UInt = 0
+    public private(set) var sortDescriptors = [AnyObject]()
+    public private(set) var managedObjectContext: NSManagedObjectContext!
+    public private(set) var propertiesToFetch = [AnyObject]()
     
     internal func request(_ resultType: NSFetchRequestResultType = .ManagedObjectResultType) -> NSFetchRequest {
         let request = NSFetchRequest(entityName: E.entityName)
