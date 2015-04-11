@@ -37,4 +37,6 @@ public protocol Query: SequenceType {
     func all(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> [ResultType]?
     func first(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> ResultType?
     func count(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> UInt?
+    func allObjectIDs(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> [NSManagedObjectID]?
+    func firstObjectID(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> NSManagedObjectID?
 }
