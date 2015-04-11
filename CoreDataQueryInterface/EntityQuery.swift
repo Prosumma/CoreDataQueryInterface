@@ -8,9 +8,9 @@
 
 import CoreData
 
-public struct EntityQuery<E: EntityMetadata where E: AnyObject>: SequenceType {
+public struct EntityQuery<E: EntityMetadata where E: AnyObject>: Query, SequenceType {
 
-    internal var builder: RequestBuilder<E> = RequestBuilder()
+    internal var builder = RequestBuilder<E>()
     
     // MARK: Query Interface (Chainable Methods)
     
@@ -70,6 +70,14 @@ public struct EntityQuery<E: EntityMetadata where E: AnyObject>: SequenceType {
     
     public func order(sortDescriptors: AnyObject...) -> EntityQuery<E> {
         return order(sortDescriptors)
+    }
+    
+    // MARK: Expressions
+    
+    public func select(properties: [AnyObject]) -> ExpressionQuery<E> {
+        var query = ExpressionQuery<E>(builder: self.builder)
+        query.builder.propertiesToFetch += properties
+        return query
     }
     
     // MARK: Query Execution

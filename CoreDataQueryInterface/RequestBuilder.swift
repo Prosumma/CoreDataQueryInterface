@@ -15,6 +15,7 @@ public struct RequestBuilder<E where E: EntityMetadata, E: AnyObject> {
     public var fetchOffset: UInt = 0
     public var sortDescriptors = [AnyObject]()
     public var managedObjectContext: NSManagedObjectContext!
+    public var propertiesToFetch = [AnyObject]()
     
     public var request: NSFetchRequest {
         let request = NSFetchRequest(entityName: E.entityName)
@@ -26,6 +27,7 @@ public struct RequestBuilder<E where E: EntityMetadata, E: AnyObject> {
         request.fetchLimit =  Int(fetchLimit)
         request.fetchOffset = Int(fetchOffset)
         request.sortDescriptors = sortDescriptors.count == 0 ? nil : sortDescriptors
+        request.propertiesToFetch = propertiesToFetch.count == 0 ? nil : propertiesToFetch
         return request
     }
     
