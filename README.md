@@ -31,6 +31,8 @@ There are several others, but they are likely to be less clear to a reader of yo
 
 ## Prerequisites
 
+CDQI requires Swift 1.2. The project contains targets for iOS and OS X.
+
 In order for an entity to be usable by CDQI, its model class must be a subclass of `NSManagedObject` and implement the very simple `EntityMetadata` protocol:
 
     protocol EntityMetadata {
