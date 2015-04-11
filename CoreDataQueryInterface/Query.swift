@@ -26,6 +26,10 @@ public struct Query<E: EntityMetadata where E: AnyObject>: SequenceType {
     
     // MARK: Query Interface
     
+    public static func from(E.Type) -> Query<E> {
+        return Query<E>()
+    }
+    
     public func filter(predicate: NSPredicate) -> Query<E> {
         var query = self
         query.predicate = predicate
@@ -75,7 +79,7 @@ public struct Query<E: EntityMetadata where E: AnyObject>: SequenceType {
     // MARK: SequenceType
     
     private func generate(error: NSErrorPointer) -> GeneratorOf<E> {
-        if let objects = managedObjectContext.executeFetchRequest(request, error: error) as! [E]? {
+        if let objects = all(error: error) {
             return GeneratorOf(objects.generate())
         } else {
             return GeneratorOf() { nil }

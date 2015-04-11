@@ -14,6 +14,8 @@
 		F3B66E411AD8C6400045E578 /* EntityMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E3F1AD8C6400045E578 /* EntityMetadata.swift */; };
 		F3B66E431AD8C6990045E578 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E421AD8C6990045E578 /* Query.swift */; };
 		F3B66E441AD8C6990045E578 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E421AD8C6990045E578 /* Query.swift */; };
+		F3B66E491AD8D9640045E578 /* NSManagedObjectContextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E481AD8D9640045E578 /* NSManagedObjectContextExtensions.swift */; };
+		F3B66E4A1AD8D9640045E578 /* NSManagedObjectContextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E481AD8D9640045E578 /* NSManagedObjectContextExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,7 @@
 		F375B9AE1AD8C53500575538 /* CoreDataQueryInterfaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataQueryInterfaceTests.swift; sourceTree = "<group>"; };
 		F3B66E3F1AD8C6400045E578 /* EntityMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityMetadata.swift; sourceTree = "<group>"; };
 		F3B66E421AD8C6990045E578 /* Query.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
+		F3B66E481AD8D9640045E578 /* NSManagedObjectContextExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContextExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,7 @@
 				F375B99F1AD8C53500575538 /* Supporting Files */,
 				F3B66E3F1AD8C6400045E578 /* EntityMetadata.swift */,
 				F3B66E421AD8C6990045E578 /* Query.swift */,
+				F3B66E481AD8D9640045E578 /* NSManagedObjectContextExtensions.swift */,
 			);
 			path = CoreDataQueryInterface;
 			sourceTree = "<group>";
@@ -217,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3B66E491AD8D9640045E578 /* NSManagedObjectContextExtensions.swift in Sources */,
 				F3B66E431AD8C6990045E578 /* Query.swift in Sources */,
 				F3B66E401AD8C6400045E578 /* EntityMetadata.swift in Sources */,
 			);
@@ -229,6 +234,7 @@
 				F375B9AF1AD8C53500575538 /* CoreDataQueryInterfaceTests.swift in Sources */,
 				F3B66E441AD8C6990045E578 /* Query.swift in Sources */,
 				F3B66E411AD8C6400045E578 /* EntityMetadata.swift in Sources */,
+				F3B66E4A1AD8D9640045E578 /* NSManagedObjectContextExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
