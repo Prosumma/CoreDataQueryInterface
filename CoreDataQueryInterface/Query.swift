@@ -29,7 +29,7 @@ public struct Query<E: EntityMetadata where E: AnyObject>: SequenceType {
         return request
     }
     
-    // MARK: Query Interface
+    // MARK: Query Interface (Chainable Methods)
     
     public static func from(E.Type) -> Query<E> {
         return Query<E>()
@@ -88,6 +88,8 @@ public struct Query<E: EntityMetadata where E: AnyObject>: SequenceType {
     public func order(sortDescriptors: AnyObject...) -> Query<E> {
         return order(sortDescriptors)
     }
+    
+    // MARK: Query Execution
     
     public func all(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> [E]? {
         return (managedObjectContext ?? self.managedObjectContext)!.executeFetchRequest(request, error: error) as! [E]?
