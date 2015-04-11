@@ -22,7 +22,7 @@ or this…
 
 ## Starting a query
 
-CDQI adds a few extension methods to `NSManagedObjectContext`. However, most of the action occurs on the `Query<E>` returned by `from` in the methods below. To get started with a query, you have a couple of recommended options:
+CDQI adds a few extension methods to `NSManagedObjectContext`. However, most of the action occurs on the `EntityQuery<E>` returned by `from` in the methods below. To get started with a query, you have a couple of recommended options:
 
     let query = Query.from(Employee)
     let query = managedObjectContext.from(Employee)
@@ -77,7 +77,7 @@ An expression like `query.filter("salary > %@", salary)` doesn't immediately ret
         debugPrintln(employee.name)
     }
 
-The result of the `filter` method (and most others) is a `Query<E>`, which implements `SequenceType`. The act of iterating builds and executes an `NSFetchRequest` on the underlying `NSManagedObjectContext`. (Of course, this won't work if your query doesn't specify an `NSManagedObjectContext`. See the section on specifying a managed object context for more on that.)
+The result of the `filter` method (and most others) is an `EntityQuery<E>`, which implements `SequenceType`. The act of iterating builds and executes an `NSFetchRequest` on the underlying `NSManagedObjectContext`. (Of course, this won't work if your query doesn't specify an `NSManagedObjectContext`. See the section on specifying a managed object context for more on that.)
 
 This approach should only be used if you know for certain that your query won't fail with an `NSError`. If your query does fail, the iteration approach fails silently: it just doesn't iterate. A safer approach, using the `all` method, is shown below:
 
@@ -136,7 +136,7 @@ All MOCs in the chain except the last one are ignored.
 
 ## Immutability and Reuse
 
-The chainable query methods (`filter`, `order`, `context`, etc.) return an instance of `struct Query<E>`. Because it's a struct, each invocation of one of these methods returns a _copy_ of the state of the previous one, without altering the previous one at all. This means that queries can be built up partially in a myriad of ways:
+The chainable query methods (`filter`, `order`, `context`, etc.) return an instance of `struct EntityQuery<E>`. Because it's a struct, each invocation of one of these methods returns a _copy_ of the state of the previous one, without altering the previous one at all. This means that queries can be built up partially in a myriad of ways:
 
     let employeeQuery = Query.from(Employee)
     let highSalaryEmployeeQuery = employeeQuery.filter("salary > 80000")
