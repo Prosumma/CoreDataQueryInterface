@@ -69,6 +69,13 @@ public struct ExpressionQuery<E where E: EntityMetadata, E: AnyObject>: Query {
         return ExpressionQuery<E>()
     }
     
+    // Object IDs
+    
+    public func ids() -> ManagedObjectIDQuery<E> {
+        var query = ManagedObjectIDQuery<E>(builder: self.builder)
+        return query
+    }    
+    
     // MARK: Query Execution
     
     public func all(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> [[String: AnyObject]]? {
@@ -80,18 +87,10 @@ public struct ExpressionQuery<E where E: EntityMetadata, E: AnyObject>: Query {
     }
     
     public func count(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> UInt? {
-        let recordCount = (managedObjectContext ?? self.builder.managedObjectContext)!.countForFetchRequest(builder.request(.DictionaryResultType), error: error)
+        let recordCount = (managedObjectContext ?? self.builder.managedObjectContext)!.countForFetchRequest(builder.request(), error: error)
         return recordCount == NSNotFound ? nil : UInt(recordCount)
     }
-    
-    public func allObjectIDs(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> [NSManagedObjectID]? {
-        return (managedObjectContext ?? self.builder.managedObjectContext)!.executeFetchRequest(builder.request(.ManagedObjectIDResultType), error: error) as! [NSManagedObjectID]?
-    }
-    
-    public func firstObjectID(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> NSManagedObjectID? {
-        return limit(1).allObjectIDs(managedObjectContext: managedObjectContext, error: error)?.first
-    }    
-    
+        
     // MARK: SequenceType
     
     private func generate(error: NSErrorPointer) -> GeneratorOf<[String: AnyObject]> {

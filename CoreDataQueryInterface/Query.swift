@@ -16,6 +16,7 @@ public protocol Query: SequenceType {
     typealias EntityType: EntityMetadata, AnyObject
     typealias EntityQueryType
     typealias ExpressionQueryType
+    typealias ManagedObjectIDQueryType
     typealias ResultType
     
     var builder: ResultBuilder<EntityType> { get set }
@@ -34,9 +35,9 @@ public protocol Query: SequenceType {
     
     func select(properties: [AnyObject]) -> ExpressionQueryType
     
+    func ids() -> ManagedObjectIDQueryType
+    
     func all(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> [ResultType]?
     func first(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> ResultType?
     func count(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> UInt?
-    func allObjectIDs(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> [NSManagedObjectID]?
-    func firstObjectID(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> NSManagedObjectID?
 }
