@@ -17,7 +17,7 @@ public struct ResultBuilder<E where E: EntityMetadata, E: AnyObject> {
     internal var managedObjectContext: NSManagedObjectContext!
     internal var propertiesToFetch = [AnyObject]()
     
-    internal var request: NSFetchRequest {
+    internal func request(_ resultType: NSFetchRequestResultType = .ManagedObjectResultType) -> NSFetchRequest {
         let request = NSFetchRequest(entityName: E.entityName)
         switch predicates.count {
         case 0: break

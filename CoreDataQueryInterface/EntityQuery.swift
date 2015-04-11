@@ -73,7 +73,7 @@ public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: Query {
     // MARK: Query Execution
     
     public func all(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> [E]? {
-        return (managedObjectContext ?? self.builder.managedObjectContext)!.executeFetchRequest(builder.request, error: error) as! [E]?
+        return (managedObjectContext ?? self.builder.managedObjectContext)!.executeFetchRequest(builder.request(), error: error) as! [E]?
     }
     
     public func first(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> E? {
@@ -81,7 +81,7 @@ public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: Query {
     }
     
     public func count(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> UInt? {
-        let recordCount = (managedObjectContext ?? self.builder.managedObjectContext)!.countForFetchRequest(builder.request, error: error)
+        let recordCount = (managedObjectContext ?? self.builder.managedObjectContext)!.countForFetchRequest(builder.request(), error: error)
         return recordCount == NSNotFound ? nil : UInt(recordCount)
     }
     
