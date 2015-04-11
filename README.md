@@ -16,7 +16,7 @@ Which would you rather write? This…
 
 or this…
 
-    for employee in managedObjectContext.from(Employee).sort("startDate").limit(100) {
+    for employee in managedObjectContext.from(Employee).order("startDate").limit(100) {
         debugPrintln(employee.name)
     }
 
@@ -92,8 +92,43 @@ Some examples:
     let firstNameGregoryQuery = query.filter("firstName = %@", "Gregory")
     // Find the first one with sorting, criteria, and a little paranoia
     var error: NSError?
-    debugPrintln(firstNameGregoryQuery.sort("lastName").first(error: &error))
+    debugPrintln(firstNameGregoryQuery.order("lastName").first(error: &error))
     // Confidently get all records as an array
     let employees = firstNameGregoryQuery.all()!
 
+## Specifying a Managed Object Context
 
+It's possible to create a query that does not reference a managed object context at all:
+
+    let query = Query.from(Employee).filter("salary > %@", salary).order("lastName", "firstName")
+
+If executed, this query will throw an exception. The easiest way to specify a MOC after the fact is to specify it in one of the query execution methods, e.g.,
+
+    query.first(managedObjectContext: managedObjectContext)
+
+Why have queries like this? Because they can be reused with any number of MOCs. If you follow Core Data best practices, you should be using child contexts fairly frequently. You could have a set of commonly used queries that could be reused across your child contexts with ease. 
+
+The other way to specify a MOC is to start with one. CDQI adds the `from` method to `NSManagedObjectContext`:
+
+    managedObjectContext.from(Employee).order("lastName", "firstName").all()
+
+Lastly, you can use the `context` method, which is chainable:
+
+    Query.from(Employee).context(managedObjectContext).order("lastName").all()
+
+There can only be one MOC at a time. This means that a method chain that specifies different MOCs will end up using the last one, e.g.,
+
+    managedObjectContext.from(Employee).context(managedObjectContext2).sort("lastName").first(managedObjectContext: managedObjectContextActuallyUsed)
+
+All MOCs in the chain except the last one are ignored.
+
+## Immutability and Reuse
+
+The chainable query methods (`filter`, `order`, `context`, etc.) return an instance of `struct Query<E>`. Because it's a struct, each invocation of one of these methods returns a _copy_ of the state of the previous one, without altering the previous one at all. This means that queries can be built up partially in a myriad of ways:
+
+    let employeeQuery = Query.from(Employee)
+    let highSalaryEmployeeQuery = employeeQuery.filter("salary > 80000")
+    let sortedHighSalaryEmployeeQuery = highSalaryEmployeeQuery.order(NSSortDescriptor(key: "salary", ascending: false))
+    let sortedHighSalaryEmployeeLastNameSmithQuery = sortedHighSalaryEmployeeQuery.filter("lastName = %@", "Smith")
+
+Each subsequent assignment has _absolutely no effect on the previous one_. In other words, creating `sortedHighSalaryEmployeeQuery` does not alter `highSalaryEmployeeQuery` in the slightest.
