@@ -14,22 +14,22 @@ The protocol to which query providers must conform.
 public protocol QueryType: SequenceType {
     
     typealias EntityType: EntityMetadata, AnyObject
-    typealias EntityQueryType
+    typealias ResultQueryType
     typealias ResultType
     
     var builder: QueryBuilder<EntityType> { get set }
     
-    static func from(EntityType.Type) -> EntityQueryType
+    static func from(EntityType.Type) -> ResultQueryType
     
-    func context(managedObjectContext: NSManagedObjectContext) -> EntityQueryType
-    func filter(predicate: NSPredicate) -> EntityQueryType
-    func filter(format: String, arguments: CVaListPointer) -> EntityQueryType
-    func filter(format: String, argumentArray: [AnyObject]?) -> EntityQueryType
-    func filter(format: String, _ args: CVarArgType...) -> EntityQueryType
-    func limit(limit: UInt) -> EntityQueryType
-    func offset(offset: UInt) -> EntityQueryType
-    func order(sortDescriptors: [AnyObject]) -> EntityQueryType
-    func order(sortDescriptors: AnyObject...) -> EntityQueryType
+    func context(managedObjectContext: NSManagedObjectContext) -> ResultQueryType
+    func filter(predicate: NSPredicate) -> ResultQueryType
+    func filter(format: String, arguments: CVaListPointer) -> ResultQueryType
+    func filter(format: String, argumentArray: [AnyObject]?) -> ResultQueryType
+    func filter(format: String, _ args: CVarArgType...) -> ResultQueryType
+    func limit(limit: UInt) -> ResultQueryType
+    func offset(offset: UInt) -> ResultQueryType
+    func order(sortDescriptors: [AnyObject]) -> ResultQueryType
+    func order(sortDescriptors: AnyObject...) -> ResultQueryType
     
     func all(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> [ResultType]?
     func first(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> ResultType?
