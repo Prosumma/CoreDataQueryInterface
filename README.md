@@ -18,6 +18,7 @@ or this…
         // blah blah
     }
 
-## Query<E>
+## Query&lt;E&gt;
 
+The heart of CDQI is a struct called `Query<E>`. 
 
