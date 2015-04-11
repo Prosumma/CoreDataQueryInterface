@@ -16,3 +16,4 @@ public protocol ExpressionQueryType {
     func groupBy(expressions: [AnyObject]) -> ExpressionQueryType
     func groupBy(expressions: AnyObject...) -> ExpressionQueryType
 }
+
