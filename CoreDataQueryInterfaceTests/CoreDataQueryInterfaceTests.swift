@@ -41,8 +41,13 @@ class CoreDataQueryInterfaceTests: XCTestCase {
     
     override func tearDown() {
         managedObjectContext = nil
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+    }
+    
+    func testExpressions() {
+        let woggams = managedObjectContext.from(Woggam)
+        let name = woggams.order("name").select("name").first()!["name"] as! String
+        XCTAssertEqual(name, "eggafnord", "\"\(name)\" and \"eggafnord\" don't match.")
     }
         
     func testSort() {

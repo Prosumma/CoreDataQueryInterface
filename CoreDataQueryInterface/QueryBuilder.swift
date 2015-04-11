@@ -28,6 +28,7 @@ public struct QueryBuilder<E where E: EntityMetadata, E: AnyObject> {
         request.fetchLimit =  Int(fetchLimit)
         request.fetchOffset = Int(fetchOffset)
         request.sortDescriptors = sortDescriptors.count == 0 ? nil : sortDescriptors
+        request.resultType = resultType
         if resultType == .DictionaryResultType {
             request.propertiesToFetch = ExpressionParser<E>.parse(propertiesToFetch, managedObjectContext: managedObjectContext)
             request.propertiesToGroupBy = propertiesToGroupBy.count == 0 ? nil : ExpressionParser<E>.parse(propertiesToGroupBy, managedObjectContext: managedObjectContext)

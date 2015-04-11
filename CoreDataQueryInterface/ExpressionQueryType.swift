@@ -12,5 +12,7 @@ public protocol ExpressionQueryType {
     typealias ExpressionQueryType
     
     func select(expressions: [AnyObject]) -> ExpressionQueryType
+    func select(expressions: AnyObject...) -> ExpressionQueryType
     func groupBy(expressions: [AnyObject]) -> ExpressionQueryType
+    func groupBy(expressions: AnyObject...) -> ExpressionQueryType
 }

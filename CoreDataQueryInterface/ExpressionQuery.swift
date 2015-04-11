@@ -59,8 +59,16 @@ public struct ExpressionQuery<E where E: EntityMetadata, E: AnyObject>: QueryTyp
         return ExpressionQuery<E>(builder: self.builder.select(expressions))
     }
     
+    public func select(expressions: AnyObject...) -> ExpressionQuery<E> {
+        return select(expressions)
+    }
+    
     public func groupBy(expressions: [AnyObject]) -> ExpressionQuery<E> {
         return ExpressionQuery<E>(builder: self.builder.groupBy(expressions))
+    }
+    
+    public func groupBy(expressions: AnyObject...) -> ExpressionQuery<E> {
+        return groupBy(expressions)
     }
     
     // MARK: Query Execution
