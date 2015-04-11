@@ -85,10 +85,10 @@
 			isa = PBXGroup;
 			children = (
 				F375B9A11AD8C53500575538 /* CoreDataQueryInterface.h */,
-				F375B99F1AD8C53500575538 /* Supporting Files */,
 				F3B66E3F1AD8C6400045E578 /* EntityMetadata.swift */,
-				F3B66E421AD8C6990045E578 /* Query.swift */,
 				F3B66E481AD8D9640045E578 /* NSManagedObjectContextExtensions.swift */,
+				F3B66E421AD8C6990045E578 /* Query.swift */,
+				F375B99F1AD8C53500575538 /* Supporting Files */,
 			);
 			path = CoreDataQueryInterface;
 			sourceTree = "<group>";
