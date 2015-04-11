@@ -18,15 +18,11 @@ public struct ManagedObjectIDQuery<E where E: EntityMetadata, E: AnyObject>: Que
     }
     
     public func context(managedObjectContext: NSManagedObjectContext) -> ManagedObjectIDQuery<E> {
-        var query = self
-        query.builder.managedObjectContext = managedObjectContext
-        return query
+        return ManagedObjectIDQuery<E>(builder: builder.context(managedObjectContext))
     }
     
     public func filter(predicate: NSPredicate) -> ManagedObjectIDQuery<E> {
-        var query = self
-        query.builder.predicates.append(predicate)
-        return query
+        return ManagedObjectIDQuery<E>(builder: builder.filter(predicate))
     }
     
     public func filter(format: String, arguments: CVaListPointer) -> ManagedObjectIDQuery<E> {
@@ -42,21 +38,15 @@ public struct ManagedObjectIDQuery<E where E: EntityMetadata, E: AnyObject>: Que
     }
     
     public func limit(limit: UInt) -> ManagedObjectIDQuery<E> {
-        var query = self
-        query.builder.fetchLimit = limit
-        return query
+        return ManagedObjectIDQuery<E>(builder: builder.limit(limit))
     }
     
     public func offset(offset: UInt) -> ManagedObjectIDQuery<E> {
-        var query = self
-        query.builder.fetchOffset = offset
-        return query
+        return ManagedObjectIDQuery<E>(builder: builder.offset(offset))
     }
     
     public func order(sortDescriptors: [AnyObject]) -> ManagedObjectIDQuery<E> {
-        var query = self
-        query.builder.sortDescriptors += sortDescriptors.map() { $0 is String ? NSSortDescriptor(key: $0 as! String, ascending: true) : $0 }
-        return query
+        return ManagedObjectIDQuery<E>(builder: builder.order(sortDescriptors))
     }
     
     public func order(sortDescriptors: AnyObject...) -> ManagedObjectIDQuery<E> {
@@ -72,8 +62,8 @@ public struct ManagedObjectIDQuery<E where E: EntityMetadata, E: AnyObject>: Que
     
     // Mark: Query Types
     
-    public func entities() -> EntityQuery<E> {
-        return EntityQuery<E>(builder: self.builder)
+    public func entities() -> ManagedObjectIDQuery<E> {
+        return ManagedObjectIDQuery<E>(builder: self.builder)
     }
     
     public func expressions() -> ExpressionQuery<E> {

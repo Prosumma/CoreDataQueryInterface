@@ -31,5 +31,33 @@ public struct ResultBuilder<E where E: EntityMetadata, E: AnyObject> {
         return request
     }
     
+    public func context(managedObjectContext: NSManagedObjectContext) -> ResultBuilder<E> {
+        var builder = self
+        builder.managedObjectContext = managedObjectContext
+        return builder
+    }
     
+    public func filter(predicate: NSPredicate) -> ResultBuilder<E> {
+        var builder = self
+        builder.predicates.append(predicate)
+        return builder
+    }
+    
+    public func limit(limit: UInt) -> ResultBuilder<E> {
+        var builder = self
+        builder.fetchLimit = limit
+        return builder
+    }
+    
+    public func offset(offset: UInt) -> ResultBuilder<E> {
+        var builder = self
+        builder.fetchOffset = offset
+        return builder
+    }
+    
+    public func order(sortDescriptors: [AnyObject]) -> ResultBuilder<E> {
+        var builder = self
+        builder.sortDescriptors += sortDescriptors.map() { $0 is String ? NSSortDescriptor(key: $0 as! String, ascending: true) : $0 }
+        return builder
+    }
 }

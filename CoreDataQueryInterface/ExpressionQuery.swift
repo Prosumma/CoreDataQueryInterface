@@ -18,15 +18,11 @@ public struct ExpressionQuery<E where E: EntityMetadata, E: AnyObject>: QueryTyp
     }
     
     public func context(managedObjectContext: NSManagedObjectContext) -> ExpressionQuery<E> {
-        var query = self
-        query.builder.managedObjectContext = managedObjectContext
-        return query
+        return ExpressionQuery<E>(builder: builder.context(managedObjectContext))
     }
     
     public func filter(predicate: NSPredicate) -> ExpressionQuery<E> {
-        var query = self
-        query.builder.predicates.append(predicate)
-        return query
+        return ExpressionQuery<E>(builder: builder.filter(predicate))
     }
     
     public func filter(format: String, arguments: CVaListPointer) -> ExpressionQuery<E> {
@@ -42,21 +38,15 @@ public struct ExpressionQuery<E where E: EntityMetadata, E: AnyObject>: QueryTyp
     }
     
     public func limit(limit: UInt) -> ExpressionQuery<E> {
-        var query = self
-        query.builder.fetchLimit = limit
-        return query
+        return ExpressionQuery<E>(builder: builder.limit(limit))
     }
     
     public func offset(offset: UInt) -> ExpressionQuery<E> {
-        var query = self
-        query.builder.fetchOffset = offset
-        return query
+        return ExpressionQuery<E>(builder: builder.offset(offset))
     }
     
     public func order(sortDescriptors: [AnyObject]) -> ExpressionQuery<E> {
-        var query = self
-        query.builder.sortDescriptors += sortDescriptors.map() { $0 is String ? NSSortDescriptor(key: $0 as! String, ascending: true) : $0 }
-        return query
+        return ExpressionQuery<E>(builder: builder.order(sortDescriptors))
     }
     
     public func order(sortDescriptors: AnyObject...) -> ExpressionQuery<E> {
