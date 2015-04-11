@@ -2,11 +2,11 @@
 //  CoreDataQueryInterface.h
 //  CoreDataQueryInterface
 //
-//  Created by Gregory Higley on 4/10/15.
+//  Created by Gregory Higley on 4/11/15.
 //  Copyright (c) 2015 Prosumma LLC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for CoreDataQueryInterface.
 FOUNDATION_EXPORT double CoreDataQueryInterfaceVersionNumber;
