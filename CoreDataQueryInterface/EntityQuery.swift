@@ -62,11 +62,11 @@ public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: QueryType, E
     
     // MARK: Expressions
     
-    public func select(attributes: [AnyObject]) -> ExpressionQuery<E> {
+    public func select(expressions: [AnyObject]) -> ExpressionQuery<E> {
         return ExpressionQuery<E>(builder: self.builder)
     }
     
-    public func groupBy(attributes: [AnyObject]) -> ExpressionQuery<E> {
+    public func groupBy(expressions: [AnyObject]) -> ExpressionQuery<E> {
         return ExpressionQuery<E>(builder: self.builder)
     }
     

@@ -52,13 +52,6 @@ public struct ManagedObjectIDQuery<E where E: EntityMetadata, E: AnyObject>: Que
     public func order(sortDescriptors: AnyObject...) -> ManagedObjectIDQuery<E> {
         return order(sortDescriptors)
     }
-    
-    // MARK: Expressions
-    // These are all no-ops for this query type.
-    
-    public func select(properties: [AnyObject]) -> ManagedObjectIDQuery<E> {
-        return ManagedObjectIDQuery<E>()
-    }
         
     // MARK: Query Execution
     
