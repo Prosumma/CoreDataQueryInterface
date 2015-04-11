@@ -10,17 +10,18 @@ import CoreData
 
 public struct Query<E: EntityMetadata where E: AnyObject>: SequenceType {
     
-    private var predicate: NSPredicate?
-    private var fetchLimit: UInt = 0
-    private var fetchOffset: UInt = 0
-    
-    internal var managedObjectContext: NSManagedObjectContext!
+    public var predicate: NSPredicate?
+    public var fetchLimit: UInt = 0
+    public var fetchOffset: UInt = 0
+    public var sortDescriptors: [AnyObject]?
+    public var managedObjectContext: NSManagedObjectContext!
     
     private var request: NSFetchRequest {
         let request = NSFetchRequest(entityName: E.entityName)
         request.predicate = predicate
         request.fetchLimit =  Int(fetchLimit)
         request.fetchOffset = Int(fetchOffset)
+        request.sortDescriptors = sortDescriptors
         return request
     }
     
@@ -28,6 +29,12 @@ public struct Query<E: EntityMetadata where E: AnyObject>: SequenceType {
     
     public static func from(E.Type) -> Query<E> {
         return Query<E>()
+    }
+    
+    public func context(managedObjectContext: NSManagedObjectContext) -> Query<E> {
+        var query = self
+        query.managedObjectContext = managedObjectContext
+        return query
     }
     
     public func filter(predicate: NSPredicate) -> Query<E> {
@@ -68,12 +75,27 @@ public struct Query<E: EntityMetadata where E: AnyObject>: SequenceType {
         return query
     }
     
+    public func order(sortDescriptors: [AnyObject]) -> Query<E> {
+        var query = self
+        query.sortDescriptors = sortDescriptors.map() { $0 is String ? NSSortDescriptor(key: $0 as! String, ascending: true) : $0 }
+        return query
+    }
+    
+    public func order(sortDescriptors: AnyObject...) -> Query<E> {
+        return order(sortDescriptors)
+    }
+    
     public func all(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> [E]? {
         return (managedObjectContext ?? self.managedObjectContext)!.executeFetchRequest(request, error: error) as! [E]?
     }
     
     public func first(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> E? {
         return limit(1).all(managedObjectContext: managedObjectContext, error: error)?.first
+    }
+    
+    public func count(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> UInt? {
+        let recordCount = (managedObjectContext ?? self.managedObjectContext)!.countForFetchRequest(request, error: error)
+        return recordCount == NSNotFound ? nil : UInt(recordCount)
     }
     
     // MARK: SequenceType

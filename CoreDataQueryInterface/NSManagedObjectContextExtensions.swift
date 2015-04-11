@@ -20,4 +20,11 @@ extension NSManagedObjectContext {
         return Query.from(E)
     }
     
+    public func newManagedObject<E: EntityMetadata>() -> E {
+        return newManagedObject(E)
+    }
+
+    public func newManagedObject<E: EntityMetadata>(entity: E.Type) -> E {
+        return NSEntityDescription.insertNewObjectForEntityForName(entity.entityName, inManagedObjectContext: self) as! E
+    }
 }

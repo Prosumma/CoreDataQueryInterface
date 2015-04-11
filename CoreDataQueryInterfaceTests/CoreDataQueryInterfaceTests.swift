@@ -6,31 +6,69 @@
 //  Copyright (c) 2015 Prosumma LLC. All rights reserved.
 //
 
+import CoreData
 import UIKit
 import XCTest
 
 class CoreDataQueryInterfaceTests: XCTestCase {
     
+    static let DatabaseName = "CoreDataQI.sqlite"
+    
+    var managedObjectContext: NSManagedObjectContext!
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        let managedObjectModel = NSManagedObjectModel.mergedModelFromBundles(NSBundle.allBundles())!
+        let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
+        persistentStoreCoordinator.addPersistentStoreWithType(NSInMemoryStoreType, configuration: nil, URL: nil, options: nil, error: nil)
+        managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
+        
+        let woggam1: Woggam = managedObjectContext.newManagedObject()
+        woggam1.name = "thgib"
+        woggam1.size = 13
+        
+        let woggam2: Woggam = managedObjectContext.newManagedObject()
+        woggam2.name = "eggafnord"
+        woggam2.size = 7
+        
+        let woggam3: Woggam = managedObjectContext.newManagedObject()
+        woggam3.name = "idribnagong"
+        woggam3.size = 42
+        
+        assert(managedObjectContext.save(nil), "Seed data could not be saved.")
     }
     
     override func tearDown() {
+        managedObjectContext = nil
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    func testSort() {
+        let woggams = managedObjectContext.from(Woggam)
+        let names = woggams.order("name").all()!.map() { $0.name }
+        XCTAssertEqual(names, ["eggafnord", "idribnagong", "thgib"], "")
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
+    func testReverseSort() {
+        let woggams = Query.from(Woggam)
+        let names = woggams.order(NSSortDescriptor(key: "name", ascending: false)).all(managedObjectContext: managedObjectContext)!.map() { $0.name }
+        XCTAssertEqual(names, ["thgib", "idribnagong", "eggafnord"], "")
+    }
+    
+    func testIteration() {
+        let woggams = managedObjectContext.from(Woggam)
+        var w: UInt = 0
+        for woggam in woggams {
+            w++
         }
+        XCTAssertEqual(w, woggams.count()!, "The number of iterations was not the same as the number of woggams.")
+    }
+    
+    func testFilter() {
+        let woggams = Query.from(Woggam)
+        XCTAssertEqual(7, woggams.filter("name == %@", "eggafnord").first(managedObjectContext: managedObjectContext)?.size ?? 0, "The query to get the size of eggafnord failed.")
     }
     
 }
