@@ -58,7 +58,7 @@ class CoreDataQueryInterfaceTests: XCTestCase {
     
     func testReverseSort() {
         let woggams = EntityQuery.from(Woggam)
-        let names = woggams.order(NSSortDescriptor(key: "name", ascending: false)).all(managedObjectContext: managedObjectContext)!.map() { $0.name }
+        let names = woggams.order(descending: "name").all(managedObjectContext: managedObjectContext)!.map() { $0.name }
         XCTAssertEqual(names, ["thgib", "idribnagong", "eggafnord"], "")
     }
     

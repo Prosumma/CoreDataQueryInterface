@@ -9,7 +9,7 @@
 import CoreData
 
 public enum Expression<E: EntityMetadata> {
-    case Name(String)
+    case Name(String, NSAttributeType)
     case Function(String, NSExpression, NSAttributeType)
     case Description(NSExpressionDescription)
     
@@ -21,8 +21,15 @@ public enum Expression<E: EntityMetadata> {
     
     public func propertyDescription(managedObjectContext: NSManagedObjectContext) -> NSPropertyDescription {
         switch self {
-        case .Name(let attribute):
-            return attributeDescription(attribute, managedObjectContext: managedObjectContext)!
+        case let .Name(keyPath, type):
+            if let attributeDescription = attributeDescription(keyPath, managedObjectContext: managedObjectContext) where type == .UndefinedAttributeType {
+                return attributeDescription
+            } else {
+                let propertyDescription = NSExpressionDescription()
+                propertyDescription.expression = NSExpression(forKeyPath: keyPath)
+                propertyDescription.expressionResultType = type
+                return propertyDescription
+            }
         case .Function(let function, let expression, let type):
             let propertyDescription = NSExpressionDescription()
             propertyDescription.expressionResultType = type

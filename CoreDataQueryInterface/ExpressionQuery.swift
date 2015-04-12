@@ -72,11 +72,27 @@ public struct ExpressionQuery<E where E: EntityMetadata, E: AnyObject>: QueryTyp
     }
     
     public func select(expressions: [String]) -> ExpressionQuery<E> {
-        return ExpressionQuery<E>(builder: self.builder.select(expressions.map({ Expression.Name($0) })))
+        return ExpressionQuery<E>(builder: self.builder.select(expressions.map({ Expression.Name($0, .UndefinedAttributeType) })))
     }
     
     public func select(expressions: String...) -> ExpressionQuery<E> {
         return select(expressions)
+    }
+    
+    public func groupBy(expressions: [NSExpressionDescription]) -> ExpressionQuery<E> {
+        return ExpressionQuery<E>(builder: self.builder.groupBy(expressions.map({ Expression.Description($0) })))
+    }
+    
+    public func groupBy(expressions: NSExpressionDescription...) -> ExpressionQuery<E> {
+        return groupBy(expressions)
+    }
+    
+    public func groupBy(expressions: [String]) -> ExpressionQuery<E> {
+        return ExpressionQuery<E>(builder: self.builder.groupBy(expressions.map({ Expression.Name($0, .UndefinedAttributeType) })))
+    }
+    
+    public func groupBy(expressions: String...) -> ExpressionQuery<E> {
+        return groupBy(expressions)
     }
     
     // MARK: Query Execution

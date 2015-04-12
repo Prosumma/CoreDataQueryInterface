@@ -15,5 +15,10 @@ public protocol ExpressionQueryType {
     func select(expressions: NSExpressionDescription...) -> ExpressionQueryType
     func select(expressions: [String]) -> ExpressionQueryType
     func select(expressions: String...) -> ExpressionQueryType
+        
+    func groupBy(expressions: [NSExpressionDescription]) -> ExpressionQueryType
+    func groupBy(expressions: NSExpressionDescription...) -> ExpressionQueryType
+    func groupBy(expressions: [String]) -> ExpressionQueryType
+    func groupBy(expressions: String...) -> ExpressionQueryType
 }
 

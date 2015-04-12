@@ -70,20 +70,36 @@ public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: QueryType, E
     
     // MARK: Expressions
     
-    public func select(expressions: [NSExpressionDescription]) -> EntityQuery<E> {
-        return EntityQuery<E>(builder: self.builder.select(expressions.map({ Expression.Description($0) })))
+    public func select(expressions: [NSExpressionDescription]) -> ExpressionQuery<E> {
+        return ExpressionQuery<E>(builder: self.builder.select(expressions.map({ Expression.Description($0) })))
     }
     
-    public func select(expressions: NSExpressionDescription...) -> EntityQuery<E> {
+    public func select(expressions: NSExpressionDescription...) -> ExpressionQuery<E> {
         return select(expressions)
     }
     
-    public func select(expressions: [String]) -> EntityQuery<E> {
-        return EntityQuery<E>(builder: self.builder.select(expressions.map({ Expression.Name($0) })))
+    public func select(expressions: [String]) -> ExpressionQuery<E> {
+        return ExpressionQuery<E>(builder: self.builder.select(expressions.map({ Expression.Name($0, .UndefinedAttributeType) })))
     }
     
-    public func select(expressions: String...) -> EntityQuery<E> {
+    public func select(expressions: String...) -> ExpressionQuery<E> {
         return select(expressions)
+    }
+    
+    public func groupBy(expressions: [NSExpressionDescription]) -> ExpressionQuery<E> {
+        return ExpressionQuery<E>(builder: self.builder.groupBy(expressions.map({ Expression.Description($0) })))
+    }
+    
+    public func groupBy(expressions: NSExpressionDescription...) -> ExpressionQuery<E> {
+        return groupBy(expressions)
+    }
+    
+    public func groupBy(expressions: [String]) -> ExpressionQuery<E> {
+        return ExpressionQuery<E>(builder: self.builder.groupBy(expressions.map({ Expression.Name($0, .UndefinedAttributeType) })))
+    }
+    
+    public func groupBy(expressions: String...) -> ExpressionQuery<E> {
+        return groupBy(expressions)
     }
     
     // MARK: Query Execution
