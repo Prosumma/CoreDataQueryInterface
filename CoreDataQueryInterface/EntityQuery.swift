@@ -61,7 +61,7 @@ public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: QueryType, E
     public func order(descending descriptors: String...) -> EntityQuery<E> {
         return order(descriptors.map() { NSSortDescriptor(key: $0, ascending: false) })
     }
-        
+    
     // MARK: Object IDs
     
     public func ids() -> ManagedObjectIDQuery<E> {
@@ -78,22 +78,42 @@ public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: QueryType, E
         return select(expressions)
     }
     
-    public func select(expressions: [String]) -> ExpressionQuery<E> {
-        return ExpressionQuery<E>(builder: self.builder.select(expressions.map({ Expression.Name($0, $0, .UndefinedAttributeType) })))
+    public func select(attributes: [String]) -> ExpressionQuery<E> {
+        return ExpressionQuery<E>(builder: self.builder.select(attributes.map({ Expression.Attribute($0) })))
     }
     
-    public func select(expressions: String...) -> ExpressionQuery<E> {
-        return select(expressions)
+    public func select(attributes: String...) -> ExpressionQuery<E> {
+        return select(attributes)
     }
     
-    public func max(expression: NSExpression, name: String? = nil, type: NSAttributeType = .UndefinedAttributeType) -> ExpressionQuery<E> {
-        return ExpressionQuery<E>(builder: self.builder.select([ Expression.Function(name ?? expression.keyPath, "max:", expression, type) ]))
+    public func select(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {
+        let expressionDescription = NSExpressionDescription()
+        expressionDescription.expression = expression
+        expressionDescription.name = name
+        expressionDescription.expressionResultType = type
+        return select(expressionDescription)
     }
     
-    public func max(expression: String, name: String? = nil, type: NSAttributeType = .UndefinedAttributeType) -> ExpressionQuery<E> {
-        return max(NSExpression(forKeyPath: expression), name: name, type: type)
-    }    
+    public func function(function: String, attribute: String, name: String? = nil) -> ExpressionQuery<E> {
+        return ExpressionQuery<E>(builder: self.builder.select(Expression.Function(function, attribute, name ?? attribute)))
+    }
     
+    public func function(function: String, expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {
+        let expressionDescription = NSExpressionDescription()
+        expressionDescription.expression = NSExpression(forFunction: function, arguments: [expression])
+        expressionDescription.name = name
+        expressionDescription.expressionResultType = type
+        return select(expressionDescription)
+    }
+    
+    public func max(attribute: String, name: String? = nil) -> ExpressionQuery<E> {
+        return function("max:", attribute: attribute, name: name)
+    }
+    
+    public func max(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {
+        return function("max:", expression: expression, name: name, type: type)
+    }
+
     public func groupBy(expressions: [NSExpressionDescription]) -> ExpressionQuery<E> {
         return ExpressionQuery<E>(builder: self.builder.groupBy(expressions.map({ Expression.Description($0) })))
     }
@@ -102,13 +122,13 @@ public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: QueryType, E
         return groupBy(expressions)
     }
     
-    public func groupBy(expressions: [String]) -> ExpressionQuery<E> {
-        return ExpressionQuery<E>(builder: self.builder.groupBy(expressions.map({ Expression.Name($0, $0, .UndefinedAttributeType) })))
+    public func groupBy(attributes: [String]) -> ExpressionQuery<E> {
+        return ExpressionQuery<E>(builder: self.builder.groupBy(attributes.map({ Expression.Attribute($0) })))
     }
     
-    public func groupBy(expressions: String...) -> ExpressionQuery<E> {
-        return groupBy(expressions)
-    }
+    public func groupBy(attributes: String...) -> ExpressionQuery<E> {
+        return groupBy(attributes)
+    }    
     
     // MARK: Query Execution
     

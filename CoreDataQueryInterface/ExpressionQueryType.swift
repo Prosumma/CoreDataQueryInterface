@@ -13,15 +13,18 @@ public protocol ExpressionQueryType {
     
     func select(expressions: [NSExpressionDescription]) -> ExpressionQueryType
     func select(expressions: NSExpressionDescription...) -> ExpressionQueryType
-    func select(expressions: [String]) -> ExpressionQueryType
-    func select(expressions: String...) -> ExpressionQueryType
+    func select(attributes: [String]) -> ExpressionQueryType
+    func select(attributes: String...) -> ExpressionQueryType
+    func select(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQueryType
     
-    func max(expression: NSExpression, name: String?, type: NSAttributeType) -> ExpressionQueryType
-    func max(expression: String, name: String?, type: NSAttributeType) -> ExpressionQueryType
+    func function(function: String, attribute: String, name: String?) -> ExpressionQueryType
+    func function(function: String, expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQueryType
+    func max(attribute: String, name: String?) -> ExpressionQueryType    
+    func max(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQueryType
         
     func groupBy(expressions: [NSExpressionDescription]) -> ExpressionQueryType
     func groupBy(expressions: NSExpressionDescription...) -> ExpressionQueryType
-    func groupBy(expressions: [String]) -> ExpressionQueryType
-    func groupBy(expressions: String...) -> ExpressionQueryType
+    func groupBy(attributes: [String]) -> ExpressionQueryType
+    func groupBy(attributes: String...) -> ExpressionQueryType
 }
 

@@ -9,8 +9,8 @@
 import CoreData
 
 public enum Expression<E: EntityMetadata> {
-    case Name(String, String, NSAttributeType)
-    case Function(String, String, NSExpression, NSAttributeType)
+    case Attribute(String)
+    case Function(String, String, String) // function, attribute, name
     case Description(NSExpressionDescription)
     
     public func attributeDescription(attribute: String, managedObjectContext: NSManagedObjectContext) -> NSAttributeDescription? {
@@ -20,30 +20,20 @@ public enum Expression<E: EntityMetadata> {
     }
     
     public func propertyDescription(managedObjectContext: NSManagedObjectContext) -> NSPropertyDescription {
+        var propertyDescription: NSPropertyDescription!
         switch self {
-        case let .Name(name, keyPath, type):
-            if let attributeDescription = attributeDescription(keyPath, managedObjectContext: managedObjectContext) where type == .UndefinedAttributeType {
-                return attributeDescription
-            } else {
-                let propertyDescription = NSExpressionDescription()
-                propertyDescription.expression = NSExpression(forKeyPath: keyPath)
-                propertyDescription.expressionResultType = type
-                propertyDescription.name = name
-                return propertyDescription
-            }
-        case let .Function(name, function, expression, type):
-            let propertyDescription = NSExpressionDescription()
-            propertyDescription.expressionResultType = type
-            if let attributeDescription = attributeDescription(expression.keyPath, managedObjectContext: managedObjectContext) where type == .UndefinedAttributeType {
-                propertyDescription.expressionResultType = attributeDescription.attributeType
-            }
-            propertyDescription.name = name
-            propertyDescription.expression = NSExpression(forFunction: function, arguments: [expression])
-            debugPrintln(propertyDescription.expression)
-            return propertyDescription
-        case .Description(let description):
-            return description
+        case .Attribute(let attribute):
+            propertyDescription = attributeDescription(attribute, managedObjectContext: managedObjectContext)!
+        case let .Function(function, attribute, name):
+            let expressionDescription = NSExpressionDescription()
+            expressionDescription.expression = NSExpression(forFunction: function, arguments: [ NSExpression(forKeyPath: attribute) ])
+            expressionDescription.expressionResultType = attributeDescription(attribute, managedObjectContext: managedObjectContext)!.attributeType
+            expressionDescription.name = name
+            propertyDescription = expressionDescription
+        case let .Description(description):
+            propertyDescription = description
         }
+        return propertyDescription
     }
 }
 
@@ -109,6 +99,10 @@ public struct QueryBuilder<E where E: EntityMetadata, E: AnyObject> {
         var builder = self
         builder.propertiesToFetch += expressions
         return builder
+    }
+    
+    public func select(expression: Expression<E>) -> QueryBuilder<E> {
+        return select([expression])
     }
     
     public func groupBy(expressions: [Expression<E>]) -> QueryBuilder<E> {

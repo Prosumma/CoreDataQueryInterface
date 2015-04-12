@@ -70,10 +70,9 @@ class CoreDataQueryInterfaceTests: XCTestCase {
         }
         XCTAssertEqual(w, woggams.count()!, "The number of iterations was not the same as the number of woggams.")
     }
-    
-    func testMax() {
+
+    func testAnotherExpression() {
         let woggams = managedObjectContext.from(Woggam)
-        debugPrintln(woggams.max("size").first())
     }
     
     func testFilter() {
