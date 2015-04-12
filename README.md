@@ -1,10 +1,12 @@
 ## Overview
 
-Core Data Query Interface is a type-safe, fluent library for working with Core Data in Swift. The syntax speaks for itself:
+Core Data Query Interface is a type-safe, fluent library for working with Core Data in Swift. If you've worked with LINQ in the C# world, you can think of CDQI as "LINQ for Core Data", though without the syntactic sugar of the custom operators.
+
+The syntax speaks for itself:
 
     let employees = moc.from(Employee).filter("salary > 80000").all()
     let highestPaidEmployeeName = moc.from(Employee).order(descending: "salary").select("name").first()
-    let highestSalary: NSNumber = moc.from(Employee).max("salary").pluck()!.first!
+    let highestSalary: NSNumber = moc.from(Employee).max("salary").value()!
     let numberOfSmiths = moc.from(Employee).filter("lastName = %@", "Smith").count()
 
     for employee in moc.from(Employee).order("startDate") {
@@ -49,3 +51,11 @@ Dig in. An earlier but similar version of the library has already proven itself 
 ## Requirements
 
 CDQI requires Swift >= 1.2 and iOS >= 8.3 or Mac OS X >= 10.10.3. (It may work on earlier minor versions of iOS and Mac OS X, but that has not been tried.)
+
+## Brief Architectural Sketch
+
+At the heart of CDQI are the three query types. They are `EntityQuery`, `ExpressionQuery`, and `ManagedObjectIDQuery`. Each corresponds to one of the possible result types of `NSFetchRequest`, except for `NSCountResultType` which is handled in a different way.  All three are structs.
+
+The fluent, "chainable" CDQI methods return one of these, depending partly on how the query was started and partly on which method is being called. For instance, `filter` simply returns the same query type it was called on, but `select` always returns `ExpressionQuery`, even if it was called on an instance of `EntityQuery`. This is because as soon as `select` has been used, we know we want to return a dictionary result rather than entities. (In other words, we've selected some "expressions" to return, rather than entities.)
+
+
