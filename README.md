@@ -5,9 +5,12 @@ Core Data Query Interface is a type-safe, fluent, intuitive library for working 
 The simplicity of the syntax compared to standard Core Data speaks for itself:
 
 ```swift
+// all() executes the query and returns an array
 let employees = moc.from(Employee).filter("salary > 80000").all()
-let highestPaidEmployeeName = moc.from(Employee).order(descending: "salary").select("name").first()
+// value() executes the query and returns the first value in the first row.
+let highestPaidEmployeeName = moc.from(Employee).order(descending: "salary").select("name").limit(1).value()! as! NSNumber
 let highestSalary = moc.from(Employee).max("salary").value()! as! NSNumber
+// count() executes the query and returns the number of rows.
 let numberOfSmiths = moc.from(Employee).filter("lastName = %@", "Smith").count()
 
 // Iteration automatically causes the query to be executed.
@@ -15,6 +18,8 @@ for employee in moc.from(Employee).order("startDate") {
     debugPrintln(employee.firstName)
 }
 
+// All of the query execution methods (`all`, `first`, `count`, `pluck`, and `value') have overloads
+// that let you specify an `NSError` and/or `NSManagedObjectContext`.
 var error: NSError?
 let employees = moc.from(Employee).all(error: &error)
 ```
