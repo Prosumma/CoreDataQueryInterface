@@ -33,4 +33,6 @@ public protocol QueryType: SequenceType {
     func all(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> [ResultType]?
     func first(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> ResultType?
     func count(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> UInt?
+    
+    func request() -> NSFetchRequest
 }

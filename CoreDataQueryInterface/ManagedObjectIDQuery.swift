@@ -85,4 +85,10 @@ public struct ManagedObjectIDQuery<E where E: EntityMetadata, E: AnyObject>: Que
     public func generate() -> GeneratorOf<NSManagedObjectID> {
         return generate(nil)
     }
+    
+    // MARK: NSFetchRequest
+    
+    public func request() -> NSFetchRequest {
+        return self.builder.request(.ManagedObjectIDResultType)
+    }
 }

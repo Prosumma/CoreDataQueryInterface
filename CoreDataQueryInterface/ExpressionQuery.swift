@@ -197,7 +197,10 @@ public struct ExpressionQuery<E where E: EntityMetadata, E: AnyObject>: QueryTyp
         return generate(nil)
     }
     
-    // MARK: Expression Parsing
+    // MARK: NSFetchRequest
     
+    public func request() -> NSFetchRequest {
+        return self.builder.request(.DictionaryResultType)
+    }
     
 }

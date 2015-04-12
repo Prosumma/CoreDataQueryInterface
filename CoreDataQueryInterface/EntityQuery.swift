@@ -199,4 +199,10 @@ public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: QueryType, E
         return generate(nil)
     }
     
+    // MARK: NSFetchRequest
+    
+    public func request() -> NSFetchRequest {
+        return self.builder.request()
+    }
+    
 }
