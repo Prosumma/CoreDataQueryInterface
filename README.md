@@ -9,6 +9,7 @@ The simplicity of the syntax compared to standard Core Data speaks for itself:
 let employees = moc.from(Employee).filter("salary > 80000").all()
 // value() executes the query and returns the first value in the first row.
 let highestPaidEmployeeName = moc.from(Employee).order(descending: "salary").select("name").limit(1).value()! as! NSNumber
+// The usual aggregates are built in. Other functions can be called with the `function` method.
 let highestSalary = moc.from(Employee).max("salary").value()! as! NSNumber
 // count() executes the query and returns the number of rows.
 let numberOfSmiths = moc.from(Employee).filter("lastName = %@", "Smith").count()
