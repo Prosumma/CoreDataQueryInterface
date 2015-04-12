@@ -8,44 +8,15 @@
 
 import CoreData
 
-public enum Expression<E: EntityMetadata> {
-    case Attribute(String)
-    case Function(String, String, String) // function, attribute, name
-    case Description(NSExpressionDescription)
-    
-    public func attributeDescription(attribute: String, managedObjectContext: NSManagedObjectContext) -> NSAttributeDescription? {
-        let managedObjectModel = managedObjectContext.persistentStoreCoordinator!.managedObjectModel
-        let entityDescription = managedObjectModel.entitiesByName[E.entityName] as! NSEntityDescription
-        return entityDescription.attributesByName[attribute] as! NSAttributeDescription?
-    }
-    
-    public func propertyDescription(managedObjectContext: NSManagedObjectContext) -> NSPropertyDescription {
-        var propertyDescription: NSPropertyDescription!
-        switch self {
-        case .Attribute(let attribute):
-            propertyDescription = attributeDescription(attribute, managedObjectContext: managedObjectContext)!
-        case let .Function(function, attribute, name):
-            let expressionDescription = NSExpressionDescription()
-            expressionDescription.expression = NSExpression(forFunction: function, arguments: [ NSExpression(forKeyPath: attribute) ])
-            expressionDescription.expressionResultType = attributeDescription(attribute, managedObjectContext: managedObjectContext)!.attributeType
-            expressionDescription.name = name
-            propertyDescription = expressionDescription
-        case let .Description(description):
-            propertyDescription = description
-        }
-        return propertyDescription
-    }
-}
-
 public struct QueryBuilder<E where E: EntityMetadata, E: AnyObject> {
     
-    public private(set) var predicates = [NSPredicate]()
-    public private(set) var fetchLimit: UInt = 0
-    public private(set) var fetchOffset: UInt = 0
-    public private(set) var sortDescriptors = [NSSortDescriptor]()
+    private var predicates = [NSPredicate]()
+    private var fetchLimit: UInt = 0
+    private var fetchOffset: UInt = 0
+    private var sortDescriptors = [NSSortDescriptor]()
     public private(set) var managedObjectContext: NSManagedObjectContext!
-    public private(set) var propertiesToFetch = [Expression<E>]()
-    public private(set) var propertiesToGroupBy = [Expression<E>]()
+    private var propertiesToFetch = [Expression<E>]()
+    private var propertiesToGroupBy = [Expression<E>]()
     
     internal func request(_ resultType: NSFetchRequestResultType = .ManagedObjectResultType) -> NSFetchRequest {
         let request = NSFetchRequest(entityName: E.entityName)

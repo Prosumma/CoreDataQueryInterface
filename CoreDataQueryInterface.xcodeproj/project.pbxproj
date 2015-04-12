@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F321BE851ADA3B4100AA9B40 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F321BE841ADA3B4100AA9B40 /* Expression.swift */; };
+		F321BE861ADA3B4100AA9B40 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F321BE841ADA3B4100AA9B40 /* Expression.swift */; };
+		F321BE871ADA3B4100AA9B40 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F321BE841ADA3B4100AA9B40 /* Expression.swift */; };
 		F371EDEA1AD913B9007D1F32 /* NSManagedObjectContextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E481AD8D9640045E578 /* NSManagedObjectContextExtensions.swift */; };
 		F371EDEB1AD913BD007D1F32 /* EntityMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E3F1AD8C6400045E578 /* EntityMetadata.swift */; };
 		F371EDEC1AD913BF007D1F32 /* EntityQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E421AD8C6990045E578 /* EntityQuery.swift */; };
@@ -50,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F321BE841ADA3B4100AA9B40 /* Expression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
 		F371EDF11AD91BD8007D1F32 /* QueryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryBuilder.swift; sourceTree = "<group>"; };
 		F371EDF51AD91D0A007D1F32 /* ExpressionQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionQuery.swift; sourceTree = "<group>"; };
 		F371EDF91AD91F87007D1F32 /* QueryType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryType.swift; sourceTree = "<group>"; };
@@ -120,6 +124,7 @@
 				F375B9A11AD8C53500575538 /* CoreDataQueryInterface.h */,
 				F3B66E3F1AD8C6400045E578 /* EntityMetadata.swift */,
 				F3B66E421AD8C6990045E578 /* EntityQuery.swift */,
+				F321BE841ADA3B4100AA9B40 /* Expression.swift */,
 				F371EDF51AD91D0A007D1F32 /* ExpressionQuery.swift */,
 				F382C59F1AD9A91B00BD23C9 /* ExpressionQueryType.swift */,
 				F382C59B1AD9A31D00BD23C9 /* ManagedObjectIDQuery.swift */,
@@ -304,6 +309,7 @@
 			files = (
 				F382C59C1AD9A31D00BD23C9 /* ManagedObjectIDQuery.swift in Sources */,
 				F3B66E491AD8D9640045E578 /* NSManagedObjectContextExtensions.swift in Sources */,
+				F321BE851ADA3B4100AA9B40 /* Expression.swift in Sources */,
 				F3B66E431AD8C6990045E578 /* EntityQuery.swift in Sources */,
 				F3B66E401AD8C6400045E578 /* EntityMetadata.swift in Sources */,
 				F382C5A01AD9A91B00BD23C9 /* ExpressionQueryType.swift in Sources */,
@@ -328,6 +334,7 @@
 				F382C59D1AD9A31D00BD23C9 /* ManagedObjectIDQuery.swift in Sources */,
 				F382C5A11AD9A91B00BD23C9 /* ExpressionQueryType.swift in Sources */,
 				F3B66E4F1AD8DAFC0045E578 /* CoreDataQI.xcdatamodeld in Sources */,
+				F321BE861ADA3B4100AA9B40 /* Expression.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +344,7 @@
 			files = (
 				F382C59E1AD9A31D00BD23C9 /* ManagedObjectIDQuery.swift in Sources */,
 				F371EDEA1AD913B9007D1F32 /* NSManagedObjectContextExtensions.swift in Sources */,
+				F321BE871ADA3B4100AA9B40 /* Expression.swift in Sources */,
 				F371EDEC1AD913BF007D1F32 /* EntityQuery.swift in Sources */,
 				F371EDEB1AD913BD007D1F32 /* EntityMetadata.swift in Sources */,
 				F382C5A21AD9A91B00BD23C9 /* ExpressionQueryType.swift in Sources */,

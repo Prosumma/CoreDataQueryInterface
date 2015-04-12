@@ -139,7 +139,7 @@ public struct ExpressionQuery<E where E: EntityMetadata, E: AnyObject>: QueryTyp
     }
     
     public func pluck<R>(attribute: String, managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> [R]? {
-        return select(attribute).all(managedObjectContext: managedObjectContext, error: error)?.map() {
+        return all(managedObjectContext: managedObjectContext, error: error)?.map() {
             $0[attribute]! as! R
         }
     }
