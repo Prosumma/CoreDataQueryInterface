@@ -24,11 +24,7 @@ public struct ManagedObjectIDQuery<E where E: EntityMetadata, E: AnyObject>: Que
     public func filter(predicate: NSPredicate) -> ManagedObjectIDQuery<E> {
         return ManagedObjectIDQuery<E>(builder: builder.filter(predicate))
     }
-    
-    public func filter(format: String, arguments: CVaListPointer) -> ManagedObjectIDQuery<E> {
-        return filter(NSPredicate(format: format, arguments: arguments))
-    }
-    
+        
     public func filter(format: String, argumentArray: [AnyObject]?) -> ManagedObjectIDQuery<E> {
         return filter(NSPredicate(format: format, argumentArray: argumentArray))
     }
