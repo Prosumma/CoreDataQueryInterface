@@ -54,7 +54,7 @@ employeeSalaryQuery.first(managedObjectContext: moc)
 // etc.
 ```
 
-The ability to store and reuse queries without specifying a managed object context up front is one of the great advantages of CDQI.
+The ability to store and reuse queries without specifying a managed object context up front is one of the great advantages of CDQI, making it possible to create a library of reusable queries.
 
 ## Status
 
