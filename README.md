@@ -4,6 +4,7 @@ Core Data Query Interface is a type-safe, fluent library for working with Core D
 
 The syntax speaks for itself:
 
+    ```swift
     let employees = moc.from(Employee).filter("salary > 80000").all()
     let highestPaidEmployeeName = moc.from(Employee).order(descending: "salary").select("name").first()
     let highestSalary: NSNumber = moc.from(Employee).max("salary").value()!
@@ -15,6 +16,7 @@ The syntax speaks for itself:
 
     var error: NSError?
     let employees = moc.from(Employee).all(error: &error)
+    ```
 
 Core Data is an Objective-C API. Using it in Swift can be painful because of the amount of casting, the number of statements required to do common things, etc. CDQI removes that pain.
 
