@@ -34,9 +34,6 @@
 		F382C5A01AD9A91B00BD23C9 /* ExpressionQueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F382C59F1AD9A91B00BD23C9 /* ExpressionQueryType.swift */; };
 		F382C5A11AD9A91B00BD23C9 /* ExpressionQueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F382C59F1AD9A91B00BD23C9 /* ExpressionQueryType.swift */; };
 		F382C5A21AD9A91B00BD23C9 /* ExpressionQueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F382C59F1AD9A91B00BD23C9 /* ExpressionQueryType.swift */; };
-		F39692E31ADB04E800D90E6F /* NSManagedObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39692E21ADB04E800D90E6F /* NSManagedObjectExtensions.swift */; };
-		F39692E41ADB04E800D90E6F /* NSManagedObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39692E21ADB04E800D90E6F /* NSManagedObjectExtensions.swift */; };
-		F39692E51ADB04E800D90E6F /* NSManagedObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39692E21ADB04E800D90E6F /* NSManagedObjectExtensions.swift */; };
 		F3B66E401AD8C6400045E578 /* EntityMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E3F1AD8C6400045E578 /* EntityMetadata.swift */; };
 		F3B66E411AD8C6400045E578 /* EntityMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E3F1AD8C6400045E578 /* EntityMetadata.swift */; };
 		F3B66E431AD8C6990045E578 /* EntityQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E421AD8C6990045E578 /* EntityQuery.swift */; };
@@ -72,7 +69,6 @@
 		F375B9AE1AD8C53500575538 /* CoreDataQueryInterfaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataQueryInterfaceTests.swift; sourceTree = "<group>"; };
 		F382C59B1AD9A31D00BD23C9 /* ManagedObjectIDQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectIDQuery.swift; sourceTree = "<group>"; };
 		F382C59F1AD9A91B00BD23C9 /* ExpressionQueryType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionQueryType.swift; sourceTree = "<group>"; };
-		F39692E21ADB04E800D90E6F /* NSManagedObjectExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtensions.swift; sourceTree = "<group>"; };
 		F3B66E3F1AD8C6400045E578 /* EntityMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityMetadata.swift; sourceTree = "<group>"; };
 		F3B66E421AD8C6990045E578 /* EntityQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityQuery.swift; sourceTree = "<group>"; };
 		F3B66E481AD8D9640045E578 /* NSManagedObjectContextExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContextExtensions.swift; sourceTree = "<group>"; };
@@ -136,11 +132,7 @@
 				F371EDF51AD91D0A007D1F32 /* ExpressionQuery.swift */,
 				F382C59F1AD9A91B00BD23C9 /* ExpressionQueryType.swift */,
 				F382C59B1AD9A31D00BD23C9 /* ManagedObjectIDQuery.swift */,
-<<<<<<< HEAD
-				F39692E21ADB04E800D90E6F /* NSManagedObjectExtensions.swift */,
-=======
 				F30C371D1ADB0115003B1C0E /* NSManagedObjectExtensions.swift */,
->>>>>>> c37b446c04fba0c6a748e20482e575255155aa18
 				F3B66E481AD8D9640045E578 /* NSManagedObjectContextExtensions.swift */,
 				F371EDF91AD91F87007D1F32 /* QueryType.swift */,
 				F371EDF11AD91BD8007D1F32 /* QueryBuilder.swift */,
@@ -329,11 +321,7 @@
 				F371EDF61AD91D0A007D1F32 /* ExpressionQuery.swift in Sources */,
 				F371EDFA1AD91F87007D1F32 /* QueryType.swift in Sources */,
 				F371EDF21AD91BD8007D1F32 /* QueryBuilder.swift in Sources */,
-<<<<<<< HEAD
-				F39692E31ADB04E800D90E6F /* NSManagedObjectExtensions.swift in Sources */,
-=======
 				F30C371E1ADB0115003B1C0E /* NSManagedObjectExtensions.swift in Sources */,
->>>>>>> c37b446c04fba0c6a748e20482e575255155aa18
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,11 +332,7 @@
 				F371EDF31AD91BD8007D1F32 /* QueryBuilder.swift in Sources */,
 				F371EDFB1AD91F87007D1F32 /* QueryType.swift in Sources */,
 				F375B9AF1AD8C53500575538 /* CoreDataQueryInterfaceTests.swift in Sources */,
-<<<<<<< HEAD
-				F39692E41ADB04E800D90E6F /* NSManagedObjectExtensions.swift in Sources */,
-=======
 				F30C371F1ADB0115003B1C0E /* NSManagedObjectExtensions.swift in Sources */,
->>>>>>> c37b446c04fba0c6a748e20482e575255155aa18
 				F3B66E441AD8C6990045E578 /* EntityQuery.swift in Sources */,
 				F3B66E511AD8DB9F0045E578 /* Woggam.swift in Sources */,
 				F3B66E411AD8C6400045E578 /* EntityMetadata.swift in Sources */,
@@ -374,11 +358,7 @@
 				F371EDF81AD91D0A007D1F32 /* ExpressionQuery.swift in Sources */,
 				F371EDFC1AD91F87007D1F32 /* QueryType.swift in Sources */,
 				F371EDF41AD91BD8007D1F32 /* QueryBuilder.swift in Sources */,
-<<<<<<< HEAD
-				F39692E51ADB04E800D90E6F /* NSManagedObjectExtensions.swift in Sources */,
-=======
 				F30C37201ADB0115003B1C0E /* NSManagedObjectExtensions.swift in Sources */,
->>>>>>> c37b446c04fba0c6a748e20482e575255155aa18
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
