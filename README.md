@@ -14,6 +14,8 @@ Core Data Query Interface is a type-safe, fluent library for working with Core D
     var error: NSError?
     let employees = moc.from(Employee).all(error: &error)
 
+Core Data is an Objective-C API. Using it in Swift can be painful because of the amount of casting, the number of statements required to do common things, etc. CDQI removes that pain.
+
 CDQI supports all of Core Data's result types: entities, dictionaries, `NSManagedObjectID`s, and (indirectly) counts:
 
     let employees = moc.from(Employee).all()
@@ -43,3 +45,7 @@ The ability to store and reuse queries without specifying a managed object conte
 ## Status
 
 Dig in. An earlier but similar version of the library has already proven itself in a production project. Everything shown above (and more) works and works well. However, before I can tag a 1.0 release, I want to write documentation and unit tests.
+
+## Requirements
+
+CDQI requires Swift >= 1.2 and iOS >= 8.3 or Mac OS X >= 10.10.3. (It may work on earlier minor versions of iOS and Mac OS X, but that has not been tried.)
