@@ -6,7 +6,8 @@
 //  Copyright (c) 2015 Prosumma LLC. All rights reserved.
 //
 
-import Foundation
+import CoreData
+import ObjectiveC
 
 /*! The protocol which all managed objects must implement to participate in CDQI. */
 /*
@@ -19,3 +20,6 @@ public protocol EntityMetadata {
     static var entityName: String { get }
 }
 
+public func entityNameForManagedObject(type: AnyClass!) -> String {
+    return String.fromCString(class_getName(type))!.componentsSeparatedByString(".").last!
+}
