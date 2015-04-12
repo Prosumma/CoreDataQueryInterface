@@ -24,11 +24,7 @@ public struct ExpressionQuery<E where E: EntityMetadata, E: AnyObject>: QueryTyp
     public func filter(predicate: NSPredicate) -> ExpressionQuery<E> {
         return ExpressionQuery<E>(builder: builder.filter(predicate))
     }
-    
-    public func filter(format: String, arguments: CVaListPointer) -> ExpressionQuery<E> {
-        return filter(NSPredicate(format: format, arguments: arguments))
-    }
-    
+        
     public func filter(format: String, argumentArray: [AnyObject]?) -> ExpressionQuery<E> {
         return filter(NSPredicate(format: format, argumentArray: argumentArray))
     }

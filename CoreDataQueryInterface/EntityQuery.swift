@@ -26,10 +26,6 @@ public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: QueryType, E
         return EntityQuery<E>(builder: builder.filter(predicate))
     }
     
-    public func filter(format: String, arguments: CVaListPointer) -> EntityQuery<E> {
-        return filter(NSPredicate(format: format, arguments: arguments))
-    }
-    
     public func filter(format: String, argumentArray: [AnyObject]?) -> EntityQuery<E> {
         return filter(NSPredicate(format: format, argumentArray: argumentArray))
     }

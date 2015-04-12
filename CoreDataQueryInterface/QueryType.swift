@@ -17,13 +17,10 @@ public protocol QueryType: SequenceType {
     typealias ResultQueryType
     typealias ResultType
     
-    var builder: QueryBuilder<EntityType> { get set }
-    
     static func from(EntityType.Type) -> ResultQueryType
     
     func context(managedObjectContext: NSManagedObjectContext) -> ResultQueryType
     func filter(predicate: NSPredicate) -> ResultQueryType
-    func filter(format: String, arguments: CVaListPointer) -> ResultQueryType
     func filter(format: String, argumentArray: [AnyObject]?) -> ResultQueryType
     func filter(format: String, _ args: CVarArgType...) -> ResultQueryType
     func limit(limit: UInt) -> ResultQueryType
