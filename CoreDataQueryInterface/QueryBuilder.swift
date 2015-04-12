@@ -17,6 +17,7 @@ public struct QueryBuilder<E where E: EntityMetadata, E: AnyObject> {
     public private(set) var managedObjectContext: NSManagedObjectContext!
     private var propertiesToFetch = [Expression<E>]()
     private var propertiesToGroupBy = [Expression<E>]()
+    private var returnsDistinctResults: Bool = false
     
     internal func request(_ resultType: NSFetchRequestResultType = .ManagedObjectResultType) -> NSFetchRequest {
         let request = NSFetchRequest(entityName: E.entityName)
@@ -29,6 +30,7 @@ public struct QueryBuilder<E where E: EntityMetadata, E: AnyObject> {
         request.fetchOffset = Int(fetchOffset)
         request.sortDescriptors = sortDescriptors.count == 0 ? nil : sortDescriptors
         request.resultType = resultType
+        request.returnsDistinctResults = returnsDistinctResults
         if resultType == .DictionaryResultType {
             request.propertiesToFetch = propertiesToFetch.map() { $0.propertyDescription(self.managedObjectContext) }
             request.propertiesToGroupBy = propertiesToGroupBy.count == 0 ? nil : propertiesToGroupBy.map() { $0.propertyDescription(self.managedObjectContext) }
@@ -79,6 +81,12 @@ public struct QueryBuilder<E where E: EntityMetadata, E: AnyObject> {
     public func groupBy(expressions: [Expression<E>]) -> QueryBuilder<E> {
         var builder = self
         builder.propertiesToGroupBy += expressions
+        return builder
+    }
+    
+    public func distinct() -> QueryBuilder<E> {
+        var builder = self
+        builder.returnsDistinctResults = true
         return builder
     }
 }

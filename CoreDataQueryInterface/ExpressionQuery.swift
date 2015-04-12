@@ -150,6 +150,10 @@ public struct ExpressionQuery<E where E: EntityMetadata, E: AnyObject>: QueryTyp
     public func groupBy(attributes: String...) -> ExpressionQuery<E> {
         return groupBy(attributes)
     }
+    
+    public func distinct() -> ExpressionQuery<E> {
+        return ExpressionQuery<E>(builder: self.builder.distinct())
+    }
         
     // MARK: Query Execution
     
