@@ -7,9 +7,10 @@ The simplicity of the syntax compared to standard Core Data speaks for itself:
 ```swift
 let employees = moc.from(Employee).filter("salary > 80000").all()
 let highestPaidEmployeeName = moc.from(Employee).order(descending: "salary").select("name").first()
-let highestSalary: NSNumber = moc.from(Employee).max("salary").value()!
+let highestSalary = moc.from(Employee).max("salary").value()! as! NSNumber
 let numberOfSmiths = moc.from(Employee).filter("lastName = %@", "Smith").count()
 
+// Iteration automatically causes the query to be executed.
 for employee in moc.from(Employee).order("startDate") {
     debugPrintln(employee.firstName)
 }
@@ -23,10 +24,10 @@ Core Data is an Objective-C API. Using it in Swift can be painful because of the
 CDQI supports all of Core Data's result types: entities, dictionaries, `NSManagedObjectID`s, and (indirectly) counts:
 
 ```swift
-let employees = moc.from(Employee).all()
-let employeeFirstNames = moc.from(Employee).select("firstName").all()
-let employeeObjectIDs = moc.from(Employee).ids().all()
-let numberOfEmployees = moc.from(Employee).count()
+let employees = moc.from(Employee).all() // entities
+let employeeFirstNames = moc.from(Employee).select("firstName").all() // array of dictionaries
+let employeeObjectIDs = moc.from(Employee).ids().all() // object IDs
+let numberOfEmployees = moc.from(Employee).count() // count
 ```
 
 Queries are infinitely reusable. Later parts of a query have no side effects on earlier parts, e.g.,
@@ -50,6 +51,7 @@ To use such a query, you must specify an `NSManagedObjectContext` at the time th
 employeeSalaryQuery.context(moc).all()
 employeeSalaryQuery.all(managedObjectContext: moc)
 employeeSalaryQuery.first(managedObjectContext: moc)
+// etc.
 ```
 
 The ability to store and reuse queries without specifying a managed object context up front is one of the great advantages of CDQI.
