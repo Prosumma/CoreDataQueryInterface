@@ -178,6 +178,10 @@ public struct ExpressionQuery<E where E: EntityMetadata, E: AnyObject>: QueryTyp
             return nil
         }
     }
+    
+    public func value<R>(_ attribute: String? = nil, managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> R? {
+        return pluck(attribute, managedObjectContext: managedObjectContext, error: error)?.first
+    }
             
     // MARK: SequenceType
     

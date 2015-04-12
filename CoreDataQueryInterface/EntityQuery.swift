@@ -181,6 +181,10 @@ public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: QueryType, E
         return ExpressionQuery<E>(builder: self.builder).pluck(attribute, managedObjectContext: managedObjectContext, error: error)
     }
     
+    public func value<R>(_ attribute: String? = nil, managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> R? {
+        return pluck(attribute, managedObjectContext: managedObjectContext, error: error)?.first
+    }    
+    
     // MARK: SequenceType
     
     private func generate(error: NSErrorPointer) -> GeneratorOf<E> {
