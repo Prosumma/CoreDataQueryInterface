@@ -106,12 +106,44 @@ public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: QueryType, E
         return select(expressionDescription)
     }
     
+    public func average(attribute: String, name: String? = nil) -> ExpressionQuery<E> {
+        return function("average:", attribute: attribute, name: name)
+    }
+    
+    public func average(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {
+        return function("average:", expression: expression, name: name, type: type)
+    }
+    
+    public func sum(attribute: String, name: String? = nil) -> ExpressionQuery<E> {
+        return function("sum:", attribute: attribute, name: name)
+    }
+    
+    public func sum(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {
+        return function("sum:", expression: expression, name: name, type: type)
+    }
+    
+    public func min(attribute: String, name: String? = nil) -> ExpressionQuery<E> {
+        return function("min:", attribute: attribute, name: name)
+    }
+    
+    public func min(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {
+        return function("min:", expression: expression, name: name, type: type)
+    }
+    
     public func max(attribute: String, name: String? = nil) -> ExpressionQuery<E> {
         return function("max:", attribute: attribute, name: name)
     }
     
     public func max(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {
         return function("max:", expression: expression, name: name, type: type)
+    }
+    
+    public func count(attribute: String, name: String? = nil) -> ExpressionQuery<E> {
+        return function("count:", attribute: attribute, name: name)
+    }
+    
+    public func count(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {
+        return function("count:", expression: expression, name: name, type: type)
     }
 
     public func groupBy(expressions: [NSExpressionDescription]) -> ExpressionQuery<E> {

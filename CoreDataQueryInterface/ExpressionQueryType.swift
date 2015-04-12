@@ -19,8 +19,16 @@ public protocol ExpressionQueryType {
     
     func function(function: String, attribute: String, name: String?) -> ExpressionQueryType
     func function(function: String, expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQueryType
+    func average(attribute: String, name: String?) -> ExpressionQueryType
+    func average(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQueryType
+    func sum(attribute: String, name: String?) -> ExpressionQueryType
+    func sum(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQueryType
+    func min(attribute: String, name: String?) -> ExpressionQueryType
+    func min(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQueryType
     func max(attribute: String, name: String?) -> ExpressionQueryType    
     func max(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQueryType
+    func count(attribute: String, name: String?) -> ExpressionQueryType
+    func count(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQueryType
         
     func groupBy(expressions: [NSExpressionDescription]) -> ExpressionQueryType
     func groupBy(expressions: NSExpressionDescription...) -> ExpressionQueryType

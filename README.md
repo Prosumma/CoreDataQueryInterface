@@ -4,7 +4,7 @@ Core Data Query Interface is a type-safe, fluent library for working with Core D
 
     let employees = moc.from(Employee).filter("salary > 80000").all()
     let highestPaidEmployeeName = moc.from(Employee).order(descending: "salary").select("name").first()
-    let highestSalary: NSNumber = moc.from(Employee).max("salary").pluck()!
+    let highestSalary: NSNumber = moc.from(Employee).max("salary").pluck()!.first!
     let numberOfSmiths = moc.from(Employee).filter("lastName = %@", "Smith").count()
 
     for employee in moc.from(Employee).order("startDate") {
