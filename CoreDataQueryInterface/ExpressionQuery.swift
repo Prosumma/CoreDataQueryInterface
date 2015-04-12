@@ -9,7 +9,7 @@
 import CoreData
 
 public struct ExpressionQuery<E where E: EntityMetadata, E: AnyObject>: QueryType, ExpressionQueryType {
-    public var builder = QueryBuilder<E>()
+    internal var builder = QueryBuilder<E>()
     
     // MARK: Query Interface (Chainable Methods)
     
