@@ -70,4 +70,3 @@ At the heart of CDQI are the three query types. They are `EntityQuery`, `Express
 
 The fluent, "chainable" CDQI methods return one of these, depending partly on how the query was started and partly on which method is being called. For instance, `filter` simply returns the same query type it was called on, but `select` always returns `ExpressionQuery`, even if it was called on an instance of `EntityQuery`. This is because as soon as `select` has been used, we know we want to return a dictionary result rather than entities. (In other words, we've selected some "expressions" to return, rather than entities.)
 
-

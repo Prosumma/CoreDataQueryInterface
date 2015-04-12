@@ -9,13 +9,9 @@
 import Foundation
 import CoreData
 
-class Woggam: NSManagedObject, EntityMetadata {
+class Woggam: NSManagedObject {
 
     @NSManaged var name: String
     @NSManaged var size: Int32
-
-    class var entityName: String {
-        return "Woggam"
-    }
     
 }
