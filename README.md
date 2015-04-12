@@ -1,8 +1,6 @@
-# Core Data Query Interface
-
 ## Overview
 
-CDQI is a type-safe, fluent library for working with Core Data in Swift. The syntax speaks for itself:
+Core Data Query Interface is a type-safe, fluent library for working with Core Data in Swift. The syntax speaks for itself:
 
     let employees = moc.from(Employee).filter("salary > 80000").all()
     let highestPaidEmployeeName = moc.from(Employee).order(descending: "salary").select("name").first()
@@ -40,3 +38,4 @@ To use such a query, you must specify an `NSManagedObjectContext` at the time th
     employeeSalaryQuery.all(managedObjectContext: moc)
     employeeSalaryQuery.first(managedObjectContext: moc)
 
+The ability to store and reuse queries without specifying a managed object context up front is one of the great advantages of CDQI.
