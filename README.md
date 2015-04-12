@@ -42,4 +42,4 @@ The ability to store and reuse queries without specifying a managed object conte
 
 ## Status
 
-Dig in. The library has already proven itself in a production project. Everything shown above (and more) works and works well. However, before I can tag a 1.0 release, I want to write documentation and unit tests.
+Dig in. An earlier but similar version of the library has already proven itself in a production project. Everything shown above (and more) works and works well. However, before I can tag a 1.0 release, I want to write documentation and unit tests.
