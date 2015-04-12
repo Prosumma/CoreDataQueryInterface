@@ -26,5 +26,7 @@ public protocol ExpressionQueryType {
     func groupBy(expressions: NSExpressionDescription...) -> ExpressionQueryType
     func groupBy(attributes: [String]) -> ExpressionQueryType
     func groupBy(attributes: String...) -> ExpressionQueryType
+    
+    func pluck<R>(attribute: String, managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> [R]?    
 }
 

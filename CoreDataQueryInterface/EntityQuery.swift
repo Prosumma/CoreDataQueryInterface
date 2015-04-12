@@ -93,7 +93,7 @@ public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: QueryType, E
         expressionDescription.expressionResultType = type
         return select(expressionDescription)
     }
-    
+        
     public func function(function: String, attribute: String, name: String? = nil) -> ExpressionQuery<E> {
         return ExpressionQuery<E>(builder: self.builder.select(Expression.Function(function, attribute, name ?? attribute)))
     }
@@ -145,6 +145,10 @@ public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: QueryType, E
         return recordCount == NSNotFound ? nil : UInt(recordCount)
     }
     
+    public func pluck<R>(attribute: String, managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> [R]? {
+        return ExpressionQuery<E>(builder: self.builder).pluck(attribute, managedObjectContext: managedObjectContext, error: error)
+    }
+            
     // MARK: SequenceType
     
     private func generate(error: NSErrorPointer) -> GeneratorOf<E> {

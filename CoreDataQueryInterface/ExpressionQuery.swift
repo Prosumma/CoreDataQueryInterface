@@ -137,6 +137,12 @@ public struct ExpressionQuery<E where E: EntityMetadata, E: AnyObject>: QueryTyp
         let recordCount = (managedObjectContext ?? self.builder.managedObjectContext)!.countForFetchRequest(builder.request(), error: error)
         return recordCount == NSNotFound ? nil : UInt(recordCount)
     }
+    
+    public func pluck<R>(attribute: String, managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> [R]? {
+        return select(attribute).all(managedObjectContext: managedObjectContext, error: error)?.map() {
+            $0[attribute]! as! R
+        }
+    }
         
     // MARK: SequenceType
     
