@@ -39,3 +39,7 @@ To use such a query, you must specify an `NSManagedObjectContext` at the time th
     employeeSalaryQuery.first(managedObjectContext: moc)
 
 The ability to store and reuse queries without specifying a managed object context up front is one of the great advantages of CDQI.
+
+## Status
+
+Dig in. The library has already proven itself in a production project. Everything shown above (and more) works and works well. However, before I can tag a 1.0 release, I want to write documentation and unit tests.
