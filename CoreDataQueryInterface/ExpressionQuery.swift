@@ -138,12 +138,15 @@ public struct ExpressionQuery<E where E: EntityMetadata, E: AnyObject>: QueryTyp
         return recordCount == NSNotFound ? nil : UInt(recordCount)
     }
     
-    public func pluck<R>(attribute: String, managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> [R]? {
-        return all(managedObjectContext: managedObjectContext, error: error)?.map() {
-            $0[attribute]! as! R
+    public func pluck<R>(_ attribute: String? = nil, managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> [R]? {
+        if let results = all(managedObjectContext: managedObjectContext, error: error) {
+            let key = attribute ?? results.first!.keys.first!
+            return results.map() { $0[key] as! R }
+        } else {
+            return nil
         }
     }
-        
+            
     // MARK: SequenceType
     
     private func generate(error: NSErrorPointer) -> GeneratorOf<[String: AnyObject]> {
