@@ -9,8 +9,8 @@
 import CoreData
 
 public enum Expression<E: EntityMetadata> {
-    case Name(String, NSAttributeType)
-    case Function(String, NSExpression, NSAttributeType)
+    case Name(String, String, NSAttributeType)
+    case Function(String, String, NSExpression, NSAttributeType)
     case Description(NSExpressionDescription)
     
     public func attributeDescription(attribute: String, managedObjectContext: NSManagedObjectContext) -> NSAttributeDescription? {
@@ -21,22 +21,25 @@ public enum Expression<E: EntityMetadata> {
     
     public func propertyDescription(managedObjectContext: NSManagedObjectContext) -> NSPropertyDescription {
         switch self {
-        case let .Name(keyPath, type):
+        case let .Name(name, keyPath, type):
             if let attributeDescription = attributeDescription(keyPath, managedObjectContext: managedObjectContext) where type == .UndefinedAttributeType {
                 return attributeDescription
             } else {
                 let propertyDescription = NSExpressionDescription()
                 propertyDescription.expression = NSExpression(forKeyPath: keyPath)
                 propertyDescription.expressionResultType = type
+                propertyDescription.name = name
                 return propertyDescription
             }
-        case .Function(let function, let expression, let type):
+        case let .Function(name, function, expression, type):
             let propertyDescription = NSExpressionDescription()
             propertyDescription.expressionResultType = type
             if let attributeDescription = attributeDescription(expression.keyPath, managedObjectContext: managedObjectContext) where type == .UndefinedAttributeType {
                 propertyDescription.expressionResultType = attributeDescription.attributeType
             }
+            propertyDescription.name = name
             propertyDescription.expression = NSExpression(forFunction: function, arguments: [expression])
+            debugPrintln(propertyDescription.expression)
             return propertyDescription
         case .Description(let description):
             return description

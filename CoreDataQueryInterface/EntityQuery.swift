@@ -79,12 +79,20 @@ public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: QueryType, E
     }
     
     public func select(expressions: [String]) -> ExpressionQuery<E> {
-        return ExpressionQuery<E>(builder: self.builder.select(expressions.map({ Expression.Name($0, .UndefinedAttributeType) })))
+        return ExpressionQuery<E>(builder: self.builder.select(expressions.map({ Expression.Name($0, $0, .UndefinedAttributeType) })))
     }
     
     public func select(expressions: String...) -> ExpressionQuery<E> {
         return select(expressions)
     }
+    
+    public func max(expression: NSExpression, name: String? = nil, type: NSAttributeType = .UndefinedAttributeType) -> ExpressionQuery<E> {
+        return ExpressionQuery<E>(builder: self.builder.select([ Expression.Function(name ?? expression.keyPath, "max:", expression, type) ]))
+    }
+    
+    public func max(expression: String, name: String? = nil, type: NSAttributeType = .UndefinedAttributeType) -> ExpressionQuery<E> {
+        return max(NSExpression(forKeyPath: expression), name: name, type: type)
+    }    
     
     public func groupBy(expressions: [NSExpressionDescription]) -> ExpressionQuery<E> {
         return ExpressionQuery<E>(builder: self.builder.groupBy(expressions.map({ Expression.Description($0) })))
@@ -95,7 +103,7 @@ public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: QueryType, E
     }
     
     public func groupBy(expressions: [String]) -> ExpressionQuery<E> {
-        return ExpressionQuery<E>(builder: self.builder.groupBy(expressions.map({ Expression.Name($0, .UndefinedAttributeType) })))
+        return ExpressionQuery<E>(builder: self.builder.groupBy(expressions.map({ Expression.Name($0, $0, .UndefinedAttributeType) })))
     }
     
     public func groupBy(expressions: String...) -> ExpressionQuery<E> {
