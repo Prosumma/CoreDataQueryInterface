@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F30C371E1ADB0115003B1C0E /* NSManagedObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30C371D1ADB0115003B1C0E /* NSManagedObjectExtensions.swift */; };
+		F30C371F1ADB0115003B1C0E /* NSManagedObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30C371D1ADB0115003B1C0E /* NSManagedObjectExtensions.swift */; };
+		F30C37201ADB0115003B1C0E /* NSManagedObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30C371D1ADB0115003B1C0E /* NSManagedObjectExtensions.swift */; };
 		F321BE851ADA3B4100AA9B40 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F321BE841ADA3B4100AA9B40 /* Expression.swift */; };
 		F321BE861ADA3B4100AA9B40 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F321BE841ADA3B4100AA9B40 /* Expression.swift */; };
 		F321BE871ADA3B4100AA9B40 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F321BE841ADA3B4100AA9B40 /* Expression.swift */; };
@@ -53,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F30C371D1ADB0115003B1C0E /* NSManagedObjectExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtensions.swift; sourceTree = "<group>"; };
 		F321BE841ADA3B4100AA9B40 /* Expression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
 		F371EDF11AD91BD8007D1F32 /* QueryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryBuilder.swift; sourceTree = "<group>"; };
 		F371EDF51AD91D0A007D1F32 /* ExpressionQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionQuery.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 				F371EDF51AD91D0A007D1F32 /* ExpressionQuery.swift */,
 				F382C59F1AD9A91B00BD23C9 /* ExpressionQueryType.swift */,
 				F382C59B1AD9A31D00BD23C9 /* ManagedObjectIDQuery.swift */,
+				F30C371D1ADB0115003B1C0E /* NSManagedObjectExtensions.swift */,
 				F3B66E481AD8D9640045E578 /* NSManagedObjectContextExtensions.swift */,
 				F371EDF91AD91F87007D1F32 /* QueryType.swift */,
 				F371EDF11AD91BD8007D1F32 /* QueryBuilder.swift */,
@@ -316,6 +321,7 @@
 				F371EDF61AD91D0A007D1F32 /* ExpressionQuery.swift in Sources */,
 				F371EDFA1AD91F87007D1F32 /* QueryType.swift in Sources */,
 				F371EDF21AD91BD8007D1F32 /* QueryBuilder.swift in Sources */,
+				F30C371E1ADB0115003B1C0E /* NSManagedObjectExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +332,7 @@
 				F371EDF31AD91BD8007D1F32 /* QueryBuilder.swift in Sources */,
 				F371EDFB1AD91F87007D1F32 /* QueryType.swift in Sources */,
 				F375B9AF1AD8C53500575538 /* CoreDataQueryInterfaceTests.swift in Sources */,
+				F30C371F1ADB0115003B1C0E /* NSManagedObjectExtensions.swift in Sources */,
 				F3B66E441AD8C6990045E578 /* EntityQuery.swift in Sources */,
 				F3B66E511AD8DB9F0045E578 /* Woggam.swift in Sources */,
 				F3B66E411AD8C6400045E578 /* EntityMetadata.swift in Sources */,
@@ -351,6 +358,7 @@
 				F371EDF81AD91D0A007D1F32 /* ExpressionQuery.swift in Sources */,
 				F371EDFC1AD91F87007D1F32 /* QueryType.swift in Sources */,
 				F371EDF41AD91BD8007D1F32 /* QueryBuilder.swift in Sources */,
+				F30C37201ADB0115003B1C0E /* NSManagedObjectExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
