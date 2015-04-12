@@ -11,9 +11,9 @@ import CoreData
 public protocol ExpressionQueryType {
     typealias ExpressionQueryType
     
-    func select(expressions: [AnyObject]) -> ExpressionQueryType
-    func select(expressions: AnyObject...) -> ExpressionQueryType
-    func groupBy(expressions: [AnyObject]) -> ExpressionQueryType
-    func groupBy(expressions: AnyObject...) -> ExpressionQueryType
+    func select(expressions: [NSExpressionDescription]) -> ExpressionQueryType
+    func select(expressions: NSExpressionDescription...) -> ExpressionQueryType
+    func select(expressions: [String]) -> ExpressionQueryType
+    func select(expressions: String...) -> ExpressionQueryType
 }
 

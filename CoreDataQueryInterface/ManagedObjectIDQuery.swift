@@ -45,14 +45,22 @@ public struct ManagedObjectIDQuery<E where E: EntityMetadata, E: AnyObject>: Que
         return ManagedObjectIDQuery<E>(builder: builder.offset(offset))
     }
     
-    public func order(sortDescriptors: [AnyObject]) -> ManagedObjectIDQuery<E> {
-        return ManagedObjectIDQuery<E>(builder: builder.order(sortDescriptors))
+    public func order(descriptors: [NSSortDescriptor]) -> ManagedObjectIDQuery<E> {
+        return ManagedObjectIDQuery<E>(builder: builder.order(descriptors))
     }
     
-    public func order(sortDescriptors: AnyObject...) -> ManagedObjectIDQuery<E> {
-        return order(sortDescriptors)
+    public func order(descriptors: NSSortDescriptor...) -> ManagedObjectIDQuery<E> {
+        return order(descriptors)
     }
-        
+    
+    public func order(descriptors: String...) -> ManagedObjectIDQuery<E> {
+        return order(descriptors.map() { NSSortDescriptor(key: $0, ascending: true) })
+    }
+    
+    public func order(descending descriptors: String...) -> ManagedObjectIDQuery<E> {
+        return order(descriptors.map() { NSSortDescriptor(key: $0, ascending: false) })
+    }
+            
     // MARK: Query Execution
     
     public func all(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> [NSManagedObjectID]? {

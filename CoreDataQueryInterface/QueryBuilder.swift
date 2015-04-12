@@ -8,15 +8,44 @@
 
 import CoreData
 
+public enum Expression<E: EntityMetadata> {
+    case Name(String)
+    case Function(String, NSExpression, NSAttributeType)
+    case Description(NSExpressionDescription)
+    
+    public func attributeDescription(attribute: String, managedObjectContext: NSManagedObjectContext) -> NSAttributeDescription? {
+        let managedObjectModel = managedObjectContext.persistentStoreCoordinator!.managedObjectModel
+        let entityDescription = managedObjectModel.entitiesByName[E.entityName] as! NSEntityDescription
+        return entityDescription.attributesByName[attribute] as! NSAttributeDescription?
+    }
+    
+    public func propertyDescription(managedObjectContext: NSManagedObjectContext) -> NSPropertyDescription {
+        switch self {
+        case .Name(let attribute):
+            return attributeDescription(attribute, managedObjectContext: managedObjectContext)!
+        case .Function(let function, let expression, let type):
+            let propertyDescription = NSExpressionDescription()
+            propertyDescription.expressionResultType = type
+            if let attributeDescription = attributeDescription(expression.keyPath, managedObjectContext: managedObjectContext) where type == .UndefinedAttributeType {
+                propertyDescription.expressionResultType = attributeDescription.attributeType
+            }
+            propertyDescription.expression = NSExpression(forFunction: function, arguments: [expression])
+            return propertyDescription
+        case .Description(let description):
+            return description
+        }
+    }
+}
+
 public struct QueryBuilder<E where E: EntityMetadata, E: AnyObject> {
     
     public private(set) var predicates = [NSPredicate]()
     public private(set) var fetchLimit: UInt = 0
     public private(set) var fetchOffset: UInt = 0
-    public private(set) var sortDescriptors = [AnyObject]()
+    public private(set) var sortDescriptors = [NSSortDescriptor]()
     public private(set) var managedObjectContext: NSManagedObjectContext!
-    public private(set) var propertiesToFetch = [AnyObject]()
-    public private(set) var propertiesToGroupBy = [AnyObject]()
+    public private(set) var propertiesToFetch = [Expression<E>]()
+    public private(set) var propertiesToGroupBy = [Expression<E>]()
     
     internal func request(_ resultType: NSFetchRequestResultType = .ManagedObjectResultType) -> NSFetchRequest {
         let request = NSFetchRequest(entityName: E.entityName)
@@ -30,8 +59,8 @@ public struct QueryBuilder<E where E: EntityMetadata, E: AnyObject> {
         request.sortDescriptors = sortDescriptors.count == 0 ? nil : sortDescriptors
         request.resultType = resultType
         if resultType == .DictionaryResultType {
-            request.propertiesToFetch = ExpressionParser<E>.parse(propertiesToFetch, managedObjectContext: managedObjectContext)
-            request.propertiesToGroupBy = propertiesToGroupBy.count == 0 ? nil : ExpressionParser<E>.parse(propertiesToGroupBy, managedObjectContext: managedObjectContext)
+            request.propertiesToFetch = propertiesToFetch.map() { $0.propertyDescription(self.managedObjectContext) }
+            request.propertiesToGroupBy = propertiesToGroupBy.count == 0 ? nil : propertiesToGroupBy.map() { $0.propertyDescription(self.managedObjectContext) }
         }
         return request
     }
@@ -60,19 +89,19 @@ public struct QueryBuilder<E where E: EntityMetadata, E: AnyObject> {
         return builder
     }
     
-    public func order(sortDescriptors: [AnyObject]) -> QueryBuilder<E> {
+    public func order(descriptors: [NSSortDescriptor]) -> QueryBuilder<E> {
         var builder = self
-        builder.sortDescriptors += sortDescriptors.map() { $0 is String ? NSSortDescriptor(key: $0 as! String, ascending: true) : $0 }
+        builder.sortDescriptors += descriptors
         return builder
     }
     
-    public func select(expressions: [AnyObject]) -> QueryBuilder<E> {
+    public func select(expressions: [Expression<E>]) -> QueryBuilder<E> {
         var builder = self
         builder.propertiesToFetch += expressions
         return builder
     }
     
-    public func groupBy(expressions: [AnyObject]) -> QueryBuilder<E> {
+    public func groupBy(expressions: [Expression<E>]) -> QueryBuilder<E> {
         var builder = self
         builder.propertiesToGroupBy += expressions
         return builder

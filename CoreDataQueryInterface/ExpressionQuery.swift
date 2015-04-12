@@ -45,30 +45,38 @@ public struct ExpressionQuery<E where E: EntityMetadata, E: AnyObject>: QueryTyp
         return ExpressionQuery<E>(builder: builder.offset(offset))
     }
     
-    public func order(sortDescriptors: [AnyObject]) -> ExpressionQuery<E> {
-        return ExpressionQuery<E>(builder: builder.order(sortDescriptors))
+    public func order(descriptors: [NSSortDescriptor]) -> ExpressionQuery<E> {
+        return ExpressionQuery<E>(builder: builder.order(descriptors))
     }
     
-    public func order(sortDescriptors: AnyObject...) -> ExpressionQuery<E> {
-        return order(sortDescriptors)
+    public func order(descriptors: NSSortDescriptor...) -> ExpressionQuery<E> {
+        return order(descriptors)
+    }
+    
+    public func order(descriptors: String...) -> ExpressionQuery<E> {
+        return order(descriptors.map() { NSSortDescriptor(key: $0, ascending: true) })
+    }
+    
+    public func order(descending descriptors: String...) -> ExpressionQuery<E> {
+        return order(descriptors.map() { NSSortDescriptor(key: $0, ascending: false) })
     }
     
     // MARK: Expressions
     
-    public func select(expressions: [AnyObject]) -> ExpressionQuery<E> {
-        return ExpressionQuery<E>(builder: self.builder.select(expressions))
+    public func select(expressions: [NSExpressionDescription]) -> ExpressionQuery<E> {
+        return ExpressionQuery<E>(builder: self.builder.select(expressions.map({ Expression.Description($0) })))
     }
     
-    public func select(expressions: AnyObject...) -> ExpressionQuery<E> {
+    public func select(expressions: NSExpressionDescription...) -> ExpressionQuery<E> {
         return select(expressions)
     }
     
-    public func groupBy(expressions: [AnyObject]) -> ExpressionQuery<E> {
-        return ExpressionQuery<E>(builder: self.builder.groupBy(expressions))
+    public func select(expressions: [String]) -> ExpressionQuery<E> {
+        return ExpressionQuery<E>(builder: self.builder.select(expressions.map({ Expression.Name($0) })))
     }
     
-    public func groupBy(expressions: AnyObject...) -> ExpressionQuery<E> {
-        return groupBy(expressions)
+    public func select(expressions: String...) -> ExpressionQuery<E> {
+        return select(expressions)
     }
     
     // MARK: Query Execution

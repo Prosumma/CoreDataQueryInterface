@@ -28,8 +28,10 @@ public protocol QueryType: SequenceType {
     func filter(format: String, _ args: CVarArgType...) -> ResultQueryType
     func limit(limit: UInt) -> ResultQueryType
     func offset(offset: UInt) -> ResultQueryType
-    func order(sortDescriptors: [AnyObject]) -> ResultQueryType
-    func order(sortDescriptors: AnyObject...) -> ResultQueryType
+    func order(descriptors: [NSSortDescriptor]) -> ResultQueryType
+    func order(descriptors: NSSortDescriptor...) -> ResultQueryType
+    func order(descriptors: String...) -> ResultQueryType
+    func order(descending descriptors: String...) -> ResultQueryType
     
     func all(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> [ResultType]?
     func first(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> ResultType?

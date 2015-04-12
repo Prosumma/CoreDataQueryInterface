@@ -46,14 +46,22 @@ public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: QueryType, E
         return EntityQuery<E>(builder: builder.offset(offset))
     }
     
-    public func order(sortDescriptors: [AnyObject]) -> EntityQuery<E> {
-        return EntityQuery<E>(builder: builder.order(sortDescriptors))
+    public func order(descriptors: [NSSortDescriptor]) -> EntityQuery<E> {
+        return EntityQuery<E>(builder: builder.order(descriptors))
     }
     
-    public func order(sortDescriptors: AnyObject...) -> EntityQuery<E> {
-        return order(sortDescriptors)
+    public func order(descriptors: NSSortDescriptor...) -> EntityQuery<E> {
+        return order(descriptors)
     }
     
+    public func order(descriptors: String...) -> EntityQuery<E> {
+        return order(descriptors.map() { NSSortDescriptor(key: $0, ascending: true) })
+    }
+    
+    public func order(descending descriptors: String...) -> EntityQuery<E> {
+        return order(descriptors.map() { NSSortDescriptor(key: $0, ascending: false) })
+    }
+        
     // MARK: Object IDs
     
     public func ids() -> ManagedObjectIDQuery<E> {
@@ -62,20 +70,20 @@ public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: QueryType, E
     
     // MARK: Expressions
     
-    public func select(expressions: [AnyObject]) -> ExpressionQuery<E> {
-        return ExpressionQuery<E>(builder: self.builder.select(expressions))
+    public func select(expressions: [NSExpressionDescription]) -> EntityQuery<E> {
+        return EntityQuery<E>(builder: self.builder.select(expressions.map({ Expression.Description($0) })))
     }
     
-    public func select(expressions: AnyObject...) -> ExpressionQuery<E> {
+    public func select(expressions: NSExpressionDescription...) -> EntityQuery<E> {
         return select(expressions)
     }
     
-    public func groupBy(expressions: [AnyObject]) -> ExpressionQuery<E> {
-        return ExpressionQuery<E>(builder: self.builder.groupBy(expressions))
+    public func select(expressions: [String]) -> EntityQuery<E> {
+        return EntityQuery<E>(builder: self.builder.select(expressions.map({ Expression.Name($0) })))
     }
     
-    public func groupBy(expressions: AnyObject...) -> ExpressionQuery<E> {
-        return groupBy(expressions)
+    public func select(expressions: String...) -> EntityQuery<E> {
+        return select(expressions)
     }
     
     // MARK: Query Execution
