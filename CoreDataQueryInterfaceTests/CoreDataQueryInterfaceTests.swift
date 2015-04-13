@@ -10,6 +10,10 @@ import CoreData
 import UIKit
 import XCTest
 
+/*
+Please pardon the clutter. These are not well-thought-out tests at the moment.
+Really just a place to try things out at the moment.
+*/
 class CoreDataQueryInterfaceTests: XCTestCase {
     
     static let DatabaseName = "CoreDataQI.sqlite"
