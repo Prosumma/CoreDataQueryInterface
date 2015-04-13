@@ -13,11 +13,7 @@ extension NSManagedObjectContext {
     public func from<E: NSManagedObject>(E.Type) -> EntityQuery<E> {
         return EntityQuery.from(E).context(self)
     }
-    
-    public func query<E: NSManagedObject>() -> EntityQuery<E> {
-        return EntityQuery.from(E)
-    }
-    
+        
     public func newManagedObject<E: NSManagedObject>() -> E {
         return newManagedObject(E)
     }
