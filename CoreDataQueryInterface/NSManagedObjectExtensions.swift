@@ -12,7 +12,7 @@ public func entityNameForManagedObject(type: AnyClass!) -> String {
     return String.fromCString(class_getName(type))!.componentsSeparatedByString(".").last!
 }
 
-extension NSManagedObject: EntityMetadata {
+extension NSManagedObject {
     public class var entityName: String {
         return entityNameForManagedObject(self)
     }

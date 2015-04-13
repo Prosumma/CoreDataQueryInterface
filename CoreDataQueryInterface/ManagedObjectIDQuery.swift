@@ -8,7 +8,7 @@
 
 import CoreData
 
-public struct ManagedObjectIDQuery<E where E: EntityMetadata, E: AnyObject>: QueryType {
+public struct ManagedObjectIDQuery<E: NSManagedObject>: QueryType {
     internal var builder = QueryBuilder<E>()
     
     // MARK: Query Interface (Chainable Methods)

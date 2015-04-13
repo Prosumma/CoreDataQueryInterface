@@ -13,7 +13,7 @@ The protocol to which query providers must conform.
 */
 public protocol QueryType: SequenceType {
     
-    typealias EntityType: EntityMetadata, AnyObject
+    typealias EntityType: NSManagedObject
     typealias ResultQueryType
     typealias ResultType
     

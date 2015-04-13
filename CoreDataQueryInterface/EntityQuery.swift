@@ -8,7 +8,7 @@
 
 import CoreData
 
-public struct EntityQuery<E where E: EntityMetadata, E: AnyObject>: QueryType, ExpressionQueryType {
+public struct EntityQuery<E: NSManagedObject>: QueryType, ExpressionQueryType {
 
     internal var builder = QueryBuilder<E>()
     

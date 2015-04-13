@@ -10,20 +10,20 @@ import CoreData
 
 extension NSManagedObjectContext {
     
-    public func from<E: EntityMetadata where E: AnyObject>(entity: E.Type) -> EntityQuery<E> {
-        return EntityQuery.from(entity).context(self)
+    public func from<E: NSManagedObject>(E.Type) -> EntityQuery<E> {
+        return EntityQuery.from(E).context(self)
     }
     
-    public func query<E: EntityMetadata where E: AnyObject>() -> EntityQuery<E> {
+    public func query<E: NSManagedObject>() -> EntityQuery<E> {
         return EntityQuery.from(E)
     }
     
-    public func newManagedObject<E: EntityMetadata>() -> E {
+    public func newManagedObject<E: NSManagedObject>() -> E {
         return newManagedObject(E)
     }
 
-    public func newManagedObject<E: EntityMetadata>(entity: E.Type) -> E {
-        return NSEntityDescription.insertNewObjectForEntityForName(entity.entityName, inManagedObjectContext: self) as! E
+    public func newManagedObject<E: NSManagedObject>(E.Type) -> E {
+        return NSEntityDescription.insertNewObjectForEntityForName(E.entityName, inManagedObjectContext: self) as! E
     }
     
     public convenience init?(sqliteStoreAtPath path: String, concurrencyType: NSManagedObjectContextConcurrencyType = .MainQueueConcurrencyType, error: NSErrorPointer = nil) {
