@@ -43,7 +43,7 @@ let employeeQuery = moc.from(Employee)
 let employeeSalaryQuery = employeeQuery.order(descending: "salary")
 ```
 
-The `employeeQuery` is not affected in any way by the creation of `employeeSalaryQuery`.
+The `employeeQuery` is not affected in any way by the creation of `employeeSalaryQuery`. 
 
 So far in the examples, the queries have always started with an instance of `NSManagedObjectContext`, but this is not necessary:
 
@@ -60,7 +60,11 @@ employeeSalaryQuery.first(managedObjectContext: moc)
 // etc.
 ```
 
-The ability to store and reuse queries without specifying a managed object context up front is one of the great advantages of CDQI, making it possible to create a library of reusable queries.
+The ability to store and reuse queries without specifying a managed object context up front is one of the great advantages of CDQI, making it possible to create a library of reusable queries. You can also turn such queries into fetch requests for use with `NSFetchedResultsController`, e.g.,
+
+```swift
+let fetchRequest = EntityQuery.from(Employee).order("lastName").limit(20).request()
+```
 
 ## Status
 
