@@ -10,11 +10,12 @@ import CoreData
 
 public struct QueryBuilder<E where E: EntityMetadata, E: AnyObject> {
     
+    public private(set) var managedObjectContext: NSManagedObjectContext!    
+    
     private var predicates = [NSPredicate]()
     private var fetchLimit: UInt = 0
     private var fetchOffset: UInt = 0
     private var sortDescriptors = [NSSortDescriptor]()
-    public private(set) var managedObjectContext: NSManagedObjectContext!
     private var propertiesToFetch = [Expression<E>]()
     private var propertiesToGroupBy = [Expression<E>]()
     private var returnsDistinctResults: Bool = false
