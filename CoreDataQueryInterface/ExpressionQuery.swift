@@ -185,16 +185,12 @@ public struct ExpressionQuery<E: NSManagedObject>: QueryType, ExpressionQueryTyp
             
     // MARK: SequenceType
     
-    private func generate(error: NSErrorPointer) -> GeneratorOf<[String: AnyObject]> {
-        if let objects = all(error: error) {
+    public func generate() -> GeneratorOf<[String: AnyObject]> {
+        if let objects = all() {
             return GeneratorOf(objects.generate())
         } else {
             return GeneratorOf() { nil }
         }
-    }
-    
-    public func generate() -> GeneratorOf<[String: AnyObject]> {
-        return generate(nil)
     }
     
     // MARK: NSFetchRequest

@@ -74,16 +74,12 @@ public struct ManagedObjectIDQuery<E: NSManagedObject>: QueryType {
     
     // MARK: SequenceType
     
-    private func generate(error: NSErrorPointer) -> GeneratorOf<NSManagedObjectID> {
-        if let objects = all(error: error) {
+    public func generate() -> GeneratorOf<NSManagedObjectID> {
+        if let objects = all() {
             return GeneratorOf(objects.generate())
         } else {
             return GeneratorOf() { nil }
         }
-    }
-    
-    public func generate() -> GeneratorOf<NSManagedObjectID> {
-        return generate(nil)
     }
     
     // MARK: NSFetchRequest
