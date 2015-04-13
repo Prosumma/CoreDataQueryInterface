@@ -66,10 +66,6 @@ The ability to store and reuse queries without specifying a managed object conte
 let fetchRequest = EntityQuery.from(Employee).order("lastName").limit(20).request()
 ```
 
-## Status
-
-Dig in. An earlier but similar version of the library has already proven itself in a production project. Everything shown above (and more) works and works well. However, before I can tag a 1.0 release, I want to write documentation and unit tests.
-
 ## Requirements
 
 CDQI requires Swift >= 1.2 and iOS >= 8.3 or Mac OS X >= 10.10.3. (It may work on earlier minor versions of iOS and Mac OS X, but that has not been tried.)
