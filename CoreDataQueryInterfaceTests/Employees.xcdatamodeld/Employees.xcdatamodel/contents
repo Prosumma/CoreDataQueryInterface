@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D131" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Employee" representedClassName="CoreDataQueryInterfaceTests.Employee" syncable="YES">
+        <attribute name="department" attributeType="String" minValueString="1" indexed="YES" syncable="YES"/>
+        <attribute name="firstName" attributeType="String" minValueString="1" indexed="YES" syncable="YES"/>
+        <attribute name="lastName" attributeType="String" minValueString="1" indexed="YES" syncable="YES"/>
+        <attribute name="salary" attributeType="Integer 32" minValueString="0" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="startDate" attributeType="Date" indexed="YES" syncable="YES"/>
+        <attribute name="title" attributeType="String" minValueString="1" indexed="YES" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Employee" positionX="-63" positionY="-18" width="128" height="135"/>
+    </elements>
+</model>

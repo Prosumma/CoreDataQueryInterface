@@ -171,7 +171,7 @@ public struct ExpressionQuery<E: NSManagedObject>: QueryType, ExpressionQueryTyp
     }
     
     public func pluck<R>(_ attribute: String? = nil, managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> [R]? {
-        if let results = all(managedObjectContext: managedObjectContext, error: error) {
+        if let results = all(managedObjectContext: managedObjectContext, error: error) where results.count > 0 {
             let key = attribute ?? results.first!.keys.first!
             return results.map() { $0[key] as! R }
         } else {
@@ -180,7 +180,7 @@ public struct ExpressionQuery<E: NSManagedObject>: QueryType, ExpressionQueryTyp
     }
     
     public func value<R>(_ attribute: String? = nil, managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> R? {
-        return pluck(attribute, managedObjectContext: managedObjectContext, error: error)?.first
+        return limit(1).pluck(attribute, managedObjectContext: managedObjectContext, error: error)?.first
     }
             
     // MARK: SequenceType

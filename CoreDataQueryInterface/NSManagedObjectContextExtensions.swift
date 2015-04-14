@@ -23,10 +23,20 @@ extension NSManagedObjectContext {
     }
     
     public convenience init?(sqliteStoreAtPath path: String, concurrencyType: NSManagedObjectContextConcurrencyType = .MainQueueConcurrencyType, error: NSErrorPointer = nil) {
-        self.init()
-        if let managedObjectModel = NSManagedObjectModel.mergedModelFromBundles(nil) {
+        self.init(concurrencyType: concurrencyType)
+        if let managedObjectModel = NSManagedObjectModel.mergedModelFromBundles(NSBundle.allBundles()) {
             persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
             persistentStoreCoordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: NSURL(fileURLWithPath: path), options: nil, error: error)
+        } else {
+            return nil
+        }
+    }
+
+    public convenience init?(inMemoryStoreWithConcurrencyType concurrencyType: NSManagedObjectContextConcurrencyType, error: NSErrorPointer = nil) {
+        self.init(concurrencyType: concurrencyType)
+        if let managedObjectModel = NSManagedObjectModel.mergedModelFromBundles(NSBundle.allBundles()) {
+            persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
+            persistentStoreCoordinator!.addPersistentStoreWithType(NSInMemoryStoreType, configuration: nil, URL: nil, options: nil, error: error)
         } else {
             return nil
         }
