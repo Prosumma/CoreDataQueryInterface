@@ -182,7 +182,7 @@ public struct EntityQuery<E: NSManagedObject>: QueryType, ExpressionQueryType {
     }
     
     public func value<R>(_ attribute: String? = nil, managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> R? {
-        return pluck(attribute, managedObjectContext: managedObjectContext, error: error)?.first
+        return limit(1).pluck(attribute, managedObjectContext: managedObjectContext, error: error)?.first
     }    
     
     // MARK: SequenceType
