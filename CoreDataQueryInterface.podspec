@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.homepage = 'https://github.com/Prosumma/CoreDataQueryInterface'
   s.social_media_url = 'http://twitter.com/prosumma'
   s.authors = { 'Gregory Higley' => 'code@revolucent.net' }
-  s.source = { :git => s.homepage, :tag => s.version }
+  s.source = { :git => s.homepage, :tag => "v#{s.version}" }
 
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target = '10.10'
