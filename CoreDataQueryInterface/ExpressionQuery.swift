@@ -171,11 +171,15 @@ public struct ExpressionQuery<E: NSManagedObject>: QueryType, ExpressionQueryTyp
     }
     
     public func pluck<R>(_ attribute: String? = nil, managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> [R]? {
-        if let results = all(managedObjectContext: managedObjectContext, error: error) where results.count > 0 {
+        var fetchError: NSError?
+        if let results = all(managedObjectContext: managedObjectContext, error: &fetchError) where results.count > 0 {
             let key = attribute ?? results.first!.keys.first!
             return results.map() { $0[key] as! R }
-        } else {
+        } else if (fetchError != nil) {
+            if error != nil { error.memory = fetchError }
             return nil
+        } else {
+            return [R]()
         }
     }
     
