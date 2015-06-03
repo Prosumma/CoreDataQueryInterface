@@ -8,7 +8,7 @@
 
 import CoreData
 
-public struct QueryBuilder<E: NSManagedObject> {
+public struct QueryBuilder<E: ManagedObjectType> {
     
     public private(set) var managedObjectContext: NSManagedObjectContext!    
     

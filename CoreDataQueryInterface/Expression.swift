@@ -8,7 +8,7 @@
 
 import CoreData
 
-public enum Expression<E: NSManagedObject> {
+public enum Expression<E: ManagedObjectType> {
     case Attribute(String)
     case Function(String, String, String) // function, attribute, name
     case Description(NSExpressionDescription)

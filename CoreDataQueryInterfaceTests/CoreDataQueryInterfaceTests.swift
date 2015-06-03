@@ -40,6 +40,7 @@ class CoreDataQueryInterfaceTests: XCTestCase {
     }()
     
     func testFilterChain() {
+        ExpressionQuery.from(Employee).filter({ $0.title == "bob" })
         let query = ExpressionQuery.from(Employee).filter("title == %@", "Programmer").filter("salary < 50000")
         XCTAssertEqual(query.count(managedObjectContext: managedObjectContext)!, 1, "Query should have returned 1 record.")
         XCTAssertEqual(query.select("lastName").context(managedObjectContext).value()!, "Gibbons", "Should have gotten Gibbons.")

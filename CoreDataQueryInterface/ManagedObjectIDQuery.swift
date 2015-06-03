@@ -8,7 +8,7 @@
 
 import CoreData
 
-public struct ManagedObjectIDQuery<E: NSManagedObject>: QueryType {
+public struct ManagedObjectIDQuery<E: ManagedObjectType>: QueryType {
     internal var builder = QueryBuilder<E>()
     
     // MARK: Query Interface (Chainable Methods)
@@ -33,8 +33,8 @@ public struct ManagedObjectIDQuery<E: NSManagedObject>: QueryType {
         return withVaList(args) { self.filter(NSPredicate(format: format, arguments: $0)) }
     }
     
-    public func filter<A: AttributeType>(predicate: A -> NSPredicate) -> ManagedObjectIDQuery<E> {
-        return filter(predicate(A()))
+    public func filter(predicate: E.ManagedObjectAttributeType -> NSPredicate) -> ManagedObjectIDQuery<E> {
+        return filter(predicate(E.ManagedObjectAttributeType()))
     }
     
     public func limit(limit: UInt) -> ManagedObjectIDQuery<E> {

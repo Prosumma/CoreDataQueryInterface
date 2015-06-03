@@ -8,7 +8,7 @@
 
 import CoreData
 
-public struct EntityQuery<E: NSManagedObject>: QueryType, ExpressionQueryType {
+public struct EntityQuery<E: ManagedObjectType>: QueryType, ExpressionQueryType {
 
     internal var builder = QueryBuilder<E>()
     
@@ -34,10 +34,10 @@ public struct EntityQuery<E: NSManagedObject>: QueryType, ExpressionQueryType {
         return withVaList(args) { self.filter(NSPredicate(format: format, arguments: $0)) }
     }
     
-    public func filter<A: AttributeType>(predicate: A -> NSPredicate) -> EntityQuery<E> {
-        return filter(predicate(A()))
+    public func filter(predicate: E.ManagedObjectAttributeType -> NSPredicate) -> EntityQuery<E> {
+        return filter(predicate(E.ManagedObjectAttributeType()))
     }
-    
+        
     public func limit(limit: UInt) -> EntityQuery<E> {
         return EntityQuery<E>(builder: builder.limit(limit))
     }

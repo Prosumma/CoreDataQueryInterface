@@ -10,7 +10,7 @@ import CoreData
 
 extension NSManagedObjectContext {
     
-    public func from<E: NSManagedObject>(E.Type) -> EntityQuery<E> {
+    public func from<E: ManagedObjectType>(E.Type) -> EntityQuery<E> {
         return EntityQuery.from(E).context(self)
     }
         

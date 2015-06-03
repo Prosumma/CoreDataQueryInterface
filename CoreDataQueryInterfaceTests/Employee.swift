@@ -9,7 +9,9 @@
 import Foundation
 import CoreData
 
-class Employee: NSManagedObject {
+class Employee: NSManagedObject, ManagedObjectType {
+    
+    typealias ManagedObjectAttributeType = EmployeeAttributes
 
     @NSManaged var firstName: String
     @NSManaged var lastName: String
@@ -18,4 +20,16 @@ class Employee: NSManagedObject {
     @NSManaged var title: String
     @NSManaged var startDate: NSDate
 
+}
+
+class EmployeeAttributes : Attribute {
+    
+    var firstName: Attribute {
+        return Attribute("firstName", parent: self)
+    }
+    
+    var title: Attribute {
+        return Attribute("title", parent: self)
+    }
+    
 }

@@ -13,7 +13,7 @@ The protocol to which query providers must conform.
 */
 public protocol QueryType: SequenceType {
     
-    typealias EntityType: NSManagedObject
+    typealias EntityType: ManagedObjectType
     typealias ResultQueryType
     typealias ResultType
     
@@ -23,7 +23,7 @@ public protocol QueryType: SequenceType {
     func filter(predicate: NSPredicate) -> ResultQueryType
     func filter(format: String, argumentArray: [AnyObject]?) -> ResultQueryType
     func filter(format: String, _ args: CVarArgType...) -> ResultQueryType
-    func filter<A: AttributeType>(predicate: A -> NSPredicate) -> ResultQueryType
+    func filter(predicate: EntityType.ManagedObjectAttributeType -> NSPredicate) -> ResultQueryType
     func limit(limit: UInt) -> ResultQueryType
     func offset(offset: UInt) -> ResultQueryType
     func order(descriptors: [NSSortDescriptor]) -> ResultQueryType
