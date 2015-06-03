@@ -11,16 +11,16 @@ The simplicity of the syntax compared to standard Core Data speaks for itself:
 
 ```swift
 // all() executes the query and returns an array
-let employees = moc.from(Employee).filter("salary > 80000").all()
+let employees = moc.from(Employee).filter({$0.salary > 80000}).all()
 // value() executes the query and returns the first value in the first row.
-let highestPaidEmployeeName = moc.from(Employee).order(descending: "salary").select("name").limit(1).value()! as! NSNumber
+let highestPaidEmployeeName = moc.from(Employee).order(descending: {$0.salary}).select({$0.name}).limit(1).value()! as! NSNumber
 // The usual aggregates are built in. Other functions can be called with the `function` method.
 let highestSalary = moc.from(Employee).max("salary").value()! as! NSNumber
 // count() executes the query and returns the number of rows.
-let numberOfSmiths = moc.from(Employee).filter("lastName = %@", "Smith").count()
+let numberOfSmiths = moc.from(Employee).filter({$0.lastName == "Smith"}).count()
 
 // Iteration automatically causes the query to be executed.
-for employee in moc.from(Employee).order("startDate") {
+for employee in moc.from(Employee).order({$0.startDate}) {
     debugPrintln(employee.firstName)
 }
 
@@ -36,7 +36,7 @@ CDQI supports all of Core Data's result types: entities, dictionaries, `NSManage
 
 ```swift
 let employees = moc.from(Employee).all() // entities
-let employeeFirstNames = moc.from(Employee).select("firstName").all() // array of dictionaries
+let employeeFirstNames = moc.from(Employee).select({$0.firstName}).all() // array of dictionaries
 let employeeObjectIDs = moc.from(Employee).ids().all() // object IDs
 let numberOfEmployees = moc.from(Employee).count() // count
 ```
@@ -45,7 +45,7 @@ Queries are infinitely reusable. Later parts of a query have no side effects on 
 
 ```swift
 let employeeQuery = moc.from(Employee)
-let employeeSalaryQuery = employeeQuery.order(descending: "salary")
+let employeeSalaryQuery = employeeQuery.order(descending: {$0.salary})
 ```
 
 The `employeeQuery` is not affected in any way by the creation of `employeeSalaryQuery`. 
@@ -53,7 +53,7 @@ The `employeeQuery` is not affected in any way by the creation of `employeeSalar
 So far in the examples, the queries have always started with an instance of `NSManagedObjectContext`, but this is not necessary:
 
 ```swift
-let employeeSalaryQuery = EntityQuery.from(Employee).order(descending: "salary")
+let employeeSalaryQuery = EntityQuery.from(Employee).order(descending: {$0.salary})
 ```
 
 To use such a query, you must specify an `NSManagedObjectContext` at the time the query is executed, e.g.,
@@ -68,7 +68,7 @@ employeeSalaryQuery.first(managedObjectContext: moc)
 The ability to store and reuse queries without specifying a managed object context up front is one of the great advantages of CDQI, making it possible to create a library of reusable queries. You can also turn such queries into fetch requests for use with `NSFetchedResultsController`, e.g.,
 
 ```swift
-let fetchRequest = EntityQuery.from(Employee).order("lastName").limit(20).request()
+let fetchRequest = EntityQuery.from(Employee).order({$0.lastName}).limit(20).request()
 ```
 
 ## Requirements
