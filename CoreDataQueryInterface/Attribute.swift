@@ -43,15 +43,66 @@ public func &&(lhs: NSPredicate, rhs: NSPredicate) -> NSPredicate {
 }
 
 public func ||(lhs: NSPredicate, rhs: NSPredicate) -> NSPredicate {
-    let c: CVarArgType? = nil
     return NSCompoundPredicate.orPredicateWithSubpredicates([lhs, rhs])
 }
 
+public prefix func !(predicate: NSPredicate) -> NSPredicate {
+    return NSCompoundPredicate.notPredicateWithSubpredicate(predicate)
+}
+
+public func predicate<A: AttributeType>(lhs: A, op: String, rhs: NSObject) -> NSPredicate {
+    return NSPredicate(format: "%K \(op) %@", lhs.description, rhs)
+}
+
+public func predicate<A: AttributeType, B: AttributeType>(lhs: A, op: String, rhs: B) -> NSPredicate {
+    return NSPredicate(format: "%K \(op) %K", lhs.description, rhs.description)
+}
+
 public func ==<A: AttributeType>(lhs: A, rhs: NSNumber) -> NSPredicate {
-    return NSPredicate(format: "%K == %@", lhs.description, rhs)
+    return predicate(lhs, "==", rhs)
+}
+
+public func !=<A: AttributeType>(lhs: A, rhs: NSNumber) -> NSPredicate {
+    return predicate(lhs, "!=", rhs)
+}
+
+public func ><A: AttributeType>(lhs: A, rhs: NSNumber) -> NSPredicate {
+    return predicate(lhs, ">", rhs)
+}
+
+public func >=<A: AttributeType>(lhs: A, rhs: NSNumber) -> NSPredicate {
+    return predicate(lhs, ">=", rhs)
+}
+
+public func <<A: AttributeType>(lhs: A, rhs: NSNumber) -> NSPredicate {
+    return predicate(lhs, "<", rhs)
+}
+
+public func <=<A: AttributeType>(lhs: A, rhs: NSNumber) -> NSPredicate {
+    return predicate(lhs, "<=", rhs)
 }
 
 public func ==<A: AttributeType>(lhs: A, rhs: NSObject) -> NSPredicate {
-    return NSPredicate(format: "%K == %@", lhs.description, rhs)
+    return predicate(lhs, "==", rhs)
+}
+
+public func !=<A: AttributeType>(lhs: A, rhs: NSObject) -> NSPredicate {
+    return predicate(lhs, "!=", rhs)
+}
+
+public func ><A: AttributeType>(lhs: A, rhs: NSObject) -> NSPredicate {
+    return predicate(lhs, ">", rhs)
+}
+
+public func >=<A: AttributeType>(lhs: A, rhs: NSObject) -> NSPredicate {
+    return predicate(lhs, ">=", rhs)
+}
+
+public func <<A: AttributeType>(lhs: A, rhs: NSObject) -> NSPredicate {
+    return predicate(lhs, "<", rhs)
+}
+
+public func <=<A: AttributeType>(lhs: A, rhs: NSObject) -> NSPredicate {
+    return predicate(lhs, "<=", rhs)
 }
 
