@@ -70,10 +70,64 @@ The ability to store and reuse queries without specifying a managed object conte
 ```swift
 let fetchRequest = EntityQuery.from(Employee).order({$0.lastName}).limit(20).request()
 ```
+## How To Use CDQI With Your Managed Objects
+
+Implementation is simple. The minimum requirements are that you use an `NSManagedObject` subclass and that it implements CDQI's `ManagedObjectType` protocol. All managed objects are conformant by default, so in the simplest case, this will do:
+
+```swift
+class Employee: NSManagedObject, ManagedObjectType {
+  @NSManaged var firstName: String
+  @NSManaged var lastName: String
+  @NSManaged var salary: Int
+  @NSManaged var startDate: NSDate
+}
+```
+
+If you want to participate in type-safe filtering, ordering, and selecting, a little more work is required:
+
+```swift
+class Employee: NSManagedObject, ManagedObjectType {
+  typealias ManagedObjectAttributeType = EmployeeAttribute
+  @NSManaged var firstName: String
+  @NSManaged var lastName: String
+  @NSManaged var salary: Int
+  @NSManaged var startDate: NSDate
+}
+
+class EmployeeAttribute : Attribute {
+  var firstName: Attribute {
+    return Attribute("firstName", parent: self)
+  }
+  var lastName: Attribute {
+    return Attribute("lastName", parent: self)
+  }
+  var salary: Attribute {
+    return Attribute("salary", parent: self)
+  }
+  var startDate: NSDate {
+    return Attribute("startDate", parent: self)
+  }
+}
+```
+
+For each attribute of `Employee` that you want to use in a query, you must have a corresponding property of type `Attribute` on the `EmployeeAttribute` type. You must then tell CDQI about the association between these two types with the declaration `typealias ManagedObjectAttributeType = EmployeeAttribute`. You can then say things like…
+
+```swift
+moc.from(Employee).filter({$0.salary >= 30000}).order(descending: {$0.lastName}, {$0.firstName}).all()
+moc.from(Employee).select({$0.lastName}).pluck() // Gets all the last names as an array.
+```
+
+A tool is in the works to generate the `Attribute` classes, but I tend to follow the [YAGNI](http://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it) principle and add attributes only as needed.
+
+It is optional to use the type-safe queries. Queries with strings are also available, and they work just fine:
+
+```swift
+moc.from(Employee).filter("salary > %ld", salary).order(descending: "lastName", "firstName").all()
+```
 
 ## Requirements
 
-CDQI requires Swift >= 1.2 and iOS >= 8.3 or Mac OS X >= 10.10.3. (It may work on earlier minor versions of iOS and Mac OS X, but that has not been tried.)
+CDQI requires Swift >= 1.2 and iOS >= 8.1 or Mac OS X >= 10.10.3. (It may work on earlier minor versions of iOS and Mac OS X, but that has not been tried.)
 
 ## Brief Architectural Sketch
 
