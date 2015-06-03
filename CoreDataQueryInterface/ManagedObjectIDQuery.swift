@@ -60,6 +60,22 @@ public struct ManagedObjectIDQuery<E: ManagedObjectType>: QueryType {
     public func order(descending descriptors: String...) -> ManagedObjectIDQuery<E> {
         return order(descriptors.map() { NSSortDescriptor(key: $0, ascending: false) })
     }
+    
+    public func order(attributes: [Attribute]) -> ManagedObjectIDQuery<E> {
+        return order(attributes.map() { NSSortDescriptor(key: $0.description, ascending: true) })
+    }
+    
+    public func order(attributes: Attribute...) -> ManagedObjectIDQuery<E> {
+        return order(attributes)
+    }
+    
+    public func order(descending attributes: [Attribute]) -> ManagedObjectIDQuery<E> {
+        return order(attributes.map() { NSSortDescriptor(key: $0.description, ascending: false) })
+    }
+    
+    public func order(descending attributes: Attribute...) -> ManagedObjectIDQuery<E> {
+        return order(descending: attributes)
+    }
             
     // MARK: Query Execution
     

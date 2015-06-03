@@ -61,6 +61,22 @@ public struct ExpressionQuery<E: ManagedObjectType>: QueryType, ExpressionQueryT
         return order(descriptors.map() { NSSortDescriptor(key: $0, ascending: false) })
     }
     
+    public func order(attributes: [Attribute]) -> ExpressionQuery<E> {
+        return order(attributes.map() { NSSortDescriptor(key: $0.description, ascending: true) })
+    }
+    
+    public func order(attributes: Attribute...) -> ExpressionQuery<E> {
+        return order(attributes)
+    }
+    
+    public func order(descending attributes: [Attribute]) -> ExpressionQuery<E> {
+        return order(attributes.map() { NSSortDescriptor(key: $0.description, ascending: false) })
+    }
+    
+    public func order(descending attributes: Attribute...) -> ExpressionQuery<E> {
+        return order(descending: attributes)
+    }
+    
     // MARK: Expressions
     
     public func select(expressions: [NSExpressionDescription]) -> ExpressionQuery<E> {
