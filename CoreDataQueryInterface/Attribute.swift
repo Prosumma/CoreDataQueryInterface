@@ -106,3 +106,26 @@ public func <=<A: AttributeType>(lhs: A, rhs: NSObject) -> NSPredicate {
     return predicate(lhs, "<=", rhs)
 }
 
+public func ==<A: AttributeType, B: AttributeType>(lhs: A, rhs: B) -> NSPredicate {
+    return predicate(lhs, "==", rhs)
+}
+
+public func !=<A: AttributeType, B: AttributeType>(lhs: A, rhs: B) -> NSPredicate {
+    return predicate(lhs, "!=", rhs)
+}
+
+public func ><A: AttributeType, B: AttributeType>(lhs: A, rhs: B) -> NSPredicate {
+    return predicate(lhs, ">", rhs)
+}
+
+public func >=<A: AttributeType, B: AttributeType>(lhs: A, rhs: B) -> NSPredicate {
+    return predicate(lhs, ">=", rhs)
+}
+
+public func <<A: AttributeType, B: AttributeType>(lhs: A, rhs: B) -> NSPredicate {
+    return predicate(lhs, "<", rhs)
+}
+
+public func <=<A: AttributeType, B: AttributeType>(lhs: A, rhs: B) -> NSPredicate {
+    return predicate(lhs, "<=", rhs)
+}
