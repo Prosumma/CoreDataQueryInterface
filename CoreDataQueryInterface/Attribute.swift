@@ -13,12 +13,12 @@ public protocol AttributeType : Printable {
     init(_ name: String, parent: AttributeType?)
 }
 
-public class Attribute : NSObject, AttributeType {
+public class Attribute : AttributeType {
     
     private let _name: String?
     private let _parent: AttributeType?
     
-    public override required init() {
+    public required init() {
         _name = nil
         _parent = nil
     }
@@ -28,7 +28,7 @@ public class Attribute : NSObject, AttributeType {
         _parent = parent
     }
     
-    public override var description: String {
+    public var description: String {
         if let parent = _parent {
             return (parent.description == "" ? "" : ".") + _name!
         } else {
