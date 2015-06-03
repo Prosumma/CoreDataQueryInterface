@@ -62,22 +62,24 @@ public struct EntityQuery<E: ManagedObjectType>: QueryType, ExpressionQueryType 
         return order(descriptors.map() { NSSortDescriptor(key: $0, ascending: false) })
     }
     
-    public func order(attributes: [Attribute]) -> EntityQuery<E> {
-        return order(attributes.map() { NSSortDescriptor(key: $0.description, ascending: true) })
+    public func order(descriptors: [E.ManagedObjectAttributeType -> Attribute]) -> EntityQuery<E> {
+        let attributes = E.ManagedObjectAttributeType()
+        return order(descriptors.map() { NSSortDescriptor(key: $0(attributes).description, ascending: false) })
     }
     
-    public func order(attributes: Attribute...) -> EntityQuery<E> {
-        return order(attributes)
+    public func order(descriptors: (E.ManagedObjectAttributeType -> Attribute)...) -> EntityQuery<E> {
+        return order(descriptors)
     }
     
-    public func order(descending attributes: [Attribute]) -> EntityQuery<E> {
-        return order(attributes.map() { NSSortDescriptor(key: $0.description, ascending: false) })
+    public func order(descending descriptors: [E.ManagedObjectAttributeType -> Attribute]) -> EntityQuery<E> {
+        let attributes = E.ManagedObjectAttributeType()
+        return order(descriptors.map() { NSSortDescriptor(key: $0(attributes).description, ascending: false) })
     }
     
-    public func order(descending attributes: Attribute...) -> EntityQuery<E> {
-        return order(descending: attributes)
+    public func order(descending descriptors: (E.ManagedObjectAttributeType -> Attribute)...) -> EntityQuery<E> {
+        return order(descending: descriptors)
     }
-    
+        
     // MARK: Object IDs
     
     public func ids() -> ManagedObjectIDQuery<E> {

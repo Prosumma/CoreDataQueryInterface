@@ -61,22 +61,24 @@ public struct ManagedObjectIDQuery<E: ManagedObjectType>: QueryType {
         return order(descriptors.map() { NSSortDescriptor(key: $0, ascending: false) })
     }
     
-    public func order(attributes: [Attribute]) -> ManagedObjectIDQuery<E> {
-        return order(attributes.map() { NSSortDescriptor(key: $0.description, ascending: true) })
+    public func order(descriptors: [E.ManagedObjectAttributeType -> Attribute]) -> ManagedObjectIDQuery<E> {
+        let attributes = E.ManagedObjectAttributeType()
+        return order(descriptors.map() { NSSortDescriptor(key: $0(attributes).description, ascending: false) })
     }
     
-    public func order(attributes: Attribute...) -> ManagedObjectIDQuery<E> {
-        return order(attributes)
+    public func order(descriptors: (E.ManagedObjectAttributeType -> Attribute)...) -> ManagedObjectIDQuery<E> {
+        return order(descriptors)
     }
     
-    public func order(descending attributes: [Attribute]) -> ManagedObjectIDQuery<E> {
-        return order(attributes.map() { NSSortDescriptor(key: $0.description, ascending: false) })
+    public func order(descending descriptors: [E.ManagedObjectAttributeType -> Attribute]) -> ManagedObjectIDQuery<E> {
+        let attributes = E.ManagedObjectAttributeType()
+        return order(descriptors.map() { NSSortDescriptor(key: $0(attributes).description, ascending: false) })
     }
     
-    public func order(descending attributes: Attribute...) -> ManagedObjectIDQuery<E> {
-        return order(descending: attributes)
+    public func order(descending descriptors: (E.ManagedObjectAttributeType -> Attribute)...) -> ManagedObjectIDQuery<E> {
+        return order(descending: descriptors)
     }
-            
+    
     // MARK: Query Execution
     
     public func all(managedObjectContext: NSManagedObjectContext? = nil, error: NSErrorPointer = nil) -> [NSManagedObjectID]? {
