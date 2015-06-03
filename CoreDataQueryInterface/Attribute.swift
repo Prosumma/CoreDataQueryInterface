@@ -13,12 +13,12 @@ public protocol AttributeType : Printable {
     init(_ name: String, parent: AttributeType?)
 }
 
-public class Attribute : AttributeType {
+public class Attribute : NSObject, AttributeType {
     
     private let _name: String?
     private let _parent: AttributeType?
     
-    public required init() {
+    public override required init() {
         _name = nil
         _parent = nil
     }
@@ -28,7 +28,7 @@ public class Attribute : AttributeType {
         _parent = parent
     }
     
-    public var description: String {
+    public override var description: String {
         if let parent = _parent {
             return (parent.description == "" ? "" : ".") + _name!
         } else {
@@ -43,26 +43,15 @@ public func &&(lhs: NSPredicate, rhs: NSPredicate) -> NSPredicate {
 }
 
 public func ||(lhs: NSPredicate, rhs: NSPredicate) -> NSPredicate {
+    let c: CVarArgType? = nil
     return NSCompoundPredicate.orPredicateWithSubpredicates([lhs, rhs])
 }
 
-public func ==<A: AttributeType>(lhs: A, rhs: Int) -> NSPredicate {
-    return NSPredicate(format: "%K == %d", lhs.description, rhs)
-}
-
-public func <<A: AttributeType>(lhs: A, rhs: Int) -> NSPredicate {
-    return NSPredicate(format: "%K < %d", lhs.description, rhs)
-}
-
-public func ><A: AttributeType>(lhs: A, rhs: Int) -> NSPredicate {
-    return NSPredicate(format: "%K > %d", lhs.description, rhs)
-}
-
-public func ==<A: AttributeType>(lhs: A, rhs: NSObject) -> NSPredicate {
+public func ==<A: AttributeType>(lhs: A, rhs: NSNumber) -> NSPredicate {
     return NSPredicate(format: "%K == %@", lhs.description, rhs)
 }
 
-public func ==<A: AttributeType>(lhs: A, rhs: String) -> NSPredicate {
+public func ==<A: AttributeType>(lhs: A, rhs: NSObject) -> NSPredicate {
     return NSPredicate(format: "%K == %@", lhs.description, rhs)
 }
 
