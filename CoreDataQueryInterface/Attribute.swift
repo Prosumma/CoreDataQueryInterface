@@ -54,6 +54,10 @@ public func <<A: AttributeType>(lhs: A, rhs: Int) -> NSPredicate {
     return NSPredicate(format: "%K < %d", lhs.description, rhs)
 }
 
+public func ><A: AttributeType>(lhs: A, rhs: Int) -> NSPredicate {
+    return NSPredicate(format: "%K > %d", lhs.description, rhs)
+}
+
 public func ==<A: AttributeType>(lhs: A, rhs: NSObject) -> NSPredicate {
     return NSPredicate(format: "%K == %@", lhs.description, rhs)
 }
