@@ -5,7 +5,7 @@
 
 ## Overview
 
-Core Data Query Interface is a type-safe, fluent, intuitive library for working with Core Data in Swift. If you've worked with LINQ in the C# world, you can think of CDQI as "LINQ for Core Data", though without the syntactic sugar of the custom operators.
+Core Data Query Interface is a type-safe, fluent, intuitive library for working with Core Data in Swift. If you've worked with LINQ in the C# world, you can think of CDQI as "LINQ for Core Data".
 
 The simplicity of the syntax compared to standard Core Data speaks for itself:
 
