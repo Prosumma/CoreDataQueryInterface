@@ -38,8 +38,20 @@ public class Attribute : AttributeType {
     
 }
 
+public func &&(lhs: NSPredicate, rhs: NSPredicate) -> NSPredicate {
+    return NSCompoundPredicate.andPredicateWithSubpredicates([lhs, rhs])
+}
+
+public func ||(lhs: NSPredicate, rhs: NSPredicate) -> NSPredicate {
+    return NSCompoundPredicate.orPredicateWithSubpredicates([lhs, rhs])
+}
+
 public func ==<A: AttributeType>(lhs: A, rhs: Int) -> NSPredicate {
     return NSPredicate(format: "%K == %d", lhs.description, rhs)
+}
+
+public func <<A: AttributeType>(lhs: A, rhs: Int) -> NSPredicate {
+    return NSPredicate(format: "%K < %d", lhs.description, rhs)
 }
 
 public func ==<A: AttributeType>(lhs: A, rhs: NSObject) -> NSPredicate {
@@ -49,3 +61,4 @@ public func ==<A: AttributeType>(lhs: A, rhs: NSObject) -> NSPredicate {
 public func ==<A: AttributeType>(lhs: A, rhs: String) -> NSPredicate {
     return NSPredicate(format: "%K == %@", lhs.description, rhs)
 }
+

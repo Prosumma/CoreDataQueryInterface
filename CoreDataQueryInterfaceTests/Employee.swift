@@ -32,4 +32,8 @@ class EmployeeAttributes : Attribute {
         return Attribute("title", parent: self)
     }
     
+    var salary: Attribute {
+        return Attribute("salary", parent: self)
+    }
+    
 }
