@@ -30,10 +30,14 @@ public protocol QueryType: SequenceType {
     func order(descriptors: NSSortDescriptor...) -> ResultQueryType
     func order(descriptors: String...) -> ResultQueryType
     func order(descending descriptors: String...) -> ResultQueryType
-    func order(descriptors: [EntityType.ManagedObjectAttributeType -> Attribute]) -> ResultQueryType
-    func order(descriptors: (EntityType.ManagedObjectAttributeType -> Attribute)...) -> ResultQueryType
-    func order(descending descriptors: [EntityType.ManagedObjectAttributeType -> Attribute]) -> ResultQueryType
-    func order(descending descriptors: (EntityType.ManagedObjectAttributeType -> Attribute)...) -> ResultQueryType
+    func order(attributes: [Attribute]) -> ResultQueryType
+    func order(attributes: Attribute...) -> ResultQueryType
+    func order(descending attributes: [Attribute]) -> ResultQueryType
+    func order(descending attributes: Attribute...) -> ResultQueryType
+    func order(attributes: [EntityType.ManagedObjectAttributeType -> Attribute]) -> ResultQueryType
+    func order(attributes: (EntityType.ManagedObjectAttributeType -> Attribute)...) -> ResultQueryType
+    func order(descending attributes: [EntityType.ManagedObjectAttributeType -> Attribute]) -> ResultQueryType
+    func order(descending attributes: (EntityType.ManagedObjectAttributeType -> Attribute)...) -> ResultQueryType
     
     func all(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> [ResultType]?
     func first(#managedObjectContext: NSManagedObjectContext?, error: NSErrorPointer) -> ResultType?
