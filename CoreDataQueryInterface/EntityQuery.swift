@@ -34,6 +34,10 @@ public struct EntityQuery<E: NSManagedObject>: QueryType, ExpressionQueryType {
         return withVaList(args) { self.filter(NSPredicate(format: format, arguments: $0)) }
     }
     
+    public func filter<A: AttributeType>(predicate: A -> NSPredicate) -> EntityQuery<E> {
+        return filter(predicate(A()))
+    }
+    
     public func limit(limit: UInt) -> EntityQuery<E> {
         return EntityQuery<E>(builder: builder.limit(limit))
     }

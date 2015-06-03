@@ -26,6 +26,8 @@
 		F371EDFC1AD91F87007D1F32 /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371EDF91AD91F87007D1F32 /* QueryType.swift */; };
 		F375B9A21AD8C53500575538 /* CoreDataQueryInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = F375B9A11AD8C53500575538 /* CoreDataQueryInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F375B9A81AD8C53500575538 /* CoreDataQueryInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F375B99C1AD8C53500575538 /* CoreDataQueryInterface.framework */; };
+		F37640AF1B1ED29200725F41 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37640AE1B1ED29200725F41 /* Attribute.swift */; };
+		F37640B01B1ED29200725F41 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37640AE1B1ED29200725F41 /* Attribute.swift */; };
 		F382C59C1AD9A31D00BD23C9 /* ManagedObjectIDQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F382C59B1AD9A31D00BD23C9 /* ManagedObjectIDQuery.swift */; };
 		F382C59D1AD9A31D00BD23C9 /* ManagedObjectIDQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F382C59B1AD9A31D00BD23C9 /* ManagedObjectIDQuery.swift */; };
 		F382C59E1AD9A31D00BD23C9 /* ManagedObjectIDQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F382C59B1AD9A31D00BD23C9 /* ManagedObjectIDQuery.swift */; };
@@ -63,6 +65,7 @@
 		F375B9A11AD8C53500575538 /* CoreDataQueryInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataQueryInterface.h; sourceTree = "<group>"; };
 		F375B9A71AD8C53500575538 /* CoreDataQueryInterfaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataQueryInterfaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F375B9AD1AD8C53500575538 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F37640AE1B1ED29200725F41 /* Attribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
 		F382C59B1AD9A31D00BD23C9 /* ManagedObjectIDQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectIDQuery.swift; sourceTree = "<group>"; };
 		F382C59F1AD9A91B00BD23C9 /* ExpressionQueryType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionQueryType.swift; sourceTree = "<group>"; };
 		F3B66E421AD8C6990045E578 /* EntityQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityQuery.swift; sourceTree = "<group>"; };
@@ -122,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				F375B9A11AD8C53500575538 /* CoreDataQueryInterface.h */,
+				F37640AE1B1ED29200725F41 /* Attribute.swift */,
 				F3B66E421AD8C6990045E578 /* EntityQuery.swift */,
 				F321BE841ADA3B4100AA9B40 /* Expression.swift */,
 				F371EDF51AD91D0A007D1F32 /* ExpressionQuery.swift */,
@@ -307,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F37640AF1B1ED29200725F41 /* Attribute.swift in Sources */,
 				F382C59C1AD9A31D00BD23C9 /* ManagedObjectIDQuery.swift in Sources */,
 				F3B66E491AD8D9640045E578 /* NSManagedObjectContextExtensions.swift in Sources */,
 				F321BE851ADA3B4100AA9B40 /* Expression.swift in Sources */,
@@ -342,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F37640B01B1ED29200725F41 /* Attribute.swift in Sources */,
 				F382C59E1AD9A31D00BD23C9 /* ManagedObjectIDQuery.swift in Sources */,
 				F371EDEA1AD913B9007D1F32 /* NSManagedObjectContextExtensions.swift in Sources */,
 				F321BE871ADA3B4100AA9B40 /* Expression.swift in Sources */,

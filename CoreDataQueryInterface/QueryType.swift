@@ -23,6 +23,7 @@ public protocol QueryType: SequenceType {
     func filter(predicate: NSPredicate) -> ResultQueryType
     func filter(format: String, argumentArray: [AnyObject]?) -> ResultQueryType
     func filter(format: String, _ args: CVarArgType...) -> ResultQueryType
+    func filter<A: AttributeType>(predicate: A -> NSPredicate) -> ResultQueryType
     func limit(limit: UInt) -> ResultQueryType
     func offset(offset: UInt) -> ResultQueryType
     func order(descriptors: [NSSortDescriptor]) -> ResultQueryType

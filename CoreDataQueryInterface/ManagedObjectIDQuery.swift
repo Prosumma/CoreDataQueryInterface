@@ -33,6 +33,10 @@ public struct ManagedObjectIDQuery<E: NSManagedObject>: QueryType {
         return withVaList(args) { self.filter(NSPredicate(format: format, arguments: $0)) }
     }
     
+    public func filter<A: AttributeType>(predicate: A -> NSPredicate) -> ManagedObjectIDQuery<E> {
+        return filter(predicate(A()))
+    }
+    
     public func limit(limit: UInt) -> ManagedObjectIDQuery<E> {
         return ManagedObjectIDQuery<E>(builder: builder.limit(limit))
     }

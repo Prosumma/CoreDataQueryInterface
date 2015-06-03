@@ -33,6 +33,10 @@ public struct ExpressionQuery<E: NSManagedObject>: QueryType, ExpressionQueryTyp
         return withVaList(args) { self.filter(NSPredicate(format: format, arguments: $0)) }
     }
     
+    public func filter<A: AttributeType>(predicate: A -> NSPredicate) -> ExpressionQuery<E> {
+        return filter(predicate(A()))
+    }
+    
     public func limit(limit: UInt) -> ExpressionQuery<E> {
         return ExpressionQuery<E>(builder: builder.limit(limit))
     }
