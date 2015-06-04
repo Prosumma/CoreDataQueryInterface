@@ -8,9 +8,7 @@
 
 import CoreData
 
-public struct EntityQuery<E: ManagedObjectType>: QueryType, ExpressionQueryType {
-
-    typealias EntityType = E
+public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
     
     internal var builder = QueryBuilder<E>()
     
@@ -136,6 +134,19 @@ public struct EntityQuery<E: ManagedObjectType>: QueryType, ExpressionQueryType 
     
     public func select(attributes: AttributeType...) -> ExpressionQuery<E> {
         return select(attributes)
+    }
+    
+    public func select(attributes: [E.ManagedObjectAttributeType -> AttributeType]) -> ExpressionQuery<E> {
+        let a = E.ManagedObjectAttributeType()
+        return select(attributes.map() { $0(a) })
+    }
+    
+    public func select(attributes: (E.ManagedObjectAttributeType -> AttributeType)...) -> ExpressionQuery<E> {
+        return select(attributes)
+    }
+    
+    public func select(attributes: E.ManagedObjectAttributeType -> [AttributeType]) -> ExpressionQuery<E> {
+        return select(attributes(E.ManagedObjectAttributeType()))
     }
     
     public func select(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {

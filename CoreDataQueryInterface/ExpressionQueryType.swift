@@ -8,8 +8,7 @@
 
 import CoreData
 
-public protocol ExpressionQueryType {
-    typealias EntityType: ManagedObjectType
+public protocol ExpressionQueryType: QueryType {
     typealias ExpressionResultQueryType
     
     func select(expressions: [NSExpressionDescription]) -> ExpressionResultQueryType
@@ -18,6 +17,9 @@ public protocol ExpressionQueryType {
     func select(attributes: String...) -> ExpressionResultQueryType
     func select(attributes: [AttributeType]) -> ExpressionResultQueryType
     func select(attributes: AttributeType...) -> ExpressionResultQueryType
+    func select(attributes: [EntityType.ManagedObjectAttributeType -> AttributeType]) -> ExpressionResultQueryType
+    func select(attributes: (EntityType.ManagedObjectAttributeType -> AttributeType)...) -> ExpressionResultQueryType
+    func select(attributes: EntityType.ManagedObjectAttributeType -> [AttributeType]) -> ExpressionResultQueryType
     func select(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionResultQueryType
     
     func function(function: String, attribute: String, name: String?) -> ExpressionResultQueryType
