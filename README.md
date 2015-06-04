@@ -22,11 +22,13 @@ Now compare this to vanilla Core Data:
 let fetchRequest = NSFetchRequest(entityName: "Employee")
 fetchRequest.predicate = NSPredicate(format: "salary > %ld && department == %@", 70000, "Engineering")
 fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastName", ascending: false), NSSortDescriptor(key: "firstName", ascending: false)]
-for employee in moc.executeFetchRequest(fetchRequest, error: nil)! as! [Employee] {
+for employee in managedObjectContext.executeFetchRequest(fetchRequest, error: nil)! as! [Employee] {
   debugPrintln("\(employee.lastName), \(employee.firstName)")
 }
 ```
 
 Which would you rather write?
 
+## Features
 
+- [x] [Fluent interface](http://en.wikipedia.org/wiki/Fluent_interface)
