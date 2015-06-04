@@ -39,7 +39,7 @@ Which would you rather write?
 - [x] Three main query types: Entity, ManagedObjectID, and Dictionary (called "Expression" in CDQI)
 - [x] Grouping, sorting, counts, etc.
 - [x] Optionally eliminates the use of magic strings so common in Core Data
-- [x] Query reuse
+- [x] Query reuse, i.e., no side-effects from chaining
 - [x] Support for iOS and OS X
 
 ## Requirements
@@ -169,7 +169,7 @@ The first way, starting from a context, is the most common. If you start from `E
 If you start with a context and use `from`, a context has already been specified. If you start with `EntityQuery` and the like, you must specify a context. One way to do this is with the `context` method:
 
 ```swift
-let query = EntityQuery.from(Employee).filter() { $0.department.name = "Sales" }
+let query = EntityQuery.from(Employee).filter() { $0.department.name == "Sales" }
 query.context(managedObjectContext)
 ```
 
@@ -203,8 +203,49 @@ let employees = managedObjectContext.from(Employee)
 employees.order(descending: {$0.lastName}).order({$0.firstName})
 employees.order({$0.lastName},{$0.firstName})
 employees.order({e in [e.lastName, e.firstName]})
+employees.order("lastName", "firstName")
 ```
 
 When subsequent `order` methods are chained, the result is cumulative.
+
+### Executing Queries
+
+An ordinary query chain does not actually execute anything.
+
+```swift
+// A query to get all the Sales people
+let query = EntityQuery.from(Employee).filter() { employee in employee.department.name == "Sales" }
+let sortedQuery: EntityQuery<Employee> = query.order(descending: {$0.lastName}).order({$0.firstName})
+```
+
+The variables `query` and `sortedQuery` are not the executed results of these expressions. In other words, they're not arrays of `Employee` entities. They are the queries themselves. This is illustrated by the fact that `sortedQuery` is constructed from `query` and the (completely optional) type annotation added to `sortedQuery`. _This action is free of side-effects._ The `query` variable is unaffected by the creation of `sortedQuery`. (Note also that neither of these queries has an assigned managed object context.)
+
+The simplest way to execute a query is to iterate over it.
+
+```swift
+let query = EntityQuery.from(Employee).filter() { employee in employee.department.name == "Sales" }
+for employee in query.context(moc) {
+  debugPrintln(employee)
+}
+```
+
+Iteration swallows errors and simply returns an empty result if it cannot execute. A more sophisticated way is to use one of the _query execution methods._
+
+```swift
+let query = EntityQuery.from(Employee).filter() { employee in employee.department.name == "Sales" }
+var error: NSError?
+let salesPeople = query.context(moc).all()!
+let salesPeople = query.all(managedObjectContext: moc)!
+let salesPeople = query.context(moc).all(error: &error)!
+```
+
+Here you can see the many possible variants. The `all` method returns `nil` if an error occurs. What exactly `all` returns depends on the type of query. For `EntityQuery`, it's an array of `NSManagedObject`s. For `ExpressionQuery`, it's `[[String: AnyObject]]`. For `ManagedObjectIDQuery` it's obviously `[NSManagedObjectID]`.
+
+There are four other query execution methods: `first` and `count`, which are available on all query types, and `value` and `pluck`, which are not available on `ManagedObjectIDQuery`. `value` and `pluck` are discussed in the Advanced Usage section.
+
+```swift
+let topPaidSalesPerson = moc.from(Employee).filter({ e in e.department.name == "Sales" }).order(descending: {$0.salary}).first()!
+let numberOfEngineers = moc.from(Employee).filter({ $0.department.name == "Engineering" }).count()!
+```
 
 
