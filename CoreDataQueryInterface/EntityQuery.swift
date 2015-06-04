@@ -197,12 +197,28 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
         return function("sum:", attribute: attribute, name: name)
     }
     
+    public func sum(attribute: AttributeType, name: String? = nil) -> ExpressionQuery<E> {
+        return sum(attribute.description, name: name)
+    }
+    
+    public func sum(name: String? = nil, attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
+        return sum(attribute(E.ManagedObjectAttributeType()), name: name)
+    }
+    
     public func sum(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {
         return function("sum:", expression: expression, name: name, type: type)
     }
     
     public func min(attribute: String, name: String? = nil) -> ExpressionQuery<E> {
         return function("min:", attribute: attribute, name: name)
+    }
+    
+    public func min(attribute: AttributeType, name: String? = nil) -> ExpressionQuery<E> {
+        return min(attribute.description, name: name)
+    }
+    
+    public func min(name: String? = nil, attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
+        return min(attribute(E.ManagedObjectAttributeType()), name: name)
     }
     
     public func min(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {
@@ -213,12 +229,28 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
         return function("max:", attribute: attribute, name: name)
     }
     
+    public func max(attribute: AttributeType, name: String? = nil) -> ExpressionQuery<E> {
+        return max(attribute.description, name: name)
+    }
+    
+    public func max(name: String? = nil, attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
+        return max(attribute(E.ManagedObjectAttributeType()), name: name)
+    }
+    
     public func max(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {
         return function("max:", expression: expression, name: name, type: type)
     }
     
     public func count(attribute: String, name: String? = nil) -> ExpressionQuery<E> {
         return function("count:", attribute: attribute, name: name)
+    }
+    
+    public func count(attribute: AttributeType, name: String? = nil) -> ExpressionQuery<E> {
+        return count(attribute.description, name: name)
+    }
+    
+    public func count(name: String? = nil, attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
+        return count(attribute(E.ManagedObjectAttributeType()), name: name)
     }
     
     public func count(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {
