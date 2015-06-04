@@ -229,7 +229,7 @@ for employee in query.context(moc) {
 }
 ```
 
-Iteration swallows errors and simply returns an empty result if it cannot execute. A more sophisticated way is to use one of the _query execution methods._
+Iteration swallows errors and simply does not iterate if an error occurs. A more sophisticated way is to use one of the _query execution methods_, such as `all`.
 
 ```swift
 let query = EntityQuery.from(Employee).filter() { employee in employee.department.name == "Sales" }
@@ -241,11 +241,13 @@ let salesPeople = query.context(moc).all(error: &error)!
 
 Here you can see the many possible variants. The `all` method returns `nil` if an error occurs. What exactly `all` returns depends on the type of query. For `EntityQuery`, it's an array of `NSManagedObject`s. For `ExpressionQuery`, it's `[[String: AnyObject]]`. For `ManagedObjectIDQuery` it's obviously `[NSManagedObjectID]`.
 
-There are four other query execution methods: `first` and `count`, which are available on all query types, and `value` and `pluck`, which are not available on `ManagedObjectIDQuery`. `value` and `pluck` are discussed in the Advanced Usage section.
+There are four other query execution methods: `first` and `count`, which are available on all query types, and `value` and `pluck`, which are not available on `ManagedObjectIDQuery`. `value` and `pluck` will be discussed in the as-yet-unwritten Advanced Usage section.
+
+Examples of `first` and `count`:
 
 ```swift
-let topPaidSalesPerson = moc.from(Employee).filter({ e in e.department.name == "Sales" }).order(descending: {$0.salary}).first()!
+var error: NSError?
+let topPaidSalesPerson = moc.from(Employee).filter({ e in e.department.name == "Sales" }).order(descending: {$0.salary}).first(error: &error)!
 let numberOfEngineers = moc.from(Employee).filter({ $0.department.name == "Engineering" }).count()!
 ```
-
 
