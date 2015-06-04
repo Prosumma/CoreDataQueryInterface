@@ -185,7 +185,7 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
         return average(attribute.description, name: name)
     }
     
-    public func average(name: String? = nil, attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
+    public func average(name: String? = nil, _ attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
         return average(attribute(E.ManagedObjectAttributeType()), name: name)
     }
     
@@ -201,7 +201,7 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
         return sum(attribute.description, name: name)
     }
     
-    public func sum(name: String? = nil, attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
+    public func sum(name: String? = nil, _ attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
         return sum(attribute(E.ManagedObjectAttributeType()), name: name)
     }
     
@@ -217,7 +217,7 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
         return min(attribute.description, name: name)
     }
     
-    public func min(name: String? = nil, attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
+    public func min(name: String? = nil, _ attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
         return min(attribute(E.ManagedObjectAttributeType()), name: name)
     }
     
@@ -233,7 +233,7 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
         return max(attribute.description, name: name)
     }
     
-    public func max(name: String? = nil, attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
+    public func max(name: String? = nil, _ attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
         return max(attribute(E.ManagedObjectAttributeType()), name: name)
     }
     
@@ -249,7 +249,7 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
         return count(attribute.description, name: name)
     }
     
-    public func count(name: String? = nil, attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
+    public func count(name: String? = nil, _ attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
         return count(attribute(E.ManagedObjectAttributeType()), name: name)
     }
     

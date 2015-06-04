@@ -28,23 +28,23 @@ public protocol ExpressionQueryType: QueryType {
     func function(function: String, expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionResultQueryType
     func average(attribute: String, name: String?) -> ExpressionResultQueryType
     func average(attribute: AttributeType, name: String?) -> ExpressionResultQueryType
-    func average(#name: String?, attribute: EntityType.ManagedObjectAttributeType -> AttributeType) -> ExpressionResultQueryType
+    func average(#name: String?, _ attribute: EntityType.ManagedObjectAttributeType -> AttributeType) -> ExpressionResultQueryType
     func average(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionResultQueryType
     func sum(attribute: String, name: String?) -> ExpressionResultQueryType
     func sum(attribute: AttributeType, name: String?) -> ExpressionResultQueryType
-    func sum(#name: String?, attribute: EntityType.ManagedObjectAttributeType -> AttributeType) -> ExpressionResultQueryType
+    func sum(#name: String?, _ attribute: EntityType.ManagedObjectAttributeType -> AttributeType) -> ExpressionResultQueryType
     func sum(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionResultQueryType
     func min(attribute: String, name: String?) -> ExpressionResultQueryType
     func min(attribute: AttributeType, name: String?) -> ExpressionResultQueryType
-    func min(#name: String?, attribute: EntityType.ManagedObjectAttributeType -> AttributeType) -> ExpressionResultQueryType
+    func min(#name: String?, _ attribute: EntityType.ManagedObjectAttributeType -> AttributeType) -> ExpressionResultQueryType
     func min(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionResultQueryType
     func max(attribute: String, name: String?) -> ExpressionResultQueryType    
     func max(attribute: AttributeType, name: String?) -> ExpressionResultQueryType
-    func max(#name: String?, attribute: EntityType.ManagedObjectAttributeType -> AttributeType) -> ExpressionResultQueryType
+    func max(#name: String?, _ attribute: EntityType.ManagedObjectAttributeType -> AttributeType) -> ExpressionResultQueryType
     func max(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionResultQueryType
     func count(attribute: String, name: String?) -> ExpressionResultQueryType
     func count(attribute: AttributeType, name: String?) -> ExpressionResultQueryType
-    func count(#name: String?, attribute: EntityType.ManagedObjectAttributeType -> AttributeType) -> ExpressionResultQueryType
+    func count(#name: String?, _ attribute: EntityType.ManagedObjectAttributeType -> AttributeType) -> ExpressionResultQueryType
     func count(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionResultQueryType
         
     func groupBy(expressions: [NSExpressionDescription]) -> ExpressionResultQueryType
