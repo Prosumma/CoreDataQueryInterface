@@ -27,6 +27,8 @@ public protocol ExpressionQueryType: QueryType {
     func function(function: String, name: String?, attribute: EntityType.ManagedObjectAttributeType -> AttributeType) -> ExpressionResultQueryType
     func function(function: String, expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionResultQueryType
     func average(attribute: String, name: String?) -> ExpressionResultQueryType
+    func average(attribute: AttributeType, name: String?) -> ExpressionResultQueryType
+    func average(#name: String?, attribute: EntityType.ManagedObjectAttributeType -> AttributeType) -> ExpressionResultQueryType
     func average(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionResultQueryType
     func sum(attribute: String, name: String?) -> ExpressionResultQueryType
     func sum(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionResultQueryType

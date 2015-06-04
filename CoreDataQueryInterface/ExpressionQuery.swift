@@ -174,6 +174,14 @@ public struct ExpressionQuery<E: ManagedObjectType>: ExpressionQueryType {
         return function("average:", attribute: attribute, name: name)
     }
     
+    public func average(attribute: AttributeType, name: String? = nil) -> ExpressionQuery<E> {
+        return average(attribute.description, name: name)
+    }
+    
+    public func average(name: String? = nil, attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
+        return average(attribute(E.ManagedObjectAttributeType()), name: name)
+    }
+    
     public func average(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {
         return function("average:", expression: expression, name: name, type: type)
     }
