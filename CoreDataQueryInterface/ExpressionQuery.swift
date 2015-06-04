@@ -266,6 +266,27 @@ public struct ExpressionQuery<E: ManagedObjectType>: ExpressionQueryType {
         return groupBy(attributes)
     }
     
+    public func groupBy(attributes: [AttributeType]) -> ExpressionQuery<E> {
+        return groupBy(attributes.map() { $0.description })
+    }
+    
+    public func groupBy(attributes: AttributeType...) -> ExpressionQuery<E> {
+        return groupBy(attributes)
+    }
+    
+    public func groupBy(attributes: [E.ManagedObjectAttributeType -> AttributeType]) -> ExpressionQuery<E> {
+        let a = E.ManagedObjectAttributeType()
+        return groupBy(attributes.map() { $0(a) })
+    }
+    
+    public func groupBy(attributes: (E.ManagedObjectAttributeType -> AttributeType)...) -> ExpressionQuery<E> {
+        return groupBy(attributes)
+    }
+    
+    public func groupBy(attributes: E.ManagedObjectAttributeType -> [AttributeType]) -> ExpressionQuery<E> {
+        return groupBy(attributes(E.ManagedObjectAttributeType()))
+    }
+    
     public func distinct() -> ExpressionQuery<E> {
         return ExpressionQuery<E>(builder: self.builder.distinct())
     }

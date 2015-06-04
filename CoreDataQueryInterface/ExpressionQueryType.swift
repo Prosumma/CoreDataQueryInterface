@@ -51,6 +51,11 @@ public protocol ExpressionQueryType: QueryType {
     func groupBy(expressions: NSExpressionDescription...) -> ExpressionResultQueryType
     func groupBy(attributes: [String]) -> ExpressionResultQueryType
     func groupBy(attributes: String...) -> ExpressionResultQueryType
+    func groupBy(attributes: [AttributeType]) -> ExpressionResultQueryType
+    func groupBy(attributes: AttributeType...) -> ExpressionResultQueryType
+    func groupBy(attributes: [EntityType.ManagedObjectAttributeType -> AttributeType]) -> ExpressionResultQueryType
+    func groupBy(attributes: (EntityType.ManagedObjectAttributeType -> AttributeType)...) -> ExpressionResultQueryType
+    func groupBy(attributes: EntityType.ManagedObjectAttributeType -> [AttributeType]) -> ExpressionResultQueryType
     
     func distinct() -> ExpressionResultQueryType
     
