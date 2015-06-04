@@ -34,7 +34,7 @@ public struct ManagedObjectIDQuery<E: ManagedObjectType>: QueryType {
     }
     
     public func filter(predicate: E.ManagedObjectAttributeType -> NSPredicate) -> ManagedObjectIDQuery<E> {
-        return filter(predicate(E.ManagedObjectAttributeType()))
+        return filter(predicate(E.ManagedObjectAttributeType(nil, parent: nil)))
     }
     
     public func limit(limit: UInt) -> ManagedObjectIDQuery<E> {
@@ -78,7 +78,7 @@ public struct ManagedObjectIDQuery<E: ManagedObjectType>: QueryType {
     }
     
     public func order(attributes: [E.ManagedObjectAttributeType -> AttributeType]) -> ManagedObjectIDQuery<E> {
-        let a = E.ManagedObjectAttributeType()
+        let a = E.ManagedObjectAttributeType(nil, parent: nil)
         return order(attributes.map() { $0(a) })
     }
     
@@ -87,7 +87,7 @@ public struct ManagedObjectIDQuery<E: ManagedObjectType>: QueryType {
     }
     
     public func order(descending attributes: [E.ManagedObjectAttributeType -> AttributeType]) -> ManagedObjectIDQuery<E> {
-        let a = E.ManagedObjectAttributeType()
+        let a = E.ManagedObjectAttributeType(nil, parent: nil)
         return order(descending: attributes.map{ $0(a) })
     }
     
@@ -96,11 +96,11 @@ public struct ManagedObjectIDQuery<E: ManagedObjectType>: QueryType {
     }
     
     public func order(attributes: E.ManagedObjectAttributeType -> [AttributeType]) -> ManagedObjectIDQuery<E> {
-        return order(attributes(E.ManagedObjectAttributeType()))
+        return order(attributes(E.ManagedObjectAttributeType(nil, parent: nil)))
     }
     
     public func order(descending attributes: E.ManagedObjectAttributeType -> [AttributeType]) -> ManagedObjectIDQuery<E> {
-        return order(descending: attributes(E.ManagedObjectAttributeType()))
+        return order(descending: attributes(E.ManagedObjectAttributeType(nil, parent: nil)))
     }
     
     // MARK: Query Execution

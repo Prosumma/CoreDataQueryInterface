@@ -35,7 +35,7 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
     }
     
     public func filter(predicate: E.ManagedObjectAttributeType -> NSPredicate) -> EntityQuery<E> {
-        return filter(predicate(E.ManagedObjectAttributeType()))
+        return filter(predicate(E.ManagedObjectAttributeType(nil, parent: nil)))
     }
         
     public func limit(limit: UInt) -> EntityQuery<E> {
@@ -79,7 +79,7 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
     }
     
     public func order(attributes: [E.ManagedObjectAttributeType -> AttributeType]) -> EntityQuery<E> {
-        let a = E.ManagedObjectAttributeType()
+        let a = E.ManagedObjectAttributeType(nil, parent: nil)
         return order(attributes.map() { $0(a) })
     }
     
@@ -88,7 +88,7 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
     }
     
     public func order(descending attributes: [E.ManagedObjectAttributeType -> AttributeType]) -> EntityQuery<E> {
-        let a = E.ManagedObjectAttributeType()
+        let a = E.ManagedObjectAttributeType(nil, parent: nil)
         return order(descending: attributes.map{ $0(a) })
     }
     
@@ -97,11 +97,11 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
     }
     
     public func order(attributes: E.ManagedObjectAttributeType -> [AttributeType]) -> EntityQuery<E> {
-        return order(attributes(E.ManagedObjectAttributeType()))
+        return order(attributes(E.ManagedObjectAttributeType(nil, parent: nil)))
     }
     
     public func order(descending attributes: E.ManagedObjectAttributeType -> [AttributeType]) -> EntityQuery<E> {
-        return order(descending: attributes(E.ManagedObjectAttributeType()))
+        return order(descending: attributes(E.ManagedObjectAttributeType(nil, parent: nil)))
     }
         
     // MARK: Object IDs
@@ -137,7 +137,7 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
     }
     
     public func select(attributes: [E.ManagedObjectAttributeType -> AttributeType]) -> ExpressionQuery<E> {
-        let a = E.ManagedObjectAttributeType()
+        let a = E.ManagedObjectAttributeType(nil, parent: nil)
         return select(attributes.map() { $0(a) })
     }
     
@@ -146,7 +146,7 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
     }
     
     public func select(attributes: E.ManagedObjectAttributeType -> [AttributeType]) -> ExpressionQuery<E> {
-        return select(attributes(E.ManagedObjectAttributeType()))
+        return select(attributes(E.ManagedObjectAttributeType(nil, parent: nil)))
     }
     
     public func select(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {
@@ -166,7 +166,7 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
     }    
     
     public func function(function: String, name: String? = nil, attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
-        return self.function(function, attribute: attribute(E.ManagedObjectAttributeType()), name: name)
+        return self.function(function, attribute: attribute(E.ManagedObjectAttributeType(nil, parent: nil)), name: name)
     }
     
     public func function(function: String, expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {
@@ -186,7 +186,7 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
     }
     
     public func average(name: String? = nil, _ attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
-        return average(attribute(E.ManagedObjectAttributeType()), name: name)
+        return average(attribute(E.ManagedObjectAttributeType(nil, parent: nil)), name: name)
     }
     
     public func average(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {
@@ -202,7 +202,7 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
     }
     
     public func sum(name: String? = nil, _ attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
-        return sum(attribute(E.ManagedObjectAttributeType()), name: name)
+        return sum(attribute(E.ManagedObjectAttributeType(nil, parent: nil)), name: name)
     }
     
     public func sum(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {
@@ -218,7 +218,7 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
     }
     
     public func min(name: String? = nil, _ attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
-        return min(attribute(E.ManagedObjectAttributeType()), name: name)
+        return min(attribute(E.ManagedObjectAttributeType(nil, parent: nil)), name: name)
     }
     
     public func min(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {
@@ -234,7 +234,7 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
     }
     
     public func max(name: String? = nil, _ attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
-        return max(attribute(E.ManagedObjectAttributeType()), name: name)
+        return max(attribute(E.ManagedObjectAttributeType(nil, parent: nil)), name: name)
     }
     
     public func max(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {
@@ -250,7 +250,7 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
     }
     
     public func count(name: String? = nil, _ attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
-        return count(attribute(E.ManagedObjectAttributeType()), name: name)
+        return count(attribute(E.ManagedObjectAttributeType(nil, parent: nil)), name: name)
     }
     
     public func count(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {
@@ -282,7 +282,7 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
     }
     
     public func groupBy(attributes: [E.ManagedObjectAttributeType -> AttributeType]) -> ExpressionQuery<E> {
-        let a = E.ManagedObjectAttributeType()
+        let a = E.ManagedObjectAttributeType(nil, parent: nil)
         return groupBy(attributes.map() { $0(a) })
     }
     
@@ -291,7 +291,7 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
     }
     
     public func groupBy(attributes: E.ManagedObjectAttributeType -> [AttributeType]) -> ExpressionQuery<E> {
-        return groupBy(attributes(E.ManagedObjectAttributeType()))
+        return groupBy(attributes(E.ManagedObjectAttributeType(nil, parent: nil)))
     }
     
     public func distinct() -> ExpressionQuery<E> {

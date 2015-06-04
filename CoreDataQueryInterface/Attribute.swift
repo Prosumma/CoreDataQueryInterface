@@ -9,21 +9,15 @@
 import Foundation
 
 public protocol AttributeType : Printable {
-    init()
-    init(_ name: String, parent: AttributeType?)
+    init(_ name: String?, parent: AttributeType?)
 }
 
 public class Attribute : AttributeType {
     
     private let _name: String?
     private let _parent: AttributeType?
-    
-    public required init() {
-        _name = nil
-        _parent = nil
-    }
-    
-    public required init(_ name: String, parent: AttributeType? = nil) {
+
+    public required init(_ name: String? = nil, parent: AttributeType? = nil) {
         _name = name
         _parent = parent
     }
