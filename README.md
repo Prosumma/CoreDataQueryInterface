@@ -6,7 +6,7 @@
 
 Core Data Query Interface (CDQI) is a type-safe, fluent, intuitive library for working with Core Data in Swift. If you've worked with LINQ in the C# world, you can think of CDQI as "LINQ for Core Data".
 
-## Syntax
+## Advantages
 
 The best way to understand the advantages of CDQI is to see an example.
 
@@ -32,3 +32,59 @@ Which would you rather write?
 ## Features
 
 - [x] [Fluent interface](http://en.wikipedia.org/wiki/Fluent_interface)
+- [x] Large number of overloads
+- [x] Type-safety
+- [x] Three main query types: Entity, ManagedObjectID, and Dictionary (called "Expression" in CDQI)
+- [x] Grouping, sorting, counts, etc.
+- [x] Optionally eliminates the use of magic strings so common in Core Data
+- [x] Query reuse
+
+## Requirements
+
+- iOS 8.1+ / Mac OS X 10.9+
+- Xcode 6.3+
+
+## Installation
+
+### CocoaPods
+
+[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects.
+
+CocoaPods 0.36 adds supports for Swift and embedded frameworks. You can install it with the following command:
+
+```bash
+$ gem install cocoapods
+```
+
+To integrate CoreDataQueryInterface into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+pod 'CoreDataQueryInterface', '~> 1.2'
+```
+
+Then, run the following command:
+
+```bash
+$ pod install
+```
+
+### Carthage
+
+Carthage is a decentralized dependency manager that automates the process of adding frameworks to your Cocoa application.
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate CoreDataQueryInterface into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "Prosumma/CoreDataQueryInterface" >= 1.2
+```
