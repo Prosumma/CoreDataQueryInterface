@@ -177,4 +177,34 @@ There are other ways, as will be discussed below.
 
 ### Filtering
 
-Filtering uses the `filter` method.
+Filtering uses the `filter` method. There are a large number of overloads to support such things as `NSPredicate`, string-based queries, `Attribute`-based queries, etc. In general, the `Attribute`-based queries are recommended.
+
+```swift
+let employees = managedObjectContext.from(Employee)
+employees.filter() { $0.department.name == "Sales" } // Attribute query. Recommended.
+employees.filter(NSPredicate(format: "department.name == %@", "Sales"))
+employees.filter("department.name == %@", "Sales"))
+```
+
+When filters are chained, the result is as if they were joined with `&&`. The following two filters are equivalent:
+
+```swift
+let employees = managedObjectContext.from(Employee)
+employees.filter({ $0.department.name == "Sales" }).filter({ $0.lastName = "Smith" })
+employees.filter({ $0.department.name == "Sales" && $0.lastName == "Smith" })
+```
+
+### Sorting
+
+Sorting uses the `order` method. Its overloads are very similar to those of `filter`, except that each overload has a `descending:` variant.
+
+```swift
+let employees = managedObjectContext.from(Employee)
+employees.order(descending: {$0.lastName}).order({$0.firstName})
+employees.order({$0.lastName},{$0.firstName})
+employees.order({e in [e.lastName, e.firstName]})
+```
+
+When subsequent `order` methods are chained, the result is cumulative.
+
+
