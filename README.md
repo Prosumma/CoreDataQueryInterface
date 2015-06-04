@@ -194,6 +194,14 @@ employees.filter({ $0.department.name == "Sales" }).filter({ $0.lastName = "Smit
 employees.filter({ $0.department.name == "Sales" && $0.lastName == "Smith" })
 ```
 
+#### Filtering With Nil
+
+When using `nil`, it's necessary to cast `nil` so that Swift knows which of the many operator overloads to call, e.g.,
+
+```swift
+employees.filter({ $0.department.name == nil as String? })
+```
+
 ### Sorting
 
 Sorting uses the `order` method. Its overloads are very similar to those of `filter`, except that each overload has a `descending:` variant.
