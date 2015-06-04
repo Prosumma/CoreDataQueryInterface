@@ -11,6 +11,7 @@ Core Data Query Interface (CDQI) is a type-safe, fluent, intuitive library for w
 The best way to understand the advantages of CDQI is to see an example.
 
 ```swift
+// Iteration causes the query to execute, though there are other ways
 for employee in managedObjectContext.from(Employee).filter({$0.salary > 70000 && $0.department == "Engineering"}).order(descending: {$0.lastName}, {$0.firstName}) {
   debugPrintln("\(employee.lastName), \(employee.firstName)")
 }
@@ -34,10 +35,12 @@ Which would you rather write?
 - [x] [Fluent interface](http://en.wikipedia.org/wiki/Fluent_interface)
 - [x] Large number of overloads
 - [x] Type-safety
+- [x] Lazy execution
 - [x] Three main query types: Entity, ManagedObjectID, and Dictionary (called "Expression" in CDQI)
 - [x] Grouping, sorting, counts, etc.
 - [x] Optionally eliminates the use of magic strings so common in Core Data
 - [x] Query reuse
+- [x] Support for iOS and OS X
 
 ## Requirements
 
@@ -88,3 +91,90 @@ To integrate CoreDataQueryInterface into your Xcode project using Carthage, spec
 ```ogdl
 github "Prosumma/CoreDataQueryInterface" >= 1.2
 ```
+
+### Manually
+
+CoreDataQueryInterface is a perfectly ordinary Xcode framework project with support for both iOS and OS X. Integrate as you normally would any other framework.
+
+## Usage
+
+### Integration
+
+In order to use CoreDataQueryInterface with your models, they must implement the `ManagedObjectType` protocol:
+
+```swift
+class Department : NSManagedObject, ManagedObjectType {
+  @NSManaged var name: String
+}
+
+class Employee : NSManagedObject, ManagedObjectType {
+  @NSManaged var department: Department
+  @NSManaged var firstName: String
+  @NSManaged var lastName: String
+  @NSManaged var salary: Int
+}
+```
+
+#### Attributes
+
+In order to use CoreDataQueryInterface's support for sorting, filtering, and the like without magic strings, you have to do a little more work. _This is completely optional but highly recommended._
+
+```swift
+class Department : NSManagedObject, ManagedObjectType {
+  typealias ManagedObjectAttributeType = DepartmentAttribute
+  @NSManaged var name: String
+}
+
+class DepartmentAttribute : Attribute {
+  var name: Attribute { return Attribute("name", parent: self) }
+}
+
+class Employee : NSManagedObject, ManagedObjectType {
+  typealias ManagedObjectAttributeType = EmployeeAttribute
+  @NSManaged var department: Department
+  @NSManaged var firstName: String
+  @NSManaged var lastName: String
+  @NSManaged var salary: Int
+}
+
+class EmployeeAttribute : Attribute {
+  var department: DepartmentAttribute { return DepartmentAttribute("department", parent: self) }
+  var firstName: Attribute { return Attribute("firstName", parent: self) }
+  var lastName: Attribute { return Attribute("lastName", parent: self) }
+  var salary: Attribute { return Attribute("salary", parent: self) }
+}
+```
+
+### Starting a Query
+
+There are three query types.
+
+- `EntityQuery` This query requests entities, i.e., `NSManagedObject` subclasses, as the result.
+- `ExpressionQuery` This query requests dictionaries as a result. It's called `ExpressionQuery` because typically this query is used when you want to perform some kind of calculation.
+- `ManagedObjectIDQuery` This query requests an array of `NSManagedObjectID` as the result.
+
+You can start a query using the static `from` method, either from one of the query types or from `NSManagedObjectContext`. If you start with a context, it's automatically an `EntityQuery`.
+
+```swift
+managedObjectContext.from(Employee) // Starts an EntityQuery
+EntityQuery.from(Employee)
+ExpressionQuery.from(Employee)
+ManagedObjectIDQuery.from(Employee)
+```
+
+The first way, starting from a context, is the most common. If you start from `EntityQuery`, `ExpressionQuery`, or `ManagedObjectIDQuery`, no context is associated, so you will have to specify one later in the chain. If you start with an `EntityQuery`, there are very simple ways to turn the query into one of the other types.
+
+### Specifying a Managed Object Context
+
+If you start with a context and use `from`, a context has already been specified. If you start with `EntityQuery` and the like, you must specify a context. One way to do this is with the `context` method:
+
+```swift
+let query = EntityQuery.from(Employee).filter() { $0.department.name = "Sales" }
+query.context(managedObjectContext)
+```
+
+There are other ways, as will be discussed below.
+
+### Filtering
+
+Filtering uses the `filter` method.
