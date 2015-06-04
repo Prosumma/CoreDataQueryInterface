@@ -62,45 +62,45 @@ public struct EntityQuery<E: ManagedObjectType>: QueryType, ExpressionQueryType 
         return order(descriptors.map() { NSSortDescriptor(key: $0, ascending: false) })
     }
     
-    public func order(attributes: [Attribute]) -> EntityQuery<E> {
+    public func order(attributes: [AttributeType]) -> EntityQuery<E> {
         return order(attributes.map() { NSSortDescriptor(key: $0.description, ascending: true) })
     }
     
-    public func order(attributes: Attribute...) -> EntityQuery<E> {
+    public func order(attributes: AttributeType...) -> EntityQuery<E> {
         return order(attributes)
     }
     
-    public func order(descending attributes: [Attribute]) -> EntityQuery<E> {
+    public func order(descending attributes: [AttributeType]) -> EntityQuery<E> {
         return order(attributes.map() { NSSortDescriptor(key: $0.description, ascending: false) })
     }
     
-    public func order(descending attributes: Attribute...) -> EntityQuery<E> {
+    public func order(descending attributes: AttributeType...) -> EntityQuery<E> {
         return order(descending: attributes)
     }
     
-    public func order(attributes: [E.ManagedObjectAttributeType -> Attribute]) -> EntityQuery<E> {
+    public func order(attributes: [E.ManagedObjectAttributeType -> AttributeType]) -> EntityQuery<E> {
         let a = E.ManagedObjectAttributeType()
         return order(attributes.map() { $0(a) })
     }
     
-    public func order(attributes: (E.ManagedObjectAttributeType -> Attribute)...) -> EntityQuery<E> {
+    public func order(attributes: (E.ManagedObjectAttributeType -> AttributeType)...) -> EntityQuery<E> {
         return order(attributes)
     }
     
-    public func order(descending attributes: [E.ManagedObjectAttributeType -> Attribute]) -> EntityQuery<E> {
+    public func order(descending attributes: [E.ManagedObjectAttributeType -> AttributeType]) -> EntityQuery<E> {
         let a = E.ManagedObjectAttributeType()
         return order(descending: attributes.map{ $0(a) })
     }
     
-    public func order(descending attributes: (E.ManagedObjectAttributeType -> Attribute)...) -> EntityQuery<E> {
+    public func order(descending attributes: (E.ManagedObjectAttributeType -> AttributeType)...) -> EntityQuery<E> {
         return order(descending: attributes)
     }
     
-    public func order(attributes: E.ManagedObjectAttributeType -> [Attribute]) -> EntityQuery<E> {
+    public func order(attributes: E.ManagedObjectAttributeType -> [AttributeType]) -> EntityQuery<E> {
         return order(attributes(E.ManagedObjectAttributeType()))
     }
     
-    public func order(descending attributes: E.ManagedObjectAttributeType -> [Attribute]) -> EntityQuery<E> {
+    public func order(descending attributes: E.ManagedObjectAttributeType -> [AttributeType]) -> EntityQuery<E> {
         return order(descending: attributes(E.ManagedObjectAttributeType()))
     }
         
