@@ -23,6 +23,8 @@ public protocol ExpressionQueryType: QueryType {
     func select(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionResultQueryType
     
     func function(function: String, attribute: String, name: String?) -> ExpressionResultQueryType
+    func function(function: String, attribute: AttributeType, name: String?) -> ExpressionResultQueryType
+    func function(function: String, name: String?, attribute: EntityType.ManagedObjectAttributeType -> AttributeType) -> ExpressionResultQueryType
     func function(function: String, expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionResultQueryType
     func average(attribute: String, name: String?) -> ExpressionResultQueryType
     func average(expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionResultQueryType

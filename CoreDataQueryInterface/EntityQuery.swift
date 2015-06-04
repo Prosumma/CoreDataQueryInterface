@@ -161,6 +161,14 @@ public struct EntityQuery<E: ManagedObjectType>: ExpressionQueryType {
         return ExpressionQuery<E>(builder: self.builder.select(Expression.Function(function, attribute, name ?? attribute)))
     }
     
+    public func function(function: String, attribute: AttributeType, name: String? = nil) -> ExpressionQuery<E> {
+        return self.function(function, attribute: attribute.description, name: name)
+    }    
+    
+    public func function(function: String, name: String? = nil, attribute: E.ManagedObjectAttributeType -> AttributeType) -> ExpressionQuery<E> {
+        return self.function(function, attribute: attribute(E.ManagedObjectAttributeType()), name: name)
+    }
+    
     public func function(function: String, expression: NSExpression, name: String, type: NSAttributeType) -> ExpressionQuery<E> {
         let expressionDescription = NSExpressionDescription()
         expressionDescription.expression = NSExpression(forFunction: function, arguments: [expression])
