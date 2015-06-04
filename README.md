@@ -16,7 +16,7 @@ let employees = moc.from(Employee).filter({$0.salary > 80000}).all()
 // value() executes the query and returns the first value in the first row.
 let highestPaidEmployeeName = moc.from(Employee).order(descending: {$0.salary}).select({$0.name}).limit(1).value()! as! NSNumber
 // The usual aggregates are built in. Other functions can be called with the `function` method.
-let highestSalary = moc.from(Employee).max("salary").value()! as! NSNumber
+let highestSalary = moc.from(Employee).max({$0.salary}).value()! as! NSNumber
 // count() executes the query and returns the number of rows.
 let numberOfSmiths = moc.from(Employee).filter({$0.lastName == "Smith"}).count()
 
