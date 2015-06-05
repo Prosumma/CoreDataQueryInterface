@@ -62,6 +62,8 @@
 		F382C5A01AD9A91B00BD23C9 /* ExpressionQueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F382C59F1AD9A91B00BD23C9 /* ExpressionQueryType.swift */; };
 		F382C5A11AD9A91B00BD23C9 /* ExpressionQueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F382C59F1AD9A91B00BD23C9 /* ExpressionQueryType.swift */; };
 		F382C5A21AD9A91B00BD23C9 /* ExpressionQueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F382C59F1AD9A91B00BD23C9 /* ExpressionQueryType.swift */; };
+		F3937B081B225ACD008965F6 /* OrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3937B071B225ACD008965F6 /* OrderTests.swift */; };
+		F3937B091B225ACD008965F6 /* OrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3937B071B225ACD008965F6 /* OrderTests.swift */; };
 		F3B66E431AD8C6990045E578 /* EntityQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E421AD8C6990045E578 /* EntityQuery.swift */; };
 		F3B66E441AD8C6990045E578 /* EntityQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E421AD8C6990045E578 /* EntityQuery.swift */; };
 		F3B66E491AD8D9640045E578 /* NSManagedObjectContextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E481AD8D9640045E578 /* NSManagedObjectContextExtensions.swift */; };
@@ -108,6 +110,7 @@
 		F37640B11B1EE74A00725F41 /* ManagedObjectType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectType.swift; sourceTree = "<group>"; };
 		F382C59B1AD9A31D00BD23C9 /* ManagedObjectIDQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectIDQuery.swift; sourceTree = "<group>"; };
 		F382C59F1AD9A91B00BD23C9 /* ExpressionQueryType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionQueryType.swift; sourceTree = "<group>"; };
+		F3937B071B225ACD008965F6 /* OrderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTests.swift; sourceTree = "<group>"; };
 		F3B66E421AD8C6990045E578 /* EntityQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityQuery.swift; sourceTree = "<group>"; };
 		F3B66E481AD8D9640045E578 /* NSManagedObjectContextExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContextExtensions.swift; sourceTree = "<group>"; };
 		F3CDA8181AD9099F00B9D8BF /* CoreDataQueryInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataQueryInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				F35FFC531B2168B000471996 /* FilterTests.swift */,
+				F3937B071B225ACD008965F6 /* OrderTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -420,6 +424,7 @@
 				F324A6471B2154B100E92FA7 /* ManagedObjectIDQuery.swift in Sources */,
 				F35FFC551B2168B000471996 /* FilterTests.swift in Sources */,
 				F324A6481B2154B100E92FA7 /* ManagedObjectType.swift in Sources */,
+				F3937B091B225ACD008965F6 /* OrderTests.swift in Sources */,
 				F324A6491B2154B100E92FA7 /* NSManagedObjectExtensions.swift in Sources */,
 				F324A64A1B2154B100E92FA7 /* NSManagedObjectContextExtensions.swift in Sources */,
 				F324A64B1B2154B100E92FA7 /* QueryType.swift in Sources */,
@@ -461,6 +466,7 @@
 				F35FFC541B2168B000471996 /* FilterTests.swift in Sources */,
 				F3B66E441AD8C6990045E578 /* EntityQuery.swift in Sources */,
 				F3B66E4A1AD8D9640045E578 /* NSManagedObjectContextExtensions.swift in Sources */,
+				F3937B081B225ACD008965F6 /* OrderTests.swift in Sources */,
 				F371EDF71AD91D0A007D1F32 /* ExpressionQuery.swift in Sources */,
 				F382C59D1AD9A31D00BD23C9 /* ManagedObjectIDQuery.swift in Sources */,
 				F382C5A11AD9A91B00BD23C9 /* ExpressionQueryType.swift in Sources */,

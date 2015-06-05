@@ -11,8 +11,13 @@ import XCTest
 
 class BaseTestCase: XCTestCase {
     
-    private(set) static var managedObjectContext: NSManagedObjectContext!
-    private static var once: dispatch_once_t = 0
+    private static var managedObjectContext: NSManagedObjectContext!
+    
+    var managedObjectContext: NSManagedObjectContext {
+        return BaseTestCase.managedObjectContext
+    }
+    
+    private static var once: dispatch_once_t = 0    
     
     override class func setUp() {
         dispatch_once(&once) {
