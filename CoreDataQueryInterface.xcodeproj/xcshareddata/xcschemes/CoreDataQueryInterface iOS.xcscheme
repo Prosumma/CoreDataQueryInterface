@@ -53,6 +53,9 @@
             </BuildableReference>
             <SkippedTests>
                <Test
+                  Identifier = "BaseTestCase">
+               </Test>
+               <Test
                   Identifier = "QueryTests">
                </Test>
             </SkippedTests>

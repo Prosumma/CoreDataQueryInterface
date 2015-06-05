@@ -24,7 +24,7 @@ public class Attribute : AttributeType {
     
     public var description: String {
         if let parent = _parent {
-            return (parent.description == "" ? "" : ".") + _name!
+            return (parent.description == "" ? "" : (parent.description + ".")) + _name!
         } else {
             return _name ?? ""
         }
