@@ -9,10 +9,28 @@
 import CoreData
 import XCTest
 
+/**
+    All tests ultimately call the overload of `filter` with `NSPredicate`,
+    so there is no need to test it directly.
+ */
 class FilterTests: BaseTestCase {
 
-    func testATest() {
-        
+    func testStringFilter() {
+        let query = EntityQuery.from(Employee).filter("department.name == %@", "Accounting")
+        if let accountingEmployeesCount = query.count(managedObjectContext: BaseTestCase.managedObjectContext) {
+            XCTAssertEqual(accountingEmployeesCount, 8, "accountingEmployeesCount should be 8, but was \(accountingEmployeesCount)")
+        } else {
+            XCTFail("accountingEmployeesCount should not be nil")
+        }
+    }
+    
+    func testAttributeEqualityFilter() {
+        let query = BaseTestCase.managedObjectContext.from(Employee).filter({ employee in employee.department.name == "Engineering" })
+        if let engineeringEmployeeCount = query.count() {
+            XCTAssertEqual(engineeringEmployeeCount, 8, "engineeringEmployeeCount should be 8, but was \(engineeringEmployeeCount)")
+        } else {
+            XCTFail("engineeringEmployeeCount should not be nil")
+        }
     }
     
 }
