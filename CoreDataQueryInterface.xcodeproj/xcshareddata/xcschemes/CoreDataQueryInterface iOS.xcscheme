@@ -29,8 +29,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F375B9A61AD8C53500575538"
-               BuildableName = "CoreDataQueryInterfaceTests.xctest"
-               BlueprintName = "CoreDataQueryInterfaceTests"
+               BuildableName = "CoreDataQueryInterfaceiOSTests.xctest"
+               BlueprintName = "CoreDataQueryInterfaceiOSTests"
                ReferencedContainer = "container:CoreDataQueryInterface.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,8 +47,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F375B9A61AD8C53500575538"
-               BuildableName = "CoreDataQueryInterfaceTests.xctest"
-               BlueprintName = "CoreDataQueryInterfaceTests"
+               BuildableName = "CoreDataQueryInterfaceiOSTests.xctest"
+               BlueprintName = "CoreDataQueryInterfaceiOSTests"
                ReferencedContainer = "container:CoreDataQueryInterface.xcodeproj">
             </BuildableReference>
             <SkippedTests>

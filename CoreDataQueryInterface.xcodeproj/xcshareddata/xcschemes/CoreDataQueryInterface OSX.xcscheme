@@ -20,6 +20,20 @@
                ReferencedContainer = "container:CoreDataQueryInterface.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F324A6341B21502600E92FA7"
+               BuildableName = "CoreDataQueryInterfaceOSXTests.xctest"
+               BlueprintName = "CoreDataQueryInterfaceOSXTests"
+               ReferencedContainer = "container:CoreDataQueryInterface.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -28,6 +42,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F324A6341B21502600E92FA7"
+               BuildableName = "CoreDataQueryInterfaceOSXTests.xctest"
+               BlueprintName = "CoreDataQueryInterfaceOSXTests"
+               ReferencedContainer = "container:CoreDataQueryInterface.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

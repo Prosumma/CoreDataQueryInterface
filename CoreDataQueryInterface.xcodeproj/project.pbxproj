@@ -13,6 +13,21 @@
 		F321BE851ADA3B4100AA9B40 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F321BE841ADA3B4100AA9B40 /* Expression.swift */; };
 		F321BE861ADA3B4100AA9B40 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F321BE841ADA3B4100AA9B40 /* Expression.swift */; };
 		F321BE871ADA3B4100AA9B40 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F321BE841ADA3B4100AA9B40 /* Expression.swift */; };
+		F324A63B1B21502700E92FA7 /* CoreDataQueryInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3CDA8181AD9099F00B9D8BF /* CoreDataQueryInterface.framework */; };
+		F324A6421B2154B100E92FA7 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37640AE1B1ED29200725F41 /* Attribute.swift */; };
+		F324A6431B2154B100E92FA7 /* EntityQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E421AD8C6990045E578 /* EntityQuery.swift */; };
+		F324A6441B2154B100E92FA7 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F321BE841ADA3B4100AA9B40 /* Expression.swift */; };
+		F324A6451B2154B100E92FA7 /* ExpressionQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371EDF51AD91D0A007D1F32 /* ExpressionQuery.swift */; };
+		F324A6461B2154B100E92FA7 /* ExpressionQueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F382C59F1AD9A91B00BD23C9 /* ExpressionQueryType.swift */; };
+		F324A6471B2154B100E92FA7 /* ManagedObjectIDQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F382C59B1AD9A31D00BD23C9 /* ManagedObjectIDQuery.swift */; };
+		F324A6481B2154B100E92FA7 /* ManagedObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37640B11B1EE74A00725F41 /* ManagedObjectType.swift */; };
+		F324A6491B2154B100E92FA7 /* NSManagedObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30C371D1ADB0115003B1C0E /* NSManagedObjectExtensions.swift */; };
+		F324A64A1B2154B100E92FA7 /* NSManagedObjectContextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E481AD8D9640045E578 /* NSManagedObjectContextExtensions.swift */; };
+		F324A64B1B2154B100E92FA7 /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371EDF91AD91F87007D1F32 /* QueryType.swift */; };
+		F324A64C1B2154B100E92FA7 /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371EDF11AD91BD8007D1F32 /* QueryBuilder.swift */; };
+		F324A64D1B2154B100E92FA7 /* Employees.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F3DF61B41ADCC2040003E75A /* Employees.xcdatamodeld */; };
+		F324A64E1B2154B100E92FA7 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF61B91ADCC66E0003E75A /* Employee.swift */; };
+		F324A64F1B2154B100E92FA7 /* CoreDataQueryInterfaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF61B71ADCC51C0003E75A /* CoreDataQueryInterfaceTests.swift */; };
 		F36D431D1B1EEC7500FEC792 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37640AE1B1ED29200725F41 /* Attribute.swift */; };
 		F36D431E1B1EEC7500FEC792 /* ManagedObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37640B11B1EE74A00725F41 /* ManagedObjectType.swift */; };
 		F371EDEA1AD913B9007D1F32 /* NSManagedObjectContextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E481AD8D9640045E578 /* NSManagedObjectContextExtensions.swift */; };
@@ -49,6 +64,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F324A63C1B21502700E92FA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F375B9931AD8C53500575538 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3CDA8171AD9099F00B9D8BF;
+			remoteInfo = CoreDataQueryInterfaceOSX;
+		};
 		F375B9A91AD8C53500575538 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F375B9931AD8C53500575538 /* Project object */;
@@ -61,13 +83,14 @@
 /* Begin PBXFileReference section */
 		F30C371D1ADB0115003B1C0E /* NSManagedObjectExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtensions.swift; sourceTree = "<group>"; };
 		F321BE841ADA3B4100AA9B40 /* Expression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
+		F324A6351B21502600E92FA7 /* CoreDataQueryInterfaceOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataQueryInterfaceOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F371EDF11AD91BD8007D1F32 /* QueryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryBuilder.swift; sourceTree = "<group>"; };
 		F371EDF51AD91D0A007D1F32 /* ExpressionQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionQuery.swift; sourceTree = "<group>"; };
 		F371EDF91AD91F87007D1F32 /* QueryType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryType.swift; sourceTree = "<group>"; };
 		F375B99C1AD8C53500575538 /* CoreDataQueryInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataQueryInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F375B9A01AD8C53500575538 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F375B9A11AD8C53500575538 /* CoreDataQueryInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataQueryInterface.h; sourceTree = "<group>"; };
-		F375B9A71AD8C53500575538 /* CoreDataQueryInterfaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataQueryInterfaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F375B9A71AD8C53500575538 /* CoreDataQueryInterfaceiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataQueryInterfaceiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F375B9AD1AD8C53500575538 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F37640AE1B1ED29200725F41 /* Attribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
 		F37640B11B1EE74A00725F41 /* ManagedObjectType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectType.swift; sourceTree = "<group>"; };
@@ -82,6 +105,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F324A6321B21502600E92FA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F324A63B1B21502700E92FA7 /* CoreDataQueryInterface.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F375B9981AD8C53500575538 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -120,8 +151,9 @@
 			isa = PBXGroup;
 			children = (
 				F375B99C1AD8C53500575538 /* CoreDataQueryInterface.framework */,
-				F375B9A71AD8C53500575538 /* CoreDataQueryInterfaceTests.xctest */,
+				F375B9A71AD8C53500575538 /* CoreDataQueryInterfaceiOSTests.xctest */,
 				F3CDA8181AD9099F00B9D8BF /* CoreDataQueryInterface.framework */,
+				F324A6351B21502600E92FA7 /* CoreDataQueryInterfaceOSXTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -195,6 +227,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		F324A6341B21502600E92FA7 /* CoreDataQueryInterfaceOSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F324A63E1B21502700E92FA7 /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfaceOSXTests" */;
+			buildPhases = (
+				F324A6311B21502600E92FA7 /* Sources */,
+				F324A6321B21502600E92FA7 /* Frameworks */,
+				F324A6331B21502600E92FA7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F324A63D1B21502700E92FA7 /* PBXTargetDependency */,
+			);
+			name = CoreDataQueryInterfaceOSXTests;
+			productName = CoreDataQueryInterfaceOSXTests;
+			productReference = F324A6351B21502600E92FA7 /* CoreDataQueryInterfaceOSXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F375B99B1AD8C53500575538 /* CoreDataQueryInterfaceiOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F375B9B21AD8C53500575538 /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfaceiOS" */;
@@ -213,9 +263,9 @@
 			productReference = F375B99C1AD8C53500575538 /* CoreDataQueryInterface.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		F375B9A61AD8C53500575538 /* CoreDataQueryInterfaceTests */ = {
+		F375B9A61AD8C53500575538 /* CoreDataQueryInterfaceiOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F375B9B51AD8C53500575538 /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfaceTests" */;
+			buildConfigurationList = F375B9B51AD8C53500575538 /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfaceiOSTests" */;
 			buildPhases = (
 				F375B9A31AD8C53500575538 /* Sources */,
 				F375B9A41AD8C53500575538 /* Frameworks */,
@@ -226,9 +276,9 @@
 			dependencies = (
 				F375B9AA1AD8C53500575538 /* PBXTargetDependency */,
 			);
-			name = CoreDataQueryInterfaceTests;
+			name = CoreDataQueryInterfaceiOSTests;
 			productName = CoreDataQueryInterfaceTests;
-			productReference = F375B9A71AD8C53500575538 /* CoreDataQueryInterfaceTests.xctest */;
+			productReference = F375B9A71AD8C53500575538 /* CoreDataQueryInterfaceiOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		F3CDA8171AD9099F00B9D8BF /* CoreDataQueryInterfaceOSX */ = {
@@ -258,6 +308,9 @@
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Prosumma LLC";
 				TargetAttributes = {
+					F324A6341B21502600E92FA7 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
 					F375B99B1AD8C53500575538 = {
 						CreatedOnToolsVersion = 6.3;
 					};
@@ -282,13 +335,21 @@
 			projectRoot = "";
 			targets = (
 				F375B99B1AD8C53500575538 /* CoreDataQueryInterfaceiOS */,
-				F375B9A61AD8C53500575538 /* CoreDataQueryInterfaceTests */,
+				F375B9A61AD8C53500575538 /* CoreDataQueryInterfaceiOSTests */,
 				F3CDA8171AD9099F00B9D8BF /* CoreDataQueryInterfaceOSX */,
+				F324A6341B21502600E92FA7 /* CoreDataQueryInterfaceOSXTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F324A6331B21502600E92FA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F375B99A1AD8C53500575538 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -313,6 +374,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F324A6311B21502600E92FA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F324A6421B2154B100E92FA7 /* Attribute.swift in Sources */,
+				F324A6431B2154B100E92FA7 /* EntityQuery.swift in Sources */,
+				F324A6441B2154B100E92FA7 /* Expression.swift in Sources */,
+				F324A6451B2154B100E92FA7 /* ExpressionQuery.swift in Sources */,
+				F324A6461B2154B100E92FA7 /* ExpressionQueryType.swift in Sources */,
+				F324A6471B2154B100E92FA7 /* ManagedObjectIDQuery.swift in Sources */,
+				F324A6481B2154B100E92FA7 /* ManagedObjectType.swift in Sources */,
+				F324A6491B2154B100E92FA7 /* NSManagedObjectExtensions.swift in Sources */,
+				F324A64A1B2154B100E92FA7 /* NSManagedObjectContextExtensions.swift in Sources */,
+				F324A64B1B2154B100E92FA7 /* QueryType.swift in Sources */,
+				F324A64C1B2154B100E92FA7 /* QueryBuilder.swift in Sources */,
+				F324A64D1B2154B100E92FA7 /* Employees.xcdatamodeld in Sources */,
+				F324A64E1B2154B100E92FA7 /* Employee.swift in Sources */,
+				F324A64F1B2154B100E92FA7 /* CoreDataQueryInterfaceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F375B9971AD8C53500575538 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -373,6 +455,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F324A63D1B21502700E92FA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3CDA8171AD9099F00B9D8BF /* CoreDataQueryInterfaceOSX */;
+			targetProxy = F324A63C1B21502700E92FA7 /* PBXContainerItemProxy */;
+		};
 		F375B9AA1AD8C53500575538 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F375B99B1AD8C53500575538 /* CoreDataQueryInterfaceiOS */;
@@ -381,6 +468,59 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		F324A63F1B21502700E92FA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CoreDataQueryInterfaceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F324A6401B21502700E92FA7 /* Demo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CoreDataQueryInterfaceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Demo;
+		};
+		F324A6411B21502700E92FA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CoreDataQueryInterfaceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		F375B9B01AD8C53500575538 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -679,6 +819,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F324A63E1B21502700E92FA7 /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfaceOSXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F324A63F1B21502700E92FA7 /* Debug */,
+				F324A6401B21502700E92FA7 /* Demo */,
+				F324A6411B21502700E92FA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		F375B9961AD8C53500575538 /* Build configuration list for PBXProject "CoreDataQueryInterface" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -699,7 +848,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F375B9B51AD8C53500575538 /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfaceTests" */ = {
+		F375B9B51AD8C53500575538 /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfaceiOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F375B9B61AD8C53500575538 /* Debug */,
