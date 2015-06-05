@@ -9,9 +9,6 @@
 import CoreData
 import XCTest
 
-/*
-Half tests, half examples.
-*/
 class CoreDataQueryInterfaceTests: XCTestCase {
-        
+    
 }
