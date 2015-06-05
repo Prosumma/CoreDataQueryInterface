@@ -11,4 +11,9 @@ import XCTest
 
 class CoreDataQueryInterfaceTests: XCTestCase {
     
+    func testThatATestIsATest() {
+        let fileManager = NSFileManager.defaultManager()
+        debugPrintln(fileManager.currentDirectoryPath)
+    }
+    
 }
