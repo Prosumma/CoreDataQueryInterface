@@ -7,11 +7,12 @@
     <entity name="Employee" representedClassName="CoreDataQueryInterfaceTests.Employee" syncable="YES">
         <attribute name="firstName" attributeType="String" syncable="YES"/>
         <attribute name="lastName" attributeType="String" syncable="YES"/>
+        <attribute name="nickName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="salary" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="department" maxCount="1" deletionRule="Nullify" destinationEntity="Department" inverseName="employees" inverseEntity="Department" syncable="YES"/>
     </entity>
     <elements>
         <element name="Department" positionX="-63" positionY="-18" width="128" height="75"/>
-        <element name="Employee" positionX="-54" positionY="0" width="128" height="105"/>
+        <element name="Employee" positionX="-54" positionY="0" width="128" height="120"/>
     </elements>
 </model>

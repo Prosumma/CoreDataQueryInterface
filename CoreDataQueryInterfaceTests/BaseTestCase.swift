@@ -55,6 +55,13 @@ class BaseTestCase: XCTestCase {
                 } else if attributes[2] == "Accounting" {
                     employee.department = accounting
                 }
+                if employee.firstName == "Gregory" {
+                    employee.nickName = "Greg"
+                } else if employee.firstName == "David" {
+                    employee.nickName = "Dave"
+                } else if employee.firstName == "Isabella" {
+                    employee.nickName = "Belle"
+                }
                 employee.salary = Int32(attributes[3].toInt()!)
             }
             

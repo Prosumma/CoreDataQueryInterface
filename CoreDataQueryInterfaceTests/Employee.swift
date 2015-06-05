@@ -13,6 +13,7 @@ class Employee: NSManagedObject, ManagedObjectType {
     typealias ManagedObjectAttributeType = EmployeeAttribute
     @NSManaged var firstName: String
     @NSManaged var lastName: String
+    @NSManaged var nickName: String?
     @NSManaged var salary: Int32
     @NSManaged var department: NSManagedObject
 }
@@ -20,6 +21,7 @@ class Employee: NSManagedObject, ManagedObjectType {
 class EmployeeAttribute : Attribute {
     private(set) var firstName: Attribute!
     private(set) var lastName: Attribute!
+    private(set) var nickName: Attribute!
     private(set) var salary: Attribute!
     private(set) var department: DepartmentAttribute!
     
@@ -27,6 +29,7 @@ class EmployeeAttribute : Attribute {
         super.init(name, parent: parent)
         firstName = Attribute("firstName", parent: self)
         lastName = Attribute("lastName", parent: self)
+        nickName = Attribute("nickName", parent: self)
         salary = Attribute("salary", parent: self)
         department = DepartmentAttribute("department", parent: self)
     }

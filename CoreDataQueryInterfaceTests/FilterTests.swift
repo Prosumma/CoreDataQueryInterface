@@ -12,6 +12,9 @@ import XCTest
 /**
     All tests ultimately call the overload of `filter` with `NSPredicate`,
     so there is no need to test it directly.
+
+    The number of potential operator/type combinations is very large, so
+    at the moment there isn't full test coverage for those.
  */
 class FilterTests: BaseTestCase {
 
@@ -87,4 +90,12 @@ class FilterTests: BaseTestCase {
         }
     }
     
+    func testComparisonToNil() {
+        let query = BaseTestCase.managedObjectContext.from(Employee).filter() { $0.nickName == nil as String? }
+        if let noNickNameCount = query.count() {
+            XCTAssertEqual(noNickNameCount, 10, "noNickNameCount should be 10, but was \(noNickNameCount)")
+        } else {
+            XCTFail("noNickNameCount should not be nil")
+        }
+    }
 }
