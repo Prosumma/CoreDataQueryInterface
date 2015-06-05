@@ -25,8 +25,6 @@
 		F324A64A1B2154B100E92FA7 /* NSManagedObjectContextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E481AD8D9640045E578 /* NSManagedObjectContextExtensions.swift */; };
 		F324A64B1B2154B100E92FA7 /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371EDF91AD91F87007D1F32 /* QueryType.swift */; };
 		F324A64C1B2154B100E92FA7 /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371EDF11AD91BD8007D1F32 /* QueryBuilder.swift */; };
-		F324A64D1B2154B100E92FA7 /* Employees.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F3DF61B41ADCC2040003E75A /* Employees.xcdatamodeld */; };
-		F324A64E1B2154B100E92FA7 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF61B91ADCC66E0003E75A /* Employee.swift */; };
 		F324A64F1B2154B100E92FA7 /* CoreDataQueryInterfaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF61B71ADCC51C0003E75A /* CoreDataQueryInterfaceTests.swift */; };
 		F36D431D1B1EEC7500FEC792 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37640AE1B1ED29200725F41 /* Attribute.swift */; };
 		F36D431E1B1EEC7500FEC792 /* ManagedObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37640B11B1EE74A00725F41 /* ManagedObjectType.swift */; };
@@ -58,9 +56,7 @@
 		F3B66E491AD8D9640045E578 /* NSManagedObjectContextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E481AD8D9640045E578 /* NSManagedObjectContextExtensions.swift */; };
 		F3B66E4A1AD8D9640045E578 /* NSManagedObjectContextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66E481AD8D9640045E578 /* NSManagedObjectContextExtensions.swift */; };
 		F3CDA8311AD90A6A00B9D8BF /* CoreDataQueryInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = F375B9A11AD8C53500575538 /* CoreDataQueryInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F3DF61B61ADCC2040003E75A /* Employees.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F3DF61B41ADCC2040003E75A /* Employees.xcdatamodeld */; };
 		F3DF61B81ADCC51C0003E75A /* CoreDataQueryInterfaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF61B71ADCC51C0003E75A /* CoreDataQueryInterfaceTests.swift */; };
-		F3DF61BA1ADCC66E0003E75A /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF61B91ADCC66E0003E75A /* Employee.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,9 +95,7 @@
 		F3B66E421AD8C6990045E578 /* EntityQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityQuery.swift; sourceTree = "<group>"; };
 		F3B66E481AD8D9640045E578 /* NSManagedObjectContextExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContextExtensions.swift; sourceTree = "<group>"; };
 		F3CDA8181AD9099F00B9D8BF /* CoreDataQueryInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataQueryInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3DF61B51ADCC2040003E75A /* Employees.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Employees.xcdatamodel; sourceTree = "<group>"; };
 		F3DF61B71ADCC51C0003E75A /* CoreDataQueryInterfaceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataQueryInterfaceTests.swift; sourceTree = "<group>"; };
-		F3DF61B91ADCC66E0003E75A /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,8 +183,6 @@
 		F375B9AB1AD8C53500575538 /* CoreDataQueryInterfaceTests */ = {
 			isa = PBXGroup;
 			children = (
-				F3DF61B41ADCC2040003E75A /* Employees.xcdatamodeld */,
-				F3DF61B91ADCC66E0003E75A /* Employee.swift */,
 				F3DF61B71ADCC51C0003E75A /* CoreDataQueryInterfaceTests.swift */,
 				F375B9AC1AD8C53500575538 /* Supporting Files */,
 			);
@@ -389,8 +381,6 @@
 				F324A64A1B2154B100E92FA7 /* NSManagedObjectContextExtensions.swift in Sources */,
 				F324A64B1B2154B100E92FA7 /* QueryType.swift in Sources */,
 				F324A64C1B2154B100E92FA7 /* QueryBuilder.swift in Sources */,
-				F324A64D1B2154B100E92FA7 /* Employees.xcdatamodeld in Sources */,
-				F324A64E1B2154B100E92FA7 /* Employee.swift in Sources */,
 				F324A64F1B2154B100E92FA7 /* CoreDataQueryInterfaceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,7 +410,6 @@
 				F36D431D1B1EEC7500FEC792 /* Attribute.swift in Sources */,
 				F36D431E1B1EEC7500FEC792 /* ManagedObjectType.swift in Sources */,
 				F371EDF31AD91BD8007D1F32 /* QueryBuilder.swift in Sources */,
-				F3DF61BA1ADCC66E0003E75A /* Employee.swift in Sources */,
 				F3DF61B81ADCC51C0003E75A /* CoreDataQueryInterfaceTests.swift in Sources */,
 				F371EDFB1AD91F87007D1F32 /* QueryType.swift in Sources */,
 				F30C371F1ADB0115003B1C0E /* NSManagedObjectExtensions.swift in Sources */,
@@ -428,7 +417,6 @@
 				F3B66E4A1AD8D9640045E578 /* NSManagedObjectContextExtensions.swift in Sources */,
 				F371EDF71AD91D0A007D1F32 /* ExpressionQuery.swift in Sources */,
 				F382C59D1AD9A31D00BD23C9 /* ManagedObjectIDQuery.swift in Sources */,
-				F3DF61B61ADCC2040003E75A /* Employees.xcdatamodeld in Sources */,
 				F382C5A11AD9A91B00BD23C9 /* ExpressionQueryType.swift in Sources */,
 				F321BE861ADA3B4100AA9B40 /* Expression.swift in Sources */,
 			);
@@ -827,6 +815,7 @@
 				F324A6411B21502700E92FA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F375B9961AD8C53500575538 /* Build configuration list for PBXProject "CoreDataQueryInterface" */ = {
 			isa = XCConfigurationList;
@@ -869,19 +858,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		F3DF61B41ADCC2040003E75A /* Employees.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				F3DF61B51ADCC2040003E75A /* Employees.xcdatamodel */,
-			);
-			currentVersion = F3DF61B51ADCC2040003E75A /* Employees.xcdatamodel */;
-			path = Employees.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = F375B9931AD8C53500575538 /* Project object */;
 }
