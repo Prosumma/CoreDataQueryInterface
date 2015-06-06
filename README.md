@@ -126,7 +126,11 @@ class Department : NSManagedObject, ManagedObjectType {
 }
 
 class DepartmentAttribute : Attribute {
-  var name: Attribute { return Attribute("name", parent: self) }
+  private(set) var name: Attribute!
+  required init(_ name: String?, parent: AttributeType? = nil) {
+    super.init(name, parent: parent)
+    name = Attribute("name", parent: self)
+  }
 }
 
 class Employee : NSManagedObject, ManagedObjectType {
@@ -138,12 +142,24 @@ class Employee : NSManagedObject, ManagedObjectType {
 }
 
 class EmployeeAttribute : Attribute {
-  var department: DepartmentAttribute { return DepartmentAttribute("department", parent: self) }
-  var firstName: Attribute { return Attribute("firstName", parent: self) }
-  var lastName: Attribute { return Attribute("lastName", parent: self) }
-  var salary: Attribute { return Attribute("salary", parent: self) }
+  private(set) var department: Attribute!
+  private(set) var firstName: Attribute!
+  private(set) var lastName: Attribute!
+  private(set) var salary: Attribute!
+
+  required init(_ name: String?, parent: AttributeType? = nil) {
+    super.init(name, parent: parent)
+    // Note that this is the DepartmentAttribute declared above.
+    // This allows us to say things like employee.department.name
+    department = DepartmentAttribute("department", parent: self)
+    firstName = Attribute("firstName", parent: self)
+    lastName = Attribute("lastName", parent: self)
+    salary = Attribute("salary", parent: self)
+  }
 }
 ```
+
+A tool is in the works to generate an `Attribute` class for each entity in your model.
 
 ### Starting a Query
 
