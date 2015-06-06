@@ -51,4 +51,65 @@ class OrderTests: BaseTestCase {
         }
     }
     
+    func testOrderAscendingWithMultipleStrings() {
+        let employeeLastName = "Davies"
+        let employeeDepartmentName = "Accounting"
+        if let employee = managedObjectContext.from(Employee).order("lastName", "department.name").first() {
+            XCTAssertEqual(employee.lastName, employeeLastName, "employee.lastName should be \(employeeLastName), but was \(employee.lastName)")
+            XCTAssertEqual(employee.department.name, employeeDepartmentName, "employee.department.name should be \(employeeDepartmentName), but was \(employee.department.name)")
+        } else {
+            XCTFail("employee should not be nil")
+        }
+    }
+    
+    func testOrderDescendingWithMultipleStrings() {
+        let employeeLastName = "Smith"
+        let employeeDepartmentName = "Sales"
+        if let employee = managedObjectContext.from(Employee).order(descending: "lastName", "department.name").first() {
+            XCTAssertEqual(employee.lastName, employeeLastName, "employee.lastName should be \(employeeLastName), but was \(employee.lastName)")
+            XCTAssertEqual(employee.department.name, employeeDepartmentName, "employee.department.name should be \(employeeDepartmentName), but was \(employee.department.name)")
+        } else {
+            XCTFail("employee should not be nil")
+        }
+    }
+    
+    func testOrderAscendingWithMultipleAttributes() {
+        let employeeLastName = "Davies"
+        let employeeDepartmentName = "Accounting"
+        // Compare {e in [e.lastName, e.department.name]} to the syntax used in testOrderDescendingWithMultipleAttributes.
+        // BOTH syntaxes are valid. Which you use is up to you.
+        if let employee = managedObjectContext.from(Employee).order({e in [e.lastName, e.department.name]}).first() {
+            XCTAssertEqual(employee.lastName, employeeLastName, "employee.lastName should be \(employeeLastName), but was \(employee.lastName)")
+            XCTAssertEqual(employee.department.name, employeeDepartmentName, "employee.department.name should be \(employeeDepartmentName), but was \(employee.department.name)")
+        } else {
+            XCTFail("employee should not be nil")
+        }
+    }
+    
+    func testOrderDescendingWithMultipleAttributes() {
+        let employeeLastName = "Smith"
+        let employeeDepartmentName = "Sales"
+        // Compare {$0.lastName}, {$0.department.name} to the syntax used in testOrderAscendingWithMultipleAttributes.
+        // BOTH syntaxes are valid. Which you use is up to you.
+        if let employee = managedObjectContext.from(Employee).order(descending: {$0.lastName}, {$0.department.name}).first() {
+            XCTAssertEqual(employee.lastName, employeeLastName, "employee.lastName should be \(employeeLastName), but was \(employee.lastName)")
+            XCTAssertEqual(employee.department.name, employeeDepartmentName, "employee.department.name should be \(employeeDepartmentName), but was \(employee.department.name)")
+        } else {
+            XCTFail("employee should not be nil")
+        }
+    }
+    
+    func testOrderChainedWithStringsAndAttributes() {
+        let employeeLastName = "Davies"
+        let employeeFirstName = "Jane"
+        let employeeDepartmentName = "Sales"
+        if let employee = managedObjectContext.from(Employee).order(descending: {$0.department.name}).order("lastName").order(descending: {e in e.firstName}).first() {
+            XCTAssertEqual(employee.department.name, employeeDepartmentName, "employee.department.name should be \(employeeDepartmentName), but was \(employee.department.name)")
+            XCTAssertEqual(employee.lastName, employeeLastName, "employee.lastName should be \(employeeLastName), but was \(employee.lastName)")
+            XCTAssertEqual(employee.firstName, employeeFirstName, "employee.firstName should be \(employeeFirstName), but was \(employee.firstName)")
+        } else {
+            XCTFail("employee should not be nil")
+        }
+    }
+    
 }

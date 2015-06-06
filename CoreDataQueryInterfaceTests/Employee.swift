@@ -15,7 +15,7 @@ class Employee: NSManagedObject, ManagedObjectType {
     @NSManaged var lastName: String
     @NSManaged var nickName: String?
     @NSManaged var salary: Int32
-    @NSManaged var department: NSManagedObject
+    @NSManaged var department: Department
 }
 
 class EmployeeAttribute : Attribute {
