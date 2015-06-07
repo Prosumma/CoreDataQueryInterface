@@ -101,7 +101,7 @@ class OrderTests: BaseTestCase {
     
     func testOrderChainedWithStringsAndAttributes() {
         let employeeLastName = "Davies"
-        let employeeFirstName = "Jane"
+        let employeeFirstName = "Jane    "
         let employeeDepartmentName = "Sales"
         if let employee = managedObjectContext.from(Employee).order(descending: {$0.department.name}).order("lastName").order(descending: {e in e.firstName}).first() {
             XCTAssertEqual(employee.department.name, employeeDepartmentName, "employee.department.name should be \(employeeDepartmentName), but was \(employee.department.name)")
