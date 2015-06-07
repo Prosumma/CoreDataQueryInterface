@@ -4,15 +4,15 @@
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/CoreDataQueryInterface.svg)](https://cocoapods.org)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-Core Data Query Interface (CDQI) is a type-safe, fluent, intuitive library for working with Core Data in Swift. If you've worked with LINQ in the C# world, you can think of CDQI as "LINQ for Core Data".
+Core Data Query Interface (CDQI) is a type-safe, fluent, intuitive library for working with Core Data in Swift. CDQI tremendously reduces the amount of code needed to do Core Data, and dramatically improves readability. If you've worked with LINQ in the C# world, CDQI is a bit like LINQ.
 
 ## Advantages
 
-The best way to understand the advantages of CDQI is to see an example.
+The best way to understand the advantages of CDQI is to see an example. (Be sure to scroll right to see the entire example).
 
 ```swift
 // Iteration causes the query to execute, though there are other ways
-for employee in managedObjectContext.from(Employee).filter({$0.salary > 70000 && $0.department == "Engineering"}).order(descending: {$0.lastName}, {$0.firstName}) {
+for employee in managedObjectContext.from(Employee).filter({$0.salary > 70000 && $0.department.name == "Engineering"}).order(descending: {$0.lastName}, {$0.firstName}) {
   debugPrintln("\(employee.lastName), \(employee.firstName)")
 }
 ```
@@ -21,14 +21,14 @@ Now compare this to vanilla Core Data:
 
 ```swift
 let fetchRequest = NSFetchRequest(entityName: "Employee")
-fetchRequest.predicate = NSPredicate(format: "salary > %ld && department == %@", 70000, "Engineering")
+fetchRequest.predicate = NSPredicate(format: "salary > %ld && department.name == %@", 70000, "Engineering")
 fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastName", ascending: false), NSSortDescriptor(key: "firstName", ascending: false)]
 for employee in managedObjectContext.executeFetchRequest(fetchRequest, error: nil)! as! [Employee] {
   debugPrintln("\(employee.lastName), \(employee.firstName)")
 }
 ```
 
-Which would you rather write?
+Compare the quantity and readability of the code in the two examples. Which would you rather write?
 
 ## Features
 
@@ -126,11 +126,7 @@ class Department : NSManagedObject, ManagedObjectType {
 }
 
 class DepartmentAttribute : Attribute {
-  private(set) var name: Attribute!
-  required init(_ name: String?, parent: AttributeType? = nil) {
-    super.init(name, parent: parent)
-    name = Attribute("name", parent: self)
-  }
+  var name: Attribute { return Attribute("name", parent: self) }
 }
 
 class Employee : NSManagedObject, ManagedObjectType {
@@ -142,24 +138,12 @@ class Employee : NSManagedObject, ManagedObjectType {
 }
 
 class EmployeeAttribute : Attribute {
-  private(set) var department: Attribute!
-  private(set) var firstName: Attribute!
-  private(set) var lastName: Attribute!
-  private(set) var salary: Attribute!
-
-  required init(_ name: String?, parent: AttributeType? = nil) {
-    super.init(name, parent: parent)
-    // Note that this is the DepartmentAttribute declared above.
-    // This allows us to say things like employee.department.name
-    department = DepartmentAttribute("department", parent: self)
-    firstName = Attribute("firstName", parent: self)
-    lastName = Attribute("lastName", parent: self)
-    salary = Attribute("salary", parent: self)
-  }
+  var department: DepartmentAttribute { return DepartmentAttribute("department", parent: self) }
+  var firstName: Attribute { return Attribute("firstName", parent: self) }
+  var lastName: Attribute { return Attribute("lastName", parent: self) }
+  var salary: Attribute { return Attribute("salary", parent: self) }
 }
 ```
-
-A tool is in the works to generate an `Attribute` class for each entity in your model.
 
 ### Starting a Query
 
