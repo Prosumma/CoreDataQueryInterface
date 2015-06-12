@@ -6,6 +6,10 @@
 
 Core Data Query Interface (CDQI) is a type-safe, fluent, intuitive library for working with Core Data in Swift. CDQI tremendously reduces the amount of code needed to do Core Data, and dramatically improves readability. If you've worked with LINQ in the C# world, CDQI is a bit like LINQ.
 
+## Swift 2.0
+
+Due to the recent announcement of Swift 2.0, all work on this version of CDQI is suspended. If you want to see my progress on the new CDQI, check out the `swift2.0` branch.
+
 ## Advantages
 
 The best way to understand the advantages of CDQI is to see an example. (Be sure to scroll right to see the entire example).
