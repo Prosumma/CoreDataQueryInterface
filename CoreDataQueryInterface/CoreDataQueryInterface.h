@@ -6,7 +6,7 @@
 //  Copyright © 2015 Prosumma LLC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Cocoa/Cocoa.h>
 
 //! Project version number for CoreDataQueryInterface.
 FOUNDATION_EXPORT double CoreDataQueryInterfaceVersionNumber;

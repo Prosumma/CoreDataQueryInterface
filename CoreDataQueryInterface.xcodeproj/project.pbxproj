@@ -7,12 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F30D1CD41B2A891200AF80A1 /* CoreDataQueryInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F30D1CCA1B2A891100AF80A1 /* CoreDataQueryInterface.framework */; };
 		F37C46A61B2A780200B35B1B /* CoreDataQueryInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = F37C46A51B2A780200B35B1B /* CoreDataQueryInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F37C46AD1B2A780200B35B1B /* CoreDataQueryInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F37C46A21B2A780200B35B1B /* CoreDataQueryInterface.framework */; };
 		F37C46B21B2A780200B35B1B /* CoreDataQueryInterfaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37C46B11B2A780200B35B1B /* CoreDataQueryInterfaceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F30D1CD51B2A891200AF80A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F37C46991B2A780200B35B1B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F30D1CC91B2A891100AF80A1;
+			remoteInfo = CoreDataQueryInterface;
+		};
 		F37C46AE1B2A780200B35B1B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F37C46991B2A780200B35B1B /* Project object */;
@@ -23,15 +31,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F30D1CCA1B2A891100AF80A1 /* CoreDataQueryInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataQueryInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F30D1CD31B2A891100AF80A1 /* CoreDataQueryInterfaceOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataQueryInterfaceOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F37C46A21B2A780200B35B1B /* CoreDataQueryInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataQueryInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F37C46A51B2A780200B35B1B /* CoreDataQueryInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataQueryInterface.h; sourceTree = "<group>"; };
 		F37C46A71B2A780200B35B1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F37C46AC1B2A780200B35B1B /* CoreDataQueryInterfaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataQueryInterfaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F37C46AC1B2A780200B35B1B /* CoreDataQueryInterfaceiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataQueryInterfaceiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F37C46B11B2A780200B35B1B /* CoreDataQueryInterfaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataQueryInterfaceTests.swift; sourceTree = "<group>"; };
 		F37C46B31B2A780200B35B1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F30D1CC61B2A891100AF80A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F30D1CD01B2A891100AF80A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F30D1CD41B2A891200AF80A1 /* CoreDataQueryInterface.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F37C469E1B2A780200B35B1B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -63,7 +88,9 @@
 			isa = PBXGroup;
 			children = (
 				F37C46A21B2A780200B35B1B /* CoreDataQueryInterface.framework */,
-				F37C46AC1B2A780200B35B1B /* CoreDataQueryInterfaceTests.xctest */,
+				F37C46AC1B2A780200B35B1B /* CoreDataQueryInterfaceiOSTests.xctest */,
+				F30D1CCA1B2A891100AF80A1 /* CoreDataQueryInterface.framework */,
+				F30D1CD31B2A891100AF80A1 /* CoreDataQueryInterfaceOSXTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,6 +116,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		F30D1CC71B2A891100AF80A1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F37C469F1B2A780200B35B1B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -100,9 +134,45 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		F37C46A11B2A780200B35B1B /* CoreDataQueryInterface */ = {
+		F30D1CC91B2A891100AF80A1 /* CoreDataQueryInterfaceOSX */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F37C46B61B2A780200B35B1B /* Build configuration list for PBXNativeTarget "CoreDataQueryInterface" */;
+			buildConfigurationList = F30D1CDB1B2A891200AF80A1 /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfaceOSX" */;
+			buildPhases = (
+				F30D1CC51B2A891100AF80A1 /* Sources */,
+				F30D1CC61B2A891100AF80A1 /* Frameworks */,
+				F30D1CC71B2A891100AF80A1 /* Headers */,
+				F30D1CC81B2A891100AF80A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoreDataQueryInterfaceOSX;
+			productName = CoreDataQueryInterface;
+			productReference = F30D1CCA1B2A891100AF80A1 /* CoreDataQueryInterface.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F30D1CD21B2A891100AF80A1 /* CoreDataQueryInterfaceOSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F30D1CDE1B2A891200AF80A1 /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfaceOSXTests" */;
+			buildPhases = (
+				F30D1CCF1B2A891100AF80A1 /* Sources */,
+				F30D1CD01B2A891100AF80A1 /* Frameworks */,
+				F30D1CD11B2A891100AF80A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F30D1CD61B2A891200AF80A1 /* PBXTargetDependency */,
+			);
+			name = CoreDataQueryInterfaceOSXTests;
+			productName = CoreDataQueryInterfaceTests;
+			productReference = F30D1CD31B2A891100AF80A1 /* CoreDataQueryInterfaceOSXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F37C46A11B2A780200B35B1B /* CoreDataQueryInterfaceiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F37C46B61B2A780200B35B1B /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfaceiOS" */;
 			buildPhases = (
 				F37C469D1B2A780200B35B1B /* Sources */,
 				F37C469E1B2A780200B35B1B /* Frameworks */,
@@ -113,14 +183,14 @@
 			);
 			dependencies = (
 			);
-			name = CoreDataQueryInterface;
+			name = CoreDataQueryInterfaceiOS;
 			productName = CoreDataQueryInterface;
 			productReference = F37C46A21B2A780200B35B1B /* CoreDataQueryInterface.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		F37C46AB1B2A780200B35B1B /* CoreDataQueryInterfaceTests */ = {
+		F37C46AB1B2A780200B35B1B /* CoreDataQueryInterfaceiOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F37C46B91B2A780200B35B1B /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfaceTests" */;
+			buildConfigurationList = F37C46B91B2A780200B35B1B /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfaceiOSTests" */;
 			buildPhases = (
 				F37C46A81B2A780200B35B1B /* Sources */,
 				F37C46A91B2A780200B35B1B /* Frameworks */,
@@ -131,9 +201,9 @@
 			dependencies = (
 				F37C46AF1B2A780200B35B1B /* PBXTargetDependency */,
 			);
-			name = CoreDataQueryInterfaceTests;
+			name = CoreDataQueryInterfaceiOSTests;
 			productName = CoreDataQueryInterfaceTests;
-			productReference = F37C46AC1B2A780200B35B1B /* CoreDataQueryInterfaceTests.xctest */;
+			productReference = F37C46AC1B2A780200B35B1B /* CoreDataQueryInterfaceiOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -145,6 +215,12 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Prosumma LLC";
 				TargetAttributes = {
+					F30D1CC91B2A891100AF80A1 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					F30D1CD21B2A891100AF80A1 = {
+						CreatedOnToolsVersion = 7.0;
+					};
 					F37C46A11B2A780200B35B1B = {
 						CreatedOnToolsVersion = 7.0;
 					};
@@ -165,13 +241,29 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F37C46A11B2A780200B35B1B /* CoreDataQueryInterface */,
-				F37C46AB1B2A780200B35B1B /* CoreDataQueryInterfaceTests */,
+				F37C46A11B2A780200B35B1B /* CoreDataQueryInterfaceiOS */,
+				F37C46AB1B2A780200B35B1B /* CoreDataQueryInterfaceiOSTests */,
+				F30D1CC91B2A891100AF80A1 /* CoreDataQueryInterfaceOSX */,
+				F30D1CD21B2A891100AF80A1 /* CoreDataQueryInterfaceOSXTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F30D1CC81B2A891100AF80A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F30D1CD11B2A891100AF80A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F37C46A01B2A780200B35B1B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -189,6 +281,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F30D1CC51B2A891100AF80A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F30D1CCF1B2A891100AF80A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F37C469D1B2A780200B35B1B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -207,14 +313,85 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F30D1CD61B2A891200AF80A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F30D1CC91B2A891100AF80A1 /* CoreDataQueryInterfaceOSX */;
+			targetProxy = F30D1CD51B2A891200AF80A1 /* PBXContainerItemProxy */;
+		};
 		F37C46AF1B2A780200B35B1B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F37C46A11B2A780200B35B1B /* CoreDataQueryInterface */;
+			target = F37C46A11B2A780200B35B1B /* CoreDataQueryInterfaceiOS */;
 			targetProxy = F37C46AE1B2A780200B35B1B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		F30D1CDC1B2A891200AF80A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = CoreDataQueryInterface/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.CoreDataQueryInterface;
+				PRODUCT_NAME = CoreDataQueryInterface;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		F30D1CDD1B2A891200AF80A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = CoreDataQueryInterface/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.CoreDataQueryInterface;
+				PRODUCT_NAME = CoreDataQueryInterface;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		F30D1CDF1B2A891200AF80A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CoreDataQueryInterfaceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.CoreDataQueryInterfaceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F30D1CE01B2A891200AF80A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CoreDataQueryInterfaceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.CoreDataQueryInterfaceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		F37C46B41B2A780200B35B1B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -315,7 +492,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.CoreDataQueryInterface;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CoreDataQueryInterface;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -331,7 +508,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.CoreDataQueryInterface;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CoreDataQueryInterface;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -359,6 +536,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F30D1CDB1B2A891200AF80A1 /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfaceOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F30D1CDC1B2A891200AF80A1 /* Debug */,
+				F30D1CDD1B2A891200AF80A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F30D1CDE1B2A891200AF80A1 /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfaceOSXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F30D1CDF1B2A891200AF80A1 /* Debug */,
+				F30D1CE01B2A891200AF80A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		F37C469C1B2A780200B35B1B /* Build configuration list for PBXProject "CoreDataQueryInterface" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -368,21 +561,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F37C46B61B2A780200B35B1B /* Build configuration list for PBXNativeTarget "CoreDataQueryInterface" */ = {
+		F37C46B61B2A780200B35B1B /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfaceiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F37C46B71B2A780200B35B1B /* Debug */,
 				F37C46B81B2A780200B35B1B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		F37C46B91B2A780200B35B1B /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfaceTests" */ = {
+		F37C46B91B2A780200B35B1B /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfaceiOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F37C46BA1B2A780200B35B1B /* Debug */,
 				F37C46BB1B2A780200B35B1B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
