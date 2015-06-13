@@ -163,12 +163,12 @@
 				F371ABCB1B2BBB15002A8A85 /* ExpressionQueryType.swift */,
 				F371ABD01B2BC122002A8A85 /* Filtering.swift */,
 				F371ABE41B2BC2E7002A8A85 /* ManagedObjectIDQuery.swift */,
+				F371ABEA1B2BC4CB002A8A85 /* NSManagedObjectContextExtensions.swift */,
 				F371ABD51B2BC14A002A8A85 /* Ordering.swift */,
+				F37A46F41B2BD77900D4EE61 /* Predicate.swift */,
 				F371ABB71B2BA8BA002A8A85 /* QueryBuilder.swift */,
 				F371ABC61B2BB80E002A8A85 /* QueryType.swift */,
 				F371ABDF1B2BC1F7002A8A85 /* Selecting.swift */,
-				F371ABEA1B2BC4CB002A8A85 /* NSManagedObjectContextExtensions.swift */,
-				F37A46F41B2BD77900D4EE61 /* Predicate.swift */,
 			);
 			name = Source;
 			sourceTree = "<group>";

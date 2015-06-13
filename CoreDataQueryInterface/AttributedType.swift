@@ -83,6 +83,10 @@ public func ==<A: AttributeType>(lhs: A, rhs: BooleanType?) -> NSPredicate {
     }
 }
 
+public func ==<A: AttributeType>(lhs: A, rhs: [AnyObject]) -> NSPredicate {
+    return NSPredicate(format: "%K IN %@", String(lhs), rhs)
+}
+
 /* != */
 
 public func !=<A: AttributeType>(lhs: A, rhs: NSObject?) -> NSPredicate {
@@ -140,6 +144,10 @@ public func !=<A: AttributeType>(lhs: A, rhs: BooleanType?) -> NSPredicate {
     } else {
         return NSPredicate(format: "%K != NIL", String(lhs))
     }
+}
+
+public func !=<A: AttributeType>(lhs: A, rhs: [AnyObject]) -> NSPredicate {
+    return !(lhs == rhs)
 }
 
 /* > */
