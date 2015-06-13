@@ -31,9 +31,10 @@ class FilterTests : BaseTestCase {
     }
     
     func testEmptyKeyRepresentsSelf() {
-        let firstEmployee = try! managedObjectContext.from(Employee).first()!
-        let managedObjectID = firstEmployee.objectID
-        let foundEmployee = try! managedObjectContext.from(Employee).filter({ $0 == managedObjectID }).first()!
-        XCTAssertEqual(managedObjectID, foundEmployee.objectID)
+        let employeeQuery = managedObjectContext.from(Employee)
+        let firstObjectID = try! employeeQuery.objectIDs().first()!
+        // Since employee in the filter resolves to the empty string, it is treated as SELF in the query.
+        let firstEmployee = try! employeeQuery.filter({ employee in employee == firstObjectID }).first()!
+        XCTAssertEqual(firstObjectID, firstEmployee.objectID)
     }
 }

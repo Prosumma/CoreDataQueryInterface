@@ -16,4 +16,7 @@ public struct EntityQuery<E: EntityType> : ExpressionQueryType {
         self.builder = builder
     }
     public let resultType = NSFetchRequestResultType.ManagedObjectResultType
+    public func objectIDs() -> ManagedObjectIDQuery<E> {
+        return ManagedObjectIDQuery(builder: builder)
+    }
 }
