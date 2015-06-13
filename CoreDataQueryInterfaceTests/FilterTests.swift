@@ -34,7 +34,7 @@ class FilterTests : BaseTestCase {
         let employeeQuery = managedObjectContext.from(Employee)
         let firstObjectID = try! employeeQuery.objectIDs().first()!
         // Since employee in the filter resolves to the empty string, it is treated as SELF in the query.
-        let firstEmployee = try! employeeQuery.filter({ employee in employee == firstObjectID }).first()!
+        let firstEmployee = try! employeeQuery.filter({ employee in employee == [firstObjectID] }).first()!
         XCTAssertEqual(firstObjectID, firstEmployee.objectID)
     }
 }
