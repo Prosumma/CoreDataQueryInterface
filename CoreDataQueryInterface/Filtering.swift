@@ -21,4 +21,18 @@ extension QueryType {
         let predicate = createPredicate(attribute)
         return filter(predicate)
     }
+    
+    public func filter(format: String, arguments: CVaListPointer) -> Self {
+        let predicate = NSPredicate(format: format, arguments: arguments)
+        return filter(predicate)
+    }
+    
+    public func filter(format: String, arguments: [AnyObject]) -> Self {
+        let predicate = NSPredicate(format: format, argumentArray: arguments)
+        return filter(predicate)
+    }
+    
+    public func filter(format: String, _ arguments: CVarArgType...) -> Self {
+        return withVaList(arguments) { arg in filter(format, arguments: arg) }
+    }
 }

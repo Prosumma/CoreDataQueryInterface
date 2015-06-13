@@ -21,6 +21,9 @@ public struct QueryBuilder<E: EntityType> {
         request.resultType = resultType
         if let limit = limit { request.fetchLimit = Int(limit) }
         if !predicates.isEmpty { request.predicate = NSCompoundPredicate.andPredicateWithSubpredicates(predicates) }
+        if !descriptors.isEmpty && (resultType == .ManagedObjectResultType || resultType == .ManagedObjectIDResultType) {
+            request.sortDescriptors = descriptors
+        }
         return request
     }
     

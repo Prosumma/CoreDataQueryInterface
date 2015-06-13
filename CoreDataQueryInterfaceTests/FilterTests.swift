@@ -15,4 +15,18 @@ class FilterTests : BaseTestCase {
         XCTAssertEqual(engineerCount, 8)
     }
     
+    func testCountEmployeesNamedSmith() {
+        let smithCount = try! managedObjectContext.from(Employee).filter("lastName == %@", "Smith").count()
+        XCTAssertEqual(smithCount, 5)
+    }
+    
+    func testCountEmployeesWithoutNickName() {
+        let nickNameLessCount = try! managedObjectContext.from(Employee).filter({ employee in employee.nickName == nil as String? }).count()
+        XCTAssertEqual(nickNameLessCount, 10)
+    }
+    
+    func testCountEmployeesNameNotMortonOrJones() {
+        let notMortonOrJonesCount = try! managedObjectContext.from(Employee).filter({ $0.lastName != ["Morton", "Jones"] }).count()
+        XCTAssertEqual(notMortonOrJonesCount, 15)
+    }
 }

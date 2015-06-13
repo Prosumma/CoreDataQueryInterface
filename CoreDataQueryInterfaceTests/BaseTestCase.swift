@@ -47,9 +47,9 @@ class BaseTestCase: XCTestCase {
             for line in lines {
                 let fields = line.componentsSeparatedByString("|")
                 let employee = managedObjectContext.newEntity(Employee)
-                employee.firstName = fields[0]
+                employee.firstName = fields[1]
                 employee.nickName = nickNames[employee.firstName]
-                employee.lastName = fields[1]
+                employee.lastName = fields[0]
                 employee.salary = Int32(fields[3])!
                 if let department = try! managedObjectContext.from(Department).filter({ $0.name == fields[2] }).first() {
                     employee.department = department
