@@ -80,8 +80,10 @@
 		F37A46F81B2BD77900D4EE61 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A46F41B2BD77900D4EE61 /* Predicate.swift */; };
 		F37C46A61B2A780200B35B1B /* CoreDataQueryInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = F37C46A51B2A780200B35B1B /* CoreDataQueryInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F37C46AD1B2A780200B35B1B /* CoreDataQueryInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F37C46A21B2A780200B35B1B /* CoreDataQueryInterface.framework */; };
-		F37C46B21B2A780200B35B1B /* CoreDataQueryInterfaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37C46B11B2A780200B35B1B /* CoreDataQueryInterfaceTests.swift */; };
-		F3FE7AD11B2B87CF00AA5845 /* CoreDataQueryInterfaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37C46B11B2A780200B35B1B /* CoreDataQueryInterfaceTests.swift */; };
+		F37C46B21B2A780200B35B1B /* SanityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37C46B11B2A780200B35B1B /* SanityTests.swift */; };
+		F3E6B5501B2BFCA500F735EE /* FilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */; };
+		F3E6B5511B2BFCA500F735EE /* FilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */; };
+		F3FE7AD11B2B87CF00AA5845 /* SanityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37C46B11B2A780200B35B1B /* SanityTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,8 +130,9 @@
 		F37C46A51B2A780200B35B1B /* CoreDataQueryInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataQueryInterface.h; sourceTree = "<group>"; };
 		F37C46A71B2A780200B35B1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F37C46AC1B2A780200B35B1B /* CoreDataQueryInterfaceiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataQueryInterfaceiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F37C46B11B2A780200B35B1B /* CoreDataQueryInterfaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataQueryInterfaceTests.swift; sourceTree = "<group>"; };
+		F37C46B11B2A780200B35B1B /* SanityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanityTests.swift; sourceTree = "<group>"; };
 		F37C46B31B2A780200B35B1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,8 +229,9 @@
 				F3251A0E1B2BDE6E0031B817 /* Department.swift */,
 				F3251A0F1B2BDE6E0031B817 /* Employee.swift */,
 				F3251A041B2BDA190031B817 /* BaseTestCase.swift */,
-				F37C46B11B2A780200B35B1B /* CoreDataQueryInterfaceTests.swift */,
+				F37C46B11B2A780200B35B1B /* SanityTests.swift */,
 				F37C46B31B2A780200B35B1B /* Info.plist */,
+				F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */,
 			);
 			path = CoreDataQueryInterfaceTests;
 			sourceTree = "<group>";
@@ -445,9 +449,10 @@
 				F3251A131B2BDE6E0031B817 /* Employee.swift in Sources */,
 				F37A46F81B2BD77900D4EE61 /* Predicate.swift in Sources */,
 				F371ABBB1B2BA8BA002A8A85 /* QueryBuilder.swift in Sources */,
+				F3E6B5511B2BFCA500F735EE /* FilterTests.swift in Sources */,
 				F371ABD91B2BC14A002A8A85 /* Ordering.swift in Sources */,
 				F371ABD41B2BC122002A8A85 /* Filtering.swift in Sources */,
-				F3FE7AD11B2B87CF00AA5845 /* CoreDataQueryInterfaceTests.swift in Sources */,
+				F3FE7AD11B2B87CF00AA5845 /* SanityTests.swift in Sources */,
 				F3251A111B2BDE6E0031B817 /* Department.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -494,9 +499,10 @@
 				F3251A121B2BDE6E0031B817 /* Employee.swift in Sources */,
 				F37A46F61B2BD77900D4EE61 /* Predicate.swift in Sources */,
 				F371ABB91B2BA8BA002A8A85 /* QueryBuilder.swift in Sources */,
+				F3E6B5501B2BFCA500F735EE /* FilterTests.swift in Sources */,
 				F371ABD71B2BC14A002A8A85 /* Ordering.swift in Sources */,
 				F371ABD21B2BC122002A8A85 /* Filtering.swift in Sources */,
-				F37C46B21B2A780200B35B1B /* CoreDataQueryInterfaceTests.swift in Sources */,
+				F37C46B21B2A780200B35B1B /* SanityTests.swift in Sources */,
 				F3251A101B2BDE6E0031B817 /* Department.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

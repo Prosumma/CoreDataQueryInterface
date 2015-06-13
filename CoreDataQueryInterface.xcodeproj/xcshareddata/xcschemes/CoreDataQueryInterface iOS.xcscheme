@@ -37,6 +37,11 @@
                BlueprintName = "CoreDataQueryInterfaceiOSTests"
                ReferencedContainer = "container:CoreDataQueryInterface.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "BaseTestCase">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
