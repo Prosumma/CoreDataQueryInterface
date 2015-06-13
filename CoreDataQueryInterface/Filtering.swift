@@ -17,7 +17,7 @@ extension QueryType {
     }
     
     public func filter(createPredicate: QueryEntityType.EntityAttributeType -> NSPredicate) -> Self {
-        let attribute = QueryEntityType.EntityAttributeType(name: nil, parent: nil)
+        let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
         let predicate = createPredicate(attribute)
         return filter(predicate)
     }

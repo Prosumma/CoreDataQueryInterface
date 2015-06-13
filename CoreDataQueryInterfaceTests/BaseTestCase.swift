@@ -34,6 +34,8 @@ class BaseTestCase: XCTestCase {
             let managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
             
             
+            
+            self.managedObjectContext = managedObjectContext
         }
     }
     

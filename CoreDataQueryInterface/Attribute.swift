@@ -8,10 +8,6 @@
 
 import Foundation
 
-public protocol AttributeType : CustomStringConvertible {
-    init(_ name: String?, parent: AttributeType?)
-}
-
 public class Attribute : AttributeType {
     
     private let _name: String?
