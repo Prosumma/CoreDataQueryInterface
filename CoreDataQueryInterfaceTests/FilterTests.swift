@@ -29,4 +29,11 @@ class FilterTests : BaseTestCase {
         let notMortonOrJonesCount = try! managedObjectContext.from(Employee).filter({ $0.lastName != ["Morton", "Jones"] }).count()
         XCTAssertEqual(notMortonOrJonesCount, 15)
     }
+    
+    func testEmptyKeyRepresentsSelf() {
+        let firstEmployee = try! managedObjectContext.from(Employee).first()!
+        let managedObjectID = firstEmployee.objectID
+        let foundEmployee = try! managedObjectContext.from(Employee).filter({ $0 == managedObjectID }).first()!
+        XCTAssertEqual(managedObjectID, foundEmployee.objectID)
+    }
 }

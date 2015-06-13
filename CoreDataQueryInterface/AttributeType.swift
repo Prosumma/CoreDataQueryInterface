@@ -13,10 +13,15 @@ public protocol AttributeType: CustomStringConvertible {
 }
 
 public func predicate<A: AttributeType, T>(lhs: A, _ op: String, _ rhs: T?, _ convert: T -> NSObject) -> NSPredicate {
-    if let rhs = rhs {
+    let key = String(lhs)
+    if let rhs = rhs where !key.isEmpty {
         return NSPredicate(format: "%K \(op) %@", String(lhs), convert(rhs))
-    } else {
+    } else if let rhs = rhs where key.isEmpty {
+        return NSPredicate(format: "SELF \(op) %@", convert(rhs))
+    } else if !key.isEmpty {
         return NSPredicate(format: "%K \(op) NIL", String(lhs))
+    } else {
+        return NSPredicate(format: "SELF \(op) NIL")
     }
 }
 
@@ -84,7 +89,12 @@ public func ==<A: AttributeType>(lhs: A, rhs: BooleanType?) -> NSPredicate {
 }
 
 public func ==<A: AttributeType>(lhs: A, rhs: [AnyObject]) -> NSPredicate {
-    return NSPredicate(format: "%K IN %@", String(lhs), rhs)
+    let key = String(lhs)
+    if !key.isEmpty {
+        return NSPredicate(format: "%K IN %@", String(lhs), rhs)
+    } else {
+        return NSPredicate(format: "SELF IN %@", rhs)
+    }
 }
 
 /* != */

@@ -14,13 +14,17 @@ public class Attribute : AttributeType {
     private let _parent: AttributeType?
 
     public required init(_ name: String? = nil, parent: AttributeType? = nil) {
+        if let _ = parent { assert(name != nil) }
+        if let name = name { assert(!name.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).isEmpty) }
         _name = name
         _parent = parent
     }
     
     public var description: String {
         if let parent = _parent {
-            return (String(parent) == "" ? "" : (String(parent) + ".")) + _name!
+            let parentName = String(parent)
+            let prefix = parentName.isEmpty ? "" : (parentName + ".")
+            return prefix + _name!
         } else {
             return _name ?? ""
         }
