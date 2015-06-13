@@ -14,9 +14,22 @@ public struct QueryBuilder<E: EntityType> {
     public var predicates = [NSPredicate]()
     public var descriptors = [NSSortDescriptor]()
     public var expressions = [NSExpressionDescription]() // TODO: Change this
+    public var limit: UInt?
     
     public func request(resultType: NSFetchRequestResultType) -> NSFetchRequest {
-        return NSFetchRequest()
+        let request = NSFetchRequest(entityName: E.entityName)
+        request.resultType = resultType
+        if let limit = limit { request.fetchLimit = Int(limit) }
+        if !predicates.isEmpty { request.predicate = NSCompoundPredicate.andPredicateWithSubpredicates(predicates) }
+        return request
+    }
+    
+    public func count(var managedObjectContext: NSManagedObjectContext?) throws -> UInt {
+        managedObjectContext = managedObjectContext ?? self.managedObjectContext
+        var error: NSError?
+        let count = managedObjectContext!.countForFetchRequest(self.request(.CountResultType), error: &error)
+        guard error == nil else { throw error! }
+        return UInt(count)
     }
     
     public func execute<R: AnyObject>(var managedObjectContext: NSManagedObjectContext?, resultType: NSFetchRequestResultType) throws -> [R] {

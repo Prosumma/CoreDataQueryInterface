@@ -568,6 +568,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.CoreDataQueryInterfaceTests;
+				PRODUCT_MODULE_NAME = CoreDataQueryInterfaceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -581,6 +582,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.CoreDataQueryInterfaceTests;
+				PRODUCT_MODULE_NAME = CoreDataQueryInterfaceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -716,6 +718,7 @@
 				INFOPLIST_FILE = CoreDataQueryInterfaceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.CoreDataQueryInterfaceTests;
+				PRODUCT_MODULE_NAME = CoreDataQueryInterfaceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -726,6 +729,7 @@
 				INFOPLIST_FILE = CoreDataQueryInterfaceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.CoreDataQueryInterfaceTests;
+				PRODUCT_MODULE_NAME = CoreDataQueryInterfaceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

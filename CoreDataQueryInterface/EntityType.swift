@@ -7,14 +7,19 @@
 //
 
 import Foundation
+import ObjectiveC
 
 public protocol EntityType: class {
     typealias EntityAttributeType: AttributeType = Attribute
     static var entityName: String { get }
 }
 
+public func entityNameForManagedObject(type: AnyClass!) -> String {
+    return String.fromCString(class_getName(type))!.componentsSeparatedByString(".").last!
+}
+
 extension EntityType {
     public static var entityName: String {
-        return ""
+        return entityNameForManagedObject(self)
     }
 }

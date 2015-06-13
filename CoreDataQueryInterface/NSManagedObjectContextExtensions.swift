@@ -12,7 +12,7 @@ import Foundation
 extension NSManagedObjectContext {
     
     public func from<E: EntityType>(E.Type) -> EntityQuery<E> {
-        return EntityQuery(builder: QueryBuilder())
+        return EntityQuery(builder: QueryBuilder()).context(self)
     }
     
     public func newEntity<E: NSManagedObject where E: EntityType>(E.Type) -> E {

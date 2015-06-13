@@ -27,4 +27,9 @@ extension QueryType {
         builder.managedObjectContext = managedObjectContext
         return Self(builder: builder)
     }
+    public func limit(limit: UInt?) -> Self {
+        var builder = self.builder
+        builder.limit = limit
+        return self
+    }
 }
