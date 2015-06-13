@@ -16,6 +16,10 @@
 		F3251A091B2BDA260031B817 /* Employees.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3251A071B2BDA260031B817 /* Employees.txt */; };
 		F3251A0C1B2BDA2D0031B817 /* Company.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F3251A0A1B2BDA2D0031B817 /* Company.xcdatamodeld */; };
 		F3251A0D1B2BDA2D0031B817 /* Company.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F3251A0A1B2BDA2D0031B817 /* Company.xcdatamodeld */; };
+		F3251A101B2BDE6E0031B817 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3251A0E1B2BDE6E0031B817 /* Department.swift */; };
+		F3251A111B2BDE6E0031B817 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3251A0E1B2BDE6E0031B817 /* Department.swift */; };
+		F3251A121B2BDE6E0031B817 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3251A0F1B2BDE6E0031B817 /* Employee.swift */; };
+		F3251A131B2BDE6E0031B817 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3251A0F1B2BDE6E0031B817 /* Employee.swift */; };
 		F371ABA61B2B8EE2002A8A85 /* AttributedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABA51B2B8EE2002A8A85 /* AttributedType.swift */; };
 		F371ABA71B2B8EE2002A8A85 /* AttributedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABA51B2B8EE2002A8A85 /* AttributedType.swift */; };
 		F371ABB31B2BA5FA002A8A85 /* AttributedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABA51B2B8EE2002A8A85 /* AttributedType.swift */; };
@@ -104,6 +108,8 @@
 		F3251A041B2BDA190031B817 /* BaseTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
 		F3251A071B2BDA260031B817 /* Employees.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Employees.txt; sourceTree = "<group>"; };
 		F3251A0B1B2BDA2D0031B817 /* Company.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Company.xcdatamodel; sourceTree = "<group>"; };
+		F3251A0E1B2BDE6E0031B817 /* Department.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
+		F3251A0F1B2BDE6E0031B817 /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		F371ABA51B2B8EE2002A8A85 /* AttributedType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedType.swift; sourceTree = "<group>"; };
 		F371ABB71B2BA8BA002A8A85 /* QueryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryBuilder.swift; sourceTree = "<group>"; };
 		F371ABBC1B2BA9DA002A8A85 /* EntityQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityQuery.swift; sourceTree = "<group>"; };
@@ -217,6 +223,8 @@
 			children = (
 				F3251A0A1B2BDA2D0031B817 /* Company.xcdatamodeld */,
 				F3251A071B2BDA260031B817 /* Employees.txt */,
+				F3251A0E1B2BDE6E0031B817 /* Department.swift */,
+				F3251A0F1B2BDE6E0031B817 /* Employee.swift */,
 				F3251A041B2BDA190031B817 /* BaseTestCase.swift */,
 				F37C46B11B2A780200B35B1B /* CoreDataQueryInterfaceTests.swift */,
 				F37C46B31B2A780200B35B1B /* Info.plist */,
@@ -434,11 +442,13 @@
 				F3251A061B2BDA190031B817 /* BaseTestCase.swift in Sources */,
 				F371ABEE1B2BC4CB002A8A85 /* NSManagedObjectContextExtensions.swift in Sources */,
 				F371ABCA1B2BB80E002A8A85 /* QueryType.swift in Sources */,
+				F3251A131B2BDE6E0031B817 /* Employee.swift in Sources */,
 				F37A46F81B2BD77900D4EE61 /* Predicate.swift in Sources */,
 				F371ABBB1B2BA8BA002A8A85 /* QueryBuilder.swift in Sources */,
 				F371ABD91B2BC14A002A8A85 /* Ordering.swift in Sources */,
 				F371ABD41B2BC122002A8A85 /* Filtering.swift in Sources */,
 				F3FE7AD11B2B87CF00AA5845 /* CoreDataQueryInterfaceTests.swift in Sources */,
+				F3251A111B2BDE6E0031B817 /* Department.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,11 +491,13 @@
 				F3251A051B2BDA190031B817 /* BaseTestCase.swift in Sources */,
 				F371ABEC1B2BC4CB002A8A85 /* NSManagedObjectContextExtensions.swift in Sources */,
 				F371ABC81B2BB80E002A8A85 /* QueryType.swift in Sources */,
+				F3251A121B2BDE6E0031B817 /* Employee.swift in Sources */,
 				F37A46F61B2BD77900D4EE61 /* Predicate.swift in Sources */,
 				F371ABB91B2BA8BA002A8A85 /* QueryBuilder.swift in Sources */,
 				F371ABD71B2BC14A002A8A85 /* Ordering.swift in Sources */,
 				F371ABD21B2BC122002A8A85 /* Filtering.swift in Sources */,
 				F37C46B21B2A780200B35B1B /* CoreDataQueryInterfaceTests.swift in Sources */,
+				F3251A101B2BDE6E0031B817 /* Department.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

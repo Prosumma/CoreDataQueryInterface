@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol EntityType: class {
-    typealias EntityAttributedType: AttributedType = Attribute
+    typealias EntityAttributeType: AttributedType = Attribute
     static var entityName: String { get }
 }
 
