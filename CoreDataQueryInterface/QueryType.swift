@@ -22,4 +22,9 @@ extension QueryType {
     public static func from(QueryEntityType.Type) -> Self {
         return self(builder: QueryBuilder())
     }
+    public func context(managedObjectContext: NSManagedObjectContext) -> Self {
+        var builder = self.builder
+        builder.managedObjectContext = managedObjectContext
+        return Self(builder: builder)
+    }
 }
