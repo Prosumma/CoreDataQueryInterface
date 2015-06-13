@@ -10,9 +10,7 @@ import CoreData
 import Foundation
 
 extension NSManagedObjectContext {
-    
 //    public func from(type: EntityType.Type) -> EntityQuery<EntityType> {
 //        return EntityQuery<EntityType>(builder: QueryBuilder<EntityType>())
 //    }
-    
 }

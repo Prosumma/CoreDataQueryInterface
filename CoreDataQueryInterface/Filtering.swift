@@ -9,9 +9,16 @@
 import Foundation
 
 extension QueryType {
+    
     public func filter(predicate: NSPredicate) -> Self {
         var builder = self.builder
         builder.predicates.append(predicate)
         return Self(builder: builder)
+    }
+    
+    public func filter(createPredicate: QueryEntityType.EntityAttributedType -> NSPredicate) -> Self {
+        let attribute = QueryEntityType.EntityAttributedType(name: nil, parent: nil)
+        let predicate = createPredicate(attribute)
+        return filter(predicate)
     }
 }
