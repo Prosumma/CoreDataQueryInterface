@@ -9,13 +9,11 @@
 import CoreData
 import Foundation
 
-public struct EntityQuery<E: EntityType> : QueryType {
+public struct EntityQuery<E: EntityType> : ExpressionQueryType {
     typealias QueryResultType = E
-    
     public let builder: QueryBuilder<E>
     public init(builder: QueryBuilder<E>) {
         self.builder = builder
     }
-    
     public let resultType = NSFetchRequestResultType.ManagedObjectResultType
 }
