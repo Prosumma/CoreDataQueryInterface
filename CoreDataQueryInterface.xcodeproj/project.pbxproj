@@ -8,9 +8,50 @@
 
 /* Begin PBXBuildFile section */
 		F30D1CD41B2A891200AF80A1 /* CoreDataQueryInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F30D1CCA1B2A891100AF80A1 /* CoreDataQueryInterface.framework */; };
+		F3158D1C1B2A91040041B125 /* EntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3158D1B1B2A91040041B125 /* EntityType.swift */; };
+		F3158D1D1B2A91040041B125 /* EntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3158D1B1B2A91040041B125 /* EntityType.swift */; };
+		F371ABA61B2B8EE2002A8A85 /* AttributedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABA51B2B8EE2002A8A85 /* AttributedType.swift */; };
+		F371ABA71B2B8EE2002A8A85 /* AttributedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABA51B2B8EE2002A8A85 /* AttributedType.swift */; };
+		F371ABB31B2BA5FA002A8A85 /* AttributedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABA51B2B8EE2002A8A85 /* AttributedType.swift */; };
+		F371ABB41B2BA5FA002A8A85 /* EntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3158D1B1B2A91040041B125 /* EntityType.swift */; };
+		F371ABB51B2BA5FA002A8A85 /* AttributedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABA51B2B8EE2002A8A85 /* AttributedType.swift */; };
+		F371ABB61B2BA5FA002A8A85 /* EntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3158D1B1B2A91040041B125 /* EntityType.swift */; };
+		F371ABB81B2BA8BA002A8A85 /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABB71B2BA8BA002A8A85 /* QueryBuilder.swift */; };
+		F371ABB91B2BA8BA002A8A85 /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABB71B2BA8BA002A8A85 /* QueryBuilder.swift */; };
+		F371ABBA1B2BA8BA002A8A85 /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABB71B2BA8BA002A8A85 /* QueryBuilder.swift */; };
+		F371ABBB1B2BA8BA002A8A85 /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABB71B2BA8BA002A8A85 /* QueryBuilder.swift */; };
+		F371ABBD1B2BA9DA002A8A85 /* EntityQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABBC1B2BA9DA002A8A85 /* EntityQuery.swift */; };
+		F371ABBE1B2BA9DA002A8A85 /* EntityQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABBC1B2BA9DA002A8A85 /* EntityQuery.swift */; };
+		F371ABBF1B2BA9DA002A8A85 /* EntityQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABBC1B2BA9DA002A8A85 /* EntityQuery.swift */; };
+		F371ABC01B2BA9DA002A8A85 /* EntityQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABBC1B2BA9DA002A8A85 /* EntityQuery.swift */; };
+		F371ABC21B2BAC28002A8A85 /* ExpressionQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABC11B2BAC28002A8A85 /* ExpressionQuery.swift */; };
+		F371ABC31B2BAC28002A8A85 /* ExpressionQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABC11B2BAC28002A8A85 /* ExpressionQuery.swift */; };
+		F371ABC41B2BAC28002A8A85 /* ExpressionQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABC11B2BAC28002A8A85 /* ExpressionQuery.swift */; };
+		F371ABC51B2BAC28002A8A85 /* ExpressionQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABC11B2BAC28002A8A85 /* ExpressionQuery.swift */; };
+		F371ABC71B2BB80E002A8A85 /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABC61B2BB80E002A8A85 /* QueryType.swift */; };
+		F371ABC81B2BB80E002A8A85 /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABC61B2BB80E002A8A85 /* QueryType.swift */; };
+		F371ABC91B2BB80E002A8A85 /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABC61B2BB80E002A8A85 /* QueryType.swift */; };
+		F371ABCA1B2BB80E002A8A85 /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABC61B2BB80E002A8A85 /* QueryType.swift */; };
+		F371ABCC1B2BBB15002A8A85 /* ExpressionQueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABCB1B2BBB15002A8A85 /* ExpressionQueryType.swift */; };
+		F371ABCD1B2BBB15002A8A85 /* ExpressionQueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABCB1B2BBB15002A8A85 /* ExpressionQueryType.swift */; };
+		F371ABCE1B2BBB15002A8A85 /* ExpressionQueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABCB1B2BBB15002A8A85 /* ExpressionQueryType.swift */; };
+		F371ABCF1B2BBB15002A8A85 /* ExpressionQueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABCB1B2BBB15002A8A85 /* ExpressionQueryType.swift */; };
+		F371ABD11B2BC122002A8A85 /* Filtering.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABD01B2BC122002A8A85 /* Filtering.swift */; };
+		F371ABD21B2BC122002A8A85 /* Filtering.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABD01B2BC122002A8A85 /* Filtering.swift */; };
+		F371ABD31B2BC122002A8A85 /* Filtering.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABD01B2BC122002A8A85 /* Filtering.swift */; };
+		F371ABD41B2BC122002A8A85 /* Filtering.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABD01B2BC122002A8A85 /* Filtering.swift */; };
+		F371ABD61B2BC14A002A8A85 /* Ordering.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABD51B2BC14A002A8A85 /* Ordering.swift */; };
+		F371ABD71B2BC14A002A8A85 /* Ordering.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABD51B2BC14A002A8A85 /* Ordering.swift */; };
+		F371ABD81B2BC14A002A8A85 /* Ordering.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABD51B2BC14A002A8A85 /* Ordering.swift */; };
+		F371ABD91B2BC14A002A8A85 /* Ordering.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABD51B2BC14A002A8A85 /* Ordering.swift */; };
+		F371ABDB1B2BC15C002A8A85 /* Executing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABDA1B2BC15C002A8A85 /* Executing.swift */; };
+		F371ABDC1B2BC15C002A8A85 /* Executing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABDA1B2BC15C002A8A85 /* Executing.swift */; };
+		F371ABDD1B2BC15C002A8A85 /* Executing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABDA1B2BC15C002A8A85 /* Executing.swift */; };
+		F371ABDE1B2BC15C002A8A85 /* Executing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABDA1B2BC15C002A8A85 /* Executing.swift */; };
 		F37C46A61B2A780200B35B1B /* CoreDataQueryInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = F37C46A51B2A780200B35B1B /* CoreDataQueryInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F37C46AD1B2A780200B35B1B /* CoreDataQueryInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F37C46A21B2A780200B35B1B /* CoreDataQueryInterface.framework */; };
 		F37C46B21B2A780200B35B1B /* CoreDataQueryInterfaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37C46B11B2A780200B35B1B /* CoreDataQueryInterfaceTests.swift */; };
+		F3FE7AD11B2B87CF00AA5845 /* CoreDataQueryInterfaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37C46B11B2A780200B35B1B /* CoreDataQueryInterfaceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +74,16 @@
 /* Begin PBXFileReference section */
 		F30D1CCA1B2A891100AF80A1 /* CoreDataQueryInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataQueryInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F30D1CD31B2A891100AF80A1 /* CoreDataQueryInterfaceOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataQueryInterfaceOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3158D1B1B2A91040041B125 /* EntityType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityType.swift; sourceTree = "<group>"; };
+		F371ABA51B2B8EE2002A8A85 /* AttributedType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedType.swift; sourceTree = "<group>"; };
+		F371ABB71B2BA8BA002A8A85 /* QueryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryBuilder.swift; sourceTree = "<group>"; };
+		F371ABBC1B2BA9DA002A8A85 /* EntityQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityQuery.swift; sourceTree = "<group>"; };
+		F371ABC11B2BAC28002A8A85 /* ExpressionQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionQuery.swift; sourceTree = "<group>"; };
+		F371ABC61B2BB80E002A8A85 /* QueryType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryType.swift; sourceTree = "<group>"; };
+		F371ABCB1B2BBB15002A8A85 /* ExpressionQueryType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionQueryType.swift; sourceTree = "<group>"; };
+		F371ABD01B2BC122002A8A85 /* Filtering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filtering.swift; sourceTree = "<group>"; };
+		F371ABD51B2BC14A002A8A85 /* Ordering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ordering.swift; sourceTree = "<group>"; };
+		F371ABDA1B2BC15C002A8A85 /* Executing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Executing.swift; sourceTree = "<group>"; };
 		F37C46A21B2A780200B35B1B /* CoreDataQueryInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataQueryInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F37C46A51B2A780200B35B1B /* CoreDataQueryInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataQueryInterface.h; sourceTree = "<group>"; };
 		F37C46A71B2A780200B35B1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,7 +150,17 @@
 			isa = PBXGroup;
 			children = (
 				F37C46A51B2A780200B35B1B /* CoreDataQueryInterface.h */,
+				F371ABA51B2B8EE2002A8A85 /* AttributedType.swift */,
+				F371ABBC1B2BA9DA002A8A85 /* EntityQuery.swift */,
+				F3158D1B1B2A91040041B125 /* EntityType.swift */,
+				F371ABC11B2BAC28002A8A85 /* ExpressionQuery.swift */,
+				F371ABCB1B2BBB15002A8A85 /* ExpressionQueryType.swift */,
+				F371ABB71B2BA8BA002A8A85 /* QueryBuilder.swift */,
+				F371ABC61B2BB80E002A8A85 /* QueryType.swift */,
 				F37C46A71B2A780200B35B1B /* Info.plist */,
+				F371ABD01B2BC122002A8A85 /* Filtering.swift */,
+				F371ABD51B2BC14A002A8A85 /* Ordering.swift */,
+				F371ABDA1B2BC15C002A8A85 /* Executing.swift */,
 			);
 			path = CoreDataQueryInterface;
 			sourceTree = "<group>";
@@ -212,6 +273,7 @@
 		F37C46991B2A780200B35B1B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Prosumma LLC";
 				TargetAttributes = {
@@ -285,6 +347,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F371ABCE1B2BBB15002A8A85 /* ExpressionQueryType.swift in Sources */,
+				F371ABBA1B2BA8BA002A8A85 /* QueryBuilder.swift in Sources */,
+				F371ABA71B2B8EE2002A8A85 /* AttributedType.swift in Sources */,
+				F371ABD81B2BC14A002A8A85 /* Ordering.swift in Sources */,
+				F371ABDD1B2BC15C002A8A85 /* Executing.swift in Sources */,
+				F3158D1D1B2A91040041B125 /* EntityType.swift in Sources */,
+				F371ABC41B2BAC28002A8A85 /* ExpressionQuery.swift in Sources */,
+				F371ABD31B2BC122002A8A85 /* Filtering.swift in Sources */,
+				F371ABC91B2BB80E002A8A85 /* QueryType.swift in Sources */,
+				F371ABBF1B2BA9DA002A8A85 /* EntityQuery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +364,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F371ABC01B2BA9DA002A8A85 /* EntityQuery.swift in Sources */,
+				F371ABB51B2BA5FA002A8A85 /* AttributedType.swift in Sources */,
+				F371ABDE1B2BC15C002A8A85 /* Executing.swift in Sources */,
+				F371ABC51B2BAC28002A8A85 /* ExpressionQuery.swift in Sources */,
+				F371ABB61B2BA5FA002A8A85 /* EntityType.swift in Sources */,
+				F371ABCF1B2BBB15002A8A85 /* ExpressionQueryType.swift in Sources */,
+				F371ABCA1B2BB80E002A8A85 /* QueryType.swift in Sources */,
+				F371ABBB1B2BA8BA002A8A85 /* QueryBuilder.swift in Sources */,
+				F371ABD91B2BC14A002A8A85 /* Ordering.swift in Sources */,
+				F371ABD41B2BC122002A8A85 /* Filtering.swift in Sources */,
+				F3FE7AD11B2B87CF00AA5845 /* CoreDataQueryInterfaceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +382,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F371ABCC1B2BBB15002A8A85 /* ExpressionQueryType.swift in Sources */,
+				F371ABB81B2BA8BA002A8A85 /* QueryBuilder.swift in Sources */,
+				F371ABA61B2B8EE2002A8A85 /* AttributedType.swift in Sources */,
+				F371ABD61B2BC14A002A8A85 /* Ordering.swift in Sources */,
+				F371ABDB1B2BC15C002A8A85 /* Executing.swift in Sources */,
+				F3158D1C1B2A91040041B125 /* EntityType.swift in Sources */,
+				F371ABC21B2BAC28002A8A85 /* ExpressionQuery.swift in Sources */,
+				F371ABD11B2BC122002A8A85 /* Filtering.swift in Sources */,
+				F371ABC71B2BB80E002A8A85 /* QueryType.swift in Sources */,
+				F371ABBD1B2BA9DA002A8A85 /* EntityQuery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +399,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F371ABBE1B2BA9DA002A8A85 /* EntityQuery.swift in Sources */,
+				F371ABB31B2BA5FA002A8A85 /* AttributedType.swift in Sources */,
+				F371ABDC1B2BC15C002A8A85 /* Executing.swift in Sources */,
+				F371ABC31B2BAC28002A8A85 /* ExpressionQuery.swift in Sources */,
+				F371ABB41B2BA5FA002A8A85 /* EntityType.swift in Sources */,
+				F371ABCD1B2BBB15002A8A85 /* ExpressionQueryType.swift in Sources */,
+				F371ABC81B2BB80E002A8A85 /* QueryType.swift in Sources */,
+				F371ABB91B2BA8BA002A8A85 /* QueryBuilder.swift in Sources */,
+				F371ABD71B2BC14A002A8A85 /* Ordering.swift in Sources */,
+				F371ABD21B2BC122002A8A85 /* Filtering.swift in Sources */,
 				F37C46B21B2A780200B35B1B /* CoreDataQueryInterfaceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,6 +432,7 @@
 		F30D1CDC1B2A891200AF80A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -343,12 +447,14 @@
 				PRODUCT_NAME = CoreDataQueryInterface;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		F30D1CDD1B2A891200AF80A1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -484,6 +590,7 @@
 		F37C46B71B2A780200B35B1B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -494,12 +601,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.CoreDataQueryInterface;
 				PRODUCT_NAME = CoreDataQueryInterface;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		F37C46B81B2A780200B35B1B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -543,6 +652,7 @@
 				F30D1CDD1B2A891200AF80A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F30D1CDE1B2A891200AF80A1 /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfaceOSXTests" */ = {
 			isa = XCConfigurationList;
@@ -551,6 +661,7 @@
 				F30D1CE01B2A891200AF80A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F37C469C1B2A780200B35B1B /* Build configuration list for PBXProject "CoreDataQueryInterface" */ = {
 			isa = XCConfigurationList;

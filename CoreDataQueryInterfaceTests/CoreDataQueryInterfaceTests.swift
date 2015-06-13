@@ -6,7 +6,13 @@
 //  Copyright © 2015 Prosumma LLC. All rights reserved.
 //
 
+import CoreData
 import XCTest
+
+class Watusi: NSManagedObject, EntityType {
+    
+    
+}
 
 class CoreDataQueryInterfaceTests: XCTestCase {
     
