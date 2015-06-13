@@ -10,6 +10,12 @@
 		F30D1CD41B2A891200AF80A1 /* CoreDataQueryInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F30D1CCA1B2A891100AF80A1 /* CoreDataQueryInterface.framework */; };
 		F3158D1C1B2A91040041B125 /* EntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3158D1B1B2A91040041B125 /* EntityType.swift */; };
 		F3158D1D1B2A91040041B125 /* EntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3158D1B1B2A91040041B125 /* EntityType.swift */; };
+		F3251A051B2BDA190031B817 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3251A041B2BDA190031B817 /* BaseTestCase.swift */; };
+		F3251A061B2BDA190031B817 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3251A041B2BDA190031B817 /* BaseTestCase.swift */; };
+		F3251A081B2BDA260031B817 /* Employees.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3251A071B2BDA260031B817 /* Employees.txt */; };
+		F3251A091B2BDA260031B817 /* Employees.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3251A071B2BDA260031B817 /* Employees.txt */; };
+		F3251A0C1B2BDA2D0031B817 /* Company.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F3251A0A1B2BDA2D0031B817 /* Company.xcdatamodeld */; };
+		F3251A0D1B2BDA2D0031B817 /* Company.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F3251A0A1B2BDA2D0031B817 /* Company.xcdatamodeld */; };
 		F371ABA61B2B8EE2002A8A85 /* AttributedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABA51B2B8EE2002A8A85 /* AttributedType.swift */; };
 		F371ABA71B2B8EE2002A8A85 /* AttributedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABA51B2B8EE2002A8A85 /* AttributedType.swift */; };
 		F371ABB31B2BA5FA002A8A85 /* AttributedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABA51B2B8EE2002A8A85 /* AttributedType.swift */; };
@@ -95,6 +101,9 @@
 		F30D1CCA1B2A891100AF80A1 /* CoreDataQueryInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataQueryInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F30D1CD31B2A891100AF80A1 /* CoreDataQueryInterfaceOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataQueryInterfaceOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3158D1B1B2A91040041B125 /* EntityType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityType.swift; sourceTree = "<group>"; };
+		F3251A041B2BDA190031B817 /* BaseTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
+		F3251A071B2BDA260031B817 /* Employees.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Employees.txt; sourceTree = "<group>"; };
+		F3251A0B1B2BDA2D0031B817 /* Company.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Company.xcdatamodel; sourceTree = "<group>"; };
 		F371ABA51B2B8EE2002A8A85 /* AttributedType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedType.swift; sourceTree = "<group>"; };
 		F371ABB71B2BA8BA002A8A85 /* QueryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryBuilder.swift; sourceTree = "<group>"; };
 		F371ABBC1B2BA9DA002A8A85 /* EntityQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityQuery.swift; sourceTree = "<group>"; };
@@ -206,6 +215,9 @@
 		F37C46B01B2A780200B35B1B /* CoreDataQueryInterfaceTests */ = {
 			isa = PBXGroup;
 			children = (
+				F3251A0A1B2BDA2D0031B817 /* Company.xcdatamodeld */,
+				F3251A071B2BDA260031B817 /* Employees.txt */,
+				F3251A041B2BDA190031B817 /* BaseTestCase.swift */,
 				F37C46B11B2A780200B35B1B /* CoreDataQueryInterfaceTests.swift */,
 				F37C46B31B2A780200B35B1B /* Info.plist */,
 			);
@@ -361,6 +373,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3251A091B2BDA260031B817 /* Employees.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +388,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3251A081B2BDA260031B817 /* Employees.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,8 +428,10 @@
 				F371ABE81B2BC2E7002A8A85 /* ManagedObjectIDQuery.swift in Sources */,
 				F371ABDE1B2BC15C002A8A85 /* Executing.swift in Sources */,
 				F371ABC51B2BAC28002A8A85 /* ExpressionQuery.swift in Sources */,
+				F3251A0D1B2BDA2D0031B817 /* Company.xcdatamodeld in Sources */,
 				F371ABB61B2BA5FA002A8A85 /* EntityType.swift in Sources */,
 				F371ABCF1B2BBB15002A8A85 /* ExpressionQueryType.swift in Sources */,
+				F3251A061B2BDA190031B817 /* BaseTestCase.swift in Sources */,
 				F371ABEE1B2BC4CB002A8A85 /* NSManagedObjectContextExtensions.swift in Sources */,
 				F371ABCA1B2BB80E002A8A85 /* QueryType.swift in Sources */,
 				F37A46F81B2BD77900D4EE61 /* Predicate.swift in Sources */,
@@ -459,8 +475,10 @@
 				F371ABE61B2BC2E7002A8A85 /* ManagedObjectIDQuery.swift in Sources */,
 				F371ABDC1B2BC15C002A8A85 /* Executing.swift in Sources */,
 				F371ABC31B2BAC28002A8A85 /* ExpressionQuery.swift in Sources */,
+				F3251A0C1B2BDA2D0031B817 /* Company.xcdatamodeld in Sources */,
 				F371ABB41B2BA5FA002A8A85 /* EntityType.swift in Sources */,
 				F371ABCD1B2BBB15002A8A85 /* ExpressionQueryType.swift in Sources */,
+				F3251A051B2BDA190031B817 /* BaseTestCase.swift in Sources */,
 				F371ABEC1B2BC4CB002A8A85 /* NSManagedObjectContextExtensions.swift in Sources */,
 				F371ABC81B2BB80E002A8A85 /* QueryType.swift in Sources */,
 				F37A46F61B2BD77900D4EE61 /* Predicate.swift in Sources */,
@@ -749,6 +767,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F3251A0A1B2BDA2D0031B817 /* Company.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F3251A0B1B2BDA2D0031B817 /* Company.xcdatamodel */,
+			);
+			currentVersion = F3251A0B1B2BDA2D0031B817 /* Company.xcdatamodel */;
+			path = Company.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F37C46991B2A780200B35B1B /* Project object */;
 }

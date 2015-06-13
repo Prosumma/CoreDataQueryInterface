@@ -9,11 +9,6 @@
 import CoreData
 import XCTest
 
-class Watusi: NSManagedObject, EntityType {
-    
-    
-}
-
 class CoreDataQueryInterfaceTests: XCTestCase {
     
     override func setUp() {
