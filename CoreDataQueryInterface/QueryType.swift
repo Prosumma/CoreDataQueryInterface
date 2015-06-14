@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-public protocol QueryType {
+public protocol QueryType: SequenceType {
     typealias QueryEntityType: EntityType
     typealias QueryResultType: AnyObject
     
