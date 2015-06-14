@@ -10,8 +10,8 @@ import CoreData
 import Foundation
 
 extension QueryType {
-    public var request: NSFetchRequest {
-        return builder.request(resultType)
+    public func request(managedObjectContext: NSManagedObjectContext? = nil) -> NSFetchRequest {
+        return builder.request(builder.managedObjectContext ?? managedObjectContext!, resultType: resultType)
     }
     public func count(managedObjectContext: NSManagedObjectContext? = nil) throws -> UInt {
         return try builder.count(managedObjectContext)

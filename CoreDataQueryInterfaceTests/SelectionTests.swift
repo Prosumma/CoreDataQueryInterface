@@ -1,0 +1,16 @@
+//
+//  SelectionTests.swift
+//  CoreDataQueryInterface
+//
+//  Created by Gregory Higley on 6/13/15.
+//  Copyright © 2015 Prosumma LLC. All rights reserved.
+//
+
+import CoreData
+import Foundation
+import ObjectiveC
+
+class SelectionTests : BaseTestCase {
+ 
+    
+}

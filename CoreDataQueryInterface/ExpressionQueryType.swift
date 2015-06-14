@@ -8,6 +8,5 @@
 
 import Foundation
 
-public protocol ExpressionQueryType : QueryType {
-}
+public protocol ExpressionQueryType : QueryType {}
 
