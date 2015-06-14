@@ -97,10 +97,10 @@
 		F3B0E3301B2DEEB5008D7EEF /* ExpressionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E32C1B2DEEB5008D7EEF /* ExpressionHelper.swift */; };
 		F3B0E3321B2DEED1008D7EEF /* ExpressionHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E3311B2DEED1008D7EEF /* ExpressionHelperTests.swift */; };
 		F3B0E3331B2DEED1008D7EEF /* ExpressionHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E3311B2DEED1008D7EEF /* ExpressionHelperTests.swift */; };
-		F3B0E3351B2DF035008D7EEF /* ExpressionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E3341B2DF035008D7EEF /* ExpressionType.swift */; };
-		F3B0E3361B2DF035008D7EEF /* ExpressionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E3341B2DF035008D7EEF /* ExpressionType.swift */; };
-		F3B0E3371B2DF035008D7EEF /* ExpressionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E3341B2DF035008D7EEF /* ExpressionType.swift */; };
-		F3B0E3381B2DF035008D7EEF /* ExpressionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E3341B2DF035008D7EEF /* ExpressionType.swift */; };
+		F3B0E33A1B2DFD70008D7EEF /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E3391B2DFD70008D7EEF /* Expression.swift */; };
+		F3B0E33B1B2DFD70008D7EEF /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E3391B2DFD70008D7EEF /* Expression.swift */; };
+		F3B0E33C1B2DFD70008D7EEF /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E3391B2DFD70008D7EEF /* Expression.swift */; };
+		F3B0E33D1B2DFD70008D7EEF /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E3391B2DFD70008D7EEF /* Expression.swift */; };
 		F3E6B5501B2BFCA500F735EE /* FilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */; };
 		F3E6B5511B2BFCA500F735EE /* FilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */; };
 		F3E6B5531B2C01CC00F735EE /* OrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6B5521B2C01CC00F735EE /* OrderTests.swift */; };
@@ -159,7 +159,7 @@
 		F37C46B31B2A780200B35B1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3B0E32C1B2DEEB5008D7EEF /* ExpressionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionHelper.swift; sourceTree = "<group>"; };
 		F3B0E3311B2DEED1008D7EEF /* ExpressionHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionHelperTests.swift; sourceTree = "<group>"; };
-		F3B0E3341B2DF035008D7EEF /* ExpressionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionType.swift; sourceTree = "<group>"; };
+		F3B0E3391B2DFD70008D7EEF /* Expression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
 		F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTests.swift; sourceTree = "<group>"; };
 		F3E6B5521B2C01CC00F735EE /* OrderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -229,10 +229,10 @@
 				F371ABBC1B2BA9DA002A8A85 /* EntityQuery.swift */,
 				F3158D1B1B2A91040041B125 /* EntityType.swift */,
 				F371ABDA1B2BC15C002A8A85 /* Executing.swift */,
+				F3B0E3391B2DFD70008D7EEF /* Expression.swift */,
 				F3B0E32C1B2DEEB5008D7EEF /* ExpressionHelper.swift */,
 				F371ABC11B2BAC28002A8A85 /* ExpressionQuery.swift */,
 				F371ABCB1B2BBB15002A8A85 /* ExpressionQueryType.swift */,
-				F3B0E3341B2DF035008D7EEF /* ExpressionType.swift */,
 				F371ABD01B2BC122002A8A85 /* Filtering.swift */,
 				F335675D1B2D18A0007853DB /* Iterating.swift */,
 				F371ABE41B2BC2E7002A8A85 /* ManagedObjectIDQuery.swift */,
@@ -479,9 +479,9 @@
 				F367DE321B2D6149009C1020 /* OrderType.swift in Sources */,
 				F371ABD31B2BC122002A8A85 /* Filtering.swift in Sources */,
 				F371ABED1B2BC4CB002A8A85 /* NSManagedObjectContextExtensions.swift in Sources */,
-				F3B0E3371B2DF035008D7EEF /* ExpressionType.swift in Sources */,
 				F371ABC91B2BB80E002A8A85 /* QueryType.swift in Sources */,
 				F371ABBF1B2BA9DA002A8A85 /* EntityQuery.swift in Sources */,
+				F3B0E33C1B2DFD70008D7EEF /* Expression.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +495,7 @@
 				F3B0E3331B2DEED1008D7EEF /* ExpressionHelperTests.swift in Sources */,
 				F371ABE31B2BC1F7002A8A85 /* Selecting.swift in Sources */,
 				F371ABC01B2BA9DA002A8A85 /* EntityQuery.swift in Sources */,
+				F3B0E33D1B2DFD70008D7EEF /* Expression.swift in Sources */,
 				F367DE331B2D6149009C1020 /* OrderType.swift in Sources */,
 				F33567611B2D18A0007853DB /* Iterating.swift in Sources */,
 				F371ABB51B2BA5FA002A8A85 /* AttributeType.swift in Sources */,
@@ -502,7 +503,6 @@
 				F371ABDE1B2BC15C002A8A85 /* Executing.swift in Sources */,
 				F371ABC51B2BAC28002A8A85 /* ExpressionQuery.swift in Sources */,
 				F3251A0D1B2BDA2D0031B817 /* Company.xcdatamodeld in Sources */,
-				F3B0E3381B2DF035008D7EEF /* ExpressionType.swift in Sources */,
 				F371ABB61B2BA5FA002A8A85 /* EntityType.swift in Sources */,
 				F3B0E3301B2DEEB5008D7EEF /* ExpressionHelper.swift in Sources */,
 				F371ABCF1B2BBB15002A8A85 /* ExpressionQueryType.swift in Sources */,
@@ -540,9 +540,9 @@
 				F367DE301B2D6149009C1020 /* OrderType.swift in Sources */,
 				F371ABD11B2BC122002A8A85 /* Filtering.swift in Sources */,
 				F371ABEB1B2BC4CB002A8A85 /* NSManagedObjectContextExtensions.swift in Sources */,
-				F3B0E3351B2DF035008D7EEF /* ExpressionType.swift in Sources */,
 				F371ABC71B2BB80E002A8A85 /* QueryType.swift in Sources */,
 				F371ABBD1B2BA9DA002A8A85 /* EntityQuery.swift in Sources */,
+				F3B0E33A1B2DFD70008D7EEF /* Expression.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,6 +556,7 @@
 				F3B0E3321B2DEED1008D7EEF /* ExpressionHelperTests.swift in Sources */,
 				F371ABE11B2BC1F7002A8A85 /* Selecting.swift in Sources */,
 				F371ABBE1B2BA9DA002A8A85 /* EntityQuery.swift in Sources */,
+				F3B0E33B1B2DFD70008D7EEF /* Expression.swift in Sources */,
 				F367DE311B2D6149009C1020 /* OrderType.swift in Sources */,
 				F335675F1B2D18A0007853DB /* Iterating.swift in Sources */,
 				F371ABB31B2BA5FA002A8A85 /* AttributeType.swift in Sources */,
@@ -563,7 +564,6 @@
 				F371ABDC1B2BC15C002A8A85 /* Executing.swift in Sources */,
 				F371ABC31B2BAC28002A8A85 /* ExpressionQuery.swift in Sources */,
 				F3251A0C1B2BDA2D0031B817 /* Company.xcdatamodeld in Sources */,
-				F3B0E3361B2DF035008D7EEF /* ExpressionType.swift in Sources */,
 				F371ABB41B2BA5FA002A8A85 /* EntityType.swift in Sources */,
 				F3B0E32E1B2DEEB5008D7EEF /* ExpressionHelper.swift in Sources */,
 				F371ABCD1B2BBB15002A8A85 /* ExpressionQueryType.swift in Sources */,
