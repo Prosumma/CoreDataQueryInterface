@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol AttributeType: CustomStringConvertible, ExpressionType {
+public protocol AttributeType: CustomStringConvertible, ExpressionType, OrderType {
     init(_ name: String?, parent: AttributeType?)
 }
 
