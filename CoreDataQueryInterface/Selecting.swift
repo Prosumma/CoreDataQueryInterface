@@ -31,17 +31,17 @@ extension ExpressionQueryType {
     }
     
     public func select(attributes: [String]) -> ExpressionQuery<QueryEntityType> {
-        let expressions = attributes.map() { Expression.Attribute($0) }
+        let expressions = attributes.map() { Expression.KeyPath($0, nil, nil) }
         return select(expressions)
     }
     
     public func select(attributes: String...) -> ExpressionQuery<QueryEntityType> {
-        let expressions = attributes.map() { Expression.Attribute($0) }
+        let expressions = attributes.map() { Expression.KeyPath($0, nil, nil) }
         return select(expressions)
     }
     
     public func select(attributes: [AttributeType]) -> ExpressionQuery<QueryEntityType> {
-        let expressions = attributes.map() { Expression.Attribute(String($0)) }
+        let expressions = attributes.map() { Expression.KeyPath(String($0), nil, nil) }
         return select(expressions)
     }
     

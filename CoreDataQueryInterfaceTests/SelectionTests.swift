@@ -8,9 +8,13 @@
 
 import CoreData
 import Foundation
-import ObjectiveC
+import XCTest
 
 class SelectionTests : BaseTestCase {
  
+    func testWatusi() {
+        let entity = managedObjectContext.persistentStoreCoordinator!.managedObjectModel.entitiesByName["Employee"]!
+        XCTAssertEqual(Expression.attributeTypeForKeyPath("salary", inEntity: entity), NSAttributeType.Integer32AttributeType)
+    }
     
 }

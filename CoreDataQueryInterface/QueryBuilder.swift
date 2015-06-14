@@ -25,25 +25,8 @@ public struct QueryBuilder<E: EntityType> {
             request.sortDescriptors = descriptors
         }
         if !expressions.isEmpty && resultType == .DictionaryResultType {
-            var propertiesToFetch = [NSPropertyDescription]()
             let entityDescription = managedObjectContext.persistentStoreCoordinator!.managedObjectModel.entitiesByName[E.entityName]!
-            for expression in expressions {
-                switch expression {
-                case .Property(let propertyDescription):
-                    propertiesToFetch.append(propertyDescription)
-                case .Attribute(let name):
-                    let propertyDescription = entityDescription.propertiesByName[name]!
-                    propertiesToFetch.append(propertyDescription)
-                case let .Function(function, name, type):
-                    let attributeDescription = entityDescription.propertiesByName[name]! as! NSAttributeDescription
-                    let functionExpression = NSExpression(forFunction: function, arguments: [NSExpression(forKeyPath: name)])
-                    let expressionDescription = NSExpressionDescription()
-                    expressionDescription.expression = functionExpression
-                    expressionDescription.expressionResultType = type ?? attributeDescription.attributeType
-                    propertiesToFetch.append(expressionDescription)
-                    break
-                }
-            }
+            request.propertiesToFetch = expressions.map() { $0.propertyDescription(entityDescription) }
         }
         return request
     }
