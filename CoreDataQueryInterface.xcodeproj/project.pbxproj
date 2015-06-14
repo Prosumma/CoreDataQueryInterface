@@ -177,6 +177,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F33567621B2D1BF5007853DB /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F37C46B11B2A780200B35B1B /* SanityTests.swift */,
+				F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */,
+				F3E6B5521B2C01CC00F735EE /* OrderTests.swift */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		F33567631B2D1C04007853DB /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				F3251A0A1B2BDA2D0031B817 /* Company.xcdatamodeld */,
+				F3251A071B2BDA260031B817 /* Employees.txt */,
+				F3251A0E1B2BDE6E0031B817 /* Department.swift */,
+				F3251A0F1B2BDE6E0031B817 /* Employee.swift */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
 		F371ABE91B2BC3FF002A8A85 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,15 +254,10 @@
 		F37C46B01B2A780200B35B1B /* CoreDataQueryInterfaceTests */ = {
 			isa = PBXGroup;
 			children = (
-				F3251A0A1B2BDA2D0031B817 /* Company.xcdatamodeld */,
-				F3251A071B2BDA260031B817 /* Employees.txt */,
-				F3251A0E1B2BDE6E0031B817 /* Department.swift */,
-				F3251A0F1B2BDE6E0031B817 /* Employee.swift */,
 				F3251A041B2BDA190031B817 /* BaseTestCase.swift */,
-				F37C46B11B2A780200B35B1B /* SanityTests.swift */,
+				F33567621B2D1BF5007853DB /* Tests */,
+				F33567631B2D1C04007853DB /* Core Data */,
 				F37C46B31B2A780200B35B1B /* Info.plist */,
-				F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */,
-				F3E6B5521B2C01CC00F735EE /* OrderTests.swift */,
 			);
 			path = CoreDataQueryInterfaceTests;
 			sourceTree = "<group>";
