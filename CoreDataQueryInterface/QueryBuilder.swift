@@ -32,14 +32,16 @@ public struct QueryBuilder<E: EntityType> {
         return request
     }
     
-    public func count(managedObjectContext: NSManagedObjectContext?) throws -> UInt {
+    public func count(var managedObjectContext: NSManagedObjectContext?) throws -> UInt {
+        managedObjectContext = managedObjectContext ?? self.managedObjectContext
         var error: NSError?
         let count = managedObjectContext!.countForFetchRequest(self.request(.CountResultType, managedObjectContext: managedObjectContext), error: &error)
         guard error == nil else { throw error! }
         return UInt(count)
     }
     
-    public func execute<R: AnyObject>(managedObjectContext: NSManagedObjectContext?, resultType: NSFetchRequestResultType) throws -> [R] {
+    public func execute<R: AnyObject>(var managedObjectContext: NSManagedObjectContext?, resultType: NSFetchRequestResultType) throws -> [R] {
+        managedObjectContext = managedObjectContext ?? self.managedObjectContext        
         return try managedObjectContext!.executeFetchRequest(self.request(resultType, managedObjectContext: managedObjectContext)) as! [R]
     }
 }

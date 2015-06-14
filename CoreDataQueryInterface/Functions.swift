@@ -11,8 +11,8 @@ import Foundation
 
 extension Expression {
     
-    public static func max(keyPath: String, name: String? = nil, type: NSAttributeType? = nil) -> Expression {
-        return Expression.Function("max:", keyPath, name, type)
+    public static func max(keyPath: CustomStringConvertible, name: String? = nil, type: NSAttributeType? = nil) -> Expression {
+        return Expression.Function("max:", String(keyPath), name, type)
     }
     
 }

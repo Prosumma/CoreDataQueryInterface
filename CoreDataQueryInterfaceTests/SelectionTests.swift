@@ -14,7 +14,7 @@ class SelectionTests : BaseTestCase {
  
     func testWatusi() {
         
-        let x = try! managedObjectContext.from(Employee).select(Expression.max("salary")).first()!
+        let x = try! managedObjectContext.from(Employee).select({ e in Expression.max(e.salary) }).first()!
         let salary = x["salary"]! as! NSNumber
         print("Salary: \(salary)")
     }

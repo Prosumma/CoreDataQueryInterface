@@ -24,3 +24,9 @@ extension NSPropertyDescription : ExpressionType {
         return self
     }
 }
+
+extension AttributeType {
+    public func propertyDescription(entity: NSEntityDescription) -> NSPropertyDescription {
+        return Expression.KeyPath(String(self), nil, nil).propertyDescription(entity)
+    }
+}
