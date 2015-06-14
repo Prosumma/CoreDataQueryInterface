@@ -13,9 +13,7 @@ import XCTest
 class SelectionTests : BaseTestCase {
  
     func testWatusi() {
-        for row in managedObjectContext.from(Employee).select({employee in [Expression.keyPath(employee.department.name, name: "departmentName"), Expression.max(employee.salary)]}).groupBy({ $0.department.name }) {
-            print(row)
-        }
+        
     }
     
 }

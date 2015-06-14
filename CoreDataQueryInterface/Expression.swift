@@ -13,7 +13,7 @@ public enum Expression : ExpressionType {
     case Property(NSPropertyDescription)
     case KeyPath(String, String?, NSAttributeType?)
     // First is the function name, then the keypath, then the name, then the type
-    case Function(String, String, String?, NSAttributeType?)
+    case Function(String, ExpressionType, String?, NSAttributeType?)
     
     public static func keyPath(keyPath: CustomStringConvertible, name: String? = nil, type: NSAttributeType? = nil) -> Expression {
         return .KeyPath(String(keyPath), name, type)
@@ -38,21 +38,36 @@ public enum Expression : ExpressionType {
         return attributeType
     }
     
+    public var expression: NSExpression {
+        switch self {
+        case let .Property(propertyDescription):
+            if let expressionDescription = propertyDescription as? NSExpressionDescription {
+                return expressionDescription.expression!
+            } else {
+                return NSExpression(forKeyPath: propertyDescription.name)
+            }
+        case let .KeyPath(keyPath, _, _):
+            return NSExpression(forKeyPath: keyPath)
+        case let .Function(function, expression, _, _):
+            return NSExpression(forFunction: function, arguments: [expression.expression])
+        }
+    }
+    
     public func propertyDescription(entity: NSEntityDescription) -> NSPropertyDescription {
         switch self {
-        case let .Property(property):
-            return property
+        case let .Property(propertyDescription):
+            return propertyDescription
         case let .KeyPath(keyPath, name, type):
             let expression = NSExpressionDescription()
             expression.name = name ?? keyPath.stringByReplacingOccurrencesOfString(".", withString: "_")
             expression.expressionResultType = type ?? Expression.attributeTypeForKeyPath(keyPath, inEntity: entity)
-            expression.expression = NSExpression(forKeyPath: keyPath)
+            expression.expression = self.expression
             return expression
-        case let .Function(function, keyPath, name, type):
+        case let .Function(_, keyPath, name, type):
             let expression = NSExpressionDescription()
             expression.name = name ?? keyPath.stringByReplacingOccurrencesOfString(".", withString: "_")
             expression.expressionResultType = type ?? Expression.attributeTypeForKeyPath(keyPath, inEntity: entity)
-            expression.expression = NSExpression(forFunction: function, arguments: [NSExpression(forKeyPath: keyPath)])
+            expression.expression = self.expression
             return expression
         }
     }
