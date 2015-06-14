@@ -28,5 +28,5 @@ class SanityTests: BaseTestCase {
         }
         XCTAssertEqual(iterations, 3)
     }
-    
+        
 }
