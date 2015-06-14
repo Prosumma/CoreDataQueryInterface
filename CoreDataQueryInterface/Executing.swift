@@ -11,7 +11,7 @@ import Foundation
 
 extension QueryType {
     public func request(managedObjectContext: NSManagedObjectContext? = nil) -> NSFetchRequest {
-        return builder.request(builder.managedObjectContext ?? managedObjectContext!, resultType: resultType)
+        return builder.request(resultType, managedObjectContext: managedObjectContext)
     }
     public func count(managedObjectContext: NSManagedObjectContext? = nil) throws -> UInt {
         return try builder.count(managedObjectContext)

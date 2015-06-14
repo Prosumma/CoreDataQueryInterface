@@ -16,7 +16,8 @@ public struct QueryBuilder<E: EntityType> {
     public var expressions = [ExpressionType]() // TODO: Change this
     public var limit: UInt?
     
-    public func request(managedObjectContext: NSManagedObjectContext, resultType: NSFetchRequestResultType) -> NSFetchRequest {
+    public func request(resultType: NSFetchRequestResultType, var managedObjectContext: NSManagedObjectContext? = nil) -> NSFetchRequest {
+        managedObjectContext = managedObjectContext ?? self.managedObjectContext
         let request = NSFetchRequest(entityName: E.entityName)
         request.resultType = resultType
         if let limit = limit { request.fetchLimit = Int(limit) }
@@ -25,22 +26,20 @@ public struct QueryBuilder<E: EntityType> {
             request.sortDescriptors = descriptors
         }
         if !expressions.isEmpty && resultType == .DictionaryResultType {
-            let entityDescription = managedObjectContext.persistentStoreCoordinator!.managedObjectModel.entitiesByName[E.entityName]!
+            let entityDescription = managedObjectContext!.persistentStoreCoordinator!.managedObjectModel.entitiesByName[E.entityName]!
             request.propertiesToFetch = expressions.map() { $0.propertyDescription(entityDescription) }
         }
         return request
     }
     
-    public func count(var managedObjectContext: NSManagedObjectContext?) throws -> UInt {
-        managedObjectContext = managedObjectContext ?? self.managedObjectContext
+    public func count(managedObjectContext: NSManagedObjectContext?) throws -> UInt {
         var error: NSError?
-        let count = managedObjectContext!.countForFetchRequest(self.request(managedObjectContext!, resultType: .CountResultType), error: &error)
+        let count = managedObjectContext!.countForFetchRequest(self.request(.CountResultType, managedObjectContext: managedObjectContext), error: &error)
         guard error == nil else { throw error! }
         return UInt(count)
     }
     
-    public func execute<R: AnyObject>(var managedObjectContext: NSManagedObjectContext?, resultType: NSFetchRequestResultType) throws -> [R] {
-        managedObjectContext = managedObjectContext ?? self.managedObjectContext
-        return try managedObjectContext!.executeFetchRequest(self.request(managedObjectContext!, resultType: resultType)) as! [R]
+    public func execute<R: AnyObject>(managedObjectContext: NSManagedObjectContext?, resultType: NSFetchRequestResultType) throws -> [R] {
+        return try managedObjectContext!.executeFetchRequest(self.request(resultType, managedObjectContext: managedObjectContext)) as! [R]
     }
 }
