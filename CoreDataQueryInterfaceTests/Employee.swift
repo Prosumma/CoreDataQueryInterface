@@ -23,7 +23,14 @@ class EmployeeAttribute : Attribute {
     private(set) var lastName: Attribute!
     private(set) var nickName: Attribute!
     private(set) var salary: Attribute!
-    private(set) var department: DepartmentAttribute!
+    
+    private var _department: DepartmentAttribute!
+    var department: DepartmentAttribute {
+        if _department == nil {
+            _department = DepartmentAttribute("department", parent: self)
+        }
+        return _department
+    }
     
     required init(_ name: String? = nil, parent: AttributeType? = nil) {
         super.init(name, parent: parent)
@@ -31,6 +38,5 @@ class EmployeeAttribute : Attribute {
         lastName = Attribute("lastName", parent: self)
         nickName = Attribute("nickName", parent: self)
         salary = Attribute("salary", parent: self)
-        department = DepartmentAttribute("department", parent: self)
     }
 }

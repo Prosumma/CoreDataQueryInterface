@@ -25,12 +25,13 @@ public final class ExpressionHelper {
     public static func keyPathForExpression(expression: NSExpression) -> String? {
         var keyPath: String?
         switch expression.expressionType {
+        case .KeyPathExpressionType:
+            keyPath = expression.keyPath
         case .FunctionExpressionType:
             if let arguments = expression.arguments where arguments.count == 1 {
                 keyPath = keyPathForExpression(arguments[0])
             }
-        default:
-            keyPath = expression.keyPath
+        default: break
         }
         return keyPath
     }
@@ -52,5 +53,16 @@ public final class ExpressionHelper {
             }
             return name
         }
+    }
+    public static func attributeTypeForPropertyDescription(propertyDescription: NSPropertyDescription) -> NSAttributeType {
+        var attributeType = NSAttributeType.UndefinedAttributeType
+        if let expressionDescription = propertyDescription as? NSExpressionDescription {
+            attributeType = expressionDescription.expressionResultType
+        } else if let attributeDescription = propertyDescription as? NSAttributeDescription {
+            attributeType = attributeDescription.attributeType
+        } else {
+            attributeType = .ObjectIDAttributeType
+        }
+        return attributeType
     }
 }

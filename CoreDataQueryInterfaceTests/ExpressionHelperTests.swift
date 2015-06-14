@@ -23,8 +23,9 @@ class ExpressionHelperTests : BaseTestCase {
     }
     
     func testFunction() {
-        let max = Function.max(NSExpression(forKeyPath: "salary"))
-        let function = Function.average(max)
+        let max = Expression.max("salary")
+        let average = Expression.average(max)
+        let function = Expression.alias("foo", expression: average)
         let entity = managedObjectContext.persistentStoreCoordinator!.managedObjectModel.entitiesByName["Employee"]!
         let property = function.toPropertyDescription(entity) as! NSExpressionDescription
         print(property.name)

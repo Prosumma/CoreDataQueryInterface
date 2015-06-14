@@ -32,13 +32,7 @@ extension Function : ExpressionType {
         }
         if arguments.count == 1 {
             if propertyDescription == nil { propertyDescription = arguments.first!.toPropertyDescription(entityDescription) }
-            if let propertyAttributeDescription = propertyDescription as? NSAttributeDescription {
-                expressionDescription.expressionResultType = propertyAttributeDescription.attributeType
-            } else if let propertyExpressionDescription = propertyDescription as? NSExpressionDescription {
-                expressionDescription.expressionResultType = propertyExpressionDescription.expressionResultType
-            } else if let _ = propertyDescription as? NSRelationshipDescription {
-                expressionDescription.expressionResultType = .ObjectIDAttributeType
-            }
+            expressionDescription.expressionResultType = ExpressionHelper.attributeTypeForPropertyDescription(propertyDescription)
         }
         return expressionDescription
     }
@@ -48,7 +42,7 @@ extension Function : ExpressionType {
     }
 }
 
-extension Function {
+extension Expression {
     
     public static func max(argument: ExpressionType, name: String? = nil, resultType: NSAttributeType? = nil) -> Function {
         return Function(function: "max:", arguments: [argument], name: name, prefix: "max", resultType: resultType)
