@@ -12,5 +12,9 @@ import XCTest
 
 class SelectionTests : BaseTestCase {
  
+    func testSelection() {
+        let dictionaries = try! managedObjectContext.from(Employee).select({$0.salary}).order(descending: {$0.salary}).all()
+        debugPrint(dictionaries)
+    }
     
 }

@@ -6,10 +6,20 @@
 //  Copyright © 2015 Prosumma LLC. All rights reserved.
 //
 
+import CoreData
 import Foundation
 
-public protocol AttributeType: CustomStringConvertible, OrderType {
+public protocol AttributeType: CustomStringConvertible, OrderType, ExpressionType {
     init(_ name: String?, parent: AttributeType?)
+}
+
+extension AttributeType {
+    public func toPropertyDescription(entityDescription: NSEntityDescription) -> NSPropertyDescription {
+        return String(self).toPropertyDescription(entityDescription)
+    }
+    public func toExpression(entityDescription: NSEntityDescription) -> NSExpression {
+        return String(self).toExpression(entityDescription)
+    }
 }
 
 public func predicate<A: AttributeType, T>(lhs: A, _ op: String, _ rhs: T?, _ convert: T -> NSObject) -> NSPredicate {
