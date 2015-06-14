@@ -11,4 +11,14 @@ import Foundation
 
 extension ExpressionQueryType {
 
+    public func select(expressions: [ExpressionType]) -> ExpressionQuery<QueryEntityType> {
+        var builder = self.builder
+        builder.expressions.extend(expressions)
+        return ExpressionQuery(builder: builder)
+    }
+    
+    public func select(expressions: ExpressionType...) -> ExpressionQuery<QueryEntityType> {
+        return select(expressions)
+    }
+ 
 }

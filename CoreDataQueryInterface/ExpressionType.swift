@@ -47,3 +47,25 @@ extension NSExpression: ExpressionType {
         return expressionDescription
     }
 }
+
+extension String: ExpressionType {
+    public func toExpression(NSEntityDescription) -> NSExpression {
+        return NSExpression(forKeyPath: self)
+    }
+    public func toPropertyDescription(entity: NSEntityDescription) -> NSPropertyDescription {
+        let expressionDescription = NSExpressionDescription()
+        expressionDescription.expression = toExpression(entity)
+        expressionDescription.expressionResultType = ExpressionHelper.attributeTypeForKeyPath(self, inEntity: entity)
+        expressionDescription.name = ExpressionHelper.nameForKeyPath(self)
+        return expressionDescription
+    }
+}
+
+extension AttributeType {
+    public func toExpression(entity: NSEntityDescription) -> NSExpression {
+        return String(self).toExpression(entity)
+    }
+    public func toPropertyDescription(entity: NSEntityDescription) -> NSPropertyDescription {
+        return String(self).toPropertyDescription(entity)
+    }
+}

@@ -13,7 +13,9 @@ import XCTest
 class SelectionTests : BaseTestCase {
  
     func testWatusi() {
-        
+        for dictionary in managedObjectContext.from(Employee).select("firstName") {
+            debugPrint(dictionary)
+        }
     }
     
 }
