@@ -47,3 +47,15 @@ extension Function : ExpressionType {
         return NSExpression(forFunction: function, arguments: arguments.map({$0.toExpression(entityDescription)}))
     }
 }
+
+extension Function {
+    
+    public static func max(argument: ExpressionType, name: String? = nil, resultType: NSAttributeType? = nil) -> Function {
+        return Function(function: "max:", arguments: [argument], name: name, prefix: "max", resultType: resultType)
+    }
+    
+    public static func average(argument: ExpressionType, name: String? = nil, resultType: NSAttributeType? = nil) -> Function {
+        return Function(function: "average:", arguments: [argument], name: name, prefix: "average", resultType: resultType)
+    }
+    
+}
