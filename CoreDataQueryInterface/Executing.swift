@@ -24,3 +24,18 @@ extension QueryType {
     }
 }
 
+extension ExpressionQuery {
+    public func pluck<T>(name: String? = nil, managedObjectContext: NSManagedObjectContext? = nil) throws -> [T] {
+        var result = [T]()
+        let results = try all(managedObjectContext) as NSArray
+        if results.count > 0 {
+            let dictionary = results[0] as! NSDictionary
+            let key = name ?? dictionary.allKeys.first! as! String
+            result = results.valueForKey(key) as! [T]
+        }
+        return result
+    }
+    public func value<T>(name: String? = nil, managedObjectContext: NSManagedObjectContext? = nil) throws -> T? {
+        return try limit(1).pluck(name, managedObjectContext: managedObjectContext).first
+    }
+}
