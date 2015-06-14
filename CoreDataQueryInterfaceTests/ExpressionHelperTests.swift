@@ -16,4 +16,8 @@ class ExpressionHelperTests : BaseTestCase {
         XCTAssertEqual("departmentName", ExpressionHelper.nameForKeyPath("department.name"))
     }
     
+    func testKeyPathForExpression() {
+        let expression = NSExpression(forFunction: "max:", arguments: [NSExpression(forKeyPath: "department.name")])
+        print(ExpressionHelper.keyPathForExpression(expression))
+    }
 }

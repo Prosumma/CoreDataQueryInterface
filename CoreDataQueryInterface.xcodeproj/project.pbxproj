@@ -101,10 +101,10 @@
 		F3B0E33B1B2DFD70008D7EEF /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E3391B2DFD70008D7EEF /* Expression.swift */; };
 		F3B0E33C1B2DFD70008D7EEF /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E3391B2DFD70008D7EEF /* Expression.swift */; };
 		F3B0E33D1B2DFD70008D7EEF /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E3391B2DFD70008D7EEF /* Expression.swift */; };
-		F3B0E33F1B2E0351008D7EEF /* PropertyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E33E1B2E0351008D7EEF /* PropertyType.swift */; };
-		F3B0E3401B2E0351008D7EEF /* PropertyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E33E1B2E0351008D7EEF /* PropertyType.swift */; };
-		F3B0E3411B2E0351008D7EEF /* PropertyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E33E1B2E0351008D7EEF /* PropertyType.swift */; };
-		F3B0E3421B2E0351008D7EEF /* PropertyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E33E1B2E0351008D7EEF /* PropertyType.swift */; };
+		F3B0E33F1B2E0351008D7EEF /* ExpressionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E33E1B2E0351008D7EEF /* ExpressionType.swift */; };
+		F3B0E3401B2E0351008D7EEF /* ExpressionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E33E1B2E0351008D7EEF /* ExpressionType.swift */; };
+		F3B0E3411B2E0351008D7EEF /* ExpressionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E33E1B2E0351008D7EEF /* ExpressionType.swift */; };
+		F3B0E3421B2E0351008D7EEF /* ExpressionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E33E1B2E0351008D7EEF /* ExpressionType.swift */; };
 		F3E6B5501B2BFCA500F735EE /* FilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */; };
 		F3E6B5511B2BFCA500F735EE /* FilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */; };
 		F3E6B5531B2C01CC00F735EE /* OrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6B5521B2C01CC00F735EE /* OrderTests.swift */; };
@@ -164,7 +164,7 @@
 		F3B0E32C1B2DEEB5008D7EEF /* ExpressionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionHelper.swift; sourceTree = "<group>"; };
 		F3B0E3311B2DEED1008D7EEF /* ExpressionHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionHelperTests.swift; sourceTree = "<group>"; };
 		F3B0E3391B2DFD70008D7EEF /* Expression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
-		F3B0E33E1B2E0351008D7EEF /* PropertyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyType.swift; sourceTree = "<group>"; };
+		F3B0E33E1B2E0351008D7EEF /* ExpressionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionType.swift; sourceTree = "<group>"; };
 		F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTests.swift; sourceTree = "<group>"; };
 		F3E6B5521B2C01CC00F735EE /* OrderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -238,6 +238,7 @@
 				F3B0E32C1B2DEEB5008D7EEF /* ExpressionHelper.swift */,
 				F371ABC11B2BAC28002A8A85 /* ExpressionQuery.swift */,
 				F371ABCB1B2BBB15002A8A85 /* ExpressionQueryType.swift */,
+				F3B0E33E1B2E0351008D7EEF /* ExpressionType.swift */,
 				F371ABD01B2BC122002A8A85 /* Filtering.swift */,
 				F335675D1B2D18A0007853DB /* Iterating.swift */,
 				F371ABE41B2BC2E7002A8A85 /* ManagedObjectIDQuery.swift */,
@@ -245,7 +246,6 @@
 				F371ABD51B2BC14A002A8A85 /* Ordering.swift */,
 				F367DE2F1B2D6149009C1020 /* OrderType.swift */,
 				F37A46F41B2BD77900D4EE61 /* Predicate.swift */,
-				F3B0E33E1B2E0351008D7EEF /* PropertyType.swift */,
 				F371ABB71B2BA8BA002A8A85 /* QueryBuilder.swift */,
 				F371ABC61B2BB80E002A8A85 /* QueryType.swift */,
 				F371ABDF1B2BC1F7002A8A85 /* Selecting.swift */,
@@ -473,7 +473,7 @@
 				F33567601B2D18A0007853DB /* Iterating.swift in Sources */,
 				F371ABBA1B2BA8BA002A8A85 /* QueryBuilder.swift in Sources */,
 				F371ABE21B2BC1F7002A8A85 /* Selecting.swift in Sources */,
-				F3B0E3411B2E0351008D7EEF /* PropertyType.swift in Sources */,
+				F3B0E3411B2E0351008D7EEF /* ExpressionType.swift in Sources */,
 				F371ABA71B2B8EE2002A8A85 /* AttributeType.swift in Sources */,
 				F37A46F21B2BD61700D4EE61 /* Attribute.swift in Sources */,
 				F371ABD81B2BC14A002A8A85 /* Ordering.swift in Sources */,
@@ -518,7 +518,7 @@
 				F371ABCA1B2BB80E002A8A85 /* QueryType.swift in Sources */,
 				F3251A131B2BDE6E0031B817 /* Employee.swift in Sources */,
 				F37A46F81B2BD77900D4EE61 /* Predicate.swift in Sources */,
-				F3B0E3421B2E0351008D7EEF /* PropertyType.swift in Sources */,
+				F3B0E3421B2E0351008D7EEF /* ExpressionType.swift in Sources */,
 				F371ABBB1B2BA8BA002A8A85 /* QueryBuilder.swift in Sources */,
 				F3E6B5511B2BFCA500F735EE /* FilterTests.swift in Sources */,
 				F371ABD91B2BC14A002A8A85 /* Ordering.swift in Sources */,
@@ -536,7 +536,7 @@
 				F335675E1B2D18A0007853DB /* Iterating.swift in Sources */,
 				F371ABB81B2BA8BA002A8A85 /* QueryBuilder.swift in Sources */,
 				F371ABE01B2BC1F7002A8A85 /* Selecting.swift in Sources */,
-				F3B0E33F1B2E0351008D7EEF /* PropertyType.swift in Sources */,
+				F3B0E33F1B2E0351008D7EEF /* ExpressionType.swift in Sources */,
 				F371ABA61B2B8EE2002A8A85 /* AttributeType.swift in Sources */,
 				F37A46F01B2BD61700D4EE61 /* Attribute.swift in Sources */,
 				F371ABD61B2BC14A002A8A85 /* Ordering.swift in Sources */,
@@ -581,7 +581,7 @@
 				F371ABC81B2BB80E002A8A85 /* QueryType.swift in Sources */,
 				F3251A121B2BDE6E0031B817 /* Employee.swift in Sources */,
 				F37A46F61B2BD77900D4EE61 /* Predicate.swift in Sources */,
-				F3B0E3401B2E0351008D7EEF /* PropertyType.swift in Sources */,
+				F3B0E3401B2E0351008D7EEF /* ExpressionType.swift in Sources */,
 				F371ABB91B2BA8BA002A8A85 /* QueryBuilder.swift in Sources */,
 				F3E6B5501B2BFCA500F735EE /* FilterTests.swift in Sources */,
 				F371ABD71B2BC14A002A8A85 /* Ordering.swift in Sources */,

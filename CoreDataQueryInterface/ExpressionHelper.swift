@@ -23,7 +23,16 @@ public final class ExpressionHelper {
         }
     }
     public static func keyPathForExpression(expression: NSExpression) -> String? {
-        return expression.keyPath
+        var keyPath: String?
+        switch expression.expressionType {
+        case .FunctionExpressionType:
+            if let arguments = expression.arguments where arguments.count == 1 {
+                keyPath = keyPathForExpression(arguments[0])
+            }
+        default:
+            keyPath = expression.keyPath
+        }
+        return keyPath
     }
     public static func nameForKeyPath(keyPath: String, prefix: String? = nil) -> String {
         var keys = keyPath.componentsSeparatedByString(".")

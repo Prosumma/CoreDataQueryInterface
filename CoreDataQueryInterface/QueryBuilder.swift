@@ -13,7 +13,7 @@ public struct QueryBuilder<E: EntityType> {
     public var managedObjectContext: NSManagedObjectContext?
     public var predicates = [NSPredicate]()
     public var descriptors = [NSSortDescriptor]()
-    public var properties = [PropertyType]()
+    public var expressions = [ExpressionType]()
     public var limit: UInt?
     
     public func request(resultType: NSFetchRequestResultType, var managedObjectContext: NSManagedObjectContext? = nil) -> NSFetchRequest {
@@ -27,8 +27,8 @@ public struct QueryBuilder<E: EntityType> {
         }
         if resultType == .DictionaryResultType {
             let entityDescription = managedObjectContext!.persistentStoreCoordinator!.managedObjectModel.entitiesByName[E.entityName]!
-            if !properties.isEmpty {
-                request.propertiesToFetch = properties.map() { $0.toPropertyDescription(entityDescription) }
+            if !expressions.isEmpty {
+                request.propertiesToFetch = expressions.map() { $0.toPropertyDescription(entityDescription) }
             }
         }
         return request

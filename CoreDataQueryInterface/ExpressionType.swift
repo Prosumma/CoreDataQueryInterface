@@ -1,5 +1,5 @@
 //
-//  ExpressionType.swift
+//  PropertyType.swift
 //  CoreDataQueryInterface
 //
 //  Created by Gregory Higley on 6/14/15.
@@ -9,63 +9,33 @@
 import CoreData
 import Foundation
 
-/**
-Represents a type that can be converted to `NSPropertyDescription`
-or `NSExpression`.
-*/
 public protocol ExpressionType {
-    func toExpression(entity: NSEntityDescription) -> NSExpression
-    func toPropertyDescription(entity: NSEntityDescription) -> NSPropertyDescription
+    func toPropertyDescription(entityDescription: NSEntityDescription) -> NSPropertyDescription
+    func toExpression(entityDescription: NSEntityDescription) -> NSExpression
 }
 
-extension NSPropertyDescription: ExpressionType {
-    public func toExpression(NSEntityDescription) -> NSExpression {
+extension NSPropertyDescription : ExpressionType {
+    public func toPropertyDescription(entityDescription: NSEntityDescription) -> NSPropertyDescription {
+        return self
+    }
+    public func toExpression(entityDescription: NSEntityDescription) -> NSExpression {
         if let expressionDescription = self as? NSExpressionDescription {
             return expressionDescription.expression!
         } else {
             return NSExpression(forKeyPath: name)
         }
     }
-    public func toPropertyDescription(NSEntityDescription) -> NSPropertyDescription {
-        return self
-    }
 }
 
-extension NSExpression: ExpressionType {
-    public func toExpression(NSEntityDescription) -> NSExpression {
-        return self
-    }
-    public func toPropertyDescription(entity: NSEntityDescription) -> NSPropertyDescription {
+extension String : ExpressionType {
+    public func toPropertyDescription(entityDescription: NSEntityDescription) -> NSPropertyDescription {
         let expressionDescription = NSExpressionDescription()
-        expressionDescription.expression = self
-        if let keyPath = ExpressionHelper.keyPathForExpression(self) {
-            expressionDescription.expressionResultType = ExpressionHelper.attributeTypeForKeyPath(keyPath, inEntity: entity)
-            expressionDescription.name = ExpressionHelper.nameForKeyPath(keyPath)
-        } else {
-            expressionDescription.name = "expression"
-        }
+        expressionDescription.name = ExpressionHelper.nameForKeyPath(self)
+        expressionDescription.expression = toExpression(entityDescription)
+        expressionDescription.expressionResultType = ExpressionHelper.attributeTypeForKeyPath(self, inEntity: entityDescription)
         return expressionDescription
     }
-}
-
-extension String: ExpressionType {
     public func toExpression(NSEntityDescription) -> NSExpression {
         return NSExpression(forKeyPath: self)
-    }
-    public func toPropertyDescription(entity: NSEntityDescription) -> NSPropertyDescription {
-        let expressionDescription = NSExpressionDescription()
-        expressionDescription.expression = toExpression(entity)
-        expressionDescription.expressionResultType = ExpressionHelper.attributeTypeForKeyPath(self, inEntity: entity)
-        expressionDescription.name = ExpressionHelper.nameForKeyPath(self)
-        return expressionDescription
-    }
-}
-
-extension AttributeType {
-    public func toExpression(entity: NSEntityDescription) -> NSExpression {
-        return String(self).toExpression(entity)
-    }
-    public func toPropertyDescription(entity: NSEntityDescription) -> NSPropertyDescription {
-        return String(self).toPropertyDescription(entity)
     }
 }
