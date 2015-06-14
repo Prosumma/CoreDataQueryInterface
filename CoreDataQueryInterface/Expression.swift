@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-public enum Expression {
+public enum Expression : ExpressionType {
     case Property(NSPropertyDescription)
     case KeyPath(String, String?, NSAttributeType?)
     // First is the function name, then the keypath, then the name, then the type

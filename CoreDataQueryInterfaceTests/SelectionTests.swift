@@ -13,8 +13,10 @@ import XCTest
 class SelectionTests : BaseTestCase {
  
     func testWatusi() {
-        let entity = managedObjectContext.persistentStoreCoordinator!.managedObjectModel.entitiesByName["Employee"]!
-        XCTAssertEqual(Expression.attributeTypeForKeyPath("salary", inEntity: entity), NSAttributeType.Integer32AttributeType)
+        
+        let x = try! managedObjectContext.from(Employee).select(Expression.max("salary"), "bob").first()!
+        let salary = x["salary"]! as! NSNumber
+        print("Salary: \(salary)")
     }
     
 }

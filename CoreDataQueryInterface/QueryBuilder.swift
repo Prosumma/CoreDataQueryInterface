@@ -13,7 +13,7 @@ public struct QueryBuilder<E: EntityType> {
     public var managedObjectContext: NSManagedObjectContext?
     public var predicates = [NSPredicate]()
     public var descriptors = [NSSortDescriptor]()
-    public var expressions = [Expression]() // TODO: Change this
+    public var expressions = [ExpressionType]() // TODO: Change this
     public var limit: UInt?
     
     public func request(managedObjectContext: NSManagedObjectContext, resultType: NSFetchRequestResultType) -> NSFetchRequest {

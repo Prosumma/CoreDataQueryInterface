@@ -34,6 +34,10 @@
 		F33567751B2D339F007853DB /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33567731B2D339F007853DB /* Functions.swift */; };
 		F33567761B2D339F007853DB /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33567731B2D339F007853DB /* Functions.swift */; };
 		F33567771B2D339F007853DB /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33567731B2D339F007853DB /* Functions.swift */; };
+		F33BA6401B2D584300F3433D /* ExpressionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BA63F1B2D584300F3433D /* ExpressionType.swift */; };
+		F33BA6411B2D584300F3433D /* ExpressionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BA63F1B2D584300F3433D /* ExpressionType.swift */; };
+		F33BA6421B2D584300F3433D /* ExpressionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BA63F1B2D584300F3433D /* ExpressionType.swift */; };
+		F33BA6431B2D584300F3433D /* ExpressionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BA63F1B2D584300F3433D /* ExpressionType.swift */; };
 		F371ABA61B2B8EE2002A8A85 /* AttributeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABA51B2B8EE2002A8A85 /* AttributeType.swift */; };
 		F371ABA71B2B8EE2002A8A85 /* AttributeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABA51B2B8EE2002A8A85 /* AttributeType.swift */; };
 		F371ABB31B2BA5FA002A8A85 /* AttributeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABA51B2B8EE2002A8A85 /* AttributeType.swift */; };
@@ -132,6 +136,7 @@
 		F33567641B2D2EF7007853DB /* SelectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionTests.swift; sourceTree = "<group>"; };
 		F335676E1B2D3128007853DB /* Expression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
 		F33567731B2D339F007853DB /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		F33BA63F1B2D584300F3433D /* ExpressionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionType.swift; sourceTree = "<group>"; };
 		F371ABA51B2B8EE2002A8A85 /* AttributeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeType.swift; sourceTree = "<group>"; };
 		F371ABB71B2BA8BA002A8A85 /* QueryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryBuilder.swift; sourceTree = "<group>"; };
 		F371ABBC1B2BA9DA002A8A85 /* EntityQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityQuery.swift; sourceTree = "<group>"; };
@@ -223,6 +228,7 @@
 				F335676E1B2D3128007853DB /* Expression.swift */,
 				F371ABC11B2BAC28002A8A85 /* ExpressionQuery.swift */,
 				F371ABCB1B2BBB15002A8A85 /* ExpressionQueryType.swift */,
+				F33BA63F1B2D584300F3433D /* ExpressionType.swift */,
 				F371ABD01B2BC122002A8A85 /* Filtering.swift */,
 				F33567731B2D339F007853DB /* Functions.swift */,
 				F335675D1B2D18A0007853DB /* Iterating.swift */,
@@ -469,6 +475,7 @@
 				F371ABE71B2BC2E7002A8A85 /* ManagedObjectIDQuery.swift in Sources */,
 				F371ABD31B2BC122002A8A85 /* Filtering.swift in Sources */,
 				F371ABED1B2BC4CB002A8A85 /* NSManagedObjectContextExtensions.swift in Sources */,
+				F33BA6421B2D584300F3433D /* ExpressionType.swift in Sources */,
 				F371ABC91B2BB80E002A8A85 /* QueryType.swift in Sources */,
 				F371ABBF1B2BA9DA002A8A85 /* EntityQuery.swift in Sources */,
 			);
@@ -500,6 +507,7 @@
 				F37A46F81B2BD77900D4EE61 /* Predicate.swift in Sources */,
 				F371ABBB1B2BA8BA002A8A85 /* QueryBuilder.swift in Sources */,
 				F3E6B5511B2BFCA500F735EE /* FilterTests.swift in Sources */,
+				F33BA6431B2D584300F3433D /* ExpressionType.swift in Sources */,
 				F371ABD91B2BC14A002A8A85 /* Ordering.swift in Sources */,
 				F371ABD41B2BC122002A8A85 /* Filtering.swift in Sources */,
 				F3FE7AD11B2B87CF00AA5845 /* SanityTests.swift in Sources */,
@@ -527,6 +535,7 @@
 				F371ABE51B2BC2E7002A8A85 /* ManagedObjectIDQuery.swift in Sources */,
 				F371ABD11B2BC122002A8A85 /* Filtering.swift in Sources */,
 				F371ABEB1B2BC4CB002A8A85 /* NSManagedObjectContextExtensions.swift in Sources */,
+				F33BA6401B2D584300F3433D /* ExpressionType.swift in Sources */,
 				F371ABC71B2BB80E002A8A85 /* QueryType.swift in Sources */,
 				F371ABBD1B2BA9DA002A8A85 /* EntityQuery.swift in Sources */,
 			);
@@ -558,6 +567,7 @@
 				F37A46F61B2BD77900D4EE61 /* Predicate.swift in Sources */,
 				F371ABB91B2BA8BA002A8A85 /* QueryBuilder.swift in Sources */,
 				F3E6B5501B2BFCA500F735EE /* FilterTests.swift in Sources */,
+				F33BA6411B2D584300F3433D /* ExpressionType.swift in Sources */,
 				F371ABD71B2BC14A002A8A85 /* Ordering.swift in Sources */,
 				F371ABD21B2BC122002A8A85 /* Filtering.swift in Sources */,
 				F37C46B21B2A780200B35B1B /* SanityTests.swift in Sources */,
