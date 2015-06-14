@@ -15,6 +15,10 @@ public enum Expression : ExpressionType {
     // First is the function name, then the keypath, then the name, then the type
     case Function(String, String, String?, NSAttributeType?)
     
+    public static func keyPath(keyPath: CustomStringConvertible, name: String? = nil, type: NSAttributeType? = nil) -> Expression {
+        return .KeyPath(String(keyPath), name, type)
+    }
+    
     public static func attributeTypeForKeyPath(keyPath: String, inEntity entity: NSEntityDescription) -> NSAttributeType {
         var attributeType = NSAttributeType.UndefinedAttributeType
         let components = keyPath.componentsSeparatedByString(".")

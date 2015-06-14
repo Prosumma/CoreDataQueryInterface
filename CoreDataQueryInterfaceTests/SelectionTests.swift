@@ -13,10 +13,9 @@ import XCTest
 class SelectionTests : BaseTestCase {
  
     func testWatusi() {
-        
-        let x = try! managedObjectContext.from(Employee).select({ e in Expression.max(e.salary) }).first()!
-        let salary = x["salary"]! as! NSNumber
-        print("Salary: \(salary)")
+        for row in managedObjectContext.from(Employee).select({employee in [Expression.keyPath(employee.department.name, name: "departmentName"), Expression.max(employee.salary)]}).groupBy({ $0.department.name }) {
+            print(row)
+        }
     }
     
 }
