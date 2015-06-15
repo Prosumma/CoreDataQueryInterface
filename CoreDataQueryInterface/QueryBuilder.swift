@@ -14,6 +14,7 @@ public struct QueryBuilder<E: EntityType> {
     public var predicates = [NSPredicate]()
     public var descriptors = [NSSortDescriptor]()
     public var expressions = [ExpressionType]()
+    public var groupings = [ExpressionType]()
     public var limit: UInt?
     
     public func request(resultType: NSFetchRequestResultType, var managedObjectContext: NSManagedObjectContext? = nil) -> NSFetchRequest {
@@ -29,6 +30,9 @@ public struct QueryBuilder<E: EntityType> {
             let entityDescription = managedObjectContext!.persistentStoreCoordinator!.managedObjectModel.entitiesByName[E.entityName]!
             if !expressions.isEmpty {
                 request.propertiesToFetch = expressions.map() { $0.toPropertyDescription(entityDescription) }
+            }
+            if !groupings.isEmpty {
+                request.propertiesToGroupBy = groupings.map() { $0.toPropertyDescription(entityDescription) }
             }
         }
         return request

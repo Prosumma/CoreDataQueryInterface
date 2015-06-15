@@ -17,18 +17,15 @@ class ExpressionHelperTests : BaseTestCase {
         XCTAssertEqual("departmentName", ExpressionHelper.nameForKeyPath("department.name"))
     }
     
+    func testFunctionName() {
+
+    }
+    
     func testKeyPathForExpression() {
         let expression = NSExpression(forFunction: "max:", arguments: [NSExpression(forKeyPath: "department.name")])
-        print(ExpressionHelper.keyPathForExpression(expression))
+        XCTAssertEqual("department.name", ExpressionHelper.keyPathForExpression(expression)!)
     }
     
     func testFunction() {
-        let max = Expression.max("salary")
-        let average = Expression.average(max)
-        let function = Expression.alias("foo", average)
-        let entity = managedObjectContext.persistentStoreCoordinator!.managedObjectModel.entitiesByName["Employee"]!
-        let property = function.toPropertyDescription(entity) as! NSExpressionDescription
-        print(property.name)
-        XCTAssertEqual(property.expressionResultType, NSAttributeType.Integer32AttributeType)
     }
 }

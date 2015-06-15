@@ -24,8 +24,8 @@
 		F335675F1B2D18A0007853DB /* Iterating.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335675D1B2D18A0007853DB /* Iterating.swift */; };
 		F33567601B2D18A0007853DB /* Iterating.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335675D1B2D18A0007853DB /* Iterating.swift */; };
 		F33567611B2D18A0007853DB /* Iterating.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335675D1B2D18A0007853DB /* Iterating.swift */; };
-		F33567661B2D2EF7007853DB /* SelectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33567641B2D2EF7007853DB /* SelectionTests.swift */; };
-		F33567681B2D2EF7007853DB /* SelectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33567641B2D2EF7007853DB /* SelectionTests.swift */; };
+		F33567661B2D2EF7007853DB /* SelectionAndGroupingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33567641B2D2EF7007853DB /* SelectionAndGroupingTests.swift */; };
+		F33567681B2D2EF7007853DB /* SelectionAndGroupingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33567641B2D2EF7007853DB /* SelectionAndGroupingTests.swift */; };
 		F34E74941B2E38C900FAA04A /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E74931B2E38C900FAA04A /* Expression.swift */; };
 		F34E74951B2E38C900FAA04A /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E74931B2E38C900FAA04A /* Expression.swift */; };
 		F34E74961B2E38C900FAA04A /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E74931B2E38C900FAA04A /* Expression.swift */; };
@@ -34,6 +34,10 @@
 		F34E749A1B2E3A9900FAA04A /* Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E74981B2E3A9900FAA04A /* Alias.swift */; };
 		F34E749B1B2E3A9900FAA04A /* Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E74981B2E3A9900FAA04A /* Alias.swift */; };
 		F34E749C1B2E3A9900FAA04A /* Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E74981B2E3A9900FAA04A /* Alias.swift */; };
+		F34E749E1B2E576000FAA04A /* Grouping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E749D1B2E576000FAA04A /* Grouping.swift */; };
+		F34E749F1B2E576000FAA04A /* Grouping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E749D1B2E576000FAA04A /* Grouping.swift */; };
+		F34E74A01B2E576000FAA04A /* Grouping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E749D1B2E576000FAA04A /* Grouping.swift */; };
+		F34E74A11B2E576000FAA04A /* Grouping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E749D1B2E576000FAA04A /* Grouping.swift */; };
 		F367DE301B2D6149009C1020 /* OrderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367DE2F1B2D6149009C1020 /* OrderType.swift */; };
 		F367DE311B2D6149009C1020 /* OrderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367DE2F1B2D6149009C1020 /* OrderType.swift */; };
 		F367DE321B2D6149009C1020 /* OrderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367DE2F1B2D6149009C1020 /* OrderType.swift */; };
@@ -147,9 +151,10 @@
 		F3251A0E1B2BDE6E0031B817 /* Department.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
 		F3251A0F1B2BDE6E0031B817 /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		F335675D1B2D18A0007853DB /* Iterating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Iterating.swift; sourceTree = "<group>"; };
-		F33567641B2D2EF7007853DB /* SelectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionTests.swift; sourceTree = "<group>"; };
+		F33567641B2D2EF7007853DB /* SelectionAndGroupingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionAndGroupingTests.swift; sourceTree = "<group>"; };
 		F34E74931B2E38C900FAA04A /* Expression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
 		F34E74981B2E3A9900FAA04A /* Alias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alias.swift; sourceTree = "<group>"; };
+		F34E749D1B2E576000FAA04A /* Grouping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grouping.swift; sourceTree = "<group>"; };
 		F367DE2F1B2D6149009C1020 /* OrderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderType.swift; sourceTree = "<group>"; };
 		F371ABA51B2B8EE2002A8A85 /* AttributeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeType.swift; sourceTree = "<group>"; };
 		F371ABB71B2BA8BA002A8A85 /* QueryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryBuilder.swift; sourceTree = "<group>"; };
@@ -220,7 +225,7 @@
 				F3B0E3311B2DEED1008D7EEF /* ExpressionHelperTests.swift */,
 				F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */,
 				F3E6B5521B2C01CC00F735EE /* OrderTests.swift */,
-				F33567641B2D2EF7007853DB /* SelectionTests.swift */,
+				F33567641B2D2EF7007853DB /* SelectionAndGroupingTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 				F3B0E33E1B2E0351008D7EEF /* ExpressionType.swift */,
 				F371ABD01B2BC122002A8A85 /* Filtering.swift */,
 				F3B0E3391B2DFD70008D7EEF /* Function.swift */,
+				F34E749D1B2E576000FAA04A /* Grouping.swift */,
 				F335675D1B2D18A0007853DB /* Iterating.swift */,
 				F371ABE41B2BC2E7002A8A85 /* ManagedObjectIDQuery.swift */,
 				F371ABEA1B2BC4CB002A8A85 /* NSManagedObjectContextExtensions.swift */,
@@ -502,6 +508,7 @@
 				F371ABED1B2BC4CB002A8A85 /* NSManagedObjectContextExtensions.swift in Sources */,
 				F371ABC91B2BB80E002A8A85 /* QueryType.swift in Sources */,
 				F371ABBF1B2BA9DA002A8A85 /* EntityQuery.swift in Sources */,
+				F34E74A01B2E576000FAA04A /* Grouping.swift in Sources */,
 				F3B0E33C1B2DFD70008D7EEF /* Function.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -510,7 +517,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F33567681B2D2EF7007853DB /* SelectionTests.swift in Sources */,
+				F33567681B2D2EF7007853DB /* SelectionAndGroupingTests.swift in Sources */,
 				F3E6B5541B2C01CC00F735EE /* OrderTests.swift in Sources */,
 				F37A46F31B2BD61700D4EE61 /* Attribute.swift in Sources */,
 				F3B0E3331B2DEED1008D7EEF /* ExpressionHelperTests.swift in Sources */,
@@ -530,6 +537,7 @@
 				F3251A061B2BDA190031B817 /* BaseTestCase.swift in Sources */,
 				F371ABEE1B2BC4CB002A8A85 /* NSManagedObjectContextExtensions.swift in Sources */,
 				F371ABCA1B2BB80E002A8A85 /* QueryType.swift in Sources */,
+				F34E74A11B2E576000FAA04A /* Grouping.swift in Sources */,
 				F34E749C1B2E3A9900FAA04A /* Alias.swift in Sources */,
 				F3251A131B2BDE6E0031B817 /* Employee.swift in Sources */,
 				F37A46F81B2BD77900D4EE61 /* Predicate.swift in Sources */,
@@ -569,6 +577,7 @@
 				F371ABEB1B2BC4CB002A8A85 /* NSManagedObjectContextExtensions.swift in Sources */,
 				F371ABC71B2BB80E002A8A85 /* QueryType.swift in Sources */,
 				F371ABBD1B2BA9DA002A8A85 /* EntityQuery.swift in Sources */,
+				F34E749E1B2E576000FAA04A /* Grouping.swift in Sources */,
 				F3B0E33A1B2DFD70008D7EEF /* Function.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -577,7 +586,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F33567661B2D2EF7007853DB /* SelectionTests.swift in Sources */,
+				F33567661B2D2EF7007853DB /* SelectionAndGroupingTests.swift in Sources */,
 				F3E6B5531B2C01CC00F735EE /* OrderTests.swift in Sources */,
 				F37A46F11B2BD61700D4EE61 /* Attribute.swift in Sources */,
 				F3B0E3321B2DEED1008D7EEF /* ExpressionHelperTests.swift in Sources */,
@@ -597,6 +606,7 @@
 				F3251A051B2BDA190031B817 /* BaseTestCase.swift in Sources */,
 				F371ABEC1B2BC4CB002A8A85 /* NSManagedObjectContextExtensions.swift in Sources */,
 				F371ABC81B2BB80E002A8A85 /* QueryType.swift in Sources */,
+				F34E749F1B2E576000FAA04A /* Grouping.swift in Sources */,
 				F34E749A1B2E3A9900FAA04A /* Alias.swift in Sources */,
 				F3251A121B2BDE6E0031B817 /* Employee.swift in Sources */,
 				F37A46F61B2BD77900D4EE61 /* Predicate.swift in Sources */,

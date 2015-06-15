@@ -11,16 +11,22 @@ import Foundation
 
 public final class ExpressionHelper {
     public static func attributeTypeForKeyPath(keyPath: String, inEntity entity: NSEntityDescription) -> NSAttributeType {
+        var attributeType = NSAttributeType.UndefinedAttributeType
         let keys = keyPath.componentsSeparatedByString(".")
         let key = keys.first!
         if keys.count > 1 {
             // If we have more than one key, the current key MUST be `NSRelationshipDescription`.
             let relationshipDescription = entity.propertiesByName[key]! as! NSRelationshipDescription
-            return attributeTypeForKeyPath(".".join(dropFirst(keys)), inEntity: relationshipDescription.destinationEntity!)
+            attributeType = attributeTypeForKeyPath(".".join(dropFirst(keys)), inEntity: relationshipDescription.destinationEntity!)
         } else {
-            let attributeDescription = entity.propertiesByName[key]! as! NSAttributeDescription
-            return attributeDescription.attributeType
+            let propertyDescription = entity.propertiesByName[key]!
+            if let attributeDescription = propertyDescription as? NSAttributeDescription {
+                attributeType = attributeDescription.attributeType
+            } else if propertyDescription is NSRelationshipDescription {
+                attributeType = .ObjectIDAttributeType
+            }
         }
+        return attributeType
     }
     public static func keyPathForExpression(expression: NSExpression) -> String? {
         var keyPath: String?
