@@ -66,46 +66,34 @@ extension QueryType {
     }
 }
 
-extension ExpressionQuery {
-    /**
-    "Plucks" a single column from a query result and returns it as an array.
-    
-    - note: Specifying a value for the `name` parameter does *not* automatically add the column
-    to the list of those returned. You must specify the column in a previously chained `select`, e.g.,
-    
-    `moc.from(Employee).select({$0.salary}).pluck()`
-    
-    - parameter name: The name of the column to pluck. If not specified, a column is chosen at random.
-    - parameter managedObjectContext: An optional `NSManagedObjectContext`. If passed, supercedes the one in the chain.
-    */
-    public func pluck<T>(name: String? = nil, managedObjectContext: NSManagedObjectContext? = nil) throws -> [T] {
-        var result = [T]()
-        let results = try all(managedObjectContext) as NSArray
+extension ExpressionQueryType {
+    public func pluck<T>(expression: ExpressionType, managedObjectContext: NSManagedObjectContext? = nil) throws -> [T] {
+        var builder = self.builder
+        builder.expressions = [expression]
+        let results = try ExpressionQuery(builder: builder).all(managedObjectContext) as NSArray
         if results.count > 0 {
-            let dictionary = results[0] as! NSDictionary
-            // OK, this isn't really "at random" but saying it's the "first" column could be confusing.
-            let key = name ?? dictionary.allKeys.first! as! String
-            result = results.valueForKey(key) as! [T]
+            let key = (results[0] as! NSDictionary).allKeys.first! as! String
+            return results.valueForKey(key) as! [T]
+        } else {
+            return []
         }
-        return result
     }
-    
-    /**
-    Gets the value of the specified column in the first row and casts it to `T`.
-    
-    - note: Specifying a value for the `name` parameter does *not* automatically add the column
-    to the list of those returned. You must specify the column in a previously chained `select`, e.g.,
-    
-    `moc.from(Employee).select({$0.salary}).value() as! NSNumber`
-    
-    - warning: If the cast to `T` fails, a runtime exception will occur. A common error here
-    is to forget that a type annotation is often needed, e.g., `let number = moc.from(Employee).select("salary").value()`
-    will fail to compile. You must say `let number: NSNumber = moc.from(Employee).select("salary").value()`.
-    
-    - parameter name: The name of the column from which to grab the value. If not specified, a column is chosen at random.
-    - parameter managedObjectContext: An optional `NSManagedObjectContext`. If passed, supercedes the one in the chain.
-    */
-    public func value<T>(name: String? = nil, managedObjectContext: NSManagedObjectContext? = nil) throws -> T? {
-        return try limit(1).pluck(name, managedObjectContext: managedObjectContext).first
+    public func pluck<T>(managedObjectContext managedObjectContext: NSManagedObjectContext? = nil, _ expression: QueryEntityType.EntityAttributeType -> ExpressionType) throws -> [T] {
+        let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
+        return try pluck(expression(attribute), managedObjectContext: managedObjectContext)
+    }
+    public func value<T>(expression: ExpressionType, managedObjectContext: NSManagedObjectContext? = nil) throws -> T? {
+        var builder = self.builder
+        builder.expressions = [expression]
+        if let result = try ExpressionQuery(builder: builder).first(managedObjectContext) {
+            let key = result.allKeys.first! as! String
+            return (result[key]! as! T)
+        } else {
+            return nil
+        }
+    }
+    public func value<T>(managedObjectContext managedObjectContext: NSManagedObjectContext? = nil, _ expression: QueryEntityType.EntityAttributeType -> ExpressionType) throws -> T? {
+        let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
+        return try value(expression(attribute), managedObjectContext: managedObjectContext)
     }
 }

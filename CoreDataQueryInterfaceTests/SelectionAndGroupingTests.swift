@@ -13,7 +13,7 @@ import XCTest
 class SelectionTests : BaseTestCase {
  
     func testSelection() {
-        let salary = try! managedObjectContext.from(Employee).order(descending: {$0.salary}).select({$0.salary}).value()! as NSNumber
+        let salary: NSNumber = try! managedObjectContext.from(Employee).order(descending: {$0.salary}).value({$0.salary})!
         XCTAssertEqual(salary.integerValue, 100_000)
     }
     
