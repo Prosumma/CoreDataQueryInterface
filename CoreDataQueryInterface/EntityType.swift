@@ -15,6 +15,7 @@ public protocol EntityType: class {
 }
 
 public func entityNameForManagedObject(type: AnyClass!) -> String {
+    // TODO: There's a better way to do this.
     return String.fromCString(class_getName(type))!.componentsSeparatedByString(".").last!
 }
 
