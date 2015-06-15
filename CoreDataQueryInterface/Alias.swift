@@ -26,3 +26,11 @@ extension Alias : ExpressionType {
         return expression.toExpression(entityDescription)
     }
 }
+
+extension Expression {
+    
+    public static func alias(name: String, _ expression: ExpressionType) -> Alias {
+        return Alias(name: name, expression: expression)
+    }
+    
+}

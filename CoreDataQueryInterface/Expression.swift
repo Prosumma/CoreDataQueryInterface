@@ -8,14 +8,4 @@
 
 import Foundation
 
-public struct Expression {
-    
-}
-
-extension Expression {
-    
-    public static func alias(name: String, expression: ExpressionType) -> Alias {
-        return Alias(name: name, expression: expression)
-    }
-    
-}
+public struct Expression {}
