@@ -67,7 +67,7 @@ extension QueryType {
 }
 
 extension ExpressionQueryType {
-    public func pluck<T>(expression: ExpressionType, managedObjectContext: NSManagedObjectContext? = nil) throws -> [T] {
+    public func array<T>(expression: ExpressionType, managedObjectContext: NSManagedObjectContext? = nil) throws -> [T] {
         var builder = self.builder
         builder.expressions = [expression]
         let results = try ExpressionQuery(builder: builder).all(managedObjectContext) as NSArray
@@ -78,9 +78,9 @@ extension ExpressionQueryType {
             return []
         }
     }
-    public func pluck<T>(managedObjectContext managedObjectContext: NSManagedObjectContext? = nil, _ expression: QueryEntityType.EntityAttributeType -> ExpressionType) throws -> [T] {
+    public func array<T>(managedObjectContext managedObjectContext: NSManagedObjectContext? = nil, _ expression: QueryEntityType.EntityAttributeType -> ExpressionType) throws -> [T] {
         let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
-        return try pluck(expression(attribute), managedObjectContext: managedObjectContext)
+        return try array(expression(attribute), managedObjectContext: managedObjectContext)
     }
     public func value<T>(expression: ExpressionType, managedObjectContext: NSManagedObjectContext? = nil) throws -> T? {
         var builder = self.builder
