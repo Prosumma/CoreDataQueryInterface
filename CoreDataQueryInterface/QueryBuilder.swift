@@ -17,8 +17,7 @@ public struct QueryBuilder<E: EntityType> {
     public var groupings = [ExpressionType]()
     public var limit: UInt?
     
-    public func request(resultType: NSFetchRequestResultType, var managedObjectContext: NSManagedObjectContext? = nil) -> NSFetchRequest {
-        managedObjectContext = managedObjectContext ?? self.managedObjectContext
+    public func request(resultType: NSFetchRequestResultType, managedObjectModel: NSManagedObjectModel? = nil) -> NSFetchRequest {
         let request = NSFetchRequest(entityName: E.entityName)
         request.resultType = resultType
         if let limit = limit { request.fetchLimit = Int(limit) }
@@ -27,7 +26,7 @@ public struct QueryBuilder<E: EntityType> {
             request.sortDescriptors = descriptors
         }
         if resultType == .DictionaryResultType {
-            let entityDescription = managedObjectContext!.persistentStoreCoordinator!.managedObjectModel.entitiesByName[E.entityName]!
+            let entityDescription = managedObjectModel!.entitiesByName[E.entityName]!
             if !expressions.isEmpty {
                 request.propertiesToFetch = expressions.map() { $0.toPropertyDescription(entityDescription) }
             }
@@ -36,6 +35,11 @@ public struct QueryBuilder<E: EntityType> {
             }
         }
         return request
+    }
+    
+    public func request(resultType: NSFetchRequestResultType, var managedObjectContext: NSManagedObjectContext? = nil) -> NSFetchRequest {
+        managedObjectContext = managedObjectContext ?? self.managedObjectContext
+        return request(resultType, managedObjectModel: managedObjectContext?.persistentStoreCoordinator?.managedObjectModel)
     }
     
     public func count(var managedObjectContext: NSManagedObjectContext?) throws -> UInt {

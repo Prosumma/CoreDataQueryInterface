@@ -18,7 +18,7 @@ class SelectionTests : BaseTestCase {
     }
     
     func testMaximumSalaryGroupedByDepartment() {
-        let result = try! managedObjectContext.from(Employee).groupBy({$0.department.name}).select({e in [e.department.name, Expression.max(e.salary)]}).all()
+        let result = try! managedObjectContext.from(Employee).groupBy({$0.department.name}).select({e in [e.department.name, Expression.max(e.salary)]}).order(descending: {$0.department.name}).all()
         debugPrint(result)
     }
 }
