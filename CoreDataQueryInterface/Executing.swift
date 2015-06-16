@@ -67,6 +67,12 @@ extension QueryType {
 }
 
 extension ExpressionQueryType {
+    /**
+    Returns the given expression as an array of `T`.
+    
+    - warning: Any preceding expressions in the CDQI chain are overwritten by `expression`. If the cast to `T` fails,
+    a runtime exception will occur.
+    */
     public func array<T>(expression: ExpressionType, managedObjectContext: NSManagedObjectContext? = nil) throws -> [T] {
         var builder = self.builder
         builder.expressions = [expression]
@@ -78,10 +84,25 @@ extension ExpressionQueryType {
             return []
         }
     }
+    
+    /**
+    Returns the given expression as an array of `T`.
+    
+    - warning: Any preceding expressions in the CDQI chain are overwritten by `expression`. If the cast to `T` fails,
+    a runtime exception will occur.
+    */
     public func array<T>(managedObjectContext managedObjectContext: NSManagedObjectContext? = nil, _ expression: QueryEntityType.EntityAttributeType -> ExpressionType) throws -> [T] {
         let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
         return try array(expression(attribute), managedObjectContext: managedObjectContext)
     }
+    
+    /**
+    Returns the value of `expression` for the first row as type `T`. In other words, this returns the value of the first row
+    in the first column.
+    
+    - warning: Any preceding expressions in the CDQI chain are overwritten by `expression`. If the cast to `T` fails,
+    a runtime exception will occur.
+    */
     public func value<T>(expression: ExpressionType, managedObjectContext: NSManagedObjectContext? = nil) throws -> T? {
         var builder = self.builder
         builder.expressions = [expression]
@@ -92,6 +113,14 @@ extension ExpressionQueryType {
             return nil
         }
     }
+    
+    /**
+    Returns the value of `expression` for the first row as type `T`. In other words, this returns the value of the first row
+    in the first column.
+    
+    - warning: Any preceding expressions in the CDQI chain are overwritten by `expression`. If the cast to `T` fails,
+    a runtime exception will occur.
+    */
     public func value<T>(managedObjectContext managedObjectContext: NSManagedObjectContext? = nil, _ expression: QueryEntityType.EntityAttributeType -> ExpressionType) throws -> T? {
         let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
         return try value(expression(attribute), managedObjectContext: managedObjectContext)

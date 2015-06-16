@@ -10,6 +10,18 @@ import Foundation
 
 extension QueryType {
     
+    /**
+    Sorts ascending by the given keys. However, if `NSSortDescriptor`s are passed,
+    their implicit direction is honored.
+    
+    `order(NSSortDescriptor(key: "foo", ascending: false))` sorts _descending_, but
+    `order("foo")` sorts _ascending_.
+    
+    `order` methods be chained multiple times, e.g., `order(descending: "lastName").order("firstName")`
+    sorts first _descending_ by `lastName` and then _ascending_ by `firstName`.
+    
+    - parameter keys: An array of elements implementing the `OrderType` protocol.
+    */
     func order(keys: [OrderType]) -> Self {
         let descriptors = keys.map() { $0.toSortDescriptor(ascending: true) }
         var builder = self.builder
