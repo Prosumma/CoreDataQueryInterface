@@ -13,6 +13,7 @@ extension QueryType {
     Filter based on the given Core Data predicate. All other
     `filter` methods feed into this one. Chain multiple `filter`
     calls to create an `&&` relationship between the predicates.
+    
     - note: If you are using this method directly, you are
     most likely not getting the most out of CDQI. Try using
     one of the other overloads.
@@ -37,17 +38,6 @@ extension QueryType {
         return filter(predicate)
     }
     
-    
-    public func filter(format: String, arguments: CVaListPointer) -> Self {
-        let predicate = NSPredicate(format: format, arguments: arguments)
-        return filter(predicate)
-    }
-    
-    public func filter(format: String, arguments: [AnyObject]) -> Self {
-        let predicate = NSPredicate(format: format, argumentArray: arguments)
-        return filter(predicate)
-    }
-
     /**
     Creates an `NSPredicate` based on a format string and arguments, then filters, e.g.,
     
@@ -60,6 +50,6 @@ extension QueryType {
     - parameter arguments: An array of `CVarArgType`s for format string substitution.
     */
     public func filter(format: String, _ arguments: CVarArgType...) -> Self {
-        return withVaList(arguments) { arg in filter(format, arguments: arg) }
+        return withVaList(arguments) { arg in filter(NSPredicate(format: format, arguments: arg)) }
     }
 }
