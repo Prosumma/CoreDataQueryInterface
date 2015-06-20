@@ -37,5 +37,11 @@ class FilterTests : BaseTestCase {
         let firstEmployee = try! employeeQuery.filter({ employee in employee == [firstObjectID] }).first()!
         XCTAssertEqual(firstObjectID, firstEmployee.objectID)
     }
-        
+    
+    func testEmployeesWithHighSalaries() {
+        let salary = 80000.32 // This will be a Double
+        let highSalaryCount = try! managedObjectContext.from(Employee).filter({ $0.salary >= salary }).count()
+        XCTAssertEqual(highSalaryCount, 8)
+    }
+    
 }
