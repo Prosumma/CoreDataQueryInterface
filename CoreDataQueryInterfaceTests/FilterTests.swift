@@ -37,4 +37,9 @@ class FilterTests : BaseTestCase {
         let firstEmployee = try! employeeQuery.filter({ employee in employee == [firstObjectID] }).first()!
         XCTAssertEqual(firstObjectID, firstEmployee.objectID)
     }
+    
+    func testTypePromotion() {
+
+    }
+    
 }
