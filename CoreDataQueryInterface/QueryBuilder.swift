@@ -16,6 +16,7 @@ public struct QueryBuilder<E: EntityType> {
     public var expressions = [ExpressionType]()
     public var groupings = [ExpressionType]()
     public var limit: UInt?
+    public var returnsDistinctResults: Bool = false
     
     public func request(resultType: NSFetchRequestResultType, managedObjectModel: NSManagedObjectModel? = nil) -> NSFetchRequest {
         let request = NSFetchRequest(entityName: E.entityName)
@@ -25,7 +26,7 @@ public struct QueryBuilder<E: EntityType> {
         if !descriptors.isEmpty && resultType != .CountResultType {
             request.sortDescriptors = descriptors
         }
-        if resultType == .DictionaryResultType {
+        if !expressions.isEmpty || !groupings.isEmpty {
             let entityDescription = managedObjectModel!.entitiesByName[E.entityName]!
             if !expressions.isEmpty {
                 request.propertiesToFetch = expressions.map() { $0.toPropertyDescription(entityDescription) }
@@ -34,6 +35,7 @@ public struct QueryBuilder<E: EntityType> {
                 request.propertiesToGroupBy = groupings.map() { $0.toPropertyDescription(entityDescription) }
             }
         }
+        request.returnsDistinctResults = returnsDistinctResults
         return request
     }
     

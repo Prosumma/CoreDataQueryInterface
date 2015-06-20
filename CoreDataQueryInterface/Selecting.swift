@@ -34,5 +34,11 @@ extension ExpressionQueryType {
     public func select(expressions: (QueryEntityType.EntityAttributeType -> ExpressionType)...) -> ExpressionQuery<QueryEntityType> {
         return select(expressions)
     }
+    
+    public func distinct() -> ExpressionQuery<QueryEntityType> {
+        var builder = self.builder
+        builder.returnsDistinctResults = true
+        return ExpressionQuery(builder: builder)
+    }
  
 }

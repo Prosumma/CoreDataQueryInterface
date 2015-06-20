@@ -21,4 +21,9 @@ class SelectionTests : BaseTestCase {
         let result = try! managedObjectContext.from(Employee).groupBy({$0.department.name}).select({e in [e.department.name, Expression.max(e.salary)]}).order(descending: {$0.department.name}).all()
         debugPrint(result)
     }
+    
+    func testDistinctArray() {
+        let salaries: [Int] = try! managedObjectContext.from(Employee).distinct().array({$0.salary})
+        XCTAssertEqual(salaries.count, 22)
+    }
 }
