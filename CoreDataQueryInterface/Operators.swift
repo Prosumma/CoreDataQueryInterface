@@ -353,3 +353,55 @@ public func <=<A: AttributeType>(lhs: A, rhs: UInt64) -> NSPredicate {
     return lhs <= NSNumber(unsignedLongLong: rhs)
 }
 
+// Float
+
+public func ==<A: AttributeType>(lhs: A, rhs: Float) -> NSPredicate {
+    return lhs == NSNumber(float: rhs)
+}
+
+public func !=<A: AttributeType>(lhs: A, rhs: Float) -> NSPredicate {
+    return lhs != NSNumber(float: rhs)
+}
+
+public func ><A: AttributeType>(lhs: A, rhs: Float) -> NSPredicate {
+    return lhs > NSNumber(float: rhs)
+}
+
+public func >=<A: AttributeType>(lhs: A, rhs: Float) -> NSPredicate {
+    return lhs >= NSNumber(float: rhs)
+}
+
+public func <<A: AttributeType>(lhs: A, rhs: Float) -> NSPredicate {
+    return lhs < NSNumber(float: rhs)
+}
+
+public func <=<A: AttributeType>(lhs: A, rhs: Float) -> NSPredicate {
+    return lhs <= NSNumber(float: rhs)
+}
+
+// Double
+
+public func ==<A: AttributeType>(lhs: A, rhs: Double) -> NSPredicate {
+    return lhs == NSNumber(double: rhs)
+}
+
+public func !=<A: AttributeType>(lhs: A, rhs: Double) -> NSPredicate {
+    return lhs != NSNumber(double: rhs)
+}
+
+public func ><A: AttributeType>(lhs: A, rhs: Double) -> NSPredicate {
+    return lhs > NSNumber(double: rhs)
+}
+
+public func >=<A: AttributeType>(lhs: A, rhs: Double) -> NSPredicate {
+    return lhs >= NSNumber(double: rhs)
+}
+
+public func <<A: AttributeType>(lhs: A, rhs: Double) -> NSPredicate {
+    return lhs < NSNumber(double: rhs)
+}
+
+public func <=<A: AttributeType>(lhs: A, rhs: Double) -> NSPredicate {
+    return lhs <= NSNumber(double: rhs)
+}
+
