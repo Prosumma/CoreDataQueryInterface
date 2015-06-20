@@ -21,7 +21,7 @@ class FilterTests : BaseTestCase {
     }
     
     func testCountEmployeesWithoutNickName() {
-        let nickNameLessCount = try! managedObjectContext.from(Employee).filter({ employee in employee.nickName == nil as String? }).count()
+        let nickNameLessCount = try! managedObjectContext.from(Employee).filter({ employee in employee.nickName == nil }).count()
         XCTAssertEqual(nickNameLessCount, 10)
     }
     
