@@ -60,6 +60,11 @@ public func ==<A: AttributeType>(lhs: A, rhs: String) -> NSPredicate {
 // [String]
 
 public func ==<A: AttributeType>(lhs: A, rhs: [String]) -> NSPredicate {
-    return NSCompoundPredicate.notPredicateWithSubpredicate(lhs == rhs)
+    return predicate(lhs, "IN", "%@", rhs as NSArray)
 }
+
+public func !=<A: AttributeType>(lhs: A, rhs: [String]) -> NSPredicate {
+    return NSCompoundPredicate.notPredicateWithSubpredicate(lhs == rhs)    
+}
+
 
