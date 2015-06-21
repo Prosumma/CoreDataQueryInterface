@@ -9,6 +9,12 @@
 import CoreData
 import Foundation
 
+/**
+A query that returns entities, i.e., managed objects. Can be converted
+to an expression query by using one of the `ExpressionQueryType`
+methods, such as `select()`. Can be converted to `ManagedObjectIDQuery` by using the
+`objectIDs()` method.
+*/
 public struct EntityQuery<E: EntityType> : ExpressionQueryType {
     typealias QueryResultType = E
     public let builder: QueryBuilder<E>

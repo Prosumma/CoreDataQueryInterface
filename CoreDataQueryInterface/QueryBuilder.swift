@@ -16,16 +16,22 @@ public struct QueryBuilder<E: EntityType> {
     public var expressions = [ExpressionType]()
     public var groupings = [ExpressionType]()
     public var limit: UInt?
+    public var offset: UInt?
     public var returnsDistinctResults: Bool = false
     
+    /**
+    Creates a new `NSFetchRequest` using the given arguments.
+    - parameter resultType: The type of request to create.
+    - parameter managedObjectModel: The managed object model to use for metadata. (Used only for expression queries.)
+    */
     public func request(resultType: NSFetchRequestResultType, managedObjectModel: NSManagedObjectModel? = nil) -> NSFetchRequest {
         let request = NSFetchRequest(entityName: E.entityName)
         request.resultType = resultType
         if let limit = limit { request.fetchLimit = Int(limit) }
+        if let offset = offset { request.fetchOffset = Int(offset) }
+        request.returnsDistinctResults = returnsDistinctResults
         if !predicates.isEmpty { request.predicate = NSCompoundPredicate.andPredicateWithSubpredicates(predicates) }
-        if !descriptors.isEmpty && resultType != .CountResultType {
-            request.sortDescriptors = descriptors
-        }
+        if !descriptors.isEmpty { request.sortDescriptors = descriptors }
         if !expressions.isEmpty || !groupings.isEmpty {
             let entityDescription = managedObjectModel!.entitiesByName[E.entityName]!
             if !expressions.isEmpty {
@@ -35,7 +41,6 @@ public struct QueryBuilder<E: EntityType> {
                 request.propertiesToGroupBy = groupings.map() { $0.toPropertyDescription(entityDescription) }
             }
         }
-        request.returnsDistinctResults = returnsDistinctResults
         return request
     }
     

@@ -19,17 +19,34 @@ public protocol QueryType: SequenceType {
 }
 
 extension QueryType {
+    /**
+    Starts a new query of the given type.
+    */
     public static func from(QueryEntityType.Type) -> Self {
-        return self(builder: QueryBuilder())
+        return self(builder: QueryBuilder<QueryEntityType>())
     }
+    /**
+    Sets the managed object context.
+    */
     public func context(managedObjectContext: NSManagedObjectContext) -> Self {
         var builder = self.builder
         builder.managedObjectContext = managedObjectContext
         return Self(builder: builder)
     }
+    /**
+    Limit the query to a certain number of records.
+    */
     public func limit(limit: UInt?) -> Self {
         var builder = self.builder
         builder.limit = limit
-        return self
+        return Self(builder: builder)
+    }
+    /**
+    Start the query at a certain offset.
+    */
+    public func offset(offset: UInt?) -> Self {
+        var builder = self.builder
+        builder.offset = offset
+        return Self(builder: builder)
     }
 }

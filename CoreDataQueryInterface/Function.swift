@@ -48,8 +48,43 @@ extension Expression {
         return Function(function: "max:", arguments: [argument], name: name, prefix: "max", resultType: resultType)
     }
     
+    public static func min(argument: ExpressionType, name: String? = nil, resultType: NSAttributeType? = nil) -> Function {
+        return Function(function: "min:", arguments: [argument], name: name, prefix: "min", resultType: resultType)
+    }
+    
     public static func average(argument: ExpressionType, name: String? = nil, resultType: NSAttributeType? = nil) -> Function {
         return Function(function: "average:", arguments: [argument], name: name, prefix: "average", resultType: resultType)
+    }
+    
+}
+
+extension ExpressionQueryType {
+    
+    public func max(expression: ExpressionType) -> ExpressionQuery<QueryEntityType> {
+        return select(Expression.max(expression))
+    }
+    
+    public func max(expression: QueryEntityType.EntityAttributeType -> ExpressionType) -> ExpressionQuery<QueryEntityType> {
+        let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
+        return select(Expression.max(expression(attribute)))
+    }
+    
+    public func min(expression: ExpressionType) -> ExpressionQuery<QueryEntityType> {
+        return select(Expression.min(expression))
+    }
+    
+    public func min(expression: QueryEntityType.EntityAttributeType -> ExpressionType) -> ExpressionQuery<QueryEntityType> {
+        let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
+        return select(Expression.min(expression(attribute)))
+    }
+
+    public func average(expression: ExpressionType) -> ExpressionQuery<QueryEntityType> {
+        return select(Expression.average(expression))
+    }
+    
+    public func average(expression: QueryEntityType.EntityAttributeType -> ExpressionType) -> ExpressionQuery<QueryEntityType> {
+        let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
+        return select(Expression.average(expression(attribute)))
     }
     
 }
