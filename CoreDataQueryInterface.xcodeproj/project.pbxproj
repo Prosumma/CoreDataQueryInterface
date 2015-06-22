@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F30C0B7C1B37A20A00D8D762 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30C0B7B1B37A20A00D8D762 /* Util.swift */; };
+		F30C0B7D1B37A20A00D8D762 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30C0B7B1B37A20A00D8D762 /* Util.swift */; };
 		F30D1CD41B2A891200AF80A1 /* CoreDataQueryInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F30D1CCA1B2A891100AF80A1 /* CoreDataQueryInterface.framework */; };
 		F3158D1C1B2A91040041B125 /* EntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3158D1B1B2A91040041B125 /* EntityType.swift */; };
 		F3158D1D1B2A91040041B125 /* EntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3158D1B1B2A91040041B125 /* EntityType.swift */; };
@@ -146,6 +148,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F30C0B7B1B37A20A00D8D762 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		F30D1CCA1B2A891100AF80A1 /* CoreDataQueryInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataQueryInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F30D1CD31B2A891100AF80A1 /* CoreDataQueryInterfaceOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataQueryInterfaceOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3158D1B1B2A91040041B125 /* EntityType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityType.swift; sourceTree = "<group>"; };
@@ -311,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				F3251A041B2BDA190031B817 /* BaseTestCase.swift */,
+				F30C0B7B1B37A20A00D8D762 /* Util.swift */,
 				F33567621B2D1BF5007853DB /* Tests */,
 				F33567631B2D1C04007853DB /* Core Data */,
 				F37C46B31B2A780200B35B1B /* Info.plist */,
@@ -547,6 +551,7 @@
 				F371ABCA1B2BB80E002A8A85 /* QueryType.swift in Sources */,
 				F34E74A11B2E576000FAA04A /* Grouping.swift in Sources */,
 				F34E749C1B2E3A9900FAA04A /* Alias.swift in Sources */,
+				F30C0B7D1B37A20A00D8D762 /* Util.swift in Sources */,
 				F3251A131B2BDE6E0031B817 /* Employee.swift in Sources */,
 				F37A46F81B2BD77900D4EE61 /* Predicate.swift in Sources */,
 				F3B0E3421B2E0351008D7EEF /* ExpressionType.swift in Sources */,
@@ -618,6 +623,7 @@
 				F371ABC81B2BB80E002A8A85 /* QueryType.swift in Sources */,
 				F34E749F1B2E576000FAA04A /* Grouping.swift in Sources */,
 				F34E749A1B2E3A9900FAA04A /* Alias.swift in Sources */,
+				F30C0B7C1B37A20A00D8D762 /* Util.swift in Sources */,
 				F3251A121B2BDE6E0031B817 /* Employee.swift in Sources */,
 				F37A46F61B2BD77900D4EE61 /* Predicate.swift in Sources */,
 				F3B0E3401B2E0351008D7EEF /* ExpressionType.swift in Sources */,
