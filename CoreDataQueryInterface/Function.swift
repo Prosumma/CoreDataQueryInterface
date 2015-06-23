@@ -58,6 +58,8 @@ extension Expression {
     
 }
 
+// MARK: - Shortcut Aggregates
+
 extension ExpressionQueryType {
     
     public func max(expression: ExpressionType) -> ExpressionQuery<QueryEntityType> {
