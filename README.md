@@ -105,4 +105,45 @@ class EmployeeAttribute : Attribute {
 }
 ```
 
-A tool is in development to automatically generate these classes.
+##### MOCDQI
+
+A tool called `mocdqi` is available in the `bin` directory of the project to generate attribute classes. By default, it starts in the current directory and searches for the data model with the name specified. If it finds this data model, it generates a file for each model it finds and writes these files next to the data model package. For example:
+
+```bash
+cd MyAwesomeProject
+/path/to/mocdqi MyAwesomeData
+```
+
+If `MyAwesomeData` contains two models called `Order` and `OrderItem`, `mocdqi` will generate `OrderAttribute.swift` and `OrderItemAttribute.swift`. If either of these files exist, `mocdqi` will refuse to overwrite them unless the `--force` option is passed. You can tell `mocdqi` to start in a diferent folder from the current one by using the `-i` or `--in` option, e.g.,
+
+```bash
+/path/to/mocdqi --in=~/Projects/MyAwesomeProject MyAwesomeData
+```
+
+If you want `mocdqi` to put the generated files into a different folder, specify `-o` or `--out`, e.g.,
+
+```bash
+/path/to/mocdqi --out= ~/Desktop/ --in=~/Projects/MyAwesomeProject MyAwesomeData
+```
+
+You can create a single file with all the attributes using the `-m` or `--merged` option:
+
+```bash
+/path/to/mocdqi --out=~/Desktop/ --in=~/Projects/MyAwesomeProject --merged MyAwesomeData
+```
+
+This will generate a file called `MyAwesomeDataAttribute.swift`. By default, the generated class are not marked public. If you want to make them so, use `-p` or `--public`:
+
+```bash
+/path/to/mocdqi --public --merged MyAwesomeData
+```
+
+Lastly, you can exclude a particular entity by using the `-x` or `--exclude=` option. This option can be used multiple times.
+
+```bash
+/path/to/mocdqi --public --exclude=BadModel --exclude=TerribleEntity MyAwesomeData
+```
+
+If you do this, not only will these models be excluded, but also all relationship properties in other entities that reference them.
+
+There are a few other minor options. Examine the source code to see them. The code is pretty straightforward.
