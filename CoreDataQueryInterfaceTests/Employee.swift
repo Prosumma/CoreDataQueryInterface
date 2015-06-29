@@ -18,25 +18,3 @@ class Employee: NSManagedObject, EntityType {
     @NSManaged var department: Department
 }
 
-class EmployeeAttribute : Attribute {
-    private(set) var firstName: Attribute!
-    private(set) var lastName: Attribute!
-    private(set) var nickName: Attribute!
-    private(set) var salary: Attribute!
-    
-    private var _department: DepartmentAttribute!
-    var department: DepartmentAttribute {
-        if _department == nil {
-            _department = DepartmentAttribute("department", parent: self)
-        }
-        return _department
-    }
-    
-    required init(_ name: String? = nil, parent: AttributeType? = nil) {
-        super.init(name, parent: parent)
-        firstName = Attribute("firstName", parent: self)
-        lastName = Attribute("lastName", parent: self)
-        nickName = Attribute("nickName", parent: self)
-        salary = Attribute("salary", parent: self)
-    }
-}

@@ -10,8 +10,9 @@ $options.input_path = "."
 $options.output_path = nil
 $options.merged = false
 $options.excluded_entities = []
-$options.public = false
+$options.access_modifier = ""
 $options.suffix = "Attribute"
+$options.indent = 4
 
 option_parser = OptionParser::new do |opts|
   opts.on("-f", "--force", "Force overwrite existing files") do |opt|
@@ -30,10 +31,13 @@ option_parser = OptionParser::new do |opts|
     $options.excluded_entities << opt
   end
   opts.on("-p", "--public", "Make generated classes public") do |opt|
-    $options.public = opt
+    $options.access_modifier = opt ? 'public ' : ''
   end
   opts.on("-s", "--suffix=SUFFIX", "Suffix to use on generated classes and filenames (defaults to Attribute)") do |opt|
     $options.suffix = opt
+  end
+  opts.on("-n", "--indent=COUNT", OptionParser::DecimalInteger, "Number of spaces to indent (defaults to 2)") do |opt|
+    $options.indent = opt
   end
 end
 
@@ -51,6 +55,7 @@ Find::find($options.input_path) do |path|
   if path =~ /#{Regexp.quote(model)}\.xcdatamodeld$/
     $stderr.puts "NOTICE: Using data model at #{path}."
     model_path = path
+    $options.output_path ||= File::dirname(path)
     break
   end
 end
@@ -60,6 +65,21 @@ abort "Could not find #{model} data model in #{$options.input_path}. Quitting." 
 require 'rexml/document'
 require 'rexml/xpath'
 
+class IndentWriter
+  def initialize(io)
+    @io = io
+    @level = 0
+  end
+  def puts(s)
+    @io.puts "#{''.ljust($options.indent * @level, ' ')}#{s}"
+  end
+  def indent(level = 1)
+    @level += level
+    yield
+    @level -= level
+  end
+end
+
 class Attribute
   attr_reader :name, :entity
   def initialize(name, entity: nil)
@@ -68,17 +88,20 @@ class Attribute
   end
   def render_property(io)
     if @entity
-      io.puts "\tprivate var _#{@name}: #{@entity}#{$options.suffix}!"
-      io.puts "\tvar #{@name}: #{@entity}#{$options.suffix} {"
-      io.puts "\t\tif _#{@name} == nil { _#{@name} = #{@entity}#{$options.suffix}(name: \"#{@name}\", parent: self) }"
-      io.puts "\t\treturn _#{@name}"
-      io.puts "\t}"
+      io.puts ""
+      io.puts "private var _#{@name}: #{@entity}#{$options.suffix}!"
+      io.puts "#{$options.access_modifier}var #{@name}: #{@entity}#{$options.suffix} {"
+      io.indent do
+        io.puts "if _#{@name} == nil { _#{@name} = #{@entity}#{$options.suffix}(\"#{@name}\", parent: self) }"
+        io.puts "return _#{@name}"
+      end
+      io.puts "}"
     else
-      io.puts "\tlet #{@name}: Attribute"
+      io.puts "#{$options.access_modifier}private(set) var #{@name}: Attribute!"
     end
   end
   def render_init(io)
-    io.puts "\t\t#{@name} = Attribute(name: \"#{@name}\", parent: self)" if @entity.nil?
+    io.puts "self.#{@name} = Attribute(\"#{@name}\", parent: self)" if @entity.nil?
   end
 end
 
@@ -92,16 +115,21 @@ class Entity
     @attributes << attribute
   end
   def render(io)
-    io.puts "class #{@name}#{$options.suffix}: Attribute {"
-    @attributes.each do |attribute|
-      attribute.render_property(io)
+    io.puts "#{$options.access_modifier}class #{@name}#{$options.suffix}: Attribute {"
+    io.indent do
+      @attributes.each do |attribute|
+        attribute.render_property(io)
+      end
+      io.puts ""
+      io.puts "#{$options.access_modifier}required init(_ name: String? = nil, parent: AttributeType? = nil) {"
+      io.indent do
+        io.puts "super.init(name, parent: parent)"
+        @attributes.each do |attribute|
+          attribute.render_init(io)
+        end
+      end
+      io.puts "}"
     end
-    io.puts "\trequired init(name: String? = nil, parent: AttributeType? = nil) {"
-    io.puts "\t\tsuper.init(name: name, parent: parent)"
-    @attributes.each do |attribute|
-      attribute.render_init(io)
-    end
-    io.puts "\t}"
     io.puts "}"
   end
 end
@@ -130,7 +158,30 @@ File::open(File::join(model_path, "#{model}.xcdatamodel/contents")) do |fd|
   end
 end
 
-entities.each do |entity|
-  entity.render $stdout
+if $options.merged
+  output_file = File.join($options.output_path, "#{model}#{$options.suffix}.swift")
+  if $options.force || !File.exists?(output_file)
+    File::open(output_file, 'w') do |io|
+      iw = IndentWriter::new(io)
+      entities.each do |entity|
+        entity.render iw
+      end
+    end
+    $stderr.puts "NOTICE: Wrote file #{output_file}."
+  else
+    abort "ERROR: The file '#{output_file}' exists and --force was not specified. Quitting."
+  end
+else
+  entities.each do |entity|
+    output_file = File.join($options.output_path, "#{entity.name}#{$options.suffix}.swift")
+    if $options.force || !File.exists?(output_file)
+      File::open(output_file, 'w') do |io|
+        entity.render IndentWriter::new(io) 
+      end
+      $stderr.puts "NOTICE: Wrote file #{output_file}."
+    else
+      $stderr.puts "WARNING: The file '#{output_file}' exists and --force was not specified. Skipping."
+    end
+  end
 end
 

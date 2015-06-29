@@ -44,6 +44,10 @@
 		F367DE311B2D6149009C1020 /* OrderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367DE2F1B2D6149009C1020 /* OrderType.swift */; };
 		F367DE321B2D6149009C1020 /* OrderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367DE2F1B2D6149009C1020 /* OrderType.swift */; };
 		F367DE331B2D6149009C1020 /* OrderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367DE2F1B2D6149009C1020 /* OrderType.swift */; };
+		F36D9D2B1B40FE5E00A3D4EC /* DepartmentAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36D9D291B40FE5E00A3D4EC /* DepartmentAttribute.swift */; };
+		F36D9D2C1B40FE5E00A3D4EC /* DepartmentAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36D9D291B40FE5E00A3D4EC /* DepartmentAttribute.swift */; };
+		F36D9D2D1B40FE5E00A3D4EC /* EmployeeAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36D9D2A1B40FE5E00A3D4EC /* EmployeeAttribute.swift */; };
+		F36D9D2E1B40FE5E00A3D4EC /* EmployeeAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36D9D2A1B40FE5E00A3D4EC /* EmployeeAttribute.swift */; };
 		F371ABA61B2B8EE2002A8A85 /* AttributeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABA51B2B8EE2002A8A85 /* AttributeType.swift */; };
 		F371ABA71B2B8EE2002A8A85 /* AttributeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABA51B2B8EE2002A8A85 /* AttributeType.swift */; };
 		F371ABB31B2BA5FA002A8A85 /* AttributeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABA51B2B8EE2002A8A85 /* AttributeType.swift */; };
@@ -161,6 +165,8 @@
 		F34E74981B2E3A9900FAA04A /* Alias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alias.swift; sourceTree = "<group>"; };
 		F34E749D1B2E576000FAA04A /* Grouping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grouping.swift; sourceTree = "<group>"; };
 		F367DE2F1B2D6149009C1020 /* OrderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderType.swift; sourceTree = "<group>"; };
+		F36D9D291B40FE5E00A3D4EC /* DepartmentAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartmentAttribute.swift; sourceTree = "<group>"; };
+		F36D9D2A1B40FE5E00A3D4EC /* EmployeeAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeAttribute.swift; sourceTree = "<group>"; };
 		F371ABA51B2B8EE2002A8A85 /* AttributeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeType.swift; sourceTree = "<group>"; };
 		F371ABB71B2BA8BA002A8A85 /* QueryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryBuilder.swift; sourceTree = "<group>"; };
 		F371ABBC1B2BA9DA002A8A85 /* EntityQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityQuery.swift; sourceTree = "<group>"; };
@@ -185,6 +191,7 @@
 		F3B0E32C1B2DEEB5008D7EEF /* ExpressionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionHelper.swift; sourceTree = "<group>"; };
 		F3B0E3391B2DFD70008D7EEF /* Function.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		F3B0E33E1B2E0351008D7EEF /* ExpressionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionType.swift; sourceTree = "<group>"; };
+		F3DEBD9F1B40FCCD00EE1382 /* bin */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bin; sourceTree = "<group>"; };
 		F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTests.swift; sourceTree = "<group>"; };
 		F3E6B5521B2C01CC00F735EE /* OrderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -237,6 +244,8 @@
 		F33567631B2D1C04007853DB /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				F36D9D291B40FE5E00A3D4EC /* DepartmentAttribute.swift */,
+				F36D9D2A1B40FE5E00A3D4EC /* EmployeeAttribute.swift */,
 				F3251A0A1B2BDA2D0031B817 /* Company.xcdatamodeld */,
 				F3251A071B2BDA260031B817 /* Employees.txt */,
 				F3251A0E1B2BDE6E0031B817 /* Department.swift */,
@@ -282,6 +291,7 @@
 				F37C46A41B2A780200B35B1B /* CoreDataQueryInterface */,
 				F37C46B01B2A780200B35B1B /* CoreDataQueryInterfaceTests */,
 				F37C46A31B2A780200B35B1B /* Products */,
+				F3DEBD9F1B40FCCD00EE1382 /* bin */,
 			);
 			sourceTree = "<group>";
 		};
@@ -535,6 +545,7 @@
 				F371ABB51B2BA5FA002A8A85 /* AttributeType.swift in Sources */,
 				F371ABE81B2BC2E7002A8A85 /* ManagedObjectIDQuery.swift in Sources */,
 				F371ABDE1B2BC15C002A8A85 /* Executing.swift in Sources */,
+				F36D9D2E1B40FE5E00A3D4EC /* EmployeeAttribute.swift in Sources */,
 				F371ABC51B2BAC28002A8A85 /* ExpressionQuery.swift in Sources */,
 				F3251A0D1B2BDA2D0031B817 /* Company.xcdatamodeld in Sources */,
 				F371ABB61B2BA5FA002A8A85 /* EntityType.swift in Sources */,
@@ -556,6 +567,7 @@
 				F371ABD41B2BC122002A8A85 /* Filtering.swift in Sources */,
 				F3FE7AD11B2B87CF00AA5845 /* SanityTests.swift in Sources */,
 				F3251A111B2BDE6E0031B817 /* Department.swift in Sources */,
+				F36D9D2C1B40FE5E00A3D4EC /* DepartmentAttribute.swift in Sources */,
 				F34E74971B2E38C900FAA04A /* Expression.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -606,6 +618,7 @@
 				F371ABB31B2BA5FA002A8A85 /* AttributeType.swift in Sources */,
 				F371ABE61B2BC2E7002A8A85 /* ManagedObjectIDQuery.swift in Sources */,
 				F371ABDC1B2BC15C002A8A85 /* Executing.swift in Sources */,
+				F36D9D2D1B40FE5E00A3D4EC /* EmployeeAttribute.swift in Sources */,
 				F371ABC31B2BAC28002A8A85 /* ExpressionQuery.swift in Sources */,
 				F3251A0C1B2BDA2D0031B817 /* Company.xcdatamodeld in Sources */,
 				F371ABB41B2BA5FA002A8A85 /* EntityType.swift in Sources */,
@@ -627,6 +640,7 @@
 				F371ABD21B2BC122002A8A85 /* Filtering.swift in Sources */,
 				F37C46B21B2A780200B35B1B /* SanityTests.swift in Sources */,
 				F3251A101B2BDE6E0031B817 /* Department.swift in Sources */,
+				F36D9D2B1B40FE5E00A3D4EC /* DepartmentAttribute.swift in Sources */,
 				F34E74951B2E38C900FAA04A /* Expression.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
