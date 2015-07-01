@@ -15,8 +15,29 @@ public protocol EntityType: class {
     static func entityNameInManagedObjectModel(managedObjectModel: NSManagedObjectModel) -> String
 }
 
-private var CDQIEntityCache = [String: String]()
-private let CDQIEntityCacheQueue = dispatch_queue_create(nil, nil)
+private var EntityCache = [String: String]()
+private let EntityCacheQueue = dispatch_queue_create(nil, nil)
+
+/**
+Returns the name of the entity corresponding to the current class.
+- parameter aClass: The class for which to retrieve the entity
+- parameter managedObjectModel: The managed object model in which to look for the entity.
+- returns: The name of the entity.
+*/
+public func entityNameForClass(aClass: AnyClass, inManagedObjectModel managedObjectModel: NSManagedObjectModel) -> String? {
+    let className = String.fromCString(class_getName(aClass))!
+    var entityName: String?
+    dispatch_sync(EntityCacheQueue) {
+        entityName = EntityCache[className]
+        if entityName == nil {
+            entityName = managedObjectModel.entities.filter({ $0.managedObjectClassName == className }).first!.name!
+            if entityName != nil {
+                EntityCache[className] = entityName
+            }
+        }
+    }
+    return entityName
+}
 
 extension EntityType {
     /**
@@ -26,15 +47,6 @@ extension EntityType {
     - warning: Throws an exception if the entity cannot be located.
     */
     public static func entityNameInManagedObjectModel(managedObjectModel: NSManagedObjectModel) -> String {
-        let className = String.fromCString(class_getName(self))!
-        var entityName: String!
-        dispatch_sync(CDQIEntityCacheQueue) {
-            entityName = CDQIEntityCache[className]
-            if entityName == nil {
-                entityName = managedObjectModel.entities.filter({ $0.managedObjectClassName == className }).first!.name!
-                CDQIEntityCache[className] = entityName
-            }
-        }
-        return entityName
+        return entityNameForClass(self, inManagedObjectModel: managedObjectModel)!
     }
 }
