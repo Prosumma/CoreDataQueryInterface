@@ -13,17 +13,9 @@ extension QueryType {
     /**
     Constructs a fetch request from the preceding CDQI chain.
     
-    The entire point of CDQI is to construct and optionally execute a
-    fetch request.
-    
-    - warning: Some kinds of queries require an instance of `NSManagedObjectModel`
-    in order for this method to work. This is especially true of expression queries,
-    because the model is used to look up information like attribute types, etc.
-    While many queries will work without it, passing a model is highly recommended.
-    
-    - parameter managedObjectModel: An optional `NSManagedObjectModel`. If passed, supercedes the one in the chain.
+    - parameter managedObjectModel: The `NSManagedObjectModel` whose metadata is used to construct the fetch request.
     */
-    public func request(managedObjectModel: NSManagedObjectModel? = nil) -> NSFetchRequest {
+    public func request(managedObjectModel: NSManagedObjectModel) -> NSFetchRequest {
         return builder.request(resultType, managedObjectModel: managedObjectModel)
     }
     
@@ -32,6 +24,7 @@ extension QueryType {
     `NSManagedObjectContext`.
     
     - parameter managedObjectContext: An optional `NSManagedObjectContext`. If passed, supercedes the one in the chain.
+    - warning: If no `NSManagedObjectContext` exists in the chain, an exception will be thrown.
     */
     public func request(managedObjectContext: NSManagedObjectContext? = nil) -> NSFetchRequest {
         return builder.request(resultType, managedObjectContext: managedObjectContext)

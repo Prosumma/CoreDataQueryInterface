@@ -24,8 +24,8 @@ public struct QueryBuilder<E: EntityType> {
     - parameter resultType: The type of request to create.
     - parameter managedObjectModel: The managed object model to use for metadata. (Used only for expression queries.)
     */
-    public func request(resultType: NSFetchRequestResultType, managedObjectModel: NSManagedObjectModel? = nil) -> NSFetchRequest {
-        let request = NSFetchRequest(entityName: E.entityName)
+    public func request(resultType: NSFetchRequestResultType, managedObjectModel: NSManagedObjectModel) -> NSFetchRequest {
+        let request = NSFetchRequest(entityName: E.entityNameInManagedObjectModel(managedObjectModel))
         request.resultType = resultType
         if let limit = limit { request.fetchLimit = Int(limit) }
         if let offset = offset { request.fetchOffset = Int(offset) }
@@ -33,7 +33,7 @@ public struct QueryBuilder<E: EntityType> {
         if !predicates.isEmpty { request.predicate = NSCompoundPredicate.andPredicateWithSubpredicates(predicates) }
         if !descriptors.isEmpty { request.sortDescriptors = descriptors }
         if !expressions.isEmpty || !groupings.isEmpty {
-            let entityDescription = managedObjectModel!.entitiesByName[E.entityName]!
+            let entityDescription = managedObjectModel.entitiesByName[E.entityNameInManagedObjectModel(managedObjectModel)]!
             if !expressions.isEmpty {
                 request.propertiesToFetch = expressions.map() { $0.toPropertyDescription(entityDescription) }
             }
@@ -46,7 +46,7 @@ public struct QueryBuilder<E: EntityType> {
     
     public func request(resultType: NSFetchRequestResultType, var managedObjectContext: NSManagedObjectContext? = nil) -> NSFetchRequest {
         managedObjectContext = managedObjectContext ?? self.managedObjectContext
-        return request(resultType, managedObjectModel: managedObjectContext?.persistentStoreCoordinator?.managedObjectModel)
+        return request(resultType, managedObjectModel: managedObjectContext!.persistentStoreCoordinator!.managedObjectModel)
     }
     
     public func count(var managedObjectContext: NSManagedObjectContext?) throws -> UInt {

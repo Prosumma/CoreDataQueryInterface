@@ -16,7 +16,7 @@ extension NSManagedObjectContext {
     }
     
     public func newEntity<E: NSManagedObject where E: EntityType>(E.Type) -> E {
-        return NSEntityDescription.insertNewObjectForEntityForName(E.entityName, inManagedObjectContext: self) as! E
+        return NSEntityDescription.insertNewObjectForEntityForName(E.entityNameInManagedObjectModel(persistentStoreCoordinator!.managedObjectModel), inManagedObjectContext: self) as! E
     }
     
     public func newEntity<E: NSManagedObject where E: EntityType>() -> E {

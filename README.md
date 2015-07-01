@@ -127,7 +127,7 @@ If `MyAwesomeData` contains two models called `Order` and `OrderItem`, `mocdqi` 
 If you want `mocdqi` to put the generated files into a different folder, specify `-o` or `--out`, e.g.,
 
 ```bash
-/path/to/mocdqi --out= ~/Desktop/ --in=~/Projects/MyAwesomeProject MyAwesomeData
+/path/to/mocdqi --out=~/Desktop/ --in=~/Projects/MyAwesomeProject MyAwesomeData
 ```
 
 You can create a single file with all the attributes using the `-m` or `--merged` option:
