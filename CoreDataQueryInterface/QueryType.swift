@@ -23,8 +23,9 @@ extension QueryType {
     Starts a new query of the given type.
     */
     public static func from(QueryEntityType.Type) -> Self {
-        return self(builder: QueryBuilder<QueryEntityType>())
+        return self.init(builder: QueryBuilder<QueryEntityType>())
     }
+    
     /**
     Sets the managed object context.
     */
@@ -33,6 +34,7 @@ extension QueryType {
         builder.managedObjectContext = managedObjectContext
         return Self(builder: builder)
     }
+    
     /**
     Limit the query to a certain number of records.
     */
@@ -41,6 +43,7 @@ extension QueryType {
         builder.limit = limit
         return Self(builder: builder)
     }
+    
     /**
     Start the query at a certain offset.
     */
