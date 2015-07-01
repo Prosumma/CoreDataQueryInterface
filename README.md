@@ -191,6 +191,8 @@ As with filtering, the parameter passed to the block is an instance of `Employee
 
 ```swift
 managedObjectContext.from(Employee).order({ $0.lastName }, { $0.firstName })
-managedObjectContext.from(Employee).order({ [ $0.lastName, $0.firstName ]} )
+managedObjectContext.from(Employee).order({ [ $0.lastName, $0.firstName ] })
+let employee = EmployeeAttribute()
+managedObjectContext.from(Employee).order(employee.lastName, employee.firstName)
 ```
 
