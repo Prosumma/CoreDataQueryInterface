@@ -164,6 +164,7 @@
 		F34E74931B2E38C900FAA04A /* Expression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
 		F34E74981B2E3A9900FAA04A /* Alias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alias.swift; sourceTree = "<group>"; };
 		F34E749D1B2E576000FAA04A /* Grouping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grouping.swift; sourceTree = "<group>"; };
+		F356831B1B43AC040089F0A0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F367DE2F1B2D6149009C1020 /* OrderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderType.swift; sourceTree = "<group>"; };
 		F36D9D291B40FE5E00A3D4EC /* DepartmentAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartmentAttribute.swift; sourceTree = "<group>"; };
 		F36D9D2A1B40FE5E00A3D4EC /* EmployeeAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeAttribute.swift; sourceTree = "<group>"; };
@@ -288,6 +289,7 @@
 		F37C46981B2A780200B35B1B = {
 			isa = PBXGroup;
 			children = (
+				F356831B1B43AC040089F0A0 /* README.md */,
 				F37C46A41B2A780200B35B1B /* CoreDataQueryInterface */,
 				F37C46B01B2A780200B35B1B /* CoreDataQueryInterfaceTests */,
 				F37C46A31B2A780200B35B1B /* Products */,
