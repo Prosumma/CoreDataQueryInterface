@@ -151,3 +151,46 @@ Lastly, you can exclude a particular entity by using the `-x` or `--exclude=` op
 If you do this, not only will these models be excluded, but also all relationship properties in other entities that reference them.
 
 There are a few other minor options. Examine the source code to see them. The code is pretty straightforward.
+
+### Usage
+
+All of the examples in this section assume that the `mocdqi` tool has been used to generate attribute classes to eliminate the use of magic strings. To see more extensive examples, take a look at the unit tests.
+
+#### Starting a Query
+
+While there are other ways, the simplest way to start a query is to begin with an instance of `NSManagedObjectContext`, e.g.,
+
+```swift
+managedObjectContext.from(Employee)
+```
+
+The parameter passed to `from` is a type, specifically an `NSManagedObject` subclass that implements the `EntityType` protocol. 
+
+#### Filtering
+
+```swift
+managedObjectContext.from(Employee).filter({ $0.department.name == "Engineering" && $0.salary < 70000 })
+```
+
+The parameter passed to the filter block `{ $0.department.name == "Engineering" && $0.salary < 70000 }` is an instance of `EmployeeAttribute`.
+
+If multiple filters are chained together, the effect is as if `&&` was placed between them, e.g.,
+
+```swift
+managedObjectContext.from(Employee).filter({ $0.department.name == "Engineering" }).filter({ $0.salary < 70000 })
+```
+
+#### Ordering
+
+```swift
+managedObjectContext.from(Department).order({ $0.name })
+managedObjectContext.from(Employee).order(descending: { $0.salary }).order({ $0.lastName })
+```
+
+As with filtering, the parameter passed to the block is an instance of `EmployeeAttribute`. Chained `order` methods work exactly as you would expect. There are several overloads that allow you to express the same thing in different ways, whatever is most convenient.
+
+```swift
+managedObjectContext.from(Employee).order({ $0.lastName }, { $0.firstName })
+managedObjectContext.from(Employee).order({ [ $0.lastName, $0.firstName ]} )
+```
+
