@@ -16,7 +16,7 @@ public protocol EntityType: class {
 }
 
 private var EntityCache = [String: String]()
-private let EntityCacheQueue = dispatch_queue_create(nil, nil)
+private let EntityCacheQueue = dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL)
 
 /**
 Returns the name of the entity corresponding to the current class.
