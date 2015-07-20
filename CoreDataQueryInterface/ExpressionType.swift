@@ -40,7 +40,7 @@ extension NSExpression : ExpressionType {
         return expressionDescription
     }
     
-    public func toExpression(NSEntityDescription) -> NSExpression {
+    public func toExpression(_: NSEntityDescription) -> NSExpression {
         return self
     }
 }
@@ -53,7 +53,7 @@ extension String : ExpressionType {
         expressionDescription.expressionResultType = ExpressionHelper.attributeTypeForKeyPath(self, inEntity: entityDescription)
         return expressionDescription
     }
-    public func toExpression(NSEntityDescription) -> NSExpression {
+    public func toExpression(_: NSEntityDescription) -> NSExpression {
         return NSExpression(forKeyPath: self)
     }
 }

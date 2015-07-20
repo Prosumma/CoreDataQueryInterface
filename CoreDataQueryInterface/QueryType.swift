@@ -22,7 +22,7 @@ extension QueryType {
     /**
     Starts a new query of the given type.
     */
-    public static func from(QueryEntityType.Type) -> Self {
+    public static func from(_: QueryEntityType.Type) -> Self {
         return self.init(builder: QueryBuilder<QueryEntityType>())
     }
     
