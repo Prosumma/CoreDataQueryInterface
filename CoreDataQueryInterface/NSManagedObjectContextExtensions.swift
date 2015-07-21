@@ -11,11 +11,11 @@ import Foundation
 
 extension NSManagedObjectContext {
     
-    public func from<E: EntityType>(E.Type) -> EntityQuery<E> {
+    public func from<E: EntityType>(_: E.Type) -> EntityQuery<E> {
         return EntityQuery(builder: QueryBuilder()).context(self)
     }
     
-    public func newEntity<E: NSManagedObject where E: EntityType>(E.Type) -> E {
+    public func newEntity<E: NSManagedObject where E: EntityType>(_: E.Type) -> E {
         return NSEntityDescription.insertNewObjectForEntityForName(E.entityNameInManagedObjectModel(persistentStoreCoordinator!.managedObjectModel), inManagedObjectContext: self) as! E
     }
     
