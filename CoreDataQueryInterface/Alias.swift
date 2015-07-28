@@ -31,7 +31,7 @@ extension Expression {
     
     /**
     Aliases an expression by creating an alternate name for it, e.g.,
-    `Expression.alias(Expression.max("salary"), "foo")`
+    `Expression.alias(Expression.max("salary"), "foo")`.
     */
     public static func alias(expression: ExpressionType, _ name: String) -> Alias {
         return Alias(name: name, expression: expression)
