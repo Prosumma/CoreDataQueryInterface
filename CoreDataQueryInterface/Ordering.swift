@@ -17,7 +17,7 @@ extension QueryType {
     `order(NSSortDescriptor(key: "foo", ascending: false))` sorts _descending_, but
     `order("foo")` sorts _ascending_.
     
-    `order` methods be chained multiple times, e.g., `order(descending: "lastName").order("firstName")`
+    `order` methods can be chained multiple times, e.g., `order(descending: "lastName").order("firstName")`
     sorts first _descending_ by `lastName` and then _ascending_ by `firstName`.
     
     - parameter keys: An array of elements implementing the `OrderType` protocol.
