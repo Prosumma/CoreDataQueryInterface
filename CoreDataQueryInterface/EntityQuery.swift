@@ -16,7 +16,7 @@ methods, such as `select()`. Can be converted to `ManagedObjectIDQuery` by using
 `objectIDs()` method.
 */
 public struct EntityQuery<E: EntityType> : ExpressionQueryType {
-    typealias QueryResultType = E
+    public typealias QueryResultType = E
     public let builder: QueryBuilder<E>
     public init(builder: QueryBuilder<E>) {
         self.builder = builder

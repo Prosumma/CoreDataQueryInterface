@@ -30,7 +30,7 @@ public struct QueryBuilder<E: EntityType> {
         if let limit = limit { request.fetchLimit = Int(limit) }
         if let offset = offset { request.fetchOffset = Int(offset) }
         request.returnsDistinctResults = returnsDistinctResults
-        if !predicates.isEmpty { request.predicate = NSCompoundPredicate.andPredicateWithSubpredicates(predicates) }
+        if !predicates.isEmpty { request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates) }
         if !descriptors.isEmpty { request.sortDescriptors = descriptors }
         if !expressions.isEmpty || !groupings.isEmpty {
             let entityDescription = managedObjectModel.entitiesByName[E.entityNameInManagedObjectModel(managedObjectModel)]!

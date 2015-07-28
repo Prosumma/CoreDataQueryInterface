@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 public struct ManagedObjectIDQuery<E: EntityType> : QueryType {
-    typealias QueryResultType = NSManagedObjectID
+    public typealias QueryResultType = NSManagedObjectID
     public let builder: QueryBuilder<E>
     public init(builder: QueryBuilder<E>) {
         self.builder = builder

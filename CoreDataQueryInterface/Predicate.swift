@@ -9,13 +9,13 @@
 import Foundation
 
 public func &&(lhs: NSPredicate, rhs: NSPredicate) -> NSPredicate {
-    return NSCompoundPredicate.andPredicateWithSubpredicates([lhs, rhs])
+    return NSCompoundPredicate(andPredicateWithSubpredicates: [lhs, rhs])
 }
 
 public func ||(lhs: NSPredicate, rhs: NSPredicate) -> NSPredicate {
-    return NSCompoundPredicate.orPredicateWithSubpredicates([lhs, rhs])
+    return NSCompoundPredicate(orPredicateWithSubpredicates: [lhs, rhs])
 }
 
 public prefix func !(predicate: NSPredicate) -> NSPredicate {
-    return NSCompoundPredicate.notPredicateWithSubpredicate(predicate)
+    return NSCompoundPredicate(notPredicateWithSubpredicate: predicate)
 }

@@ -54,7 +54,7 @@ public func ==<A: AttributeType>(lhs: A, rhs: [NSObject]) -> NSPredicate {
 }
 
 public func !=<A: AttributeType>(lhs: A, rhs: [NSObject]) -> NSPredicate {
-    return NSCompoundPredicate.notPredicateWithSubpredicate(lhs == rhs)
+    return NSCompoundPredicate(notPredicateWithSubpredicate: lhs == rhs)
 }
 
 // String
@@ -90,7 +90,7 @@ public func ==<A: AttributeType>(lhs: A, rhs: [String]) -> NSPredicate {
 }
 
 public func !=<A: AttributeType>(lhs: A, rhs: [String]) -> NSPredicate {
-    return NSCompoundPredicate.notPredicateWithSubpredicate(lhs == rhs)
+    return NSCompoundPredicate(notPredicateWithSubpredicate: lhs == rhs)
 }
 
 // Int

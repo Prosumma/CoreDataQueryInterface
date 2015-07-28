@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 public struct ExpressionQuery<E: EntityType> : ExpressionQueryType {
-    typealias QueryResultType = NSDictionary
+    public typealias QueryResultType = NSDictionary
     public let builder: QueryBuilder<E>
     public init(builder: QueryBuilder<E>) {
         self.builder = builder
