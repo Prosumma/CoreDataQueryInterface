@@ -9,6 +9,9 @@
 import CoreData
 import Foundation
 
+/**
+Constructs an instance of `NSFetchRequest` using the given state.
+*/
 public struct QueryBuilder<E: EntityType> {
     public var managedObjectContext: NSManagedObjectContext?
     public var predicates = [NSPredicate]()

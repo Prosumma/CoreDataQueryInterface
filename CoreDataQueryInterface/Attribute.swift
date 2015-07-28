@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+The default implementation of `AttributeType`.
+*/
 public class Attribute : AttributeType {
     
     private let _name: String?

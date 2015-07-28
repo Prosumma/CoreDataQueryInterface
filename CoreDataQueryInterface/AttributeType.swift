@@ -9,6 +9,9 @@
 import CoreData
 import Foundation
 
+/**
+The protocol implemented by classes that represent object dot notation.
+*/
 public protocol AttributeType: CustomStringConvertible, OrderType, ExpressionType {
     init(_ name: String?, parent: AttributeType?)
 }
