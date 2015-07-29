@@ -8,4 +8,5 @@
 
 import CoreData
 
+// Opt-in to use ManagedObjectContextType
 extension NSManagedObjectContext: ManagedObjectContextType {}
