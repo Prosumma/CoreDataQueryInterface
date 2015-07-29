@@ -27,7 +27,6 @@ class BaseTestCase: XCTestCase {
             let identifier = NSUUID().UUIDString
             let path = NSTemporaryDirectory().stringByAppendingPathComponent(identifier)
             let url = NSURL(fileURLWithPath: path)
-            print(path)
 
             // Create the database
             let model = NSManagedObjectModel.mergedModelFromBundles(NSBundle.allBundles())!

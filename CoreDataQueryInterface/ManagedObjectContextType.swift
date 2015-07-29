@@ -9,8 +9,13 @@
 import CoreData
 import Foundation
 
-extension NSManagedObjectContext {
-    
+public protocol ManagedObjectContextType {
+    func from<E: EntityType>(_: E.Type) -> EntityQuery<E>
+    func newEntity<E: NSManagedObject where E: EntityType>(_: E.Type) -> E
+    func newEntity<E: NSManagedObject where E: EntityType>() -> E
+}
+
+extension ManagedObjectContextType where Self: NSManagedObjectContext {
     /**
     Initiates a query whose result type is `E`.
     */
@@ -24,12 +29,12 @@ extension NSManagedObjectContext {
     public func newEntity<E: NSManagedObject where E: EntityType>(_: E.Type) -> E {
         return NSEntityDescription.insertNewObjectForEntityForName(E.entityNameInManagedObjectModel(persistentStoreCoordinator!.managedObjectModel), inManagedObjectContext: self) as! E
     }
-
+    
     /**
     Inserts a newly allocated entity of type `E` into this `NSManagedObjectContext`.
-    */    
+    */
     public func newEntity<E: NSManagedObject where E: EntityType>() -> E {
         return newEntity(E)
     }
-    
 }
+
