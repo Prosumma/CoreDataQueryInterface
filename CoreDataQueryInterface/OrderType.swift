@@ -12,7 +12,7 @@ import Foundation
 `OrderType` represents a type that can be converted to a sort descriptor.
 
 - note: `NSSortDescriptor` itself implements this protocol. It ignores the
-`ascending` parameter. So, `order(descending: NSSortDescriptor(key: "foo", ascending: true))`
+`ascending` parameter of `toSortDescriptor`. So, `order(descending: NSSortDescriptor(key: "foo", ascending: true))`
 sorts ascending, *not* descending. For this reason, it's best to use
 `NSSortDescriptor` with the overloads of `order()` that do not contain the
 `descending` keyword argument.
