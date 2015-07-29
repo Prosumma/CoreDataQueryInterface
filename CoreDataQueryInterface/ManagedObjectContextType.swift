@@ -15,6 +15,10 @@ public protocol ManagedObjectContextType {
     func newEntity<E: NSManagedObject where E: EntityType>() -> E
 }
 
+/**
+Extend `NSManagedObjectContext` with this interface in your project to
+benefit from these methods.
+*/
 extension ManagedObjectContextType where Self: NSManagedObjectContext {
     /**
     Initiates a query whose result type is `E`.
