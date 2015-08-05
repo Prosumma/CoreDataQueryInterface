@@ -115,6 +115,7 @@
 		F37C46A61B2A780200B35B1B /* CoreDataQueryInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = F37C46A51B2A780200B35B1B /* CoreDataQueryInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F37C46AD1B2A780200B35B1B /* CoreDataQueryInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F37C46A21B2A780200B35B1B /* CoreDataQueryInterface.framework */; };
 		F37C46B21B2A780200B35B1B /* SanityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37C46B11B2A780200B35B1B /* SanityTests.swift */; };
+		F39C7A741B718E34008DB31C /* CoreDataQueryInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = F37C46A51B2A780200B35B1B /* CoreDataQueryInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F3B0E32D1B2DEEB5008D7EEF /* ExpressionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E32C1B2DEEB5008D7EEF /* ExpressionHelper.swift */; };
 		F3B0E32E1B2DEEB5008D7EEF /* ExpressionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E32C1B2DEEB5008D7EEF /* ExpressionHelper.swift */; };
 		F3B0E32F1B2DEEB5008D7EEF /* ExpressionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B0E32C1B2DEEB5008D7EEF /* ExpressionHelper.swift */; };
@@ -343,6 +344,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F39C7A741B718E34008DB31C /* CoreDataQueryInterface.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
