@@ -8,7 +8,7 @@ Core Data Query Interface (CDQI) is a type-safe, fluent, intuitive library for w
 
 ## Swift 2.0
 
-Due to the recent announcement of Swift 2.0, all work on this version of CDQI is suspended. If you want to see my progress on the new CDQI, check out the `swift2.0` branch.
+Due to the recent announcement of Swift 2.0, all work on this version of CDQI is suspended. If you want to see my progress on the new CDQI, check out the [swift2.0](https://github.com/Prosumma/CoreDataQueryInterface/tree/swift2.0) branch.
 
 Progress has been very uh…swift, and the new version is very nearly complete, barring changes required by the evolution of Swift 2.0. The interface of CDQI 2.0 is very similar to this version, but the implementation makes heavy use of some of the new language features in Swift 2.0, such as default protocol implementations and the new error handling paradigm.
 
