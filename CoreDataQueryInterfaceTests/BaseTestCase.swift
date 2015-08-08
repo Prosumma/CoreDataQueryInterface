@@ -25,7 +25,7 @@ class BaseTestCase: XCTestCase {
         dispatch_once(&once) {
             // Path
             let identifier = NSUUID().UUIDString
-            let path = NSTemporaryDirectory().stringByAppendingPathComponent(identifier)
+            let path = (NSTemporaryDirectory() as NSString).stringByAppendingPathComponent(identifier)
             let url = NSURL(fileURLWithPath: path)
 
             // Create the database
