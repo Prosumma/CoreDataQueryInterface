@@ -17,7 +17,7 @@ public final class ExpressionHelper {
         if keys.count > 1 {
             // If we have more than one key, the current key MUST be `NSRelationshipDescription`.
             let relationshipDescription = entity.propertiesByName[key]! as! NSRelationshipDescription
-            attributeType = attributeTypeForKeyPath(".".join(keys.dropFirst()), inEntity: relationshipDescription.destinationEntity!)
+            attributeType = attributeTypeForKeyPath(keys.dropFirst().joinWithSeparator("."), inEntity: relationshipDescription.destinationEntity!)
         } else {
             let propertyDescription = entity.propertiesByName[key]!
             if let attributeDescription = propertyDescription as? NSAttributeDescription {
@@ -55,7 +55,7 @@ public final class ExpressionHelper {
                     let remainingCharacters = String(key.characters.dropFirst())
                     key = firstCharacter + remainingCharacters
                 }
-                name.extend(key)
+                name.appendContentsOf(key)
             }
             return name
         }

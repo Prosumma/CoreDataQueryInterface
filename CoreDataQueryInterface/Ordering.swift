@@ -25,7 +25,7 @@ extension QueryType {
     func order(keys: [OrderType]) -> Self {
         let descriptors = keys.map() { $0.toSortDescriptor(ascending: true) }
         var builder = self.builder
-        builder.descriptors.extend(descriptors)
+        builder.descriptors.appendContentsOf(descriptors)
         return Self(builder: builder)
     }
 
@@ -98,7 +98,7 @@ extension QueryType {
     func order(descending keys: [OrderType]) -> Self {
         let descriptors = keys.map() { $0.toSortDescriptor(ascending: false) }
         var builder = self.builder
-        builder.descriptors.extend(descriptors)
+        builder.descriptors.appendContentsOf(descriptors)
         return Self(builder: builder)
     }
     

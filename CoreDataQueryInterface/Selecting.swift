@@ -13,7 +13,7 @@ extension ExpressionQueryType {
 
     public func select(expressions: [ExpressionType]) -> ExpressionQuery<QueryEntityType> {
         var builder = self.builder
-        builder.expressions.extend(expressions)
+        builder.expressions.appendContentsOf(expressions)
         return ExpressionQuery(builder: builder)
     }
     

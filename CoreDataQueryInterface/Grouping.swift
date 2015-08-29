@@ -12,7 +12,7 @@ extension ExpressionQueryType {
 
     public func groupBy(expressions: [ExpressionType]) -> ExpressionQuery<QueryEntityType> {
         var builder = self.builder
-        builder.groupings.extend(expressions)
+        builder.groupings.appendContentsOf(expressions)
         return ExpressionQuery(builder: builder)
     }
     
