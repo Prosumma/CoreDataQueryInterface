@@ -45,7 +45,8 @@ Compare the quantity and readability of the code in the two examples. Which woul
 ## Requirements
 
 - iOS 8.1+ / Mac OS X 10.9+
-- Xcode 6.4+
+- Xcode 7.0+
+- Swift 2.0+
 
 ### Integration
 
