@@ -19,7 +19,7 @@ before_install:
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 script:
   - set -o pipefail
-  - xcodebuild -project CoreDataQueryInterface.xcodeproj -scheme $SCHEME -sdk $SDK -destination $DESTINATION -configuration Debug ONLY_ACTIVE_ARCH=NO test | xcpretty -c
+  - xcodebuild -project CoreDataQueryInterface.xcodeproj -scheme "$SCHEME" -sdk $SDK -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO test | xcpretty -c
   - if [ $POD_LINT = "YES" ]; then
       pod lib lint --quick;
     fi
