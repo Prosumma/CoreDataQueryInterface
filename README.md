@@ -67,7 +67,7 @@ class Employee : NSManagedObject, EntityType {
 
 #### Attributes
 
-In order to use CoreDataQueryInterface's support for sorting, filtering, and the like without magic strings, you have to do a little more work. _This is completely optional but highly recommended._
+In order to use CoreDataQueryInterface's support for sorting, filtering, and the like without magic strings, you have to do a little more work. _This is completely optional but highly recommended._ (Don't despair. You can use the `mocdqi` tool detailed below to generate the attribute classes automatically.)
 
 ```swift
 class Department : NSManagedObject, EntityType {
