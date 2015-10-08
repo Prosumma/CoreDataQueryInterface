@@ -20,5 +20,13 @@ class SanityTests: BaseTestCase {
         let employeeCount = try! managedObjectContext.from(Employee).count()
         XCTAssertEqual(employeeCount, 25)
     }
+    
+    func testIteration() {
+        var iterations = 0
+        for _ in managedObjectContext.from(Department) {
+            iterations++
+        }
+        XCTAssertEqual(iterations, 3)
+    }
         
 }

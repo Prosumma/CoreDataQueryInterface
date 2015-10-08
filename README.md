@@ -11,7 +11,8 @@ Core Data Query Interface (CDQI) is a type-safe, fluent, intuitive library for w
 The best way to understand the advantages of CDQI is to see an example. (Be sure to scroll right to see the entire example).
 
 ```swift
-for employee in try! managedObjectContext.from(Employee).filter({$0.salary > 70000 && $0.department.name == "Engineering"}).order(descending: {$0.lastName}, {$0.firstName}).all() {
+// Iteration causes the query to execute, though there are other ways
+for employee in managedObjectContext.from(Employee).filter({$0.salary > 70000 && $0.department.name == "Engineering"}).order(descending: {$0.lastName}, {$0.firstName}) {
   debugPrintln("\(employee.lastName), \(employee.firstName)")
 }
 ```
