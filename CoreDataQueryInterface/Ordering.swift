@@ -22,7 +22,7 @@ extension QueryType {
     
     - parameter keys: An array of elements implementing the `OrderType` protocol.
     */
-    func order(keys: [OrderType]) -> Self {
+    public func order(keys: [OrderType]) -> Self {
         let descriptors = keys.map() { $0.toSortDescriptor(ascending: true) }
         var builder = self.builder
         builder.descriptors.appendContentsOf(descriptors)
@@ -41,7 +41,7 @@ extension QueryType {
     
     - parameter keys: An array of elements implementing the `OrderType` protocol.
     */
-    func order(keys: OrderType...) -> Self {
+    public func order(keys: OrderType...) -> Self {
         return order(keys)
     }
 
@@ -53,7 +53,7 @@ extension QueryType {
     
     - parameter keys: A block which returns an array of `OrderType`s to sort by.
     */
-    func order(keys: QueryEntityType.EntityAttributeType -> [OrderType]) -> Self {
+    public func order(keys: QueryEntityType.EntityAttributeType -> [OrderType]) -> Self {
         let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
         return order(keys(attribute))
     }
@@ -66,7 +66,7 @@ extension QueryType {
     
     - parameter keys: An array of blocks each of which returns an `OrderType` for sorting.
     */
-    func order(keys: [QueryEntityType.EntityAttributeType -> OrderType]) -> Self {
+    public func order(keys: [QueryEntityType.EntityAttributeType -> OrderType]) -> Self {
         let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
         return order(keys.map({$0(attribute)}))
     }
@@ -79,7 +79,7 @@ extension QueryType {
     
     - parameter keys: An array of blocks each of which returns an `OrderType` for sorting.
     */
-    func order(keys: (QueryEntityType.EntityAttributeType -> OrderType)...) -> Self {
+    public func order(keys: (QueryEntityType.EntityAttributeType -> OrderType)...) -> Self {
         return order(keys)
     }
     
@@ -95,7 +95,7 @@ extension QueryType {
     
     - parameter keys: An array of elements implementing the `OrderType` protocol.
     */
-    func order(descending keys: [OrderType]) -> Self {
+    public func order(descending keys: [OrderType]) -> Self {
         let descriptors = keys.map() { $0.toSortDescriptor(ascending: false) }
         var builder = self.builder
         builder.descriptors.appendContentsOf(descriptors)
@@ -114,7 +114,7 @@ extension QueryType {
     
     - parameter keys: An array of elements implementing the `OrderType` protocol.
     */
-    func order(descending keys: OrderType...) -> Self {
+    public func order(descending keys: OrderType...) -> Self {
         return order(descending: keys)
     }
 
@@ -126,7 +126,7 @@ extension QueryType {
     
     - parameter keys: A block which returns an array of `OrderType`s to sort by.
     */
-    func order(descending keys: QueryEntityType.EntityAttributeType -> [OrderType]) -> Self {
+    public func order(descending keys: QueryEntityType.EntityAttributeType -> [OrderType]) -> Self {
         let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
         return order(descending: keys(attribute))
     }
@@ -139,7 +139,7 @@ extension QueryType {
     
     - parameter keys: An array of blocks each of which returns an `OrderType` for sorting.
     */
-    func order(descending keys: [QueryEntityType.EntityAttributeType -> OrderType]) -> Self {
+    public func order(descending keys: [QueryEntityType.EntityAttributeType -> OrderType]) -> Self {
         let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
         return order(descending: keys.map({$0(attribute)}))
     }
@@ -152,7 +152,7 @@ extension QueryType {
     
     - parameter keys: An array of blocks each of which returns an `OrderType` for sorting.
     */
-    func order(descending keys: (QueryEntityType.EntityAttributeType -> OrderType)...) -> Self {
+    public func order(descending keys: (QueryEntityType.EntityAttributeType -> OrderType)...) -> Self {
         return order(descending: keys)
     }
     
