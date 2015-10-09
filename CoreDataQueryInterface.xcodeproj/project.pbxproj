@@ -24,10 +24,6 @@
 		F3251A111B2BDE6E0031B817 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3251A0E1B2BDE6E0031B817 /* Department.swift */; };
 		F3251A121B2BDE6E0031B817 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3251A0F1B2BDE6E0031B817 /* Employee.swift */; };
 		F3251A131B2BDE6E0031B817 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3251A0F1B2BDE6E0031B817 /* Employee.swift */; };
-		F335675E1B2D18A0007853DB /* Iterating.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335675D1B2D18A0007853DB /* Iterating.swift */; };
-		F335675F1B2D18A0007853DB /* Iterating.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335675D1B2D18A0007853DB /* Iterating.swift */; };
-		F33567601B2D18A0007853DB /* Iterating.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335675D1B2D18A0007853DB /* Iterating.swift */; };
-		F33567611B2D18A0007853DB /* Iterating.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335675D1B2D18A0007853DB /* Iterating.swift */; };
 		F33567661B2D2EF7007853DB /* SelectionAndGroupingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33567641B2D2EF7007853DB /* SelectionAndGroupingTests.swift */; };
 		F33567681B2D2EF7007853DB /* SelectionAndGroupingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33567641B2D2EF7007853DB /* SelectionAndGroupingTests.swift */; };
 		F34E74941B2E38C900FAA04A /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E74931B2E38C900FAA04A /* Expression.swift */; };
@@ -163,7 +159,6 @@
 		F3251A0B1B2BDA2D0031B817 /* Company.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Company.xcdatamodel; sourceTree = "<group>"; };
 		F3251A0E1B2BDE6E0031B817 /* Department.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
 		F3251A0F1B2BDE6E0031B817 /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
-		F335675D1B2D18A0007853DB /* Iterating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Iterating.swift; sourceTree = "<group>"; };
 		F33567641B2D2EF7007853DB /* SelectionAndGroupingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionAndGroupingTests.swift; sourceTree = "<group>"; };
 		F34E74931B2E38C900FAA04A /* Expression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
 		F34E74981B2E3A9900FAA04A /* Alias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alias.swift; sourceTree = "<group>"; };
@@ -277,7 +272,6 @@
 				F371ABD01B2BC122002A8A85 /* Filtering.swift */,
 				F3B0E3391B2DFD70008D7EEF /* Function.swift */,
 				F34E749D1B2E576000FAA04A /* Grouping.swift */,
-				F335675D1B2D18A0007853DB /* Iterating.swift */,
 				F371ABEA1B2BC4CB002A8A85 /* ManagedObjectContextType.swift */,
 				F371ABE41B2BC2E7002A8A85 /* ManagedObjectIDQuery.swift */,
 				F3754CCA1B35FBE5004B46B3 /* Operators.swift */,
@@ -514,7 +508,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F371ABCE1B2BBB15002A8A85 /* ExpressionQueryType.swift in Sources */,
-				F33567601B2D18A0007853DB /* Iterating.swift in Sources */,
 				F371ABBA1B2BA8BA002A8A85 /* QueryBuilder.swift in Sources */,
 				F371ABE21B2BC1F7002A8A85 /* Selecting.swift in Sources */,
 				F3B0E3411B2E0351008D7EEF /* ExpressionType.swift in Sources */,
@@ -552,7 +545,6 @@
 				F371ABC01B2BA9DA002A8A85 /* EntityQuery.swift in Sources */,
 				F3B0E33D1B2DFD70008D7EEF /* Function.swift in Sources */,
 				F367DE331B2D6149009C1020 /* OrderType.swift in Sources */,
-				F33567611B2D18A0007853DB /* Iterating.swift in Sources */,
 				F371ABB51B2BA5FA002A8A85 /* AttributeType.swift in Sources */,
 				F371ABE81B2BC2E7002A8A85 /* ManagedObjectIDQuery.swift in Sources */,
 				F371ABDE1B2BC15C002A8A85 /* Executing.swift in Sources */,
@@ -588,7 +580,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F371ABCC1B2BBB15002A8A85 /* ExpressionQueryType.swift in Sources */,
-				F335675E1B2D18A0007853DB /* Iterating.swift in Sources */,
 				F371ABB81B2BA8BA002A8A85 /* QueryBuilder.swift in Sources */,
 				F371ABE01B2BC1F7002A8A85 /* Selecting.swift in Sources */,
 				F3B0E33F1B2E0351008D7EEF /* ExpressionType.swift in Sources */,
@@ -626,7 +617,6 @@
 				F371ABBE1B2BA9DA002A8A85 /* EntityQuery.swift in Sources */,
 				F3B0E33B1B2DFD70008D7EEF /* Function.swift in Sources */,
 				F367DE311B2D6149009C1020 /* OrderType.swift in Sources */,
-				F335675F1B2D18A0007853DB /* Iterating.swift in Sources */,
 				F371ABB31B2BA5FA002A8A85 /* AttributeType.swift in Sources */,
 				F371ABE61B2BC2E7002A8A85 /* ManagedObjectIDQuery.swift in Sources */,
 				F371ABDC1B2BC15C002A8A85 /* Executing.swift in Sources */,
