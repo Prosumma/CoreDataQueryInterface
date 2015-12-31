@@ -45,7 +45,7 @@ Compare the quantity and readability of the code in the two examples. Which woul
 
 #### Compatibility
 
-2.x proxy classes are not compatible with CDQI 3.x. You must regenerate your proxy classes to use 3.x. Also, you should remove references to `EntityType` from your managed objects. The `EntityType` protocol is now automatically generated for each managed object class by the `cdqi` tool (formerly the `mocdqi` tool), as it should have been from the start. Other than that, 3.x should be fully backwards compatible with 3.x.
+2.x proxy classes are not compatible with CDQI 3.x. You must regenerate your proxy classes to use 3.x. Also, you should remove references to `EntityType` from your managed objects. The `EntityType` protocol is now automatically generated for each managed object class by the `cdqi` tool (formerly the `mocdqi` tool), as it should have been from the start. Other than that, 3.x should be fully backwards compatible with 2.x.
 
 #### What's New
 
