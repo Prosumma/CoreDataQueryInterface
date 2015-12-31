@@ -19,3 +19,19 @@ public func ||(lhs: NSPredicate, rhs: NSPredicate) -> NSPredicate {
 public prefix func !(predicate: NSPredicate) -> NSPredicate {
     return NSCompoundPredicate(notPredicateWithSubpredicate: predicate)
 }
+
+public func any(predicate: NSPredicate) -> NSPredicate {
+    return NSPredicate(format: "ANY \(predicate)")
+}
+
+public func some(predicate: NSPredicate) -> NSPredicate {
+    return NSPredicate(format: "SOME \(predicate)")
+}
+
+public func none(predicate: NSPredicate) -> NSPredicate {
+    return NSPredicate(format: "NONE \(predicate)")
+}
+
+public func all(predicate: NSPredicate) -> NSPredicate {
+    return NSPredicate(format: "ALL \(predicate)")
+}

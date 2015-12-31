@@ -19,16 +19,16 @@ class SelectionTests : BaseTestCase {
     
     func testMaximumSalaryGroupedByDepartment() {
         let employee = EmployeeAttribute()
-        let result = try! managedObjectContext.from(Employee).groupBy(employee.department.name).select(employee.department.name).max(employee.salary).order(descending: employee.department.name).all()
-        let salaries: [String: Int] = result.toDictionary() { ($0["departmentName"]! as! String, ($0["maxSalary"]! as! NSNumber).integerValue) }
+        let result = try! managedObjectContext.from(Employee).groupBy(employee.department.name).select(employee.department.name, employee.max.salary.named("maxSalary", type: .FloatAttributeType)).order(descending: employee.department.name).all()
+        let salaries: [String: Int] = result.toDictionary() { ($0["department.name"]! as! String, ($0["maxSalary"]! as! NSNumber).integerValue) }
         XCTAssertEqual(salaries["Accounting"]!, 97000)
         XCTAssertEqual(salaries["Engineering"]!, 100000)
         XCTAssertEqual(salaries["Sales"]!, 93000)
     }
     
     func testAverageSalaryGroupedByDepartment() {
-        let result = try! managedObjectContext.from(Employee).groupBy({$0.department.name}).select({$0.department.name}).average({$0.salary}).order(descending: {$0.department.name}).all()
-        let salaries: [String: Int] = result.toDictionary() { ($0["departmentName"]! as! String, ($0["averageSalary"]! as! NSNumber).integerValue) }
+        let result = try! managedObjectContext.from(Employee).groupBy({$0.department.name}).select({$0.department.name}, {$0.average.salary.named("averageSalary", type: .FloatAttributeType)}).order(descending: {$0.department.name}).all()
+        let salaries: [String: Int] = result.toDictionary() { ($0["department.name"]! as! String, ($0["averageSalary"]! as! NSNumber).integerValue) }
         XCTAssertEqual(salaries["Accounting"]!, 73750)
         XCTAssertEqual(salaries["Engineering"]!, 75625)
         XCTAssertEqual(salaries["Sales"]!, 75111)

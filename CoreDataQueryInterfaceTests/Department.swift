@@ -9,8 +9,7 @@
 import Foundation
 import CoreData
 
-class Department: NSManagedObject, EntityType {
-    typealias EntityAttributeType = DepartmentAttribute
+class Department: NSManagedObject {
     @NSManaged var name: String
 }
 

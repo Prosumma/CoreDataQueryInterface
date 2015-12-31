@@ -12,7 +12,7 @@ import XCTest
 class OrderTests : BaseTestCase {
     
     func testFirstEmployeeInSalesOrderedDescendingByLastNameThenAscendingByFirstName() {
-        let employee = try! managedObjectContext.from(Employee).filter({ employee in employee.department.name == "Sales" }).order(descending: {$0.lastName}).order({$0.firstName}).first()!
+        let employee = try! managedObjectContext.from(Employee).filter({ (employee: EmployeeAttribute) -> NSPredicate in employee.department.name == "Sales" }).order(descending: {$0.lastName}).order({$0.firstName}).first()!
         XCTAssertEqual(employee.lastName, "Smith")
         XCTAssertEqual(employee.firstName, "David")
     }

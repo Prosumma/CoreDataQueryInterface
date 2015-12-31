@@ -11,27 +11,27 @@ import Foundation
 
 extension ExpressionQueryType {
 
-    public func select(expressions: [ExpressionType]) -> ExpressionQuery<QueryEntityType> {
+    public func select(expressions: [CustomPropertyConvertible]) -> ExpressionQuery<QueryEntityType> {
         var builder = self.builder
         builder.expressions.appendContentsOf(expressions)
         return ExpressionQuery(builder: builder)
     }
     
-    public func select(expressions: ExpressionType...) -> ExpressionQuery<QueryEntityType> {
+    public func select(expressions: CustomPropertyConvertible...) -> ExpressionQuery<QueryEntityType> {
         return select(expressions)
     }
     
-    public func select(expressions: QueryEntityType.EntityAttributeType -> [ExpressionType]) -> ExpressionQuery<QueryEntityType> {
-        let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
+    public func select(expressions: QueryEntityType.EntityAttributeType -> [CustomPropertyConvertible]) -> ExpressionQuery<QueryEntityType> {
+        let attribute = QueryEntityType.EntityAttributeType()
         return select(expressions(attribute))
     }
     
-    public func select(expressions: [QueryEntityType.EntityAttributeType -> ExpressionType]) -> ExpressionQuery<QueryEntityType> {
-        let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
+    public func select(expressions: [QueryEntityType.EntityAttributeType -> CustomPropertyConvertible]) -> ExpressionQuery<QueryEntityType> {
+        let attribute = QueryEntityType.EntityAttributeType()
         return select(expressions.map() { $0(attribute) })
     }
     
-    public func select(expressions: (QueryEntityType.EntityAttributeType -> ExpressionType)...) -> ExpressionQuery<QueryEntityType> {
+    public func select(expressions: (QueryEntityType.EntityAttributeType -> CustomPropertyConvertible)...) -> ExpressionQuery<QueryEntityType> {
         return select(expressions)
     }
     

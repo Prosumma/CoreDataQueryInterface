@@ -19,6 +19,9 @@ extension QueryType {
     one of the other overloads.
     */
     public func filter(predicate: NSPredicate) -> Self {
+#if DEBUG
+        debugPrint(predicate)
+#endif
         var builder = self.builder
         builder.predicates.append(predicate)
         return Self(builder: builder)
@@ -33,7 +36,7 @@ extension QueryType {
     - parameter createPredicate: A block that takes an `AttributeType` and returns an `NSPredicate`.
     */
     public func filter(createPredicate: QueryEntityType.EntityAttributeType -> NSPredicate) -> Self {
-        let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
+        let attribute = QueryEntityType.EntityAttributeType()
         let predicate = createPredicate(attribute)
         return filter(predicate)
     }

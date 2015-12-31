@@ -20,9 +20,9 @@ extension QueryType {
     `order` methods can be chained multiple times, e.g., `order(descending: "lastName").order("firstName")`
     sorts first _descending_ by `lastName` and then _ascending_ by `firstName`.
     
-    - parameter keys: An array of elements implementing the `OrderType` protocol.
+    - parameter keys: An array of elements implementing the `CustomSortDescriptorConvertible` protocol.
     */
-    public func order(keys: [OrderType]) -> Self {
+    public func order(keys: [CustomSortDescriptorConvertible]) -> Self {
         let descriptors = keys.map() { $0.toSortDescriptor(ascending: true) }
         var builder = self.builder
         builder.descriptors.appendContentsOf(descriptors)
@@ -39,9 +39,9 @@ extension QueryType {
     `order` methods can be chained multiple times, e.g., `order(descending: "lastName").order("firstName")`
     sorts first _descending_ by `lastName` and then _ascending_ by `firstName`.
     
-    - parameter keys: An array of elements implementing the `OrderType` protocol.
+    - parameter keys: An array of elements implementing the `CustomSortDescriptorConvertible` protocol.
     */
-    public func order(keys: OrderType...) -> Self {
+    public func order(keys: CustomSortDescriptorConvertible...) -> Self {
         return order(keys)
     }
 
@@ -51,10 +51,10 @@ extension QueryType {
     `order` methods can be chained multiple times, e.g., `order(descending: "lastName").order("firstName")`
     sorts first _descending_ by `lastName` and then _ascending_ by `firstName`.
     
-    - parameter keys: A block which returns an array of `OrderType`s to sort by.
+    - parameter keys: A block which returns an array of `CustomSortDescriptorConvertible`s to sort by.
     */
-    public func order(keys: QueryEntityType.EntityAttributeType -> [OrderType]) -> Self {
-        let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
+    public func order(keys: QueryEntityType.EntityAttributeType -> [CustomSortDescriptorConvertible]) -> Self {
+        let attribute = QueryEntityType.EntityAttributeType()
         return order(keys(attribute))
     }
 
@@ -64,10 +64,10 @@ extension QueryType {
     `order` methods can be chained multiple times, e.g., `order(descending: "lastName").order("firstName")`
     sorts first _descending_ by `lastName` and then _ascending_ by `firstName`.
     
-    - parameter keys: An array of blocks each of which returns an `OrderType` for sorting.
+    - parameter keys: An array of blocks each of which returns an `CustomSortDescriptorConvertible` for sorting.
     */
-    public func order(keys: [QueryEntityType.EntityAttributeType -> OrderType]) -> Self {
-        let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
+    public func order(keys: [QueryEntityType.EntityAttributeType -> CustomSortDescriptorConvertible]) -> Self {
+        let attribute = QueryEntityType.EntityAttributeType()
         return order(keys.map({$0(attribute)}))
     }
 
@@ -77,9 +77,9 @@ extension QueryType {
     `order` methods can be chained multiple times, e.g., `order(descending: "lastName").order("firstName")`
     sorts first _descending_ by `lastName` and then _ascending_ by `firstName`.
     
-    - parameter keys: An array of blocks each of which returns an `OrderType` for sorting.
+    - parameter keys: An array of blocks each of which returns an `CustomSortDescriptorConvertible` for sorting.
     */
-    public func order(keys: (QueryEntityType.EntityAttributeType -> OrderType)...) -> Self {
+    public func order(keys: (QueryEntityType.EntityAttributeType -> CustomSortDescriptorConvertible)...) -> Self {
         return order(keys)
     }
     
@@ -93,9 +93,9 @@ extension QueryType {
     `order` methods can be chained multiple times, e.g., `order(descending: "lastName").order("firstName")`
     sorts first _descending_ by `lastName` and then _ascending_ by `firstName`.
     
-    - parameter keys: An array of elements implementing the `OrderType` protocol.
+    - parameter keys: An array of elements implementing the `CustomSortDescriptorConvertible` protocol.
     */
-    public func order(descending keys: [OrderType]) -> Self {
+    public func order(descending keys: [CustomSortDescriptorConvertible]) -> Self {
         let descriptors = keys.map() { $0.toSortDescriptor(ascending: false) }
         var builder = self.builder
         builder.descriptors.appendContentsOf(descriptors)
@@ -112,9 +112,9 @@ extension QueryType {
     `order` methods can be chained multiple times, e.g., `order(descending: "lastName").order("firstName")`
     sorts first _descending_ by `lastName` and then _ascending_ by `firstName`.
     
-    - parameter keys: An array of elements implementing the `OrderType` protocol.
+    - parameter keys: An array of elements implementing the `CustomSortDescriptorConvertible` protocol.
     */
-    public func order(descending keys: OrderType...) -> Self {
+    public func order(descending keys: CustomSortDescriptorConvertible...) -> Self {
         return order(descending: keys)
     }
 
@@ -124,10 +124,10 @@ extension QueryType {
     `order` methods can be chained multiple times, e.g., `order(descending: "lastName").order("firstName")`
     sorts first _descending_ by `lastName` and then _ascending_ by `firstName`.
     
-    - parameter keys: A block which returns an array of `OrderType`s to sort by.
+    - parameter keys: A block which returns an array of `CustomSortDescriptorConvertible`s to sort by.
     */
-    public func order(descending keys: QueryEntityType.EntityAttributeType -> [OrderType]) -> Self {
-        let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
+    public func order(descending keys: QueryEntityType.EntityAttributeType -> [CustomSortDescriptorConvertible]) -> Self {
+        let attribute = QueryEntityType.EntityAttributeType()
         return order(descending: keys(attribute))
     }
     
@@ -137,10 +137,10 @@ extension QueryType {
     `order` methods can be chained multiple times, e.g., `order(descending: "lastName").order("firstName")`
     sorts first _descending_ by `lastName` and then _ascending_ by `firstName`.
     
-    - parameter keys: An array of blocks each of which returns an `OrderType` for sorting.
+    - parameter keys: An array of blocks each of which returns an `CustomSortDescriptorConvertible` for sorting.
     */
-    public func order(descending keys: [QueryEntityType.EntityAttributeType -> OrderType]) -> Self {
-        let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
+    public func order(descending keys: [QueryEntityType.EntityAttributeType -> CustomSortDescriptorConvertible]) -> Self {
+        let attribute = QueryEntityType.EntityAttributeType()
         return order(descending: keys.map({$0(attribute)}))
     }
     
@@ -150,9 +150,9 @@ extension QueryType {
     `order` methods can be chained multiple times, e.g., `order(descending: "lastName").order("firstName")`
     sorts first _descending_ by `lastName` and then _ascending_ by `firstName`.
     
-    - parameter keys: An array of blocks each of which returns an `OrderType` for sorting.
+    - parameter keys: An array of blocks each of which returns an `CustomSortDescriptorConvertible` for sorting.
     */
-    public func order(descending keys: (QueryEntityType.EntityAttributeType -> OrderType)...) -> Self {
+    public func order(descending keys: (QueryEntityType.EntityAttributeType -> CustomSortDescriptorConvertible)...) -> Self {
         return order(descending: keys)
     }
     

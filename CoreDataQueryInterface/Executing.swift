@@ -66,7 +66,7 @@ extension ExpressionQueryType {
     - warning: Any preceding expressions in the CDQI chain are overwritten by `expression`. If the cast to `T` fails,
     a runtime exception will occur.
     */
-    public func array<T>(expression: ExpressionType, managedObjectContext: NSManagedObjectContext? = nil) throws -> [T] {
+    public func array<T>(expression: CustomPropertyConvertible, managedObjectContext: NSManagedObjectContext? = nil) throws -> [T] {
         var builder = self.builder
         builder.expressions = [expression]
         let results = try ExpressionQuery(builder: builder).all(managedObjectContext) as NSArray
@@ -84,8 +84,8 @@ extension ExpressionQueryType {
     - warning: Any preceding expressions in the CDQI chain are overwritten by `expression`. If the cast to `T` fails,
     a runtime exception will occur.
     */
-    public func array<T>(managedObjectContext managedObjectContext: NSManagedObjectContext? = nil, _ expression: QueryEntityType.EntityAttributeType -> ExpressionType) throws -> [T] {
-        let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
+    public func array<T>(managedObjectContext managedObjectContext: NSManagedObjectContext? = nil, _ expression: QueryEntityType.EntityAttributeType -> CustomPropertyConvertible) throws -> [T] {
+        let attribute = QueryEntityType.EntityAttributeType()
         return try array(expression(attribute), managedObjectContext: managedObjectContext)
     }
     
@@ -96,7 +96,7 @@ extension ExpressionQueryType {
     - warning: Any preceding expressions in the CDQI chain are overwritten by `expression`. If the cast to `T` fails,
     a runtime exception will occur.
     */
-    public func value<T>(expression: ExpressionType, managedObjectContext: NSManagedObjectContext? = nil) throws -> T? {
+    public func value<T>(expression: CustomPropertyConvertible, managedObjectContext: NSManagedObjectContext? = nil) throws -> T? {
         var builder = self.builder
         builder.expressions = [expression]
         if let result = try ExpressionQuery(builder: builder).first(managedObjectContext) {
@@ -114,8 +114,8 @@ extension ExpressionQueryType {
     - warning: Any preceding expressions in the CDQI chain are overwritten by `expression`. If the cast to `T` fails,
     a runtime exception will occur.
     */
-    public func value<T>(managedObjectContext managedObjectContext: NSManagedObjectContext? = nil, _ expression: QueryEntityType.EntityAttributeType -> ExpressionType) throws -> T? {
-        let attribute = QueryEntityType.EntityAttributeType(nil, parent: nil)
+    public func value<T>(managedObjectContext managedObjectContext: NSManagedObjectContext? = nil, _ expression: QueryEntityType.EntityAttributeType -> CustomPropertyConvertible) throws -> T? {
+        let attribute = QueryEntityType.EntityAttributeType()
         return try value(expression(attribute), managedObjectContext: managedObjectContext)
     }
 }

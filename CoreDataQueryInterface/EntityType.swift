@@ -11,7 +11,7 @@ import Foundation
 import ObjectiveC
 
 public protocol EntityType: class {
-    typealias EntityAttributeType: AttributeType = Attribute
+    typealias EntityAttributeType: Attribute = Attribute
     static func entityNameInManagedObjectModel(managedObjectModel: NSManagedObjectModel) -> String
 }
 

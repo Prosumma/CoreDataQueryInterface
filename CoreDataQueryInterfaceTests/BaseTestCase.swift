@@ -50,7 +50,7 @@ class BaseTestCase: XCTestCase {
                 employee.nickName = nickNames[employee.firstName]
                 employee.lastName = fields[0]
                 employee.salary = Int32(fields[3])!
-                if let department = try! managedObjectContext.from(Department).filter({ $0.name == fields[2] }).first() {
+                if let department = try! managedObjectContext.from(Department).filter({ $0.name == fields[2] as AnyObject }).first() {
                     employee.department = department
                 } else {
                     let department = managedObjectContext.newEntity(Department)

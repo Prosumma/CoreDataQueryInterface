@@ -16,8 +16,8 @@ public struct QueryBuilder<E: EntityType> {
     public var managedObjectContext: NSManagedObjectContext?
     public var predicates = [NSPredicate]()
     public var descriptors = [NSSortDescriptor]()
-    public var expressions = [ExpressionType]()
-    public var groupings = [ExpressionType]()
+    public var expressions = [CustomPropertyConvertible]()
+    public var groupings = [CustomPropertyConvertible]()
     public var limit: UInt?
     public var offset: UInt?
     public var returnsDistinctResults: Bool = false
@@ -36,12 +36,11 @@ public struct QueryBuilder<E: EntityType> {
         if !predicates.isEmpty { request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates) }
         if !descriptors.isEmpty { request.sortDescriptors = descriptors }
         if !expressions.isEmpty || !groupings.isEmpty {
-            let entityDescription = managedObjectModel.entitiesByName[E.entityNameInManagedObjectModel(managedObjectModel)]!
             if !expressions.isEmpty {
-                request.propertiesToFetch = expressions.map() { $0.toPropertyDescription(entityDescription) }
+                request.propertiesToFetch = expressions.map() { $0.property }
             }
             if !groupings.isEmpty {
-                request.propertiesToGroupBy = groupings.map() { $0.toPropertyDescription(entityDescription) }
+                request.propertiesToGroupBy = groupings.map() { $0.property }
             }
         }
         return request

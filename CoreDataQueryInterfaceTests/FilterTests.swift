@@ -26,7 +26,7 @@ class FilterTests : BaseTestCase {
     }
     
     func testCountEmployeesNameNotMortonOrJones() {
-        let notMortonOrJonesCount = try! managedObjectContext.from(Employee).filter({ $0.lastName != ["Morton", "Jones"] }).count()
+        let notMortonOrJonesCount = try! managedObjectContext.from(Employee).filter({ !$0.lastName.among(["Morton", "Jones"]) }).count()
         XCTAssertEqual(notMortonOrJonesCount, 15)
     }
     
@@ -34,14 +34,21 @@ class FilterTests : BaseTestCase {
         let employeeQuery = managedObjectContext.from(Employee)
         let firstObjectID = try! employeeQuery.objectIDs().first()!
         // Since employee in the filter resolves to the empty string, it is treated as SELF in the query.
-        let firstEmployee = try! employeeQuery.filter({ employee in employee == [firstObjectID] }).first()!
+        let predicate: EmployeeAttribute -> NSPredicate = { employee in employee.among([firstObjectID]) }
+        let firstEmployee = try! employeeQuery.filter(predicate).first()!
         XCTAssertEqual(firstObjectID, firstEmployee.objectID)
     }
     
     func testEmployeesWithHighSalaries() {
         let salary = 80000.32 // This will be a Double
-        let highSalaryCount = try! managedObjectContext.from(Employee).filter({ $0.salary >= salary }).count()
+        let e = EmployeeAttribute()
+        let highSalaryCount = try! managedObjectContext.from(Employee).filter(e.salary >= salary).count()
         XCTAssertEqual(highSalaryCount, 8)
+    }
+    
+    func testNumberOfDepartmentsWithEmployeesWhoseLastNamesStartWithSUsingSubquery() {
+        let departmentCount = try! managedObjectContext.from(Department).filter({ $0.employees.subquery("$e", predicate: { some($0.lastName.beginsWith("S", options: .CaseInsensitivePredicateOption)) }).count > 0 }).count()
+        XCTAssertEqual(departmentCount, 2)
     }
     
 }
