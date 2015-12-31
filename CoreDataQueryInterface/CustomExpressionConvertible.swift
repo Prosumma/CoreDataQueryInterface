@@ -39,13 +39,13 @@ extension CustomExpressionConvertible {
     public func lessThanOrEqualTo(rhs: Any?, options: NSComparisonPredicateOptions = []) -> NSPredicate {
         return compare(rhs, type: .LessThanOrEqualToPredicateOperatorType, options: options)
     }
-    public func beginsWith(rhs: Any?, options: NSComparisonPredicateOptions = []) -> NSPredicate {
+    public func beginsWith(rhs: Any, options: NSComparisonPredicateOptions = []) -> NSPredicate {
         return compare(rhs, type: .BeginsWithPredicateOperatorType, options: options)
     }
-    public func contains(rhs: Any?, options: NSComparisonPredicateOptions = []) -> NSPredicate {
+    public func contains(rhs: Any, options: NSComparisonPredicateOptions = []) -> NSPredicate {
         return compare(rhs, type: .ContainsPredicateOperatorType, options: options)
     }
-    public func endsWith(rhs: Any?, options: NSComparisonPredicateOptions = []) -> NSPredicate {
+    public func endsWith(rhs: Any, options: NSComparisonPredicateOptions = []) -> NSPredicate {
         return compare(rhs, type: .EndsWithPredicateOperatorType, options: options)
     }
     public func among(rhs: [Any], options: NSComparisonPredicateOptions = []) -> NSPredicate {
@@ -57,11 +57,27 @@ extension CustomExpressionConvertible {
         }
         return compare(NSExpression(forAggregate: expressions), type: .InPredicateOperatorType, options: options)
     }
-    public func like(rhs: Any?, options: NSComparisonPredicateOptions = []) -> NSPredicate {
+    public func like(rhs: Any, options: NSComparisonPredicateOptions = []) -> NSPredicate {
         return compare(rhs, type: .LikePredicateOperatorType, options: options)
     }
-    public func matches(rhs: Any?, options: NSComparisonPredicateOptions = []) -> NSPredicate {
+    public func matches(rhs: Any, options: NSComparisonPredicateOptions = []) -> NSPredicate {
         return compare(rhs, type: .MatchesPredicateOperatorType, options: options)
+    }
+    public func between(start: Any, and end: Any, options: NSComparisonPredicateOptions = []) -> NSPredicate {
+        let startExpression: NSExpression
+        if let start = start as? CustomExpressionConvertible {
+            startExpression = start.expression
+        } else {
+            startExpression = NSExpression(forConstantValue: (start as! AnyObject))
+        }
+        let endExpression: NSExpression
+        if let end = end as? CustomExpressionConvertible {
+            endExpression = end.expression
+        } else {
+            endExpression = NSExpression(forConstantValue: (end as! AnyObject))
+        }
+        let rhsExpression = NSExpression(forAggregate: [startExpression, endExpression])
+        return compare(rhsExpression, type: .BetweenPredicateOperatorType, options: options)
     }
 }
 

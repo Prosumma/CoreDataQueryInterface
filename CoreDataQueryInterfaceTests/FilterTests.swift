@@ -56,4 +56,8 @@ class FilterTests : BaseTestCase {
         XCTAssertEqual(departmentCount, 2)
     }
     
+    func testEmployeesWithSalariesBetween80000And100000() {
+        let employeeCount = try! managedObjectContext.from(Employee).filter({ employee in employee.salary.between(80000, and: 100000) }).count()
+        XCTAssertEqual(employeeCount, 8)
+    }
 }
