@@ -51,4 +51,9 @@ class FilterTests : BaseTestCase {
         XCTAssertEqual(departmentCount, 2)
     }
     
+    func testDepartmentsWithNameMatchingRegex() {
+        let departmentCount = try! managedObjectContext.from(Department).filter({ department in department.name.matches("^[AE].*$") }).count()
+        XCTAssertEqual(departmentCount, 2)
+    }
+    
 }
