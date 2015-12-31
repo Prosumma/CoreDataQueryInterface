@@ -387,3 +387,7 @@ class DepartmentQueries {
   static let AllDepartments = EntityQuery.from(Department)
 }
 ```
+
+#### Questions / Concerns / Bugs
+
+If you have any questions, concerns, or bugs, please open an [issue](https://github.com/Prosumma/CoreDataQueryInterface/issues) or submit a pull request.
