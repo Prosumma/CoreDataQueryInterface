@@ -112,6 +112,9 @@ cdqi -m School
 # not also created, there could be compilation errors.
 cdqi -wDepartment Company
 
+# You can use -w multiple times to only write those particular entities.
+cdqi -wDepartment -wEmployee Company
+
 # You can also combine -x and -w.
 # This writes out only the Department entity, but excludes
 # any references to the Employee entity.
