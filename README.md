@@ -1,7 +1,7 @@
 ![CoreDataQueryInterface](CoreDataQueryInterface.png)
 
 [![Build Status](https://travis-ci.org/Prosumma/CoreDataQueryInterface.svg)](https://travis-ci.org/Prosumma/CoreDataQueryInterface)
-[![CocoaPods compatible](https://img.shields.io/cocoapods/v/CoreDataQueryInterface.svg)](https://cocoapods.org)
+<!-- [![CocoaPods compatible](https://img.shields.io/cocoapods/v/CoreDataQueryInterface.svg)](https://cocoapods.org) -->
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 Core Data Query Interface (CDQI) is a type-safe, fluent, intuitive library for working with Core Data in Swift. CDQI tremendously reduces the amount of code needed to do Core Data, and dramatically improves readability by allowing method chaining and by eliminating magic strings. CDQI is a bit like jQuery or LINQ, but for Core Data.
@@ -30,7 +30,7 @@ fetchRequest.sortDescriptors = [
 try! managedObjectContext.executeFetchRequest(fetchRequest)
 ```
 
-Compare the quantity and readability of the code in the two examples. Which would you rather write?
+Besides the greater readability of the code, the other advantage is that if your data model changes, _CDQI queries will fail to compile_ (assuming you've regenerated your proxies), while magic strings will not. This is what you want! It immediately points out errors in your code at compile time.
 
 #### Features
 
@@ -52,7 +52,11 @@ Compare the quantity and readability of the code in the two examples. Which woul
 Besides many small improvements, the primary change is support for a great deal more predicates: `BEGINSWITH`, `SUBQUERY`, case-insensitive and diacritic-insensitive comparisons, etc. All without magic strings.
 
 ```swift
-moc.from(Department).filter() { department in department.employees.subquery({ any(employee in employee.lastName.beginsWith("s", .CaseInsensitivePredicateOption)) }).count > 0 }
+moc.from(Department).filter() { department in 
+  department.employees.subquery({ 
+    any(employee in employee.lastName.beginsWith("s", .CaseInsensitivePredicateOption)) 
+  }).count > 0 
+}
 ```
 
 Examples occur throughout the README and in the unit tests and sample project.
@@ -179,6 +183,12 @@ let predicate = NSPredicate(format: "SUBQUERY(employees, $e, ANY $e.name == %@).
 
 let predicate: NSPredicate = department.name == "Engineering" || department.name == "Accounting"
 let predicate = NSPredicate(format: "(name == %@) || (name == %@)", "Engineering", "Accounting")
+```
+
+In most cases, the operators and methods are exactly what you would expect. For instance, `ENDSWITH` is represented by the `endsWith` method. `NSPredicate` operators are represented by corresponding Swift operators. The only exception is `IN`, which is a reserved word in Swift and so cannot be used. Instead, it is represented by the `among` method:
+
+```swift
+department.name.among(["Engineering", "Sales"], .CaseInsensitivePredicateOption)
 ```
 
 These capabilities of `Attribute` and its descendants are what lie at the heart of CDQI. Most types of predicates (even nested subqueries!) can be generated with this technique and without magic strings. For more examples, see the code itself and especially the unit tests.
