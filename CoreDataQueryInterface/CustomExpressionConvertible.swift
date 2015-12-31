@@ -60,6 +60,9 @@ extension CustomExpressionConvertible {
     public func like(rhs: Any?, options: NSComparisonPredicateOptions = []) -> NSPredicate {
         return compare(rhs, type: .LikePredicateOperatorType, options: options)
     }
+    public func matches(rhs: Any?, options: NSComparisonPredicateOptions = []) -> NSPredicate {
+        return compare(rhs, type: .MatchesPredicateOperatorType, options: options)
+    }
 }
 
 extension NSExpression: CustomExpressionConvertible {
