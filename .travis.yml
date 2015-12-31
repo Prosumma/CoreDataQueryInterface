@@ -14,6 +14,7 @@ env:
     - DESTINATION="OS=8.4,name=iPhone 6" SCHEME="CoreDataQueryInterface iOS" SDK=iphonesimulator9.0 POD_LINT="NO"
     - DESTINATION="OS=9.0,name=iPhone 6 Plus" SCHEME="CoreDataQueryInterface iOS" SDK=iphonesimulator9.0 POD_LINT="NO"
     - DESTINATION="arch=x86_64" SCHEME="CoreDataQueryInterface OSX" SDK=macosx10.9 POD_LINT="NO"
+    - DESTINATION="arch=x86_64" SCHEME="CoreDataQueryInterface OSX" SDK=macosx10.11 POD_LINT="NO"
 before_install:
   - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
