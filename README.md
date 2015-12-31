@@ -297,7 +297,7 @@ There are several query execution methods. I'll deal with each in turn, starting
 try! moc.from(Department).filter({$0.name == "Engineering"}).all()
 ```
 
-Very simply, this returns all managed object contexts of the appropriate type—`Department` in this case—which satisfy the query.
+Very simply, this returns all managed objects of the appropriate type—`Department` in this case—which satisfy the query.
 
 For a query that did not start with a managed object context, it can be passed as the first parameter to `all`.
 
