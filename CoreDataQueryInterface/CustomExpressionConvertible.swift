@@ -14,7 +14,7 @@ public protocol CustomExpressionConvertible {
 }
 
 extension CustomExpressionConvertible {
-    public func compare(rhs: Any?, type: NSPredicateOperatorType, options: NSComparisonPredicateOptions) -> NSPredicate {
+    public func compare(rhs: Any?, type: NSPredicateOperatorType, options: NSComparisonPredicateOptions = []) -> NSPredicate {
         let rightExpression: NSExpression
         if let rhs = rhs as? CustomExpressionConvertible {
             rightExpression = rhs.expression
