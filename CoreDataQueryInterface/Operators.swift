@@ -12,12 +12,16 @@ public func ==(lhs: CustomExpressionConvertible, rhs: Any?) -> NSPredicate {
     return lhs.equalTo(rhs as! AnyObject?)
 }
 
+public func !=(lhs: CustomExpressionConvertible, rhs: Any?) -> NSPredicate {
+    return lhs.notEqualTo(rhs)
+}
+
 public func >(lhs: CustomExpressionConvertible, rhs: Any?) -> NSPredicate {
     return lhs.greaterThan(rhs)
 }
 
 public func >=(lhs: CustomExpressionConvertible, rhs: Any?) -> NSPredicate {
-    return lhs.greaterThanOrEqualTo(rhs as! AnyObject?)
+    return lhs.greaterThanOrEqualTo(rhs)
 }
 
 public func <(lhs: CustomExpressionConvertible, rhs: Any?) -> NSPredicate {

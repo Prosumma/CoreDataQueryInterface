@@ -27,6 +27,9 @@ extension CustomExpressionConvertible {
     public func equalTo(rhs: Any?, options: NSComparisonPredicateOptions = []) -> NSPredicate {
         return compare(rhs, type: .EqualToPredicateOperatorType, options: options)
     }
+    public func notEqualTo(rhs: Any?, options: NSComparisonPredicateOptions = []) -> NSPredicate {
+        return compare(rhs, type: .NotEqualToPredicateOperatorType, options: options)
+    }
     public func greaterThan(rhs: Any?, options: NSComparisonPredicateOptions = []) -> NSPredicate {
         return compare(rhs, type: .GreaterThanPredicateOperatorType, options: options)
     }
