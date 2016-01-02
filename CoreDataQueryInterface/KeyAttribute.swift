@@ -11,6 +11,6 @@ import Foundation
 /**
  Use this subclass of `Attribute` for simple keys.
  */
-class KeyAttribute: Attribute, Aggregable {
-    typealias AggregateType = KeyAttribute
+public class KeyAttribute: Attribute, Aggregable {
+    public typealias AggregateType = KeyAttribute
 }

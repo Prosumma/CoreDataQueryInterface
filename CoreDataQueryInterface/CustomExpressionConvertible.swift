@@ -52,7 +52,12 @@ extension CustomExpressionConvertible {
         var expressions = [AnyObject]()
         for elem in rhs {
             let o = elem as! AnyObject
-            let e = NSExpression(forConstantValue: o)
+            let e: NSExpression
+            if let c = o as? CustomExpressionConvertible {
+                e = c.expression
+            } else {
+                e = NSExpression(forConstantValue: o)                
+            }
             expressions.append(e)
         }
         return compare(NSExpression(forAggregate: expressions), type: .InPredicateOperatorType, options: options)
