@@ -19,9 +19,6 @@ extension QueryType {
     one of the other overloads.
     */
     public func filter(predicate: NSPredicate) -> Self {
-#if DEBUG
-        debugPrint(predicate)
-#endif
         var builder = self.builder
         builder.predicates.append(predicate)
         return Self(builder: builder)
