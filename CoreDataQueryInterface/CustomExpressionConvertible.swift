@@ -21,7 +21,6 @@ extension CustomExpressionConvertible {
         } else {
             rightExpression = NSExpression(forConstantValue: rhs as! AnyObject?)
         }
-        debugPrint(rightExpression)
         return NSComparisonPredicate(leftExpression: expression, rightExpression: rightExpression, modifier: .DirectPredicateModifier, type: type, options: options)
     }
     public func equalTo(rhs: Any?, options: NSComparisonPredicateOptions = []) -> NSPredicate {
