@@ -50,7 +50,7 @@ extension CustomExpressionConvertible {
     public func endsWith(rhs: Any, options: NSComparisonPredicateOptions = []) -> NSPredicate {
         return compare(rhs, type: .EndsWithPredicateOperatorType, options: options)
     }
-    public func among(rhs: [Any], options: NSComparisonPredicateOptions = []) -> NSPredicate {
+    public func among<T>(rhs: [T], options: NSComparisonPredicateOptions = []) -> NSPredicate {
         var expressions = [AnyObject]()
         for elem in rhs {
             let o = elem as! AnyObject
