@@ -45,8 +45,8 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
         searchController.searchResultsUpdater = self
         searchController.searchBar.autocapitalizationType = .None
         searchController.searchBar.autocorrectionType = .No
-        searchController.searchBar.showsScopeBar = true
         searchController.searchBar.scopeButtonTitles = [SearchScope.Title.rawValue, SearchScope.Artist.rawValue, SearchScope.Year.rawValue, SearchScope.Position.rawValue]
+        searchController.searchBar.tintColor = UIColor(red: 45/255, green: 119/255, blue: 166/255, alpha: 0.8)
         searchController.dimsBackgroundDuringPresentation = false
         tableView.tableHeaderView = searchController.searchBar
         

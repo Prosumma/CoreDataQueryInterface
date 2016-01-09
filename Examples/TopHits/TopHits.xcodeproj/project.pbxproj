@@ -474,6 +474,7 @@
 				F340B3171C40EA08008CF49E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
