@@ -27,8 +27,8 @@ Hits</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CCI-U4-hs1">
-                                <rect key="frame" x="231" y="417" width="140" height="66"/>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CCI-U4-hs1">
+                                <rect key="frame" x="230" y="417" width="140" height="66"/>
                                 <subviews>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="XRQ-2W-N6r">
                                         <rect key="frame" x="51" y="0.0" width="37" height="37"/>
@@ -50,17 +50,28 @@ Hits</string>
                                     <constraint firstAttribute="bottom" secondItem="6LJ-Kj-VNi" secondAttribute="bottom" id="wpJ-Nj-HOL"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Am-dC-lYH">
+                                <rect key="frame" x="200" y="430" width="201" height="41"/>
+                                <string key="text">Core Data Query Interface
+Sample App</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.1764705882" green="0.46666666670000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="CCI-U4-hs1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.5" id="4Eb-Ah-67l"/>
                             <constraint firstItem="CCI-U4-hs1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5Z8-4s-3YG"/>
                             <constraint firstItem="mN6-Ra-UGq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gs6-Dl-U27"/>
+                            <constraint firstItem="5Am-dC-lYH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qqb-me-pYl"/>
                             <constraint firstItem="mN6-Ra-UGq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.66" id="ZBP-s9-ucd"/>
+                            <constraint firstItem="5Am-dC-lYH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.5" id="bN1-7J-ftD"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
+                        <outlet property="applicationSubtitleLabel" destination="5Am-dC-lYH" id="6pA-mH-Os2"/>
                         <outlet property="progressIndicatorView" destination="XRQ-2W-N6r" id="fmY-17-rOk"/>
                         <outlet property="yearLabel" destination="6LJ-Kj-VNi" id="dTv-Cm-HXA"/>
                     </connections>

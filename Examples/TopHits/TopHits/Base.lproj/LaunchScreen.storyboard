@@ -26,9 +26,19 @@ Hits</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iL6-SC-MTM">
+                                <rect key="frame" x="200" y="430" width="201" height="41"/>
+                                <string key="text">Core Data Query Interface
+Sample App</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.1764705882" green="0.46666666670000001" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="iL6-SC-MTM" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="1.5" id="8pb-ko-Vq6"/>
+                            <constraint firstItem="iL6-SC-MTM" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="P23-YJ-3F5"/>
                             <constraint firstItem="wXc-jw-hIp" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="eRQ-Zh-rX6"/>
                             <constraint firstItem="wXc-jw-hIp" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="0.66" id="rYN-5E-3Yb"/>
                         </constraints>
@@ -36,7 +46,7 @@ Hits</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="567" y="498"/>
+            <point key="canvasLocation" x="720" y="601"/>
         </scene>
     </scenes>
 </document>
