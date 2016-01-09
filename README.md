@@ -121,6 +121,10 @@ cdqi -wDepartment -wEmployee Company
 # This writes out only the Department entity, but excludes
 # any references to the Employee entity.
 cdqi -xEmployee -wDepartment Company
+
+# You can make the generated classes (and properties) public
+# using -p
+cdqi -p Company
 ```
 
 Core Data models can have multiple versions. The `cdqi` tool always uses the current version, which it determines by consulting the `.xccurrentversion` file inside the `.xcdatamodeld` bundle.
@@ -203,7 +207,7 @@ These capabilities of `Attribute` and its descendants are what lie at the heart 
 Unsurprisingly, CDQI's `filter` method makes extensive use of the capabilities of the `Attribute` class described in the previous section. In the most common case, the `filter` method takes a block which is passed an `Attribute` subclass and returns an instance of `NSPredicate`:
 
 ```swift
-moc.from(Department).filter({department in department.name == "Engineering"})
+moc.from(Department).filter {department in department.name == "Engineering"}
 ```
 
 CDQI knows which proxy class to pass because of the association made by the `cdqi` tool. As a reminder:
@@ -233,7 +237,7 @@ Chaining filter methods together is the same as if `&&` were written between the
 
 ```swift
 // The following two statements are functionally equivalent
-moc.from(Department).filter({department in department.name.beginsWith("E") && department.name.endsWith("ng")})
+moc.from(Department).filter {department in department.name.beginsWith("E") && department.name.endsWith("ng")}
 moc.from(Department)
     .filter({department in department.name.beginsWith("E")})
     .filter({department in department.name.endsWith("ng")})
@@ -312,7 +316,7 @@ As shown in the example above, all of the query execution methods take an option
 Next up is `count`, which works as advertised:
 
 ```swift
-let departmentCount = try! moc.from(Department).filter({$0.employees.count > 10}).count()
+let departmentCount = try! moc.from(Department).filter{$0.employees.count > 10}).count()
 ```
 
 The `first` method returns either the first matching result or `nil`.
@@ -326,7 +330,7 @@ Obviously if there are no departments, we'll get a runtime exception, so I don't
 The `array` query execution method is best demonstrated by example:
 
 ```swift
-let names: [String] = try! moc.from(Department).array({$0.name})
+let names: [String] = try! moc.from(Department).array {$0.name}
 ```
 
 This returns an array of department names. Because it can only return a _single_ attribute of an entity, any previous `select`s are ignored. You must give the compiler enough type evidence to know what to cast its result to, which is why `[String]` was specified explicitly.
