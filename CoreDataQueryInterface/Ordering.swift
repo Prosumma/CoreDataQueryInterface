@@ -156,4 +156,13 @@ extension QueryType {
         return order(descending: keys)
     }
     
+    /**
+    Resets any previous ordering specified in the chain.
+    */
+    public func reorder() -> Self {
+        var builder = self.builder
+        builder.descriptors = []
+        return Self(builder: builder)
+    }
+    
 }

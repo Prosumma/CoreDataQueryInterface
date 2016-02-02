@@ -22,5 +22,12 @@ class OrderTests : BaseTestCase {
         XCTAssertEqual(employee.lastName, "Morton")
         XCTAssertEqual(employee.firstName, "Gregory")
     }
+    
+    func testReorder() {
+        let department = Department.EntityAttributeType()
+        let query = managedObjectContext.from(Department).order(descending: department.name)
+        let departmentName: String = try! query.reorder().order(department.name).value(department.name)!
+        XCTAssertEqual(departmentName, "Accounting")
+    }
 
 }
