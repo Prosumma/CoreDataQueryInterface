@@ -42,4 +42,10 @@ class SelectionTests : BaseTestCase {
         XCTAssertEqual(salaries.count, 25)
         XCTAssertNotEqual(distinctSalaries, salaries)
     }
+    
+    func testThatThereExistsAnEmployeeNamedIsabella() {
+        let employee = Employee.EntityAttributeType()
+        let query = managedObjectContext.from(Employee).filter(employee.firstName.equalTo("Isabella", options: .CaseInsensitivePredicateOption))
+        XCTAssertTrue(try! query.exists())
+    }
 }

@@ -57,6 +57,17 @@ extension QueryType {
     public func first(managedObjectContext: NSManagedObjectContext? = nil) throws -> QueryResultType? {
         return try limit(1).all(managedObjectContext).first
     }
+    
+    /**
+    Returns true if any entities match the given query.
+     
+     - note: Calls `limit(1)` before executing for efficiency.
+     - parameter managedObjectContext: An optional `NSManagedObjectContext`. If passed, supercedes the one in the chain.
+    */
+    public func exists(managedObjectContext: NSManagedObjectContext? = nil) throws -> Bool {
+        let count = try limit(1).count(managedObjectContext)
+        return count > 0
+    }
 }
 
 extension ExpressionQueryType {
