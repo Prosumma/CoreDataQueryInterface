@@ -48,4 +48,12 @@ class SelectionTests : BaseTestCase {
         let query = managedObjectContext.from(Employee).filter(employee.firstName.equalTo("Isabella", options: .CaseInsensitivePredicateOption))
         XCTAssertTrue(try! query.exists())
     }
+    
+    func testReselection() {
+        let employee = Employee.EntityAttributeType()
+        let query = managedObjectContext.from(Employee).select(employee.lastName).order(descending: employee.firstName)
+        let employees = try! query.reselect().select(employee.firstName).all()
+        let firstName = employees.first!["firstName"]! as! String
+        XCTAssertEqual(firstName, "Lana")
+    }
 }

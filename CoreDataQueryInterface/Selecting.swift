@@ -40,5 +40,14 @@ extension ExpressionQueryType {
         builder.returnsDistinctResults = true
         return ExpressionQuery(builder: builder)
     }
+    
+    /**
+    Resets the list of selected expressions
+    */
+    public func reselect() -> ExpressionQuery<QueryEntityType> {
+        var builder = self.builder
+        builder.expressions = []
+        return ExpressionQuery(builder: builder)
+    }
  
 }
