@@ -20,7 +20,7 @@ extension ExpressionQueryType {
         return groupBy(expressions)
     }
     
-    public func groupBy(expressions: QueryEntityType.EntityAttributeType -> [CustomPropertyConvertible]) -> ExpressionQuery<QueryEntityType> {
+    public func groupBy(@noescape expressions: QueryEntityType.EntityAttributeType -> [CustomPropertyConvertible]) -> ExpressionQuery<QueryEntityType> {
         let attribute = QueryEntityType.EntityAttributeType()
         return groupBy(expressions(attribute))
     }

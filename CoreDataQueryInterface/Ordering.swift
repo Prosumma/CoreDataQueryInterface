@@ -53,7 +53,7 @@ extension QueryType {
     
     - parameter keys: A block which returns an array of `CustomSortDescriptorConvertible`s to sort by.
     */
-    public func order(keys: QueryEntityType.EntityAttributeType -> [CustomSortDescriptorConvertible]) -> Self {
+    public func order(@noescape keys: QueryEntityType.EntityAttributeType -> [CustomSortDescriptorConvertible]) -> Self {
         let attribute = QueryEntityType.EntityAttributeType()
         return order(keys(attribute))
     }
@@ -126,7 +126,7 @@ extension QueryType {
     
     - parameter keys: A block which returns an array of `CustomSortDescriptorConvertible`s to sort by.
     */
-    public func order(descending keys: QueryEntityType.EntityAttributeType -> [CustomSortDescriptorConvertible]) -> Self {
+    public func order(@noescape descending keys: QueryEntityType.EntityAttributeType -> [CustomSortDescriptorConvertible]) -> Self {
         let attribute = QueryEntityType.EntityAttributeType()
         return order(descending: keys(attribute))
     }
