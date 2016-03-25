@@ -46,21 +46,21 @@ public struct QueryBuilder<E: EntityType> {
         return request
     }
     
-    public func request(resultType: NSFetchRequestResultType, var managedObjectContext: NSManagedObjectContext? = nil) -> NSFetchRequest {
-        managedObjectContext = managedObjectContext ?? self.managedObjectContext
-        return request(resultType, managedObjectModel: managedObjectContext!.persistentStoreCoordinator!.managedObjectModel)
+    public func request(resultType: NSFetchRequestResultType, managedObjectContext: NSManagedObjectContext? = nil) -> NSFetchRequest {
+        let moc = managedObjectContext ?? self.managedObjectContext!
+        return request(resultType, managedObjectModel: moc.persistentStoreCoordinator!.managedObjectModel)
     }
     
-    public func count(var managedObjectContext: NSManagedObjectContext?) throws -> UInt {
-        managedObjectContext = managedObjectContext ?? self.managedObjectContext
+    public func count(managedObjectContext: NSManagedObjectContext?) throws -> UInt {
+        let moc = managedObjectContext ?? self.managedObjectContext!
         var error: NSError?
-        let count = managedObjectContext!.countForFetchRequest(self.request(.CountResultType, managedObjectContext: managedObjectContext), error: &error)
+        let count = moc.countForFetchRequest(self.request(.CountResultType, managedObjectContext: moc), error: &error)
         guard error == nil else { throw error! }
         return UInt(count)
     }
     
-    public func execute<R: AnyObject>(var managedObjectContext: NSManagedObjectContext?, resultType: NSFetchRequestResultType) throws -> [R] {
-        managedObjectContext = managedObjectContext ?? self.managedObjectContext        
-        return try managedObjectContext!.executeFetchRequest(self.request(resultType, managedObjectContext: managedObjectContext)) as! [R]
+    public func execute<R: AnyObject>(managedObjectContext: NSManagedObjectContext?, resultType: NSFetchRequestResultType) throws -> [R] {
+        let moc = managedObjectContext ?? self.managedObjectContext!
+        return try moc.executeFetchRequest(self.request(resultType, managedObjectContext: moc)) as! [R]
     }
 }

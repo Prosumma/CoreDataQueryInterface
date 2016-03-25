@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol Aggregable: Countable {
-    typealias AggregateType: Attribute = Self
+    associatedtype AggregateType: Attribute = Self
     func subquery(variable: String, predicate: AggregateType -> NSPredicate) -> NSExpression
     func subquery(predicate: AggregateType -> NSPredicate) -> NSExpression
     var average: AggregateType { get }
