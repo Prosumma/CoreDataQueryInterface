@@ -87,13 +87,15 @@ class IndentWriter
 end
 
 class Attribute
-  attr_reader :name, :entity
-  def initialize(name, entity: nil)
+  attr_reader :name, :entity, :type
+  def initialize(name, entity: nil, type: nil)
     @name = name
     @entity = entity
+    @type = type
   end
   def render_property(io)
-    attribute = "#{@entity || 'Key'}#{$options.suffix}"
+    prefix = "#{@entity || @type || 'Key'}"
+    attribute = "#{prefix}#{$options.suffix}"
     io.puts "#{$options.access_modifier}private(set) lazy var #{@name}: #{attribute} = { #{attribute}(\"#{@name}\", parent: self) }()"
   end
 end
@@ -140,7 +142,7 @@ else
 end
 
 File::open(model_path) do |fd|
-  xml = REXML::Document::new(fd)  
+  xml = REXML::Document::new(fd)
   xml.root.elements.each('entity') do |entity_node|
     represented_class = entity_node.attributes['representedClassName']
     entity_name = entity_node.attributes['name']
@@ -152,13 +154,14 @@ File::open(model_path) do |fd|
       $stderr.puts "WARNING: The entity '#{entity_name}' represented by the class 'Key' was skipped because its name would conflict with CDQI's 'KeyAttribute'. You can avoid this by using a different represented class name or a suffix other than 'Attribute'."
       $options.excluded_entities << entity_name
     end
-    if !$options.excluded_entities.include?(entity_name) && ($options.included_entities.empty? || $options.included_entities.include?(entity_name)) 
+    if !$options.excluded_entities.include?(entity_name) && ($options.included_entities.empty? || $options.included_entities.include?(entity_name))
       entity_name = represented_class.split('.')[-1]
       entity = Entity::new(entity_name)
       entity_node.elements.each('attribute') do |attribute_node|
         attribute_name = attribute_node.attributes['name']
         if !RESERVED_ATTRIBUTE_NAMES.include?(attribute_name)
-          entity << Attribute::new(attribute_name)
+          attribute_type = attribute_node.attributes['attributeType']
+          entity << Attribute::new(attribute_name, entity: nil, type: attribute_type)
         else
           $stderr.puts "WARNING: The attribute '#{attribute_name}' in the '#{entity_node.attributes['name']}' entity has been skipped because it conflicts with the name of an aggregate property."
         end
@@ -209,7 +212,7 @@ else
     if $options.force || !File.exists?(output_file)
       File::open(output_file, 'w') do |io|
         write_file_header io
-        entity.render IndentWriter::new(io) 
+        entity.render IndentWriter::new(io)
       end
       $stderr.puts "NOTICE: Wrote file #{output_file}."
     else
@@ -217,4 +220,3 @@ else
     end
   end
 end
-
