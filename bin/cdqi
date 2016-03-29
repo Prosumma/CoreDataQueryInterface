@@ -91,7 +91,7 @@ class Attribute
   def initialize(name, entity: nil, type: nil)
     @name = name
     @entity = entity
-    @type = type
+    @type = type.delete(' ') unless type.nil?
   end
   def render_property(io)
     prefix = "#{@entity || @type || 'Key'}"
