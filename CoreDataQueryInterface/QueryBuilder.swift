@@ -47,20 +47,20 @@ public struct QueryBuilder<E: EntityType> {
     }
     
     public func request(resultType: NSFetchRequestResultType, managedObjectContext: NSManagedObjectContext? = nil) -> NSFetchRequest {
-        let context = managedObjectContext ?? self.managedObjectContext
-        return request(resultType, managedObjectModel: context!.persistentStoreCoordinator!.managedObjectModel)
+        let managedObjectContext = managedObjectContext ?? self.managedObjectContext
+        return request(resultType, managedObjectModel: managedObjectContext!.persistentStoreCoordinator!.managedObjectModel)
     }
     
     public func count(managedObjectContext: NSManagedObjectContext?) throws -> UInt {
-        let context = managedObjectContext ?? self.managedObjectContext
+        let managedObjectContext = managedObjectContext ?? self.managedObjectContext
         var error: NSError?
-        let count = context!.countForFetchRequest(self.request(.CountResultType, managedObjectContext: context), error: &error)
+        let count = managedObjectContext!.countForFetchRequest(self.request(.CountResultType, managedObjectContext: managedObjectContext), error: &error)
         guard error == nil else { throw error! }
         return UInt(count)
     }
     
     public func execute<R: AnyObject>(managedObjectContext: NSManagedObjectContext?, resultType: NSFetchRequestResultType) throws -> [R] {
-        let context = managedObjectContext ?? self.managedObjectContext
-        return try context!.executeFetchRequest(self.request(resultType, managedObjectContext: context)) as! [R]
+        let managedObjectContext = managedObjectContext ?? self.managedObjectContext
+        return try managedObjectContext!.executeFetchRequest(self.request(resultType, managedObjectContext: managedObjectContext)) as! [R]
     }
 }
