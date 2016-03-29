@@ -12,7 +12,7 @@ import Foundation
 
 public protocol ExpressionValueType {
     
-    var boxedValue: AnyObject { get }
+    var boxedValue: AnyObject { get } // provide a boxed value for NSExpression
 }
 
 public protocol TypedExpressionConvertible: CustomExpressionConvertible {
