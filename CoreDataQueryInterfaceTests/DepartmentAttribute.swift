@@ -6,7 +6,7 @@
 //
 
 class DepartmentAttribute: Attribute, Aggregable {
-    private(set) lazy var name: KeyAttribute = { KeyAttribute("name", parent: self) }()
+    private(set) lazy var name: StringAttribute = { StringAttribute("name", parent: self) }()
     private(set) lazy var employees: EmployeeAttribute = { EmployeeAttribute("employees", parent: self) }()
 }
 

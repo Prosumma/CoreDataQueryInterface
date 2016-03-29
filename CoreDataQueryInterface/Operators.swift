@@ -31,3 +31,11 @@ public func <(lhs: CustomExpressionConvertible, rhs: Any?) -> NSPredicate {
 public func <=(lhs: CustomExpressionConvertible, rhs: Any?) -> NSPredicate {
     return lhs.lessThanOrEqualTo(rhs)
 }
+
+
+// test for dealing with TypedExpressionConvertible, didn't want to interfere with == just yet
+infix operator ** { associativity left precedence 160 }
+
+public func **<E: TypedExpressionConvertible, V where E.ValueType == V>(lhs: E, rhs: V?) -> NSPredicate {
+    return lhs.equalTo(rhs?.boxedValue)
+}

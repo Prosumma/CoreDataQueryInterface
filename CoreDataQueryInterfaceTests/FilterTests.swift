@@ -11,7 +11,7 @@ import XCTest
 class FilterTests : BaseTestCase {
 
     func testCountEngineers() {
-        let engineerCount = try! managedObjectContext.from(Employee).filter({ $0.department.name == "Engineering" }).count()
+        let engineerCount = try! managedObjectContext.from(Employee).filter({ $0.department.name ** "Engineering" }).count()
         XCTAssertEqual(engineerCount, 8)
     }
     
