@@ -10,8 +10,8 @@ import CoreData
 import Foundation
 
 public protocol QueryType {
-    typealias QueryEntityType: EntityType
-    typealias QueryResultType: AnyObject
+    associatedtype QueryEntityType: EntityType
+    associatedtype QueryResultType: AnyObject
     
     init(builder: QueryBuilder<QueryEntityType>)
     var builder: QueryBuilder<QueryEntityType> { get }

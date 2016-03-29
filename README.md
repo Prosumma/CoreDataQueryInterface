@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/Prosumma/CoreDataQueryInterface.svg)](https://travis-ci.org/Prosumma/CoreDataQueryInterface)
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/CoreDataQueryInterface.svg)](https://cocoapods.org)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+![Platforms](https://img.shields.io/cocoapods/p/CoreDataQueryInterface.svg)
 
 Core Data Query Interface (CDQI) is a type-safe, fluent, intuitive library for working with Core Data in Swift. CDQI tremendously reduces the amount of code needed to do Core Data, and dramatically improves readability by allowing method chaining and by eliminating magic strings. CDQI is a bit like jQuery or LINQ, but for Core Data.
 
@@ -13,7 +14,7 @@ The best way to understand the advantages of CDQI is to see an example.
 ```swift
 try! managedObjectContext
     .from(Employee)
-    .filter({$0.salary > 70000 && $0.department.name == "Engineering"})
+    .filter{$0.salary > 70000 && $0.department.name == "Engineering"}
     .order(descending: {$0.lastName})
     .all()
 ```
@@ -52,10 +53,10 @@ Besides the greater readability of the code, the other advantage is that if your
 Besides many small improvements, the primary change is support for a great deal more predicates: `BEGINSWITH`, `SUBQUERY`, case-insensitive and diacritic-insensitive comparisons, etc. All without magic strings.
 
 ```swift
-moc.from(Department).filter() { department in 
-  department.employees.subquery({ 
-    any(employee in employee.lastName.beginsWith("s", .CaseInsensitivePredicateOption)) 
-  }).count > 0 
+moc.from(Department).filter { department in
+  department.employees.subquery {
+    any(employee in employee.lastName.beginsWith("s", .CaseInsensitivePredicateOption))
+  }.count > 0
 }
 ```
 
@@ -129,7 +130,7 @@ cdqi -p Company
 
 Core Data models can have multiple versions. The `cdqi` tool always uses the current version, which it determines by consulting the `.xccurrentversion` file inside the `.xcdatamodeld` bundle.
 
-For obvious reasons, `cdqi` uses the _represented class_, not the name of the entity, when generating proxies. If an entity has no represented class, it will be skipped, and a warning issued on the command line. 
+For obvious reasons, `cdqi` uses the _represented class_, not the name of the entity, when generating proxies. If an entity has no represented class, it will be skipped, and a warning issued on the command line.
 
 For further help on `cdqi`, issue `/path/to/cdqi --help` on the command line.
 
@@ -239,8 +240,8 @@ Chaining filter methods together is the same as if `&&` were written between the
 // The following two statements are functionally equivalent
 moc.from(Department).filter {department in department.name.beginsWith("E") && department.name.endsWith("ng")}
 moc.from(Department)
-    .filter({department in department.name.beginsWith("E")})
-    .filter({department in department.name.endsWith("ng")})
+    .filter {department in department.name.beginsWith("E")}
+    .filter {department in department.name.endsWith("ng")}
 ```
 
 As always, see the unit tests for more examples.
@@ -253,7 +254,7 @@ Sorting makes use of `Attribute`'s ability to generate keypaths, e.g.,
 moc.from(Department).order({$0.lastName})
 ```
 
-Just as with filtering, `$0` is an instance of the associated proxy `Attribute` subclass, in this case `DepartmentAttribute`. 
+Just as with filtering, `$0` is an instance of the associated proxy `Attribute` subclass, in this case `DepartmentAttribute`.
 
 If we want to sort descending, it's pretty simple.
 
@@ -300,7 +301,7 @@ In this case, since no managed object context has been specified, it will have t
 There are several query execution methods. I'll deal with each in turn, starting with `all`.
 
 ```swift
-try! moc.from(Department).filter({$0.name == "Engineering"}).all()
+try! moc.from(Department).filter {$0.name == "Engineering"}.all()
 ```
 
 Very simply, this returns all managed objects of the appropriate type—`Department` in this case—which satisfy the query.
@@ -316,7 +317,7 @@ As shown in the example above, all of the query execution methods take an option
 Next up is `count`, which works as advertised:
 
 ```swift
-let departmentCount = try! moc.from(Department).filter{$0.employees.count > 10}).count()
+let departmentCount = try! moc.from(Department).filter{$0.employees.count > 10}.count()
 ```
 
 The `first` method returns either the first matching result or `nil`.
@@ -346,7 +347,7 @@ Like `first`, `value` returns `nil` if there was no matching value. Like `array`
 #### Limits
 
 ```swift
-moc.from(Department).filter({$0.name.contains("e")}).limit(2)
+moc.from(Department).filter{$0.name.contains("e")}.limit(2)
 ```
 
 Pretty obvious.
@@ -356,7 +357,7 @@ Pretty obvious.
 Sometimes we don't want to execute a query, but instead get the `NSFetchRequest` that would be generated. This is especially useful with `NSFetchedResultsController`. Doing so is very straightforward in CDQI:
 
 ```swift
-let request = moc.from(Department).filter({$0.manager.lastName == "Smith"}).request()
+let request = moc.from(Department).filter{$0.manager.lastName == "Smith"}.request()
 ```
 
 We can then use this fetch request however we like.
@@ -367,7 +368,7 @@ Under the hood, CDQI uses value types to avoid side effects. This means that que
 
 ```swift
 let departmentQuery = moc.from(Department) // This is an instance of EntityQuery<Department>
-let filteredDepartmentQuery = departmentQuery.filter() { $0.manager.salary > 100000 }
+let filteredDepartmentQuery = departmentQuery.filter { $0.manager.salary > 100000 }
 let sortedFilteredDepartmentQuery = filteredDepartmentQuery.order(descending: {$0.name})
 ```
 

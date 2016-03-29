@@ -32,7 +32,7 @@ extension QueryType {
     - note: This is the `filter` method you want to use.
     - parameter createPredicate: A block that takes an `AttributeType` and returns an `NSPredicate`.
     */
-    public func filter(createPredicate: QueryEntityType.EntityAttributeType -> NSPredicate) -> Self {
+    public func filter(@noescape createPredicate: QueryEntityType.EntityAttributeType -> NSPredicate) -> Self {
         let attribute = QueryEntityType.EntityAttributeType()
         let predicate = createPredicate(attribute)
         return filter(predicate)
