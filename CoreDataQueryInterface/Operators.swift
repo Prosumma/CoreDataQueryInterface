@@ -39,3 +39,7 @@ infix operator ** { associativity left precedence 160 }
 public func **<E: TypedExpressionConvertible, V where E.ValueType == V>(lhs: E, rhs: V?) -> NSPredicate {
     return lhs.equalTo(rhs?.boxedValue)
 }
+
+public func **<V: NumericValueType>(lhs: NumericAttribute, rhs: V?) -> NSPredicate {
+    return lhs.equalTo(rhs?.numberValue)
+}

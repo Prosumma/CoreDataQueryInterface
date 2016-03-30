@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E49189E1CAB981B00DFB3C8 /* AttributeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E49189D1CAB981B00DFB3C8 /* AttributeTests.swift */; };
 		8EC22BBF1CAA37D500642BB6 /* TypedExpressionConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC22BBE1CAA37D500642BB6 /* TypedExpressionConvertible.swift */; };
 		8EC22BC01CAA3AE400642BB6 /* TypedExpressionConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC22BBE1CAA37D500642BB6 /* TypedExpressionConvertible.swift */; };
 		8EC22BC11CAA3AE400642BB6 /* TypedExpressionConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC22BBE1CAA37D500642BB6 /* TypedExpressionConvertible.swift */; };
@@ -149,6 +150,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E49189D1CAB981B00DFB3C8 /* AttributeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeTests.swift; sourceTree = "<group>"; };
 		8EC22BBE1CAA37D500642BB6 /* TypedExpressionConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypedExpressionConvertible.swift; sourceTree = "<group>"; };
 		F30C0B7B1B37A20A00D8D762 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		F30D1CCA1B2A891100AF80A1 /* CoreDataQueryInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataQueryInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,6 +238,7 @@
 			children = (
 				F37C46B11B2A780200B35B1B /* SanityTests.swift */,
 				F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */,
+				8E49189D1CAB981B00DFB3C8 /* AttributeTests.swift */,
 				F3E6B5521B2C01CC00F735EE /* OrderTests.swift */,
 				F33567641B2D2EF7007853DB /* SelectionAndGroupingTests.swift */,
 			);
@@ -611,6 +614,7 @@
 			files = (
 				F33567661B2D2EF7007853DB /* SelectionAndGroupingTests.swift in Sources */,
 				F3E6B5531B2C01CC00F735EE /* OrderTests.swift in Sources */,
+				8E49189E1CAB981B00DFB3C8 /* AttributeTests.swift in Sources */,
 				F37A46F11B2BD61700D4EE61 /* Attribute.swift in Sources */,
 				F31C64291B696CD900235764 /* NSManagedObjectContextExtensions.swift in Sources */,
 				F371ABE11B2BC1F7002A8A85 /* Selecting.swift in Sources */,

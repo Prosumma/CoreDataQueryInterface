@@ -8,18 +8,23 @@
 
 import Foundation
 
+
 // MARK: Protocols
 
 public protocol ExpressionValueType {
     
-    var boxedValue: AnyObject { get } // provide a boxed value for NSExpression
+    var boxedValue: AnyObject { get }
+}
+
+public protocol NumericValueType {
+    
+    var numberValue: NSNumber { get }
 }
 
 public protocol TypedExpressionConvertible: CustomExpressionConvertible {
     
     associatedtype ValueType: ExpressionValueType
 }
-
 
 // MARK: String
 
@@ -55,58 +60,65 @@ public class DateAttribute: KeyAttribute, TypedExpressionConvertible {
 
 // MARK: Numbers
 
-extension Int: ExpressionValueType {
+extension Int: NumericValueType {
     
-    public var boxedValue: AnyObject {
+    public var numberValue: NSNumber {
         
         return self as NSNumber
     }
 }
 
-extension Float: ExpressionValueType {
+extension Int16: NumericValueType {
     
-    public var boxedValue: AnyObject {
+    public var numberValue: NSNumber {
+        
+        return NSNumber(short: self)
+    }
+}
+
+extension Int32: NumericValueType {
+    
+    public var numberValue: NSNumber {
+        
+        return NSNumber(int: self)
+    }
+}
+
+extension Int64: NumericValueType {
+    
+    public var numberValue: NSNumber {
+        
+        return NSNumber(longLong: self)
+    }
+}
+
+extension Float: NumericValueType {
+    
+    public var numberValue: NSNumber {
         
         return self as NSNumber
     }
 }
 
-extension Double: ExpressionValueType {
+extension Double: NumericValueType {
     
-    public var boxedValue: AnyObject {
+    public var numberValue: NSNumber {
         
         return self as NSNumber
     }
 }
 
-public class Integer16Attribute: KeyAttribute, TypedExpressionConvertible {
+extension NSNumber: ExpressionValueType {
     
-    public typealias ValueType = Int
+    public var boxedValue: AnyObject {
+        
+        return self
+    }
 }
 
-public class Integer32Attribute: KeyAttribute, TypedExpressionConvertible {
+public class NumericAttribute: KeyAttribute, TypedExpressionConvertible {
     
-    public typealias ValueType = Int
-}
-
-public class Integer64Attribute: KeyAttribute, TypedExpressionConvertible {
-    
-    public typealias ValueType = Int
-}
-
-public class FloatAttribute: KeyAttribute, TypedExpressionConvertible {
-    
-    public typealias ValueType = Float
-}
-
-public class Double64Attribute: KeyAttribute, TypedExpressionConvertible {
-    
-    public typealias ValueType = Double
-}
-
-public class DecimalAttribute: KeyAttribute, TypedExpressionConvertible {
-    
-    public typealias ValueType = Float
+    public typealias ValueType = NSNumber
 }
 
 
@@ -125,4 +137,11 @@ public class DataAttribute: KeyAttribute, TypedExpressionConvertible {
     public typealias ValueType = NSData
 }
 
+
+// MARK: Transformable
+
+public class TransformableAttribute<V: ExpressionValueType>: KeyAttribute, TypedExpressionConvertible {
+    
+    public typealias ValueType = V
+}
 

@@ -9,7 +9,7 @@ class EmployeeAttribute: Attribute, Aggregable {
     private(set) lazy var firstName: StringAttribute = { StringAttribute("firstName", parent: self) }()
     private(set) lazy var lastName: KeyAttribute = { KeyAttribute("lastName", parent: self) }()
     private(set) lazy var nickName: KeyAttribute = { KeyAttribute("nickName", parent: self) }()
-    private(set) lazy var salary: KeyAttribute = { KeyAttribute("salary", parent: self) }()
+    private(set) lazy var salary: NumericAttribute = { NumericAttribute("salary", parent: self) }()
     private(set) lazy var department: DepartmentAttribute = { DepartmentAttribute("department", parent: self) }()
 }
 
