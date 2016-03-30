@@ -40,6 +40,6 @@ public func **<E: TypedExpressionConvertible, V where E.ValueType == V>(lhs: E, 
     return lhs.equalTo(rhs?.boxedValue)
 }
 
-public func **<V: NumericValueType>(lhs: NumericAttribute, rhs: V?) -> NSPredicate {
+public func **(lhs: NumericAttribute, rhs: NumericValueType?) -> NSPredicate {
     return lhs.equalTo(rhs?.numberValue)
 }

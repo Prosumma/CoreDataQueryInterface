@@ -9,22 +9,16 @@
 import Foundation
 
 
-// MARK: Protocols
-
 public protocol ExpressionValueType {
     
     var boxedValue: AnyObject { get }
-}
-
-public protocol NumericValueType {
-    
-    var numberValue: NSNumber { get }
 }
 
 public protocol TypedExpressionConvertible: CustomExpressionConvertible {
     
     associatedtype ValueType: ExpressionValueType
 }
+
 
 // MARK: String
 
@@ -39,6 +33,22 @@ extension String: ExpressionValueType {
 public class StringAttribute: KeyAttribute, TypedExpressionConvertible {
     
     public typealias ValueType = String
+}
+
+
+// MARK: Boolean
+
+extension Bool: ExpressionValueType {
+    
+    public var boxedValue: AnyObject {
+        
+        return NSNumber(bool: self)
+    }
+}
+
+public class BooleanAttribute: KeyAttribute, TypedExpressionConvertible {
+    
+    public typealias ValueType = Bool
 }
 
 
@@ -59,6 +69,11 @@ public class DateAttribute: KeyAttribute, TypedExpressionConvertible {
 
 
 // MARK: Numbers
+
+public protocol NumericValueType {
+    
+    var numberValue: NSNumber { get }
+}
 
 extension Int: NumericValueType {
     
