@@ -12,57 +12,62 @@ class NumericTypeTests: BaseTestCase {
     
     func testIntValueComparison() {
         
-        let salary: Int = 32000
-        let resultCount = try! managedObjectContext.from(Employee).filter({ $0.salary ** salary }).count()
+        let resultCount = try! managedObjectContext.from(AttributeTest).filter({ $0.integer64 ** Int.max }).count()
         XCTAssert(resultCount == 1)
     }
     
     func testInt16ValueComparison() {
         
-        let salary: Int16 = 32000
-        let resultCount = try! managedObjectContext.from(Employee).filter({ $0.salary ** salary }).count()
+        let resultCount = try! managedObjectContext.from(AttributeTest).filter({ $0.integer16 ** Int16.max }).count()
         XCTAssert(resultCount == 1)
     }
     
     func testInt32ValueComparison() {
         
-        let salary: Int32 = 32000
-        let resultCount = try! managedObjectContext.from(Employee).filter({ $0.salary ** salary }).count()
+        let integer: Int32 = Int32.max
+        let resultCount = try! managedObjectContext.from(AttributeTest).filter({ $0.integer32 ** integer }).count()
         XCTAssert(resultCount == 1)
     }
     
     func testInt64ValueComparison() {
         
-        let salary: Int64 = 32000
-        let resultCount = try! managedObjectContext.from(Employee).filter({ $0.salary ** salary }).count()
+        let integer: Int64 = Int64.max
+        let resultCount = try! managedObjectContext.from(AttributeTest).filter({ $0.integer64 ** integer }).count()
         XCTAssert(resultCount == 1)
     }
     
     func testUIntValueComparison() {
         
-        let salary: UInt = 32000
-        let resultCount = try! managedObjectContext.from(Employee).filter({ $0.salary ** salary }).count()
+        let integer: UInt = UInt(Int32.max)
+        let resultCount = try! managedObjectContext.from(AttributeTest).filter({ $0.integer32 ** integer }).count()
         XCTAssert(resultCount == 1)
     }
     
     func testFloatValueComparison() {
         
-        let salary: Float = 32000.00
-        let resultCount = try! managedObjectContext.from(Employee).filter({ $0.salary ** salary }).count()
+        let float: Float = 510.2304
+        let resultCount = try! managedObjectContext.from(AttributeTest).filter({ $0.float ** float }).count()
         XCTAssert(resultCount == 1)
     }
     
     func testDoubleValueComparison() {
         
-        let salary: Double = 32000.00
-        let resultCount = try! managedObjectContext.from(Employee).filter({ $0.salary ** salary }).count()
+        let double: Double = 212309.42349809823
+        let resultCount = try! managedObjectContext.from(AttributeTest).filter({ $0.double ** double }).count()
+        XCTAssert(resultCount == 1)
+    }
+    
+    func testDecimalValueComparison() {
+        
+        let double: Double = 5.0
+        let resultCount = try! managedObjectContext.from(AttributeTest).filter({ $0.decimal ** double }).count()
         XCTAssert(resultCount == 1)
     }
     
     func testGCFloatValueComparison() {
         
-        let salary: CGFloat = 32000.00
-        let resultCount = try! managedObjectContext.from(Employee).filter({ $0.salary ** salary }).count()
+        let double = CGFloat(212309.42349809823)
+        let resultCount = try! managedObjectContext.from(AttributeTest).filter({ $0.double ** double }).count()
         XCTAssert(resultCount == 1)
     }
 }

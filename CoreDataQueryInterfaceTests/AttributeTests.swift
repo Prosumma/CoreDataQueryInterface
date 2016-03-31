@@ -17,7 +17,7 @@ class AttributeTests: BaseTestCase {
         let path = bundle.pathForResource("Employees", ofType: "txt")!
         let data = NSData(contentsOfFile: path)
         
-        let result = try! managedObjectContext.from(AttributeTest).filter({ $0.binary > data }).count()
+        let result = try! managedObjectContext.from(AttributeTest).filter({ $0.binary == data }).count()
         
         XCTAssertEqual(result, 1)
     }
