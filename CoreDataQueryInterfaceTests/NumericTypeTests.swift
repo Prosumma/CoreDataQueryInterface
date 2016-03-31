@@ -18,8 +18,12 @@ class NumericTypeTests: BaseTestCase {
     
     func testInt16ValueComparison() {
         
-        let resultCount = try! managedObjectContext.from(AttributeTest).filter({ $0.integer16 ** Int16.max }).count()
+        let resultCount = try! managedObjectContext.from(AttributeTest).filter({ $0.integer16 ** 32767 }).count()
         XCTAssert(resultCount == 1)
+
+        // making sure an overflow is correctly compared
+        let overflowCount = try! managedObjectContext.from(AttributeTest).filter({ $0.integer16 ** 500000000 }).count()
+        XCTAssert(overflowCount == 0)
     }
     
     func testInt32ValueComparison() {
