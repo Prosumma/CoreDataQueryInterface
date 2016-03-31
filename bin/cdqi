@@ -91,12 +91,25 @@ class Attribute
   def initialize(name, entity: nil, type: nil)
     @name = name
     @entity = entity
-    @type = type.delete(' ') unless type.nil?
+    @type = type
   end
   def render_property(io)
-    prefix = "#{@entity || @type || 'Key'}"
-    attribute = "#{prefix}#{$options.suffix}"
-    io.puts "#{$options.access_modifier}private(set) lazy var #{@name}: #{attribute} = { #{attribute}(\"#{@name}\", parent: self) }()"
+    type = attribute_type
+    io.puts "#{$options.access_modifier}private(set) lazy var #{@name}: #{type} = { #{type}(\"#{@name}\", parent: self) }()"
+  end
+  def attribute_type
+    prefix = ""
+    unless @type.nil?
+      type_downcased = @type.downcase
+      if ["integer", "float", "double", "decimal"].any? { |type| type_downcased.include? type }
+        prefix = "Numeric"
+      else
+        prefix = @type
+      end
+    else
+      prefix = "#{@entity || 'Key'}"
+    end
+    "#{prefix}#{$options.suffix}"
   end
 end
 
