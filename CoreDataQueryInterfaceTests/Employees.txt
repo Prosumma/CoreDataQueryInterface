@@ -13,7 +13,7 @@ Davies|Gregory|Engineering|75000
 Davies|David|Engineering|69000
 Davies|Isabella|Accounting|97000
 Davies|Lana|Accounting|66000
-Gahan|Jane|Accounting|54000
+Gahan|Jane|Accounting|32000
 Gahan|Gregory|Sales|73000
 Gahan|David|Engineering|100000
 Gahan|Isabella|Sales|93000

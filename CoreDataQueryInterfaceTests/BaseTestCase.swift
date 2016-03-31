@@ -35,10 +35,12 @@ class BaseTestCase: XCTestCase {
             let managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
             managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
             
+            var fileData: NSData!
             var lines: [String]!
             for bundle in NSBundle.allBundles() {
                 if let path = bundle.pathForResource("Employees", ofType: "txt") {
                     lines = try! String(contentsOfFile: path).componentsSeparatedByString("\n")
+                    fileData = NSData(contentsOfFile: path)
                     break
                 }
             }
@@ -58,6 +60,19 @@ class BaseTestCase: XCTestCase {
                     employee.department = department
                 }
             }
+            
+            let attributeTest = managedObjectContext.newEntity(AttributeTest)
+            
+            attributeTest.integer16 = NSNumber(short: Int16.max)
+            attributeTest.integer32 = NSNumber(int: Int32.max)
+            attributeTest.integer64 = NSNumber(longLong: Int64.max)
+            attributeTest.decimal = NSDecimalNumber(double: 5.00)
+            attributeTest.float = 510.2304
+            attributeTest.double = 212309.42349809823
+            attributeTest.string = "hello"
+            attributeTest.date = NSDate(timeIntervalSince1970: 5)
+            attributeTest.binary = fileData
+            attributeTest.boolean = true
             
             try! managedObjectContext.save()
             self.managedObjectContext = managedObjectContext
