@@ -75,14 +75,6 @@ public protocol NumericValueType {
     var numberValue: NSNumber { get }
 }
 
-extension Int: NumericValueType {
-    
-    public var numberValue: NSNumber {
-        
-        return self as NSNumber
-    }
-}
-
 extension Int16: NumericValueType {
     
     public var numberValue: NSNumber {
@@ -104,22 +96,6 @@ extension Int64: NumericValueType {
     public var numberValue: NSNumber {
         
         return NSNumber(longLong: self)
-    }
-}
-
-extension Float: NumericValueType {
-    
-    public var numberValue: NSNumber {
-        
-        return self as NSNumber
-    }
-}
-
-extension Double: NumericValueType {
-    
-    public var numberValue: NSNumber {
-        
-        return self as NSNumber
     }
 }
 
@@ -147,16 +123,16 @@ extension NSData: ExpressionValueType {
     }
 }
 
-public class DataAttribute: KeyAttribute, TypedExpressionConvertible {
+public class BinaryAttribute: KeyAttribute, TypedExpressionConvertible {
     
     public typealias ValueType = NSData
 }
 
 
 // MARK: Transformable
-
-public class TransformableAttribute<V: ExpressionValueType>: KeyAttribute, TypedExpressionConvertible {
-    
-    public typealias ValueType = V
-}
+//
+//public class TransformableAttribute<V: ExpressionValueType>: KeyAttribute, TypedExpressionConvertible {
+//    
+//    public typealias ValueType = V
+//}
 
