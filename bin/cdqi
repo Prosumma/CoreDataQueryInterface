@@ -157,17 +157,31 @@ end
 
 File::open(model_path) do |fd|
   xml = REXML::Document::new(fd)
+  classes_by_entity_name = {}
+  #build map of entity_name => class and excluded entities
   xml.root.elements.each('entity') do |entity_node|
     represented_class = entity_node.attributes['representedClassName']
+    represented_class = represented_class.split('.')[-1]
     entity_name = entity_node.attributes['name']
+    excluded = false
     if represented_class.nil?
       $stderr.puts "WARNING: The '#{entity_name}' entity was skipped because it has no represented class."
-      next
+      excluded = true
     end
     if represented_class == 'Key' && $options.suffix == 'Attribute'
       $stderr.puts "WARNING: The entity '#{entity_name}' represented by the class 'Key' was skipped because its name would conflict with CDQI's 'KeyAttribute'. You can avoid this by using a different represented class name or a suffix other than 'Attribute'."
-      $options.excluded_entities << entity_name
+      excluded = true
     end
+    if excluded
+      $options.excluded_entities << entity_name
+      next
+    else
+      classes_by_entity_name[entity_name] = represented_class
+    end
+  end
+  xml.root.elements.each('entity') do |entity_node|
+    entity_name = entity_node.attributes['name']
+    represented_class = classes_by_entity_name[entity_name]
     if !$options.excluded_entities.include?(entity_name) && ($options.included_entities.empty? || $options.included_entities.include?(entity_name))
       entity_name = represented_class.split('.')[-1]
       entity = Entity::new(entity_name)
