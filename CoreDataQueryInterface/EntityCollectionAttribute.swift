@@ -34,7 +34,7 @@ extension Set: ExpressionValueType {
     }
 }
 
-public class EntityCollectionAttribute<T: NSManagedObject where T:EntityType>: Attribute, Aggregable, TypedExpressionConvertible {
+public class EntityCollectionAttribute<T: NSManagedObject where T: EntityType>: Attribute, Aggregable, TypedExpressionConvertible {
     
     public typealias ValueType = Set<T>
     public typealias AggregateType = T.EntityAttributeType
