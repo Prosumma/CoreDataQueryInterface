@@ -137,12 +137,7 @@ public class BinaryAttribute: KeyAttribute, TypedExpressionConvertible {
 //}
 
 
-// MARK: Relationships
 
-extension NSManagedObject: ExpressionValueType {
-    
-    public var boxedValue: AnyObject {
-        
-        return self
-    }
-}
+
+
+

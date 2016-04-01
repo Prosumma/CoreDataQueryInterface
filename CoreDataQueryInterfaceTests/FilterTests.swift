@@ -49,7 +49,19 @@ class FilterTests : BaseTestCase {
     }
     
     func testNumberOfDepartmentsWithEmployeesWhoseLastNamesStartWithSUsingSubquery() {
-        let departmentCount = try! managedObjectContext.from(Department).filter({ $0.employees.subquery("$e", predicate: { some($0.lastName.beginsWith("S", options: .CaseInsensitivePredicateOption)) }).count > 0 }).count()
+        
+        let departmentCount = try! managedObjectContext.from(Department).filter({ department in
+            
+            let predicate: NSPredicate = department.employees.subquery("$e", predicate: {
+                
+                return some($0.lastName.beginsWith("S", options: .CaseInsensitivePredicateOption))
+                
+            }).count > 0
+            
+            return predicate
+            
+        }).count()
+        
         XCTAssertEqual(departmentCount, 2)
     }
     

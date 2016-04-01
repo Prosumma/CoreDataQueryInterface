@@ -46,16 +46,17 @@ class AttributeTests: BaseTestCase {
         let department: Department! = nil
         
         let result = try! managedObjectContext.from(Employee).filter({ $0.department ** department}).count()
-        XCTAssertEqual(result, 1)
+        XCTAssertEqual(result, 0)
     }
     
     func testToManyRelationshipAttribute() {
         
-        let employee: Employee! = nil
+        let engineers = try! managedObjectContext.from(Employee).filter({ $0.department.name ** "Engineering" }).all()
         
-        //FIXME: to many relationships shouldn't compare to a single instance
+        let engineerSet = Set(engineers)
         
-        let result = try! managedObjectContext.from(Department).filter({ $0.employees ** employee}).count()
+        let result = try! managedObjectContext.from(Department).filter({ $0.employees ** engineerSet }).count()
+        
         XCTAssertEqual(result, 1)
     }
 }

@@ -20,8 +20,10 @@ class NumericTypeTests: BaseTestCase {
         
         let resultCount = try! managedObjectContext.from(AttributeTest).filter({ $0.integer16 ** 32767 }).count()
         XCTAssert(resultCount == 1)
-
-        // making sure an overflow is correctly compared
+    }
+    
+    func testInt16OverflowValueComparison() {
+        
         let overflowCount = try! managedObjectContext.from(AttributeTest).filter({ $0.integer16 ** 500000000 }).count()
         XCTAssert(overflowCount == 0)
     }
