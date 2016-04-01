@@ -61,18 +61,18 @@ class BaseTestCase: XCTestCase {
                 }
             }
             
-            let attributeTest = managedObjectContext.newEntity(AttributeTest)
+            let testEntity = managedObjectContext.newEntity(TestEntity)
             
-            attributeTest.integer16 = NSNumber(short: Int16.max)
-            attributeTest.integer32 = NSNumber(int: Int32.max)
-            attributeTest.integer64 = NSNumber(longLong: Int64.max)
-            attributeTest.decimal = NSDecimalNumber(double: 5.00)
-            attributeTest.float = 510.2304
-            attributeTest.double = 212309.00
-            attributeTest.string = "hello"
-            attributeTest.date = NSDate(timeIntervalSince1970: 5)
-            attributeTest.binary = fileData
-            attributeTest.boolean = true
+            testEntity.integer16 = NSNumber(short: Int16.max)
+            testEntity.integer32 = NSNumber(int: Int32.max)
+            testEntity.integer64 = NSNumber(longLong: Int64.max)
+            testEntity.decimal = NSDecimalNumber(double: 5.00)
+            testEntity.float = 510.2304
+            testEntity.double = 212309.00
+            testEntity.string = "hello"
+            testEntity.date = NSDate(timeIntervalSince1970: 5)
+            testEntity.binary = fileData
+            testEntity.boolean = true
             
             try! managedObjectContext.save()
             self.managedObjectContext = managedObjectContext

@@ -17,7 +17,7 @@ class AttributeTests: BaseTestCase {
         let path = bundle.pathForResource("Employees", ofType: "txt")!
         let data = NSData(contentsOfFile: path)
         
-        let result = try! managedObjectContext.from(AttributeTest).filter({ $0.binary ** data }).count()
+        let result = try! managedObjectContext.from(TestEntity).filter({ $0.binary ** data }).count()
         
         XCTAssertEqual(result, 1)
     }
@@ -25,19 +25,19 @@ class AttributeTests: BaseTestCase {
     func testDateAttribute() {
         
         let date = NSDate(timeIntervalSince1970: 5)
-        let result = try! managedObjectContext.from(AttributeTest).filter({ $0.date ** date }).count()
+        let result = try! managedObjectContext.from(TestEntity).filter({ $0.date ** date }).count()
         XCTAssertEqual(result, 1)
     }
     
     func testStringAttribute() {
         
-        let result = try! managedObjectContext.from(AttributeTest).filter({ $0.string ** "hello" }).count()
+        let result = try! managedObjectContext.from(TestEntity).filter({ $0.string ** "hello" }).count()
         XCTAssertEqual(result, 1)
     }
     
     func testBooleanAttribute() {
         
-        let result = try! managedObjectContext.from(AttributeTest).filter({ $0.boolean ** true }).count()
+        let result = try! managedObjectContext.from(TestEntity).filter({ $0.boolean ** true }).count()
         XCTAssertEqual(result, 1)
     }
     

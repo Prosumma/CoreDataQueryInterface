@@ -19,10 +19,12 @@ public protocol TypedExpressionConvertible: CustomExpressionConvertible {
     associatedtype ValueType: ExpressionValueType
 }
 
+public protocol ComparableValueType: ExpressionValueType { }
+
 
 // MARK: String
 
-extension String: ExpressionValueType {
+extension String: ComparableValueType {
     
     public var boxedValue: AnyObject {
         
@@ -54,7 +56,7 @@ public class BooleanAttribute: KeyAttribute, TypedExpressionConvertible {
 
 // MARK: Date
 
-extension NSDate: ExpressionValueType {
+extension NSDate: ComparableValueType {
     
     public var boxedValue: AnyObject {
         
@@ -99,7 +101,7 @@ extension Int64: NumericValueType {
     }
 }
 
-extension NSNumber: ExpressionValueType {
+extension NSNumber: ExpressionValueType, ComparableValueType {
     
     public var boxedValue: AnyObject {
         

@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="1.0" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Automatic">
-    <entity name="AttributeTest" representedClassName=".AttributeTest" syncable="YES">
-        <attribute name="binary" attributeType="Binary" syncable="YES"/>
-        <attribute name="boolean" attributeType="Boolean" syncable="YES"/>
-        <attribute name="date" attributeType="Date" syncable="YES"/>
-        <attribute name="decimal" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="double" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="float" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="integer16" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="integer32" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="integer64" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="string" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
     <entity name="Department" representedClassName="CoreDataQueryInterfaceTests.Department" syncable="YES">
         <attribute name="name" attributeType="String" minValueString="1" indexed="YES" syncable="YES"/>
         <relationship name="employees" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Employee" inverseName="department" inverseEntity="Employee" syncable="YES"/>
@@ -23,9 +11,21 @@
         <attribute name="salary" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="department" maxCount="1" deletionRule="Nullify" destinationEntity="Department" inverseName="employees" inverseEntity="Department" syncable="YES"/>
     </entity>
+    <entity name="TestEntity" representedClassName=".TestEntity" syncable="YES">
+        <attribute name="binary" attributeType="Binary" syncable="YES"/>
+        <attribute name="boolean" attributeType="Boolean" syncable="YES"/>
+        <attribute name="date" attributeType="Date" syncable="YES"/>
+        <attribute name="decimal" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="double" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="float" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="integer16" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="integer32" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="integer64" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="string" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
+        <element name="TestEntity" positionX="-63" positionY="36" width="128" height="195"/>
         <element name="Department" positionX="-63" positionY="-18" width="128" height="75"/>
         <element name="Employee" positionX="-54" positionY="0" width="128" height="120"/>
-        <element name="AttributeTest" positionX="-63" positionY="36" width="128" height="195"/>
     </elements>
 </model>

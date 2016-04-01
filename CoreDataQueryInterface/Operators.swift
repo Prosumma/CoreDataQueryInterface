@@ -43,3 +43,11 @@ public func **<E: TypedExpressionConvertible, V where E.ValueType == V>(lhs: E, 
 public func **(lhs: NumericAttribute, rhs: NumericValueType?) -> NSPredicate {
     return lhs.equalTo(rhs?.numberValue)
 }
+
+
+infix operator <** { associativity left precedence 160 }
+
+public func <**<E: TypedExpressionConvertible, V:ComparableValueType where E.ValueType == V>(lhs: E, rhs: V?) -> NSPredicate {
+    return lhs.equalTo(rhs?.boxedValue)
+}
+
