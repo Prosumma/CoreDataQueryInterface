@@ -123,8 +123,9 @@ class Entity
     @attributes << attribute
   end
   def render(io)
-    io.puts "#{$options.access_modifier}class #{@name}#{$options.suffix}: Attribute, Aggregable {"
+    io.puts "#{$options.access_modifier}class #{@name}#{$options.suffix}: Attribute, Aggregable, TypedExpressionConvertible {"
     io.indent do
+      io.puts "typealias ValueType = #{name}"
       @attributes.each do |attribute|
         attribute.render_property(io)
       end
@@ -181,11 +182,10 @@ File::open(model_path) do |fd|
       end
       entity_node.elements.each('relationship') do |relationship_node|
         destination_entity_name = relationship_node.attributes['destinationEntity']
-        destination_class = REXML::XPath::first(xml, "//entity[@name='#{destination_entity_name}']").attributes['representedClassName']
+        destination_class = classes_by_entity_name[destination_entity_name]
         unless $options.excluded_entities.include?(destination_entity_name) || destination_class.nil?
-          destination_entity_name = destination_class.split('.')[-1]
           attribute_name = relationship_node.attributes['name']
-          entity << Attribute::new(attribute_name, entity: destination_entity_name)
+          entity << Attribute::new(attribute_name, entity: destination_class)
         end
       end
       entities << entity
