@@ -68,7 +68,7 @@ class BaseTestCase: XCTestCase {
             attributeTest.integer64 = NSNumber(longLong: Int64.max)
             attributeTest.decimal = NSDecimalNumber(double: 5.00)
             attributeTest.float = 510.2304
-            attributeTest.double = 212309.42349809823
+            attributeTest.double = 212309.00
             attributeTest.string = "hello"
             attributeTest.date = NSDate(timeIntervalSince1970: 5)
             attributeTest.binary = fileData

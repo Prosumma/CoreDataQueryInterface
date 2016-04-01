@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import CoreData
 
 public protocol ExpressionValueType {
     
@@ -136,3 +136,13 @@ public class BinaryAttribute: KeyAttribute, TypedExpressionConvertible {
 //    public typealias ValueType = V
 //}
 
+
+// MARK: Relationships
+
+extension NSManagedObject: ExpressionValueType {
+    
+    public var boxedValue: AnyObject {
+        
+        return self
+    }
+}

@@ -17,12 +17,13 @@ class AttributeTests: BaseTestCase {
         let path = bundle.pathForResource("Employees", ofType: "txt")!
         let data = NSData(contentsOfFile: path)
         
-        let result = try! managedObjectContext.from(AttributeTest).filter({ $0.binary == data }).count()
+        let result = try! managedObjectContext.from(AttributeTest).filter({ $0.binary ** data }).count()
         
         XCTAssertEqual(result, 1)
     }
     
     func testDateAttribute() {
+        
         let date = NSDate(timeIntervalSince1970: 5)
         let result = try! managedObjectContext.from(AttributeTest).filter({ $0.date ** date }).count()
         XCTAssertEqual(result, 1)
@@ -37,6 +38,24 @@ class AttributeTests: BaseTestCase {
     func testBooleanAttribute() {
         
         let result = try! managedObjectContext.from(AttributeTest).filter({ $0.boolean ** true }).count()
+        XCTAssertEqual(result, 1)
+    }
+    
+    func testToOneRelationshipAttribute() {
+        
+        let department: Department! = nil
+        
+        let result = try! managedObjectContext.from(Employee).filter({ $0.department ** department}).count()
+        XCTAssertEqual(result, 1)
+    }
+    
+    func testToManyRelationshipAttribute() {
+        
+        let employee: Employee! = nil
+        
+        //FIXME: to many relationships shouldn't compare to a single instance
+        
+        let result = try! managedObjectContext.from(Department).filter({ $0.employees ** employee}).count()
         XCTAssertEqual(result, 1)
     }
 }

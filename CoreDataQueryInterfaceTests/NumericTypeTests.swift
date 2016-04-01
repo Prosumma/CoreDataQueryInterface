@@ -40,7 +40,7 @@ class NumericTypeTests: BaseTestCase {
         XCTAssert(resultCount == 1)
     }
     
-    func testUIntValueComparison() {
+    func testUIntInt32ValueComparison() {
         
         let integer: UInt = UInt(Int32.max)
         let resultCount = try! managedObjectContext.from(AttributeTest).filter({ $0.integer32 ** integer }).count()
@@ -54,10 +54,10 @@ class NumericTypeTests: BaseTestCase {
         XCTAssert(resultCount == 1)
     }
     
-    func testDoubleValueComparison() {
+    func testIntDoubleValueComparison() {
         
-        let double: Double = 212309.42349809823
-        let resultCount = try! managedObjectContext.from(AttributeTest).filter({ $0.double ** double }).count()
+        let intValue: Int = 212309
+        let resultCount = try! managedObjectContext.from(AttributeTest).filter({ $0.double ** intValue }).count()
         XCTAssert(resultCount == 1)
     }
     
@@ -70,7 +70,7 @@ class NumericTypeTests: BaseTestCase {
     
     func testGCFloatValueComparison() {
         
-        let double = CGFloat(212309.42349809823)
+        let double = CGFloat(212309.00)
         let resultCount = try! managedObjectContext.from(AttributeTest).filter({ $0.double ** double }).count()
         XCTAssert(resultCount == 1)
     }

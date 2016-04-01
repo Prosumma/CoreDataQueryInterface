@@ -7,7 +7,8 @@
 
 import CoreDataQueryInterface
 
-class EmployeeAttribute: Attribute, Aggregable {
+class EmployeeAttribute: Attribute, Aggregable, TypedExpressionConvertible {
+    typealias ValueType = Employee
     private(set) lazy var firstName: StringAttribute = { StringAttribute("firstName", parent: self) }()
     private(set) lazy var lastName: StringAttribute = { StringAttribute("lastName", parent: self) }()
     private(set) lazy var nickName: StringAttribute = { StringAttribute("nickName", parent: self) }()

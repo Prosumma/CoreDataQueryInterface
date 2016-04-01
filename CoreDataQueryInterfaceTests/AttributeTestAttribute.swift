@@ -7,7 +7,8 @@
 
 import CoreDataQueryInterface
 
-class AttributeTestAttribute: Attribute, Aggregable {
+class AttributeTestAttribute: Attribute, Aggregable, TypedExpressionConvertible {
+    typealias ValueType = AttributeTest
     private(set) lazy var binary: BinaryAttribute = { BinaryAttribute("binary", parent: self) }()
     private(set) lazy var boolean: BooleanAttribute = { BooleanAttribute("boolean", parent: self) }()
     private(set) lazy var date: DateAttribute = { DateAttribute("date", parent: self) }()
