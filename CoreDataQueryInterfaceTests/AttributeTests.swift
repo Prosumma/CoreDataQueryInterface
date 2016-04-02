@@ -42,13 +42,14 @@ class AttributeTests: BaseTestCase {
         XCTAssertEqual(result, 1)
     }
     
-//    func testToOneRelationshipAttribute() {
-//        
-//        let department: Department! = nil
-//        
-//        let result = try! managedObjectContext.from(Employee).filter({ $0.department == department}).count()
-//        XCTAssertEqual(result, 0)
-//    }
+    func testToOneRelationshipAttribute() {
+        
+        let department = try! managedObjectContext.from(Department).filter({ $0.name == "Accounting" }).first()!
+        
+        let result = try! managedObjectContext.from(Employee).filter({ $0.department == department }).count()
+        
+        XCTAssertEqual(result, 8)
+    }
     
     func testToManyRelationshipAttribute() {
         
