@@ -7,7 +7,16 @@
 //
 
 import Foundation
+import CoreData
+
+extension NSManagedObject: TypedExpressionConvertible, ComparableExpression {
+    
+    public typealias ExpressionValueType = NSManagedObject
+    public var expression: NSExpression {
+        return NSExpression(forConstantValue: self)
+    }
+}
 
 public class EntityAttribute: Attribute, TypedExpressionConvertible {
-    public typealias ExpressionValueType = Entity
+    public typealias ExpressionValueType = NSManagedObject
 }

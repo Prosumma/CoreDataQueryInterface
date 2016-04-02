@@ -14,7 +14,11 @@ public protocol TypedExpressionConvertible: CustomExpressionConvertible {
     associatedtype ExpressionValueType
 }
 
-extension TypedExpressionConvertible where ExpressionValueType: Equatable {
+public protocol EquatableExpression { }
+
+public protocol ComparableExpression: EquatableExpression { }
+
+extension TypedExpressionConvertible where ExpressionValueType: EquatableExpression {
     public func equalTo<R: TypedExpressionConvertible where Self.ExpressionValueType == R.ExpressionValueType>(rhs: R, options: NSComparisonPredicateOptions = []) -> NSPredicate {
         return PredicateBuilder.equalTo(lhs: self, rhs: rhs, options: options)
     }
@@ -36,7 +40,7 @@ extension TypedExpressionConvertible where ExpressionValueType: Equatable {
     }
 }
 
-extension TypedExpressionConvertible where ExpressionValueType: Comparable {
+extension TypedExpressionConvertible where ExpressionValueType: ComparableExpression {
     public func greaterThan<R: TypedExpressionConvertible where Self.ExpressionValueType == R.ExpressionValueType>(rhs: R, options: NSComparisonPredicateOptions = []) -> NSPredicate {
         return PredicateBuilder.greaterThan(lhs: self, rhs: rhs, options: options)
     }

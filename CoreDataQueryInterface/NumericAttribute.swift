@@ -9,53 +9,53 @@
 import Foundation
 
 public class NumericAttribute: KeyAttribute, TypedExpressionConvertible {
-    public typealias ExpressionValueType = Int
+    public typealias ExpressionValueType = NSNumber
 }
 
 extension Int16: TypedExpressionConvertible {
-    public typealias ExpressionValueType = Int
+    public typealias ExpressionValueType = NSNumber
     public var expression: NSExpression {
         return NSExpression(forConstantValue: NSNumber(short: self))
     }
 }
 
 extension Int32: TypedExpressionConvertible {
-    public typealias ExpressionValueType = Int
+    public typealias ExpressionValueType = NSNumber
     public var expression: NSExpression {
         return NSExpression(forConstantValue: NSNumber(int: self))
     }
 }
 
 extension Int64: TypedExpressionConvertible {
-    public typealias ExpressionValueType = Int
+    public typealias ExpressionValueType = NSNumber
     public var expression: NSExpression {
         return NSExpression(forConstantValue: NSNumber(longLong: self))
     }
 }
 
 extension UInt: TypedExpressionConvertible {
-    public typealias ExpressionValueType = Int
+    public typealias ExpressionValueType = NSNumber
     public var expression: NSExpression {
         return NSExpression(forConstantValue: NSNumber(unsignedLong: self))
     }
 }
 
 extension Float: TypedExpressionConvertible {
-    public typealias ExpressionValueType = Int
+    public typealias ExpressionValueType = NSNumber
     public var expression: NSExpression {
         return NSExpression(forConstantValue: NSNumber(float: self))
     }
 }
 
 extension Double: TypedExpressionConvertible {
-    public typealias ExpressionValueType = Int
+    public typealias ExpressionValueType = NSNumber
     public var expression: NSExpression {
         return NSExpression(forConstantValue: NSNumber(double: self))
     }
 }
 
-extension NSNumber: TypedExpressionConvertible {
-    public typealias ExpressionValueType = Int
+extension NSNumber: TypedExpressionConvertible, ComparableExpression {
+    public typealias ExpressionValueType = NSNumber
     public var expression: NSExpression {
         return NSExpression(forConstantValue: self)
     }

@@ -8,8 +8,8 @@
 
 import Foundation
 
-public struct Count: TypedExpressionConvertible {
-    public typealias ExpressionValueType = Int
+public struct Count: TypedExpressionConvertible, ComparableExpression {
+    public typealias ExpressionValueType = NSNumber
     private var parent: CustomExpressionConvertible
     
     public init(parent: CustomExpressionConvertible) {

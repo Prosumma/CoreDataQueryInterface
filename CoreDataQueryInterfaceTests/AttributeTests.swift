@@ -16,7 +16,7 @@ class AttributeTests: BaseTestCase {
         let bundle = NSBundle(forClass: self.dynamicType)
         
         let path = bundle.pathForResource("Employees", ofType: "txt")!
-        let data = NSData(contentsOfFile: path)
+        let data = NSData(contentsOfFile: path)!
         
         let result = try! managedObjectContext.from(TestEntity).filter({ $0.binary == data }).count()
         
@@ -42,23 +42,19 @@ class AttributeTests: BaseTestCase {
         XCTAssertEqual(result, 1)
     }
     
-    func testToOneRelationshipAttribute() {
-        
-        let department: Department! = nil
-        
-        let result = try! managedObjectContext.from(Employee).filter({ $0.department == department}).count()
-        XCTAssertEqual(result, 0)
-    }
+//    func testToOneRelationshipAttribute() {
+//        
+//        let department: Department! = nil
+//        
+//        let result = try! managedObjectContext.from(Employee).filter({ $0.department == department}).count()
+//        XCTAssertEqual(result, 0)
+//    }
     
     func testToManyRelationshipAttribute() {
         
-        let engineers = try! managedObjectContext.from(Employee).filter({ $0.department.name == "Engineering" }).all()
+        let result = try! managedObjectContext.from(Department).filter({ any($0.employees.lastName == "Gahan") }).count()
         
-        let engineerSet = Set(engineers)
-        
-        let result = try! managedObjectContext.from(Department).filter({ $0.employees == engineerSet }).count()
-        
-        XCTAssertEqual(result, 1)
+        XCTAssertEqual(result, 3)
     }
 }
 

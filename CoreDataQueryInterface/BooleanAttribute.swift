@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Bool: TypedExpressionConvertible {
+extension Bool: TypedExpressionConvertible, EquatableExpression {
     public typealias ExpressionValueType = Bool
     public var expression: NSExpression {
         return NSExpression(forConstantValue: self)

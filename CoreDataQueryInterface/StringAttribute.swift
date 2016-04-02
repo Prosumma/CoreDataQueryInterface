@@ -12,7 +12,7 @@ public class StringAttribute: KeyAttribute, TypedExpressionConvertible {
     public typealias ExpressionValueType = String
 }
 
-extension String: TypedExpressionConvertible {
+extension String: TypedExpressionConvertible, ComparableExpression {
     public typealias ExpressionValueType = String
     public var expression: NSExpression {
         return NSExpression(forConstantValue: self)
