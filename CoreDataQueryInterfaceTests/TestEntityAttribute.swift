@@ -7,8 +7,7 @@
 
 @testable import CoreDataQueryInterface
 
-class TestEntityAttribute: Attribute, Aggregable, TypedExpressionConvertible {
-    typealias ExpressionValueType = Entity
+class TestEntityAttribute: EntityAttribute {
     private(set) lazy var binary: DataAttribute = { DataAttribute("binary", parent: self) }()
     private(set) lazy var boolean: BooleanAttribute = { BooleanAttribute("boolean", parent: self) }()
     private(set) lazy var date: DateAttribute = { DateAttribute("date", parent: self) }()

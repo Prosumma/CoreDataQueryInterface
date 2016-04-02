@@ -7,7 +7,7 @@
 
 @testable import CoreDataQueryInterface
 
-class DepartmentAttribute: Attribute, Aggregable, TypedExpressionConvertible {
+class DepartmentAttribute: EntityAttribute {
     typealias ExpressionValueType = Entity
     private(set) lazy var name: StringAttribute = { StringAttribute("name", parent: self) }()
     private(set) lazy var employees: EmployeeAttribute = { EmployeeAttribute("employees", parent: self) }()
