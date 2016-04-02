@@ -8,6 +8,6 @@
 
 import Foundation
 
-public class EntityAttribute: Attribute, Aggregable, TypedExpressionConvertible {
+public class EntityAttribute: Attribute, TypedExpressionConvertible {
     public typealias ExpressionValueType = Entity
 }

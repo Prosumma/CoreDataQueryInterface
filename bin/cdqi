@@ -103,6 +103,8 @@ class Attribute
       type_downcased = @type.downcase
       if ["integer", "float", "double", "decimal"].any? { |type| type_downcased.include? type }
         prefix = "Numeric"
+      elsif type_downcased == "binary"
+        prefix = "Data" 
       else
         prefix = @type
       end
