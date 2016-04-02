@@ -6,6 +6,7 @@
 //  Copyright © 2016 Prosumma LLC. All rights reserved.
 //
 
+@testable import CoreDataQueryInterface
 import XCTest
 
 class AttributeTests: BaseTestCase {

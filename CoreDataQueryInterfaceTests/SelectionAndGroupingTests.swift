@@ -7,6 +7,7 @@
 //
 
 import CoreData
+@testable import CoreDataQueryInterface
 import Foundation
 import XCTest
 

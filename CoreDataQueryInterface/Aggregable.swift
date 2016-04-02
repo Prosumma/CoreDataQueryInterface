@@ -10,8 +10,8 @@ import Foundation
 
 public protocol Aggregable: Countable {
     associatedtype AggregateType: Attribute = Self
-    func subquery(variable: String, predicate: AggregateType -> NSPredicate) -> NSExpression
-    func subquery(predicate: AggregateType -> NSPredicate) -> NSExpression
+    func subquery(variable: String, predicate: AggregateType -> NSPredicate) -> Countable
+    func subquery(predicate: AggregateType -> NSPredicate) -> Countable
     var average: AggregateType { get }
     var sum: AggregateType { get }
     var max: AggregateType { get }

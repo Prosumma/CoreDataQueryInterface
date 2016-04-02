@@ -6,6 +6,7 @@
 //  Copyright © 2015 Prosumma LLC. All rights reserved.
 //
 
+@testable import CoreDataQueryInterface
 import XCTest
 
 class FilterTests : BaseTestCase {
@@ -49,20 +50,11 @@ class FilterTests : BaseTestCase {
     }
     
     func testNumberOfDepartmentsWithEmployeesWhoseLastNamesStartWithSUsingSubquery() {
-        
-        let departmentCount = try! managedObjectContext.from(Department).filter({ dept in
-            
-            let expr: NSExpression = dept.employees.subquery("$e", predicate: {
-                
-                return some($0.lastName.beginsWith("S", options: .CaseInsensitivePredicateOption))
-            })
-            
-            let pred: NSPredicate = expr.count > 0
-            
-            return pred
-            
-        }).count()
-        
+        let departmentCount = try! managedObjectContext.from(Department).filter { department in
+            department.employees.subquery("$e") {
+                some($0.lastName.beginsWith("S", options: .CaseInsensitivePredicateOption))
+            }.count > 0
+        }.count()
         XCTAssertEqual(departmentCount, 2)
     }
     

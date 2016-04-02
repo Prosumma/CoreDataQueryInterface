@@ -6,6 +6,7 @@
 //  Copyright © 2015 Prosumma LLC. All rights reserved.
 //
 
+@testable import CoreDataQueryInterface
 import Foundation
 import XCTest
 

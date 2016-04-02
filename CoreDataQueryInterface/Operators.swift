@@ -8,56 +8,42 @@
 
 import Foundation
 
-public func ==<E: TypedExpressionConvertible, V where E.ValueType == V>(lhs: E, rhs: V?) -> NSPredicate {
+public func ==<L: TypedExpressionConvertible, R: TypedExpressionConvertible where L.ExpressionValueType == R.ExpressionValueType, L.ExpressionValueType: Equatable>(lhs: L, rhs: R) -> NSPredicate {
     return lhs.equalTo(rhs)
 }
 
-public func !=<E: TypedExpressionConvertible, V where E.ValueType == V>(lhs: E, rhs: V?) -> NSPredicate {
+public func ==<L: TypedExpressionConvertible where L.ExpressionValueType: Equatable>(lhs: L, rhs: Null) -> NSPredicate {
+    return lhs.equalTo(rhs)
+}
+
+public func !=<L: TypedExpressionConvertible, R: TypedExpressionConvertible where L.ExpressionValueType == R.ExpressionValueType, L.ExpressionValueType: Equatable>(lhs: L, rhs: R) -> NSPredicate {
     return lhs.notEqualTo(rhs)
 }
 
-public func ><E: TypedExpressionConvertible, V:ComparableValueType  where E.ValueType == V>(lhs: E, rhs: V?) -> NSPredicate {
+public func !=<L: TypedExpressionConvertible where L.ExpressionValueType: Equatable>(lhs: L, rhs: Null) -> NSPredicate {
+    return lhs.notEqualTo(rhs)
+}
+
+public func ><L: TypedExpressionConvertible, R: TypedExpressionConvertible where L.ExpressionValueType == R.ExpressionValueType, L.ExpressionValueType: Comparable>(lhs: L, rhs: R) -> NSPredicate {
     return lhs.greaterThan(rhs)
 }
 
-public func >=<E: TypedExpressionConvertible, V:ComparableValueType  where E.ValueType == V>(lhs: E, rhs: V?) -> NSPredicate {
+public func ><L: TypedExpressionConvertible where L.ExpressionValueType: Comparable>(lhs: L, rhs: Null) -> NSPredicate {
+    return lhs.greaterThan(rhs)
+}
+
+public func >=<L: TypedExpressionConvertible, R: TypedExpressionConvertible where L.ExpressionValueType == R.ExpressionValueType, L.ExpressionValueType: Comparable>(lhs: L, rhs: R) -> NSPredicate {
     return lhs.greaterThanOrEqualTo(rhs)
 }
 
-public func <<E: TypedExpressionConvertible, V:ComparableValueType where E.ValueType == V>(lhs: E, rhs: V?) -> NSPredicate {
+public func >=<L: TypedExpressionConvertible where L.ExpressionValueType: Comparable>(lhs: L, rhs: Null) -> NSPredicate {
+    return lhs.greaterThanOrEqualTo(rhs)
+}
+
+public func <<L: TypedExpressionConvertible, R: TypedExpressionConvertible where L.ExpressionValueType == R.ExpressionValueType, L.ExpressionValueType: Comparable>(lhs: L, rhs: R) -> NSPredicate {
     return lhs.lessThan(rhs)
 }
 
-public func <=<E: TypedExpressionConvertible, V:ComparableValueType  where E.ValueType == V>(lhs: E, rhs: V?) -> NSPredicate {
+public func <=<L: TypedExpressionConvertible, R: TypedExpressionConvertible where L.ExpressionValueType == R.ExpressionValueType, L.ExpressionValueType: Comparable>(lhs: L, rhs: R) -> NSPredicate {
     return lhs.lessThanOrEqualTo(rhs)
 }
-
-
-
-// Numeric Overloads (for types that don't coerce to NSNumber)
-
-public func ==(lhs: NumericAttribute, rhs: NumericValueType?) -> NSPredicate {
-    return lhs.equalTo(rhs?.numberValue)
-}
-
-public func !=(lhs: NumericAttribute, rhs: NumericValueType?) -> NSPredicate {
-    return lhs.notEqualTo(rhs?.numberValue)
-}
-
-public func >(lhs: NumericAttribute, rhs: NumericValueType?) -> NSPredicate {
-    return lhs.greaterThan(rhs?.numberValue)
-}
-
-public func >=(lhs: NumericAttribute, rhs: NumericValueType?) -> NSPredicate {
-    return lhs.greaterThanOrEqualTo(rhs?.numberValue)
-}
-
-public func <(lhs: NumericAttribute, rhs: NumericValueType?) -> NSPredicate {
-    return lhs.lessThan(rhs?.numberValue)
-}
-
-public func <=(lhs: NumericAttribute, rhs: NumericValueType?) -> NSPredicate {
-    return lhs.lessThanOrEqualTo(rhs?.numberValue)
-}
-
-

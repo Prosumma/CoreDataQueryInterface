@@ -8,44 +8,35 @@
 
 import Foundation
 
-extension String: ComparableValueType {
-    
-    public var expressionValue: AnyObject {
-        
-        return self as NSString
-    }
-}
-
 public class StringAttribute: KeyAttribute, TypedExpressionConvertible {
-    
-    public typealias ValueType = String
+    public typealias ExpressionValueType = String
 }
 
-extension TypedExpressionConvertible where ValueType == String {
-    
-    public func beginsWith(rhs: String, options: NSComparisonPredicateOptions = []) -> NSPredicate {
-        
-        return compare(rhs, type: .BeginsWithPredicateOperatorType, options: options)
-    }
-    
-    public func contains(rhs: String, options: NSComparisonPredicateOptions = []) -> NSPredicate {
-        
-        return compare(rhs, type: .ContainsPredicateOperatorType, options: options)
-    }
-    
-    public func endsWith(rhs: String, options: NSComparisonPredicateOptions = []) -> NSPredicate {
-        
-        return compare(rhs, type: .EndsWithPredicateOperatorType, options: options)
-    }
-    
-    public func like(rhs: String, options: NSComparisonPredicateOptions = []) -> NSPredicate {
-        
-        return compare(rhs, type: .LikePredicateOperatorType, options: options)
-    }
-    
-    public func matches(rhs: String, options: NSComparisonPredicateOptions = []) -> NSPredicate {
-        
-        return compare(rhs, type: .MatchesPredicateOperatorType, options: options)
+extension String: TypedExpressionConvertible {
+    public typealias ExpressionValueType = String
+    public var expression: NSExpression {
+        return NSExpression(forConstantValue: self)
     }
 }
 
+extension TypedExpressionConvertible where ExpressionValueType == String {
+    public func beginsWith<R: TypedExpressionConvertible where ExpressionValueType == String>(rhs: R, options: NSComparisonPredicateOptions = []) -> NSPredicate {
+        return PredicateBuilder.beginsWith(lhs: self, rhs: rhs, options: options)
+    }
+
+    public func contains<R: TypedExpressionConvertible where ExpressionValueType == String>(rhs: R, options: NSComparisonPredicateOptions = []) -> NSPredicate {
+        return PredicateBuilder.contains(lhs: self, rhs: rhs, options: options)
+    }
+
+    public func endsWith<R: TypedExpressionConvertible where ExpressionValueType == String>(rhs: R, options: NSComparisonPredicateOptions = []) -> NSPredicate {
+        return PredicateBuilder.endsWith(lhs: self, rhs: rhs, options: options)
+    }
+
+    public func like<R: TypedExpressionConvertible where ExpressionValueType == String>(rhs: R, options: NSComparisonPredicateOptions = []) -> NSPredicate {
+        return PredicateBuilder.like(lhs: self, rhs: rhs, options: options)
+    }
+
+    public func matches<R: TypedExpressionConvertible where ExpressionValueType == String>(rhs: R, options: NSComparisonPredicateOptions = []) -> NSPredicate {
+        return PredicateBuilder.matches(lhs: self, rhs: rhs, options: options)
+    }
+}

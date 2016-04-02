@@ -9,121 +9,68 @@
 import Foundation
 import CoreData
 
-public protocol ExpressionValueType {
-    
-    var expressionValue: AnyObject { get }
-}
 
 public protocol TypedExpressionConvertible: CustomExpressionConvertible {
-    
-    associatedtype ValueType: ExpressionValueType
+    associatedtype ExpressionValueType
 }
 
-public protocol ComparableValueType: ExpressionValueType { }
-
-
-// MARK: Boolean
-
-extension Bool: ExpressionValueType {
+extension TypedExpressionConvertible where ExpressionValueType: Equatable {
+    public func equalTo<R: TypedExpressionConvertible where Self.ExpressionValueType == R.ExpressionValueType>(rhs: R, options: NSComparisonPredicateOptions = []) -> NSPredicate {
+        return PredicateBuilder.equalTo(lhs: self, rhs: rhs, options: options)
+    }
     
-    public var expressionValue: AnyObject {
-        
-        return NSNumber(bool: self)
+    public func equalTo(rhs: Null) -> NSPredicate {
+        return PredicateBuilder.equalTo(lhs: self, rhs: rhs)
+    }
+    
+    public func notEqualTo<R: TypedExpressionConvertible where Self.ExpressionValueType == R.ExpressionValueType>(rhs: R, options: NSComparisonPredicateOptions = []) -> NSPredicate {
+        return PredicateBuilder.notEqualTo(lhs: self, rhs: rhs, options: options)
+    }
+    
+    public func notEqualTo(rhs: Null) -> NSPredicate {
+        return PredicateBuilder.notEqualTo(lhs: self, rhs: rhs)
+    }
+    
+    public func among<R: TypedExpressionConvertible where Self.ExpressionValueType == R.ExpressionValueType>(rhs: [R], options: NSComparisonPredicateOptions = []) -> NSPredicate {
+        return PredicateBuilder.among(lhs: self, rhs: rhs.map { $0 as CustomExpressionConvertible }, options: options)
     }
 }
 
-public class BooleanAttribute: KeyAttribute, TypedExpressionConvertible {
+extension TypedExpressionConvertible where ExpressionValueType: Comparable {
+    public func greaterThan<R: TypedExpressionConvertible where Self.ExpressionValueType == R.ExpressionValueType>(rhs: R, options: NSComparisonPredicateOptions = []) -> NSPredicate {
+        return PredicateBuilder.greaterThan(lhs: self, rhs: rhs, options: options)
+    }
     
-    public typealias ValueType = Bool
-}
-
-
-// MARK: Date
-
-extension NSDate: ComparableValueType {
+    public func greaterThan(rhs: Null) -> NSPredicate {
+        return PredicateBuilder.greaterThan(lhs: self, rhs: rhs)
+    }
     
-    public var expressionValue: AnyObject {
-        
-        return self
+    public func greaterThanOrEqualTo<R: TypedExpressionConvertible where Self.ExpressionValueType == R.ExpressionValueType>(rhs: R, options: NSComparisonPredicateOptions = []) -> NSPredicate {
+        return PredicateBuilder.greaterThanOrEqualTo(lhs: self, rhs: rhs, options: options)
+    }
+    
+    public func greaterThanOrEqualTo(rhs: Null) -> NSPredicate {
+        return PredicateBuilder.greaterThanOrEqualTo(lhs: self, rhs: rhs)
+    }
+    
+    public func lessThan<R: TypedExpressionConvertible where Self.ExpressionValueType == R.ExpressionValueType>(rhs: R, options: NSComparisonPredicateOptions = []) -> NSPredicate {
+        return PredicateBuilder.lessThan(lhs: self, rhs: rhs, options: options)
+    }
+
+    public func lessThan(rhs: Null) -> NSPredicate {
+        return PredicateBuilder.lessThan(lhs: self, rhs: rhs)
+    }
+
+    public func lessThanOrEqualTo<R: TypedExpressionConvertible where Self.ExpressionValueType == R.ExpressionValueType>(rhs: R, options: NSComparisonPredicateOptions = []) -> NSPredicate {
+        return PredicateBuilder.lessThanOrEqualTo(lhs: self, rhs: rhs, options: options)
+    }
+
+    public func lessThanOrEqualTo(rhs: Null) -> NSPredicate {
+        return PredicateBuilder.lessThanOrEqualTo(lhs: self, rhs: rhs)
+    }
+    
+    public func between<R: TypedExpressionConvertible where Self.ExpressionValueType == R.ExpressionValueType>(start: R, and end: R, options: NSComparisonPredicateOptions = []) -> NSPredicate {
+        return PredicateBuilder.between(lhs: self, start: start, and: end, options: options)
     }
 }
-
-public class DateAttribute: KeyAttribute, TypedExpressionConvertible {
-    
-    public typealias ValueType = NSDate
-}
-
-
-// MARK: Numbers
-
-public protocol NumericValueType {
-    
-    var numberValue: NSNumber { get }
-}
-
-extension Int16: NumericValueType {
-    
-    public var numberValue: NSNumber {
-        
-        return NSNumber(short: self)
-    }
-}
-
-extension Int32: NumericValueType {
-    
-    public var numberValue: NSNumber {
-        
-        return NSNumber(int: self)
-    }
-}
-
-extension Int64: NumericValueType {
-    
-    public var numberValue: NSNumber {
-        
-        return NSNumber(longLong: self)
-    }
-}
-
-extension NSNumber: ExpressionValueType, ComparableValueType {
-    
-    public var expressionValue: AnyObject {
-        
-        return self
-    }
-}
-
-public class NumericAttribute: KeyAttribute, TypedExpressionConvertible {
-    
-    public typealias ValueType = NSNumber
-}
-
-
-// MARK: Data
-
-extension NSData: ExpressionValueType {
-    
-    public var expressionValue: AnyObject {
-        
-        return self
-    }
-}
-
-public class BinaryAttribute: KeyAttribute, TypedExpressionConvertible {
-    
-    public typealias ValueType = NSData
-}
-
-
-// MARK: Transformable
-//
-//public class TransformableAttribute<V: ExpressionValueType>: KeyAttribute, TypedExpressionConvertible {
-//    
-//    public typealias ValueType = V
-//}
-
-
-
-
-
 

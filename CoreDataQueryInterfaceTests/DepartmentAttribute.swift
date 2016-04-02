@@ -5,12 +5,12 @@
 // Edit it at your own risk.
 //
 
-import CoreDataQueryInterface
+@testable import CoreDataQueryInterface
 
 class DepartmentAttribute: Attribute, Aggregable, TypedExpressionConvertible {
-    typealias ValueType = Department
+    typealias ExpressionValueType = Entity
     private(set) lazy var name: StringAttribute = { StringAttribute("name", parent: self) }()
-    private(set) lazy var employees: EntityCollectionAttribute<Employee> = { EntityCollectionAttribute<Employee>("employees", parent: self) }()
+    private(set) lazy var employees: EmployeeAttribute = { EmployeeAttribute("employees", parent: self) }()
 }
 
 extension Department: EntityType {

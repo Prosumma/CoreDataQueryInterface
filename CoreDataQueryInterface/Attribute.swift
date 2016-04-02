@@ -53,12 +53,12 @@ public class Attribute: CustomStringConvertible, CustomExpressionConvertible {
 }
 
 extension Aggregable where Self: Attribute {
-    public func subquery(variable: String, predicate: AggregateType -> NSPredicate) -> NSExpression {
+    public func subquery(variable: String, predicate: AggregateType -> NSPredicate) -> Countable {
         let collection = AggregateType(_name!) // Can't do a subquery unless _name is not nil.
         let iteratorVariable = AggregateType(variable)
-        return NSExpression(forSubquery: collection.expression, usingIteratorVariable: iteratorVariable.expression.variable, predicate: predicate(iteratorVariable))
+        return CountableExpression(expression: NSExpression(forSubquery: collection.expression, usingIteratorVariable: iteratorVariable.expression.variable, predicate: predicate(iteratorVariable)))
     }
-    public func subquery(predicate: AggregateType -> NSPredicate) -> NSExpression {
+    public func subquery(predicate: AggregateType -> NSPredicate) -> Countable {
         var identifier = NSProcessInfo().globallyUniqueString.stringByReplacingOccurrencesOfString("-", withString: "")
         identifier = identifier.substringToIndex(identifier.startIndex.advancedBy(10)).lowercaseString
         let variable = "$v\(identifier)"
@@ -85,4 +85,12 @@ extension Attribute: CustomPropertyConvertible {
     public var property: AnyObject {
         return String(self)
     }
+}
+
+public struct Entity: Equatable {
+    
+}
+
+public func ==(lhs: Entity, rhs: Entity) -> Bool {
+    return true
 }

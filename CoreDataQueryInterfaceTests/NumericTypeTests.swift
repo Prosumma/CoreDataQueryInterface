@@ -6,13 +6,14 @@
 //  Copyright © 2016 Prosumma LLC. All rights reserved.
 //
 
+@testable import CoreDataQueryInterface
 import XCTest
 
 class NumericTypeTests: BaseTestCase {
     
     func testIntValueComparison() {
         
-        let resultCount = try! managedObjectContext.from(TestEntity).filter({ $0.integer64 == Int.max }).count()
+        let resultCount = try! managedObjectContext.from(TestEntity).filter({ $0.integer64 == Int64.max }).count()
         XCTAssert(resultCount == 1)
     }
     
@@ -43,7 +44,6 @@ class NumericTypeTests: BaseTestCase {
     }
     
     func testUIntInt32ValueComparison() {
-        
         let integer: UInt = UInt(Int32.max)
         let resultCount = try! managedObjectContext.from(TestEntity).filter({ $0.integer32 == integer }).count()
         XCTAssert(resultCount == 1)
@@ -59,7 +59,7 @@ class NumericTypeTests: BaseTestCase {
     func testIntDoubleValueComparison() {
         
         let intValue: Int = 212309
-        let resultCount = try! managedObjectContext.from(TestEntity).filter({ $0.double == intValue }).count()
+        let resultCount = try! managedObjectContext.from(TestEntity).filter({ $0.double == Double(intValue) }).count()
         XCTAssert(resultCount == 1)
     }
     
@@ -70,10 +70,4 @@ class NumericTypeTests: BaseTestCase {
         XCTAssert(resultCount == 1)
     }
     
-    func testGCFloatValueComparison() {
-        
-        let double = CGFloat(212309.00)
-        let resultCount = try! managedObjectContext.from(TestEntity).filter({ $0.double == double }).count()
-        XCTAssert(resultCount == 1)
-    }
 }

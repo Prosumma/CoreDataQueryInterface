@@ -7,6 +7,7 @@
 //
 
 import CoreData
+@testable import CoreDataQueryInterface
 
 // Opt-in to use ManagedObjectContextType
 extension NSManagedObjectContext: ManagedObjectContextType {}

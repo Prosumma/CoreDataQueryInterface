@@ -5,11 +5,11 @@
 // Edit it at your own risk.
 //
 
-import CoreDataQueryInterface
+@testable import CoreDataQueryInterface
 
 class TestEntityAttribute: Attribute, Aggregable, TypedExpressionConvertible {
-    typealias ValueType = TestEntity
-    private(set) lazy var binary: BinaryAttribute = { BinaryAttribute("binary", parent: self) }()
+    typealias ExpressionValueType = Entity
+    private(set) lazy var binary: DataAttribute = { DataAttribute("binary", parent: self) }()
     private(set) lazy var boolean: BooleanAttribute = { BooleanAttribute("boolean", parent: self) }()
     private(set) lazy var date: DateAttribute = { DateAttribute("date", parent: self) }()
     private(set) lazy var decimal: NumericAttribute = { NumericAttribute("decimal", parent: self) }()

@@ -125,7 +125,7 @@ class Entity
   def render(io)
     io.puts "#{$options.access_modifier}class #{@name}#{$options.suffix}: Attribute, Aggregable, TypedExpressionConvertible {"
     io.indent do
-      io.puts "typealias ValueType = #{name}"
+      io.puts "typealias ExpressionValueType = Entity"
       @attributes.each do |attribute|
         attribute.render_property(io)
       end
