@@ -8,46 +8,56 @@
 
 import Foundation
 
-public func ==(lhs: CustomExpressionConvertible, rhs: Any?) -> NSPredicate {
-    return lhs.equalTo(rhs as! AnyObject?)
+public func ==<E: TypedExpressionConvertible, V where E.ValueType == V>(lhs: E, rhs: V?) -> NSPredicate {
+    return lhs.equalTo(rhs)
 }
 
-public func !=(lhs: CustomExpressionConvertible, rhs: Any?) -> NSPredicate {
+public func !=<E: TypedExpressionConvertible, V where E.ValueType == V>(lhs: E, rhs: V?) -> NSPredicate {
     return lhs.notEqualTo(rhs)
 }
 
-public func >(lhs: CustomExpressionConvertible, rhs: Any?) -> NSPredicate {
+public func ><E: TypedExpressionConvertible, V:ComparableValueType  where E.ValueType == V>(lhs: E, rhs: V?) -> NSPredicate {
     return lhs.greaterThan(rhs)
 }
 
-public func >=(lhs: CustomExpressionConvertible, rhs: Any?) -> NSPredicate {
+public func >=<E: TypedExpressionConvertible, V:ComparableValueType  where E.ValueType == V>(lhs: E, rhs: V?) -> NSPredicate {
     return lhs.greaterThanOrEqualTo(rhs)
 }
 
-public func <(lhs: CustomExpressionConvertible, rhs: Any?) -> NSPredicate {
+public func <<E: TypedExpressionConvertible, V:ComparableValueType where E.ValueType == V>(lhs: E, rhs: V?) -> NSPredicate {
     return lhs.lessThan(rhs)
 }
 
-public func <=(lhs: CustomExpressionConvertible, rhs: Any?) -> NSPredicate {
+public func <=<E: TypedExpressionConvertible, V:ComparableValueType  where E.ValueType == V>(lhs: E, rhs: V?) -> NSPredicate {
     return lhs.lessThanOrEqualTo(rhs)
 }
 
 
-// test for dealing with TypedExpressionConvertible, didn't want to interfere with == just yet
-infix operator ** { associativity left precedence 160 }
 
-public func **<E: TypedExpressionConvertible, V where E.ValueType == V>(lhs: E, rhs: V?) -> NSPredicate {
-    return lhs.equalTo(rhs?.boxedValue)
-}
+// Numeric Overloads (for types that don't coerce to NSNumber)
 
-public func **(lhs: NumericAttribute, rhs: NumericValueType?) -> NSPredicate {
+public func ==(lhs: NumericAttribute, rhs: NumericValueType?) -> NSPredicate {
     return lhs.equalTo(rhs?.numberValue)
 }
 
-
-infix operator <** { associativity left precedence 160 }
-
-public func <**<E: TypedExpressionConvertible, V:ComparableValueType where E.ValueType == V>(lhs: E, rhs: V?) -> NSPredicate {
-    return lhs.equalTo(rhs?.boxedValue)
+public func !=(lhs: NumericAttribute, rhs: NumericValueType?) -> NSPredicate {
+    return lhs.notEqualTo(rhs?.numberValue)
 }
+
+public func >(lhs: NumericAttribute, rhs: NumericValueType?) -> NSPredicate {
+    return lhs.greaterThan(rhs?.numberValue)
+}
+
+public func >=(lhs: NumericAttribute, rhs: NumericValueType?) -> NSPredicate {
+    return lhs.greaterThanOrEqualTo(rhs?.numberValue)
+}
+
+public func <(lhs: NumericAttribute, rhs: NumericValueType?) -> NSPredicate {
+    return lhs.lessThan(rhs?.numberValue)
+}
+
+public func <=(lhs: NumericAttribute, rhs: NumericValueType?) -> NSPredicate {
+    return lhs.lessThanOrEqualTo(rhs?.numberValue)
+}
+
 

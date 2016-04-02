@@ -12,7 +12,7 @@ import CoreData
 
 extension NSManagedObject: ExpressionValueType {
     
-    public var boxedValue: AnyObject {
+    public var expressionValue: AnyObject {
         
         return self
     }
@@ -20,14 +20,14 @@ extension NSManagedObject: ExpressionValueType {
 
 extension Set: ExpressionValueType {
     
-    public var boxedValue: AnyObject {
+    public var expressionValue: AnyObject {
         
         return map({ element -> AnyObject in
             
             switch element {
                 
             case let object as AnyObject: return object
-            case let valueType as ExpressionValueType: return valueType.boxedValue
+            case let valueType as ExpressionValueType: return valueType.expressionValue
             default: return "\(element)"
             }
         })

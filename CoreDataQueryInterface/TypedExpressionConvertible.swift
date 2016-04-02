@@ -11,7 +11,7 @@ import CoreData
 
 public protocol ExpressionValueType {
     
-    var boxedValue: AnyObject { get }
+    var expressionValue: AnyObject { get }
 }
 
 public protocol TypedExpressionConvertible: CustomExpressionConvertible {
@@ -22,27 +22,11 @@ public protocol TypedExpressionConvertible: CustomExpressionConvertible {
 public protocol ComparableValueType: ExpressionValueType { }
 
 
-// MARK: String
-
-extension String: ComparableValueType {
-    
-    public var boxedValue: AnyObject {
-        
-        return self as NSString
-    }
-}
-
-public class StringAttribute: KeyAttribute, TypedExpressionConvertible {
-    
-    public typealias ValueType = String
-}
-
-
 // MARK: Boolean
 
 extension Bool: ExpressionValueType {
     
-    public var boxedValue: AnyObject {
+    public var expressionValue: AnyObject {
         
         return NSNumber(bool: self)
     }
@@ -58,7 +42,7 @@ public class BooleanAttribute: KeyAttribute, TypedExpressionConvertible {
 
 extension NSDate: ComparableValueType {
     
-    public var boxedValue: AnyObject {
+    public var expressionValue: AnyObject {
         
         return self
     }
@@ -103,7 +87,7 @@ extension Int64: NumericValueType {
 
 extension NSNumber: ExpressionValueType, ComparableValueType {
     
-    public var boxedValue: AnyObject {
+    public var expressionValue: AnyObject {
         
         return self
     }
@@ -119,7 +103,7 @@ public class NumericAttribute: KeyAttribute, TypedExpressionConvertible {
 
 extension NSData: ExpressionValueType {
     
-    public var boxedValue: AnyObject {
+    public var expressionValue: AnyObject {
         
         return self
     }

@@ -12,7 +12,7 @@ class FilterTests : BaseTestCase {
 
     func testCountEngineers() {
         
-        let engineerCount = try! managedObjectContext.from(Employee).filter({ $0.department.name ** "Engineering" }).count()
+        let engineerCount = try! managedObjectContext.from(Employee).filter({ $0.department.name == "Engineering" }).count()
         XCTAssertEqual(engineerCount, 8)
     }
     
@@ -50,13 +50,16 @@ class FilterTests : BaseTestCase {
     
     func testNumberOfDepartmentsWithEmployeesWhoseLastNamesStartWithSUsingSubquery() {
         
-        let departmentCount = try! managedObjectContext.from(Department).filter({
+        let departmentCount = try! managedObjectContext.from(Department).filter({ dept in
             
-            $0.employees.subquery("$e", predicate: {
+            let expr: NSExpression = dept.employees.subquery("$e", predicate: {
                 
-                some($0.lastName.beginsWith("S", options: .CaseInsensitivePredicateOption))
-                
-            }).count > 0
+                return some($0.lastName.beginsWith("S", options: .CaseInsensitivePredicateOption))
+            })
+            
+            let pred: NSPredicate = expr.count > 0
+            
+            return pred
             
         }).count()
         
