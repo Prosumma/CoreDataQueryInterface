@@ -12,6 +12,13 @@ public class NumericAttribute: KeyAttribute, TypedExpressionConvertible {
     public typealias ExpressionValueType = NSNumber
 }
 
+extension Int: TypedExpressionConvertible {
+    public typealias ExpressionValueType = NSNumber
+    public var expression: NSExpression {
+        return NSExpression(forConstantValue: self)
+    }
+}
+
 extension Int16: TypedExpressionConvertible {
     public typealias ExpressionValueType = NSNumber
     public var expression: NSExpression {
@@ -36,21 +43,42 @@ extension Int64: TypedExpressionConvertible {
 extension UInt: TypedExpressionConvertible {
     public typealias ExpressionValueType = NSNumber
     public var expression: NSExpression {
-        return NSExpression(forConstantValue: NSNumber(unsignedLong: self))
+        return NSExpression(forConstantValue: self)
+    }
+}
+
+extension UInt16: TypedExpressionConvertible {
+    public typealias ExpressionValueType = NSNumber
+    public var expression: NSExpression {
+        return NSExpression(forConstantValue: NSNumber(unsignedShort: self))
+    }
+}
+
+extension UInt32: TypedExpressionConvertible {
+    public typealias ExpressionValueType = NSNumber
+    public var expression: NSExpression {
+        return NSExpression(forConstantValue: NSNumber(unsignedInt: self))
+    }
+}
+
+extension UInt64: TypedExpressionConvertible {
+    public typealias ExpressionValueType = NSNumber
+    public var expression: NSExpression {
+        return NSExpression(forConstantValue: NSNumber(unsignedLongLong: self))
     }
 }
 
 extension Float: TypedExpressionConvertible {
     public typealias ExpressionValueType = NSNumber
     public var expression: NSExpression {
-        return NSExpression(forConstantValue: NSNumber(float: self))
+        return NSExpression(forConstantValue: self)
     }
 }
 
 extension Double: TypedExpressionConvertible {
     public typealias ExpressionValueType = NSNumber
     public var expression: NSExpression {
-        return NSExpression(forConstantValue: NSNumber(double: self))
+        return NSExpression(forConstantValue: self)
     }
 }
 

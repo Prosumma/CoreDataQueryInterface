@@ -12,7 +12,7 @@ import XCTest
 class NumericTypeTests: BaseTestCase {
     
     func testIntValueComparison() {
-        let resultCount = try! managedObjectContext.from(TestEntity).filter({ $0.integer64 == Int64.max }).count()
+        let resultCount = try! managedObjectContext.from(TestEntity).filter({ $0.integer64 == Int.max }).count()
         XCTAssert(resultCount == 1)
     }
     
@@ -52,7 +52,7 @@ class NumericTypeTests: BaseTestCase {
     
     func testIntDoubleValueComparison() {
         let intValue: Int = 212309
-        let resultCount = try! managedObjectContext.from(TestEntity).filter({ $0.double == Double(intValue) }).count()
+        let resultCount = try! managedObjectContext.from(TestEntity).filter({ $0.double == intValue }).count()
         XCTAssert(resultCount == 1)
     }
     
