@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension NSData: TypedExpressionConvertible, EquatableExpression {
+extension NSData: TypedExpressionConvertible {
     public typealias ExpressionValueType = NSData
     public var expression: NSExpression {
         return NSExpression(forConstantValue: self)

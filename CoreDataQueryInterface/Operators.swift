@@ -8,19 +8,19 @@
 
 import Foundation
 
-public func ==<L: TypedExpressionConvertible, R: TypedExpressionConvertible where L.ExpressionValueType == R.ExpressionValueType, L.ExpressionValueType: EquatableExpression>(lhs: L, rhs: R) -> NSPredicate {
+public func ==<L: TypedExpressionConvertible, R: TypedExpressionConvertible where L.ExpressionValueType == R.ExpressionValueType>(lhs: L, rhs: R) -> NSPredicate {
     return lhs.equalTo(rhs)
 }
 
-public func ==<L: TypedExpressionConvertible where L.ExpressionValueType: EquatableExpression>(lhs: L, rhs: Null) -> NSPredicate {
+public func ==<L: TypedExpressionConvertible>(lhs: L, rhs: Null) -> NSPredicate {
     return lhs.equalTo(rhs)
 }
 
-public func !=<L: TypedExpressionConvertible, R: TypedExpressionConvertible where L.ExpressionValueType == R.ExpressionValueType, L.ExpressionValueType: EquatableExpression>(lhs: L, rhs: R) -> NSPredicate {
+public func !=<L: TypedExpressionConvertible, R: TypedExpressionConvertible where L.ExpressionValueType == R.ExpressionValueType>(lhs: L, rhs: R) -> NSPredicate {
     return lhs.notEqualTo(rhs)
 }
 
-public func !=<L: TypedExpressionConvertible where L.ExpressionValueType: EquatableExpression>(lhs: L, rhs: Null) -> NSPredicate {
+public func !=<L: TypedExpressionConvertible>(lhs: L, rhs: Null) -> NSPredicate {
     return lhs.notEqualTo(rhs)
 }
 

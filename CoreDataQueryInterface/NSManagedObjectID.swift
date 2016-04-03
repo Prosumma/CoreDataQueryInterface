@@ -8,7 +8,7 @@
 
 import CoreData
 
-extension NSManagedObjectID: TypedExpressionConvertible, EquatableExpression {
+extension NSManagedObjectID: TypedExpressionConvertible {
     public typealias ExpressionValueType = NSManagedObject
     public var expression: NSExpression {
         return NSExpression(forConstantValue: self)

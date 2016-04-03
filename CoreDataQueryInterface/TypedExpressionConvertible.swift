@@ -14,11 +14,9 @@ public protocol TypedExpressionConvertible: CustomExpressionConvertible {
     associatedtype ExpressionValueType
 }
 
-public protocol EquatableExpression { }
+public protocol ComparableExpression { }
 
-public protocol ComparableExpression: EquatableExpression { }
-
-extension TypedExpressionConvertible where ExpressionValueType: EquatableExpression {
+extension TypedExpressionConvertible {
     public func equalTo<R: TypedExpressionConvertible where Self.ExpressionValueType == R.ExpressionValueType>(rhs: R, options: NSComparisonPredicateOptions = []) -> NSPredicate {
         return PredicateBuilder.equalTo(lhs: self, rhs: rhs, options: options)
     }
