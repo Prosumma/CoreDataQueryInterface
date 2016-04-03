@@ -42,7 +42,7 @@ public struct PredicateBuilder {
         return compare(lhs: lhs, rhs: rhs, type: .LessThanOrEqualToPredicateOperatorType, options: options)
     }
     
-    public static func among(lhs lhs: CustomExpressionConvertible, rhs: [CustomExpressionConvertible], options: NSComparisonPredicateOptions = []) -> NSPredicate {
+    public static func among<R: SequenceType where R.Generator.Element: CustomExpressionConvertible>(lhs lhs: CustomExpressionConvertible, rhs: R, options: NSComparisonPredicateOptions = []) -> NSPredicate {
         let expressions = rhs.map { $0.expression }
         return compare(lhs: lhs, rhs: NSExpression(forAggregate: expressions), type: .InPredicateOperatorType, options: options)
     }

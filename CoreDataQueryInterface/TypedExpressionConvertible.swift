@@ -33,8 +33,8 @@ extension TypedExpressionConvertible {
         return PredicateBuilder.notEqualTo(lhs: self, rhs: rhs)
     }
     
-    public func among<R: TypedExpressionConvertible where Self.ExpressionValueType == R.ExpressionValueType>(rhs: [R], options: NSComparisonPredicateOptions = []) -> NSPredicate {
-        return PredicateBuilder.among(lhs: self, rhs: rhs.map { $0 as CustomExpressionConvertible }, options: options)
+    public func among<RE: TypedExpressionConvertible, R: SequenceType where Self.ExpressionValueType == RE.ExpressionValueType, R.Generator.Element == RE>(rhs: R, options: NSComparisonPredicateOptions = []) -> NSPredicate {
+        return PredicateBuilder.among(lhs: self, rhs: rhs, options: options)
     }
 }
 
