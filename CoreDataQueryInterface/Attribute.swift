@@ -16,13 +16,16 @@ import CoreData
 public class Attribute: CustomStringConvertible, CustomExpressionConvertible {
     private let _name: String?
     private let _parent: Attribute?
+    private let _type: NSAttributeType?
     public required init() {
         _name = nil
         _parent = nil
+        _type = nil
     }
-    public required init(_ name: String, parent: Attribute? = nil) {
+    public required init(_ name: String, parent: Attribute? = nil, type: NSAttributeType? = nil) {
         _name = name
         _parent = parent
+        _type = type
     }
     public private(set) lazy var description: String = {
         if let parent = self._parent {
@@ -43,11 +46,11 @@ public class Attribute: CustomStringConvertible, CustomExpressionConvertible {
             return NSExpression(forKeyPath: keyPath)
         }
     }()
-    public func named(name: String, type: NSAttributeType = .UndefinedAttributeType) -> NSExpressionDescription {
+    public func named(name: String, type: NSAttributeType? = nil) -> NSExpressionDescription {
         let e = NSExpressionDescription()
         e.expression = expression
         e.name = name
-        e.expressionResultType = type
+        e.expressionResultType = type ?? _type ?? .UndefinedAttributeType
         return e
     }
 }

@@ -6,10 +6,17 @@
 //  Copyright © 2016 Prosumma LLC. All rights reserved.
 //
 
+import CoreData
 import Foundation
 
 public class StringAttribute: KeyAttribute, TypedExpressionConvertible {
     public typealias ExpressionValueType = String
+    public required init(_ name: String, parent: Attribute? = nil, type: NSAttributeType? = nil) {
+        super.init(name, parent: parent, type: .StringAttributeType)
+    }
+    public required init() {
+        super.init()
+    }
 }
 
 extension String: TypedExpressionConvertible, ComparableExpression {

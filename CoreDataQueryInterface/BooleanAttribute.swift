@@ -6,6 +6,7 @@
 //  Copyright © 2016 Prosumma LLC. All rights reserved.
 //
 
+import CoreData
 import Foundation
 
 extension Bool: TypedExpressionConvertible {
@@ -17,5 +18,11 @@ extension Bool: TypedExpressionConvertible {
 
 public class BooleanAttribute: KeyAttribute, TypedExpressionConvertible {
     public typealias ExpressionValueType = Bool
+    public required init(_ name: String, parent: Attribute? = nil, type: NSAttributeType? = nil) {
+        super.init(name, parent: parent, type: .BooleanAttributeType)
+    }
+    public required init() {
+        super.init()
+    }
 }
 

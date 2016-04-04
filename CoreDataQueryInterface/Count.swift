@@ -36,5 +36,5 @@ public struct CountableExpression: CustomExpressionConvertible, Countable {
         self.expression = expression.expression
     }
 
-    public private(set) var expression: NSExpression
+    public let expression: NSExpression
 }

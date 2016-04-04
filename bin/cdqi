@@ -94,10 +94,28 @@ class Attribute
     @type = type
   end
   def render_property(io)
-    type = attribute_type
-    io.puts "#{$options.access_modifier}private(set) lazy var #{@name}: #{type} = { #{type}(\"#{@name}\", parent: self) }()"
+    if attribute_class =~ /^Numeric/
+      io.puts "#{$options.access_modifier}private(set) lazy var #{@name}: #{attribute_class} = { #{attribute_class}(\"#{@name}\", parent: self, type: #{attribute_type}) }()"
+    else
+      io.puts "#{$options.access_modifier}private(set) lazy var #{@name}: #{attribute_class} = { #{attribute_class}(\"#{@name}\", parent: self) }()"
+    end
   end
   def attribute_type
+    case @type
+    when 'Binary' then '.BinaryDataAttributeType'
+    when 'Boolean' then '.BooleanAttributeType'
+    when 'Date' then '.DateAttributeType'
+    when 'Decimal' then '.DecimalAttributeType'
+    when 'Double' then '.DoubleAttributeType'
+    when 'Float' then '.FloatAttributeType'
+    when 'Integer 16' then '.Integer16AttributeType'
+    when 'Integer 32' then '.Integer32AttributeType'
+    when 'Integer 64' then '.Integer64AttributeType'
+    when 'String' then '.StringAttributeType'
+    else 'nil'
+    end
+  end
+  def attribute_class
     prefix = ""
     unless @type.nil?
       type_downcased = @type.downcase
@@ -125,7 +143,7 @@ class Entity
     @attributes << attribute
   end
   def render(io)
-    io.puts "#{$options.access_modifier}class #{@name}#{$options.suffix}: EntityAttribute {"
+    io.puts "#{$options.access_modifier}class #{@name}#{$options.suffix}: EntityAttribute, Aggregable {"
     io.indent do
       @attributes.each do |attribute|
         attribute.render_property(io)
@@ -188,11 +206,15 @@ File::open(model_path) do |fd|
       entity = Entity::new(entity_name)
       entity_node.elements.each('attribute') do |attribute_node|
         attribute_name = attribute_node.attributes['name']
-        if !RESERVED_ATTRIBUTE_NAMES.include?(attribute_name)
-          attribute_type = attribute_node.attributes['attributeType']
-          entity << Attribute::new(attribute_name, entity: nil, type: attribute_type)
-        else
+        if RESERVED_ATTRIBUTE_NAMES.include?(attribute_name)
           $stderr.puts "WARNING: The attribute '#{attribute_name}' in the '#{entity_node.attributes['name']}' entity has been skipped because it conflicts with the name of an aggregate property."
+        else
+          attribute_type = attribute_node.attributes['attributeType']
+          if attribute_type == 'Transformable' then
+            $stderr.puts "WARNING: The attribute '#{attribute_name}' in the '#{entity_node.attributes['name']}' entity has been skipped because it is a transformable attribute. Transformable attributes are not currently supported."
+          else
+            entity << Attribute::new(attribute_name, entity: nil, type: attribute_type)
+          end
         end
       end
       entity_node.elements.each('relationship') do |relationship_node|

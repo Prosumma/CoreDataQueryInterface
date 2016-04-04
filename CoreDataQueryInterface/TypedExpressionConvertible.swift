@@ -9,7 +9,9 @@
 import Foundation
 import CoreData
 
-
+/**
+ Implemented by types that participate in typesafe predicates and produce `NSExpression`.
+ */
 public protocol TypedExpressionConvertible: CustomExpressionConvertible {
     associatedtype ExpressionValueType
 }

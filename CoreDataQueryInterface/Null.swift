@@ -8,6 +8,13 @@
 
 import Foundation
 
+/**
+ Represents `nil` in CDQI filter predicates, e.g., `employee.lastName == nil`.
+ 
+ - note: Because `Null` implements `NilLiteralConvertible`, it is not necessary to create
+ instances of it. Simply use `nil` in filter expressions, and an instance of `Null`
+ will be created.
+ */
 public struct Null: CustomExpressionConvertible, NilLiteralConvertible {
     public init(nilLiteral: ()) {
         
