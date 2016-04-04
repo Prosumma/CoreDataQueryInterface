@@ -12,7 +12,6 @@ import XCTest
 class FilterTests : BaseTestCase {
 
     func testCountEngineers() {
-        
         let engineerCount = try! managedObjectContext.from(Employee).filter({ $0.department.name == "Engineering" }).count()
         XCTAssertEqual(engineerCount, 8)
     }
@@ -50,7 +49,7 @@ class FilterTests : BaseTestCase {
     }
     
     func testNumberOfDepartmentsWithEmployeesWhoseLastNamesStartWithSUsingSubquery() {
-        let departmentCount = try! managedObjectContext.from(Department).filter { department in
+        let departmentCount = try! managedObjectContext.from(Department).filter{ department in
             department.employees.subquery("$e") {
                 some($0.lastName.beginsWith("S", options: .CaseInsensitivePredicateOption))
             }.count > 0
@@ -66,5 +65,12 @@ class FilterTests : BaseTestCase {
     func testEmployeesWithSalariesBetween80000And100000() {
         let employeeCount = try! managedObjectContext.from(Employee).filter({ employee in employee.salary.between(80000, and: 100000) }).count()
         XCTAssertEqual(employeeCount, 8)
+    }
+    
+    func testDepartmentsWithEmployeesHavingSalary70000OrSalary61000() {
+        let departmentCount = try! managedObjectContext.from(Department).filter{
+            any($0.employees.salary == [61000, 70000])
+        }.count()
+        XCTAssertEqual(departmentCount, 2)
     }
 }
