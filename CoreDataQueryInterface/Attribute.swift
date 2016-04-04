@@ -89,11 +89,3 @@ extension Attribute: CustomPropertyConvertible {
         return String(self)
     }
 }
-
-public struct Entity: Equatable {
-    
-}
-
-public func ==(lhs: Entity, rhs: Entity) -> Bool {
-    return true
-}
