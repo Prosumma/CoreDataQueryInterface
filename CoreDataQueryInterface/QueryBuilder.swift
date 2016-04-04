@@ -43,6 +43,7 @@ public struct QueryBuilder<E: EntityType> {
                 request.propertiesToGroupBy = groupings.map() { $0.property }
             }
         }
+        Logger.log(request)
         return request
     }
     
