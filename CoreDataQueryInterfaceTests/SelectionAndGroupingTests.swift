@@ -29,7 +29,7 @@ class SelectionTests : BaseTestCase {
     
     func testMinimumSalaryGroupedByDepartment() {
         let employee = EmployeeAttribute()
-        let result =  managedObjectContext.from(Employee).groupBy(employee.department.name).select(employee.department.name, employee.min.salary.named("minSalary")).order(descending: employee.department.name).all()
+        let result = managedObjectContext.from(Employee).groupBy(employee.department.name).select(employee.department.name, employee.min.salary.named("minSalary")).order(descending: employee.department.name).all()
         let salaries: [String: Int] = result.toDictionary() { ($0["department.name"]! as! String, ($0["minSalary"]! as! NSNumber).integerValue) }
         XCTAssertEqual(salaries["Accounting"]!, 32000)
         XCTAssertEqual(salaries["Engineering"]!, 54000)
@@ -68,17 +68,17 @@ class SelectionTests : BaseTestCase {
     }
     
     func testStringAsSelectionProperty() {
-        let result =  managedObjectContext.from(Employee).groupBy("lastName").select("lastName").all()
+        let result = managedObjectContext.from(Employee).groupBy("lastName").select("lastName").all()
         XCTAssertEqual(result.count, 5)
     }
     
     func testMultipleGroupByProperty() {
-        let result =  managedObjectContext.from(Employee).groupBy({[$0.lastName, $0.department]}).select("lastName", "department").all()
+        let result = managedObjectContext.from(Employee).groupBy({[$0.lastName, $0.department]}).select("lastName", "department").all()
         XCTAssertEqual(result.count, 13)
     }
     
     func testOrderByNSSortDescriptor() {
-        let results =  managedObjectContext.from(Employee).order(NSSortDescriptor(key: "firstName", ascending: true)).all()
+        let results = managedObjectContext.from(Employee).order(NSSortDescriptor(key: "firstName", ascending: true)).all()
         XCTAssert(results.first!.firstName == "David" && results.last!.firstName == "Lana")
     }
 }
