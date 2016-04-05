@@ -79,11 +79,18 @@ class FilterTests : BaseTestCase {
         XCTAssertEqual(departmentCount, 2)
     }
     
-    func testNumberOfDepartmentsWithNoSalariesLessThan() {
+    func testNumberOfDepartmentsWithNoSalariesLessThanOrEqualTo() {
         let departmentCount = managedObjectContext.from(Department).filter {
                 none($0.employees.salary <= 50000)
             }.count()
         XCTAssertEqual(departmentCount, 3)
+    }
+    
+    func testNumberOfDepartmentsWithAnySalariesLessThan() {
+        let departmentCount = managedObjectContext.from(Department).filter {
+            any($0.employees.salary < 40000)
+            }.count()
+        XCTAssertEqual(departmentCount, 1)
     }
     
     func testCountEmployeesWithFirstNameBeginningWithL () {
