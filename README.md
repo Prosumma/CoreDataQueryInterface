@@ -16,7 +16,7 @@ The best way to understand the advantages of CDQI is to see an example.
 try! managedObjectContext
     .from(Employee)
     .filter{$0.salary > 70000 && $0.department.name == "Engineering"}
-    .order(descending: {$0.lastName})
+    .order(descending: {$0.lastName}, {$0.firstName})
     .all()
 ```
 
