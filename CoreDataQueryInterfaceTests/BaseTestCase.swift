@@ -14,6 +14,8 @@ class BaseTestCase: XCTestCase {
     
     private static var managedObjectContext: NSManagedObjectContext!
     
+    static var managedObjectModel: NSManagedObjectModel = NSManagedObjectModel.mergedModelFromBundles(NSBundle.allBundles())!
+    
     var managedObjectContext: NSManagedObjectContext {
         return BaseTestCase.managedObjectContext
     }
@@ -30,8 +32,7 @@ class BaseTestCase: XCTestCase {
             let url = NSURL(fileURLWithPath: path)
 
             // Create the database
-            let model = NSManagedObjectModel.mergedModelFromBundles(NSBundle.allBundles())!
-            let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
+            let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
             try! persistentStoreCoordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
             let managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
             managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator

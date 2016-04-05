@@ -22,6 +22,8 @@
 		8E4918D71CAF432100DFB3C8 /* TestEntityAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4918D51CAF432100DFB3C8 /* TestEntityAttribute.swift */; };
 		8E4918E51CAF71BC00DFB3C8 /* StringAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4918DE1CAF6F1200DFB3C8 /* StringAttribute.swift */; };
 		8E4918E61CAF71BD00DFB3C8 /* StringAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4918DE1CAF6F1200DFB3C8 /* StringAttribute.swift */; };
+		8E4918EA1CB35F1E00DFB3C8 /* ManagedObjectContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4918E91CB35F1E00DFB3C8 /* ManagedObjectContextTests.swift */; };
+		8E4918EB1CB35F1E00DFB3C8 /* ManagedObjectContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4918E91CB35F1E00DFB3C8 /* ManagedObjectContextTests.swift */; };
 		8EC22BBF1CAA37D500642BB6 /* TypedExpressionConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC22BBE1CAA37D500642BB6 /* TypedExpressionConvertible.swift */; };
 		8EC22BC11CAA3AE400642BB6 /* TypedExpressionConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC22BBE1CAA37D500642BB6 /* TypedExpressionConvertible.swift */; };
 		F30C0B7C1B37A20A00D8D762 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30C0B7B1B37A20A00D8D762 /* Util.swift */; };
@@ -140,6 +142,7 @@
 		8E4918D01CAF41B100DFB3C8 /* TestEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestEntity.swift; sourceTree = "<group>"; };
 		8E4918D51CAF432100DFB3C8 /* TestEntityAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestEntityAttribute.swift; sourceTree = "<group>"; };
 		8E4918DE1CAF6F1200DFB3C8 /* StringAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = StringAttribute.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		8E4918E91CB35F1E00DFB3C8 /* ManagedObjectContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextTests.swift; sourceTree = "<group>"; };
 		8EC22BBE1CAA37D500642BB6 /* TypedExpressionConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = TypedExpressionConvertible.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F30C0B7B1B37A20A00D8D762 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		F30D1CCA1B2A891100AF80A1 /* CoreDataQueryInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataQueryInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,6 +241,7 @@
 				8E49189F1CACE93600DFB3C8 /* NumericTypeTests.swift */,
 				F3E6B5521B2C01CC00F735EE /* OrderTests.swift */,
 				F33567641B2D2EF7007853DB /* SelectionAndGroupingTests.swift */,
+				8E4918E91CB35F1E00DFB3C8 /* ManagedObjectContextTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -562,6 +566,7 @@
 			files = (
 				F33567681B2D2EF7007853DB /* SelectionAndGroupingTests.swift in Sources */,
 				F3E6B5541B2C01CC00F735EE /* OrderTests.swift in Sources */,
+				8E4918EB1CB35F1E00DFB3C8 /* ManagedObjectContextTests.swift in Sources */,
 				F31C642A1B696CD900235764 /* NSManagedObjectContextExtensions.swift in Sources */,
 				8E4918D71CAF432100DFB3C8 /* TestEntityAttribute.swift in Sources */,
 				8E4918A11CACE93600DFB3C8 /* NumericTypeTests.swift in Sources */,
@@ -635,6 +640,7 @@
 				8E4918C71CAE0A9300DFB3C8 /* EmployeeAttribute.swift in Sources */,
 				F30C0B7C1B37A20A00D8D762 /* Util.swift in Sources */,
 				F3251A121B2BDE6E0031B817 /* Employee.swift in Sources */,
+				8E4918EA1CB35F1E00DFB3C8 /* ManagedObjectContextTests.swift in Sources */,
 				F3E6B5501B2BFCA500F735EE /* FilterTests.swift in Sources */,
 				F37C46B21B2A780200B35B1B /* SanityTests.swift in Sources */,
 				8E4918D61CAF432100DFB3C8 /* TestEntityAttribute.swift in Sources */,
