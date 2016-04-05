@@ -18,25 +18,25 @@ class NumericTypeTests: BaseTestCase {
     
     func testInt16ValueComparison() {
         let int: Int16 = 32767
-        let resultCount = try! managedObjectContext.from(TestEntity).filter({ $0.integer16 == int }).count()
+        let resultCount =  managedObjectContext.from(TestEntity).filter({ $0.integer16 == int }).count()
         XCTAssert(resultCount == 1)
     }
     
     func testUInt16ValueComparison() {
         let int: UInt16 = 32767
-        let resultCount = try! managedObjectContext.from(TestEntity).filter({ $0.integer16 == int }).count()
+        let resultCount =  managedObjectContext.from(TestEntity).filter({ $0.integer16 == int }).count()
         XCTAssert(resultCount == 1)
     }
     
     func testUInt32ValueComparison() {
         let int: UInt32 = 32767
-        let resultCount = try! managedObjectContext.from(TestEntity).filter({ $0.integer16 == int }).count()
+        let resultCount =  managedObjectContext.from(TestEntity).filter({ $0.integer16 == int }).count()
         XCTAssert(resultCount == 1)
     }
     
     func testUInt64ValueComparison() {
         let int: UInt64 = 32767
-        let resultCount = try! managedObjectContext.from(TestEntity).filter({ $0.integer16 == int }).count()
+        let resultCount =  managedObjectContext.from(TestEntity).filter({ $0.integer16 == int }).count()
         XCTAssert(resultCount == 1)
     }
     

@@ -27,12 +27,12 @@ class FilterTests : BaseTestCase {
     }
     
     func testCountEmployeesWithNickName() {
-        let nickNameLessCount = try! managedObjectContext.from(Employee).filter({ employee in employee.lastName != "Jones" }).count()
+        let nickNameLessCount =  managedObjectContext.from(Employee).filter({ employee in employee.lastName != "Jones" }).count()
         XCTAssertEqual(nickNameLessCount, 20)
     }
     
     func testEmployeesWithNickName() {
-        let nickNameLessCount = try! managedObjectContext.from(Employee).filter({ employee in employee.nickName != nil }).count()
+        let nickNameLessCount =  managedObjectContext.from(Employee).filter({ employee in employee.nickName != nil }).count()
         XCTAssertEqual(nickNameLessCount, 15)
     }
     
@@ -43,7 +43,7 @@ class FilterTests : BaseTestCase {
     }
     
     func testCountEmployeesWithNameLike() {
-        let count = try! managedObjectContext.from(Employee).filter({ $0.lastName.like("*nes") }).count()
+        let count =  managedObjectContext.from(Employee).filter({ $0.lastName.like("*nes") }).count()
         XCTAssertEqual(count, 5)
     }
     
@@ -66,12 +66,12 @@ class FilterTests : BaseTestCase {
     func testEmployeesWithLessThanOrEqualToSalary() {
         let salary = 80000
         let e = EmployeeAttribute()
-        let highSalaryCount = try! managedObjectContext.from(Employee).filter(e.salary <= salary).count()
+        let highSalaryCount =  managedObjectContext.from(Employee).filter(e.salary <= salary).count()
         XCTAssertEqual(highSalaryCount, 17)
     }
     
     func testNumberOfDepartmentsWithEmployeesWhoseLastNamesStartWithSUsingSubquery() {
-        let departmentCount = try! managedObjectContext.from(Department).filter{ department in
+        let departmentCount =  managedObjectContext.from(Department).filter{ department in
             department.employees.subquery {
                 some($0.lastName.beginsWith("S", options: .CaseInsensitivePredicateOption))
             }.count > 0
@@ -80,34 +80,34 @@ class FilterTests : BaseTestCase {
     }
     
     func testNumberOfDepartmentsWithNoSalariesLessThan() {
-        let departmentCount = try! managedObjectContext.from(Department).filter {
+        let departmentCount =  managedObjectContext.from(Department).filter {
                 none($0.employees.salary <= 50000)
             }.count()
         XCTAssertEqual(departmentCount, 3)
     }
     
     func testCountEmployeesWithFirstNameBeginningWithL () {
-        let count = try! managedObjectContext.from(Employee).filter({ employee in employee.firstName.beginsWith("L") }).count()
+        let count =  managedObjectContext.from(Employee).filter({ employee in employee.firstName.beginsWith("L") }).count()
         XCTAssertEqual(count, 5)
     }
     
     func testCountEmployeesWithFirstNameEndingWithA () {
-        let count = try! managedObjectContext.from(Employee).filter({ employee in employee.firstName.endsWith("a") }).count()
+        let count =  managedObjectContext.from(Employee).filter({ employee in employee.firstName.endsWith("a") }).count()
         XCTAssertEqual(count, 10)
     }
     
     func testCountEmployeesWithFirstNameOrLastName () {
-        let firstOrLastNameCount = try! managedObjectContext.from(Employee).filter({ employee in employee.firstName == "Isabella" || employee.lastName == "Jones" }).count()
+        let firstOrLastNameCount =  managedObjectContext.from(Employee).filter({ employee in employee.firstName == "Isabella" || employee.lastName == "Jones" }).count()
         XCTAssertEqual(firstOrLastNameCount, 9)
     }
     
     func testCountEmployeesWithFirstNameAndLastName () {
-        let count = try! managedObjectContext.from(Employee).filter({ employee in employee.firstName == "Isabella" && employee.lastName == "Jones" }).count()
+        let count =  managedObjectContext.from(Employee).filter({ employee in employee.firstName == "Isabella" && employee.lastName == "Jones" }).count()
         XCTAssertEqual(count, 1)
     }
     
     func testEmployeesWithFirstNameContaining () {
-        let count = try! managedObjectContext.from(Employee).filter({ employee in employee.firstName.contains("an")}).count()
+        let count =  managedObjectContext.from(Employee).filter({ employee in employee.firstName.contains("an")}).count()
         XCTAssertEqual(count, 10)
     }
     
