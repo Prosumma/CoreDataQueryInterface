@@ -20,12 +20,17 @@ class ManagedObjectContextTests: BaseTestCase {
     func testRequestWithMOC() {
         let request = EntityQuery.from(Employee).request(managedObjectContext)
         let employees = try! managedObjectContext.executeFetchRequest(request)
-        XCTAssert(employees.count == 25)
+        XCTAssertEqual(employees.count, 25)
+    }
+    
+    func testCountWithMOC() {
+        let departmentCount = EntityQuery.from(Department).count(managedObjectContext)
+        XCTAssertEqual(departmentCount, 3)
     }
     
     func testRequestWithModel() {
         let request = EntityQuery.from(Employee).request(BaseTestCase.managedObjectModel)
         let employees = try! managedObjectContext.executeFetchRequest(request)
-        XCTAssert(employees.count == 25)
+        XCTAssertEqual(employees.count, 25)
     }
 }
