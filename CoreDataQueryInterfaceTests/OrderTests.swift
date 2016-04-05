@@ -30,5 +30,10 @@ class OrderTests : BaseTestCase {
         let departmentName: String = query.reorder().order(department.name).value(department.name)!
         XCTAssertEqual(departmentName, "Accounting")
     }
-
+    
+    func testOffset() {
+        let department = Department.EntityAttributeType()
+        let secondDepartment = try! managedObjectContext.from(Department).order(department.name).offset(1).first()!
+        XCTAssertEqual(secondDepartment.name, "Engineering")
+    }
 }
