@@ -16,6 +16,12 @@ class NumericTypeTests: BaseTestCase {
         XCTAssert(resultCount == 1)
     }
     
+    func testNSNumberValueComparison() {
+        let intMax = Int.max as NSNumber
+        let resultCount = managedObjectContext.from(TestEntity).filter({ $0.integer64 == intMax }).count()
+        XCTAssert(resultCount == 1)
+    }
+    
     func testInt16ValueComparison() {
         let int: Int16 = 32767
         let resultCount = managedObjectContext.from(TestEntity).filter({ $0.integer16 == int }).count()
