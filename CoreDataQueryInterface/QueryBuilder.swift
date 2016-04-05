@@ -52,16 +52,18 @@ public struct QueryBuilder<E: EntityType> {
         return request(resultType, managedObjectModel: moc.persistentStoreCoordinator!.managedObjectModel)
     }
     
-    public func count(managedObjectContext: NSManagedObjectContext?) throws -> UInt {
+    public func count(managedObjectContext: NSManagedObjectContext?) -> UInt {
         let moc = managedObjectContext ?? self.managedObjectContext!
         var error: NSError?
         let count = moc.countForFetchRequest(self.request(.CountResultType, managedObjectContext: moc), error: &error)
-        guard error == nil else { throw error! }
+        if error != nil {
+            assertionFailure(String(error))
+        }
         return UInt(count)
     }
     
-    public func execute<R: AnyObject>(managedObjectContext: NSManagedObjectContext?, resultType: NSFetchRequestResultType) throws -> [R] {
+    public func execute<R: AnyObject>(managedObjectContext: NSManagedObjectContext?, resultType: NSFetchRequestResultType) -> [R] {
         let moc = managedObjectContext ?? self.managedObjectContext!
-        return try moc.executeFetchRequest(self.request(resultType, managedObjectContext: moc)) as! [R]
+        return try! moc.executeFetchRequest(self.request(resultType, managedObjectContext: moc)) as! [R]
     }
 }

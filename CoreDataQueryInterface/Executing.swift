@@ -35,8 +35,8 @@ extension QueryType {
     
     - parameter managedObjectContext: An optional `NSManagedObjectContext`. If passed, supercedes the one in the chain.
     */
-    public func all(managedObjectContext: NSManagedObjectContext? = nil) throws -> [QueryResultType] {
-        return try builder.execute(managedObjectContext, resultType: resultType)
+    public func all(managedObjectContext: NSManagedObjectContext? = nil) -> [QueryResultType] {
+        return builder.execute(managedObjectContext, resultType: resultType)
     }
     
     /**
@@ -44,8 +44,8 @@ extension QueryType {
     
     - parameter managedObjectContext: An optional `NSManagedObjectContext`. If passed, supercedes the one in the chain.
     */
-    public func count(managedObjectContext: NSManagedObjectContext? = nil) throws -> UInt {
-        return try builder.count(managedObjectContext)
+    public func count(managedObjectContext: NSManagedObjectContext? = nil) -> UInt {
+        return builder.count(managedObjectContext)
     }
     
     /**
@@ -54,8 +54,8 @@ extension QueryType {
     - note: Calls `limit(1)` before executing for efficiency.
     - parameter managedObjectContext: An optional `NSManagedObjectContext`. If passed, supercedes the one in the chain.
     */
-    public func first(managedObjectContext: NSManagedObjectContext? = nil) throws -> QueryResultType? {
-        return try limit(1).all(managedObjectContext).first
+    public func first(managedObjectContext: NSManagedObjectContext? = nil) -> QueryResultType? {
+        return limit(1).all(managedObjectContext).first
     }
     
     /**
@@ -64,8 +64,8 @@ extension QueryType {
      - note: Calls `limit(1)` before executing for efficiency.
      - parameter managedObjectContext: An optional `NSManagedObjectContext`. If passed, supercedes the one in the chain.
     */
-    public func exists(managedObjectContext: NSManagedObjectContext? = nil) throws -> Bool {
-        let count = try limit(1).count(managedObjectContext)
+    public func exists(managedObjectContext: NSManagedObjectContext? = nil) -> Bool {
+        let count = limit(1).count(managedObjectContext)
         return count > 0
     }
 }
@@ -77,10 +77,10 @@ extension ExpressionQueryType {
     - warning: Any preceding expressions in the CDQI chain are overwritten by `expression`. If the cast to `T` fails,
     a runtime exception will occur.
     */
-    public func array<T>(expression: CustomPropertyConvertible, managedObjectContext: NSManagedObjectContext? = nil) throws -> [T] {
+    public func array<T>(expression: CustomPropertyConvertible, managedObjectContext: NSManagedObjectContext? = nil) -> [T] {
         var builder = self.builder
         builder.expressions = [expression]
-        let results = try ExpressionQuery(builder: builder).all(managedObjectContext) as NSArray
+        let results = ExpressionQuery(builder: builder).all(managedObjectContext) as NSArray
         if results.count > 0 {
             let key = (results[0] as! NSDictionary).allKeys.first! as! String
             return results.valueForKey(key) as! [T]
@@ -95,9 +95,9 @@ extension ExpressionQueryType {
     - warning: Any preceding expressions in the CDQI chain are overwritten by `expression`. If the cast to `T` fails,
     a runtime exception will occur.
     */
-    public func array<T>(managedObjectContext managedObjectContext: NSManagedObjectContext? = nil, _ expression: QueryEntityType.EntityAttributeType -> CustomPropertyConvertible) throws -> [T] {
+    public func array<T>(managedObjectContext managedObjectContext: NSManagedObjectContext? = nil, _ expression: QueryEntityType.EntityAttributeType -> CustomPropertyConvertible) -> [T] {
         let attribute = QueryEntityType.EntityAttributeType()
-        return try array(expression(attribute), managedObjectContext: managedObjectContext)
+        return array(expression(attribute), managedObjectContext: managedObjectContext)
     }
     
     /**
@@ -107,10 +107,10 @@ extension ExpressionQueryType {
     - warning: Any preceding expressions in the CDQI chain are overwritten by `expression`. If the cast to `T` fails,
     a runtime exception will occur.
     */
-    public func value<T>(expression: CustomPropertyConvertible, managedObjectContext: NSManagedObjectContext? = nil) throws -> T? {
+    public func value<T>(expression: CustomPropertyConvertible, managedObjectContext: NSManagedObjectContext? = nil) -> T? {
         var builder = self.builder
         builder.expressions = [expression]
-        if let result = try ExpressionQuery(builder: builder).first(managedObjectContext) {
+        if let result = ExpressionQuery(builder: builder).first(managedObjectContext) {
             let key = result.allKeys.first! as! String
             return (result[key]! as! T)
         } else {
@@ -125,8 +125,8 @@ extension ExpressionQueryType {
     - warning: Any preceding expressions in the CDQI chain are overwritten by `expression`. If the cast to `T` fails,
     a runtime exception will occur.
     */
-    public func value<T>(managedObjectContext managedObjectContext: NSManagedObjectContext? = nil, _ expression: QueryEntityType.EntityAttributeType -> CustomPropertyConvertible) throws -> T? {
+    public func value<T>(managedObjectContext managedObjectContext: NSManagedObjectContext? = nil, _ expression: QueryEntityType.EntityAttributeType -> CustomPropertyConvertible) -> T? {
         let attribute = QueryEntityType.EntityAttributeType()
-        return try value(expression(attribute), managedObjectContext: managedObjectContext)
+        return value(expression(attribute), managedObjectContext: managedObjectContext)
     }
 }
