@@ -57,4 +57,9 @@ class SelectionTests : BaseTestCase {
         let firstName = employees.first!["firstName"]! as! String
         XCTAssertEqual(firstName, "Lana")
     }
+    
+    func testStringAsSelectionProperty() {
+        let result = try! managedObjectContext.from(Employee).groupBy("lastName").select("lastName").all()
+        XCTAssert(result.count == 5)
+    }
 }

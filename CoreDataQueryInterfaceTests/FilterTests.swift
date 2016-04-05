@@ -26,6 +26,16 @@ class FilterTests : BaseTestCase {
         XCTAssertEqual(nickNameLessCount, 10)
     }
     
+    func testCountEmployeesWithNickName() {
+        let nickNameLessCount = try! managedObjectContext.from(Employee).filter({ employee in employee.lastName != "Jones" }).count()
+        XCTAssertEqual(nickNameLessCount, 20)
+    }
+    
+    func testEmployeesWithNickName() {
+        let nickNameLessCount = try! managedObjectContext.from(Employee).filter({ employee in employee.nickName != nil }).count()
+        XCTAssertEqual(nickNameLessCount, 15)
+    }
+    
     func testCountEmployeesNameNotMortonOrJones() {
         let names = ["Morton", "Jones"]
         let notMortonOrJonesCount = managedObjectContext.from(Employee).filter({ $0.lastName != names }).count()
@@ -55,6 +65,26 @@ class FilterTests : BaseTestCase {
             }.count > 0
         }.count()
         XCTAssertEqual(departmentCount, 2)
+    }
+    
+    func testCountEmployeesWithFirstNameBeginningWithL () {
+        let nickNameLessCount = try! managedObjectContext.from(Employee).filter({ employee in employee.firstName.beginsWith("L") }).count()
+        XCTAssertEqual(nickNameLessCount, 5)
+    }
+    
+    func testCountEmployeesWithFirstNameEndingWithA () {
+        let nickNameLessCount = try! managedObjectContext.from(Employee).filter({ employee in employee.firstName.endsWith("a") }).count()
+        XCTAssertEqual(nickNameLessCount, 10)
+    }
+    
+    func testCountEmployeesWithFirstNameOrLastName () {
+        let nickNameLessCount = try! managedObjectContext.from(Employee).filter({ employee in employee.firstName == "Isabella" || employee.lastName == "Jones" }).count()
+        XCTAssertEqual(nickNameLessCount, 9)
+    }
+    
+    func testCountEmployeesWithFirstNameAndLastName () {
+        let nickNameLessCount = try! managedObjectContext.from(Employee).filter({ employee in employee.firstName == "Isabella" && employee.lastName == "Jones" }).count()
+        XCTAssertEqual(nickNameLessCount, 1)
     }
     
     func testDepartmentsWithNameMatchingRegex() {
