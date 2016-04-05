@@ -10,20 +10,11 @@ import CoreData
 import Foundation
 
 struct Logger {
-    private static var enabled: Bool = {
-        NSProcessInfo().arguments.filter{ $0 == "-com.prosumma.CoreDataQueryInterface.Debug" }.count > 0
-    }()
-    
-    private static var dateFormatter: NSDateFormatter = {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
-        return dateFormatter
-    }()
+    private static var enabled: Bool = { NSProcessInfo().arguments.contains("-com.prosumma.CoreDataQueryInterface.Debug") }()
     
     static func log(message: String) {
         if !enabled { return }
-        let date = dateFormatter.stringFromDate(NSDate())
-        print("\(date) CoreDataQueryInterface: \(message)")
+        NSLog("CoreDataQueryInterface: %@", message)
     }
     
     static func log(fetchRequest: NSFetchRequest) {
