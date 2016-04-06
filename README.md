@@ -47,21 +47,50 @@ Besides the greater readability of the code, the other advantage is that if your
 
 #### Compatibility
 
-2.x proxy classes are not compatible with CDQI 3.x. You must regenerate your proxy classes to use 3.x. Also, you should remove references to `EntityType` from your managed objects. The `EntityType` protocol is now automatically generated for each managed object class by the `cdqi` tool (formerly the `mocdqi` tool), as it should have been from the start. Other than that, 3.x should be fully backwards compatible with 2.x.
+4.x proxy classes are not compatible with previous versions. You must regenerate your proxy classes to use 4.x. In addition, if you are upgrading from versions prior to 3.x, you should remove references to `EntityType` in your managed objects. The `EntityType` protocol is now automatically generated for each managed object class by the `cdqi` tool (formerly the `mocdqi` tool), as it should have been from the start.
+
+CDQI now includes type-safe comparisons, which could cause some `filter` expressions to fail to compile. Assuming the code is correctly written, this should be very rare.
+
+Lastly, CDQI no longer throws catchable errors. It is no longer necessary to use `try` when executing CDQI queries. This is discussed in more detail below.
 
 #### What's New
 
-Besides many small improvements, the primary change is support for a great deal more predicates: `BEGINSWITH`, `SUBQUERY`, case-insensitive and diacritic-insensitive comparisons, etc. All without magic strings.
+##### Type Safety
+
+Thanks to some help from Pat Goley, CDQI 4.0 now supports type-safe filter predicates.
 
 ```swift
-moc.from(Department).filter { department in
-  department.employees.subquery {
-    any(employee in employee.lastName.beginsWith("s", .CaseInsensitivePredicateOption))
-  }.count > 0
+moc.from(Employee).filter{ $0.firstName == 3 }
+```
+
+Previous versions of CDQI would happily have accepted such a filter comparison. Except in the unlikely event that you have not defined `firstName` as a `string` attribute in Core Data, the code above will not even compile in CDQI 4.0. For a more detailed discussion of type safety, see the Usage section below.
+
+##### No More Trying, Only Doing
+
+At its core, CDQI is a framework that creates and executes `NSFetchRequest`s using a fluent syntax. Core Data can throw errors as a result of executing fetch requests, and previous versions of CDQI dutifully presented these to the developer, e.g.,
+
+```swift
+do {
+  let jonesCount = try moc.from(Employee).filter{ $0.lastName == "Jones" }.count()
+} catch let e {
+  // Now what?
 }
 ```
 
-Examples occur throughout the README and in the unit tests and sample project.
+The vast majority of errors encountered in this scenario are simply not recoverable. They are a result of programmer error, such as an improperly constructed predicate, and not user error. These will be caught by the developer the first time any attempt is made to execute the query.
+
+CDQI does not swallow these silently. It simply blows up. Fix the bad predicate—because that is what it almost always is—and you are on your way.
+
+If you _really_ want to catch these errors, there is a straightforward solution. Use CDQI to generate the fetch request, and then execute it the old fashioned way:
+
+```swift
+let request = EntityQuery.from(Employee).filter{ $0.lastName == "Jones" }.request()
+do {
+  let joneses = try moc.executeFetchRequest(request)
+} catch let e {
+  // Handle it here, if you can
+}
+```
 
 ### Integration
 
@@ -246,6 +275,28 @@ moc.from(Department)
 ```
 
 As always, see the unit tests for more examples.
+
+##### Type Safety
+
+Filter comparisons using block syntax enforce compile-time type safety. When attribute proxies are generated, the `cdqi` tool assigns a CDQI attribute class based on the underlying Core Data attribute type. In other words, if `lastName` is a `string` in CoreData, it will become a `StringAttribute` in the proxy class. And since `StringAttribute`s can only be compared to strings (or other `StringAttributes`s), we have type safety.
+
+```swift
+class EmployeeAttribute: EntityAttribute, Aggregable {
+    private(set) lazy var firstName: StringAttribute = { StringAttribute("firstName", parent: self) }()
+    private(set) lazy var lastName: StringAttribute = { StringAttribute("lastName", parent: self) }()
+    private(set) lazy var nickName: StringAttribute = { StringAttribute("nickName", parent: self) }()
+    private(set) lazy var salary: NumericAttribute = { NumericAttribute("salary", parent: self, type: .Integer32AttributeType) }()
+    private(set) lazy var department: DepartmentAttribute = { DepartmentAttribute("department", parent: self) }()
+}
+```
+
+In keeping with what is permitted by Core Data, numeric comparisons are much looser than what Swift itself allows for "ordinary" numeric comparisons. Any numeric type or attribute can be compared to any other:
+
+```swift
+moc.filter{ $0.int32 == 41.5 }
+```
+
+The comparison of an `Int32` and a `Double` will not compile in Swift, but is permitted by CDQI. (This is because CDQI is not actually comparing an `Int32` and a `Double`. Instead, it is comparing a `NumericAttribute` with a `Double`.)
 
 #### Sorting
 
