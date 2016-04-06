@@ -36,4 +36,16 @@ class OrderTests : BaseTestCase {
         let secondDepartment = managedObjectContext.from(Department).order(department.name).offset(1).first()!
         XCTAssertEqual(secondDepartment.name, "Engineering")
     }
+    
+    func testMultipleOrderings() {
+        let employees = managedObjectContext.from(Employee).order({employee in [employee.lastName, employee.firstName]}).all()
+        XCTAssertEqual(employees.first!.firstName, "David")
+        XCTAssertEqual(employees.last!.firstName, "Lana")
+    }
+    
+    func testMultipleDescendingOrderings() {
+        let employees = managedObjectContext.from(Employee).order(descending: {employee in [employee.lastName, employee.firstName]}).all()
+        XCTAssertEqual(employees.first!.firstName, "Lana")
+        XCTAssertEqual(employees.last!.firstName, "David")
+    }
 }
