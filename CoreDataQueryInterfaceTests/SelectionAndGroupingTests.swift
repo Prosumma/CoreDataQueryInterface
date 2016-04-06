@@ -73,7 +73,7 @@ class SelectionTests : BaseTestCase {
     }
     
     func testClosureAsSelectionProperty() {
-        let result = managedObjectContext.from(Employee).groupBy("lastName").select({employee in [employee.lastName, employee.firstName]}).all()
+        let result = managedObjectContext.from(Employee).groupBy("lastName").select({employee in [employee.lastName]}).all()
         XCTAssertEqual(result.count, 5)
     }
     
