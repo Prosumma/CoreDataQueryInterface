@@ -73,8 +73,8 @@ class SelectionTests : BaseTestCase {
     }
     
     func testClosureAsSelectionProperty() {
-        let result = managedObjectContext.from(Employee).groupBy("lastName").select({employee in [employee.lastName, employee.firstName]}).all()
-        XCTAssertEqual(result.count, 5)
+        let result = managedObjectContext.from(Employee).groupBy("lastName", "department.name").select({employee in [employee.lastName, employee.department.name]}).all()
+        XCTAssertEqual(result.count, 13)
     }
     
     func testMultipleGroupByProperty() {
