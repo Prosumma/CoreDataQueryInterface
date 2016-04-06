@@ -92,6 +92,10 @@ do {
 }
 ```
 
+##### Debugging
+
+Analogous to Core Data's `-com.apple.CoreData.SQLDebug` flag is CDQI's `-com.prosumma.CoreDataQueryInterface.Debug` flag. The only difference is that the latter takes no arguments. Its presence will cause CDQI to `NSLog` every generated `NSFetchRequest` in an easy-to-read format.
+
 ### Integration
 
 CDQI works its magic by creating proxy objects for each entity in your model, and then associating them with the corresponding entity via a `typealias`. A tool in the `bin` folder of the project called `cdqi` will create the proxies and associate them for you.
