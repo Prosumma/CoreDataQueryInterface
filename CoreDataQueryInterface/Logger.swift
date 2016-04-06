@@ -28,6 +28,9 @@ struct Logger {
         if let sortDescriptors = fetchRequest.sortDescriptors where sortDescriptors.count > 0 {
             info.append("sortDescriptors: \(sortDescriptors)")
         }
+        if let propertiesToGroupBy = fetchRequest.propertiesToGroupBy where propertiesToGroupBy.count > 0 {
+            info.append("groupBy: \(propertiesToGroupBy)")
+        }
         if fetchRequest.fetchLimit > 0 {
             info.append("limit: \(fetchRequest.fetchLimit)")
         }

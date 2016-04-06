@@ -36,15 +36,7 @@ public func ><L: TypedExpressionConvertible, R: TypedExpressionConvertible where
     return lhs.greaterThan(rhs)
 }
 
-public func ><L: TypedExpressionConvertible where L.ExpressionValueType: ComparableExpression>(lhs: L, rhs: Null) -> NSPredicate {
-    return lhs.greaterThan(rhs)
-}
-
 public func >=<L: TypedExpressionConvertible, R: TypedExpressionConvertible where L.ExpressionValueType == R.ExpressionValueType, L.ExpressionValueType: ComparableExpression>(lhs: L, rhs: R) -> NSPredicate {
-    return lhs.greaterThanOrEqualTo(rhs)
-}
-
-public func >=<L: TypedExpressionConvertible where L.ExpressionValueType: ComparableExpression>(lhs: L, rhs: Null) -> NSPredicate {
     return lhs.greaterThanOrEqualTo(rhs)
 }
 
