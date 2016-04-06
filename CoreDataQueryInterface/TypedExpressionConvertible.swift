@@ -13,6 +13,16 @@ import CoreData
  Implemented by types that participate in typesafe predicates and produce `NSExpression`.
  */
 public protocol TypedExpressionConvertible: CustomExpressionConvertible {
+    /**
+     The type which makes any two `TypedExpressionConvertible`s type-equivalent.
+     
+     - remarks: Any two `TypedExpressionConvertible`s having the same `ExpressionValueType` can
+     be compared for equality. If that `ExpressionValueType` implements `ComparableExpression`,
+     than they can be used in ordered comparisons as well.
+     
+     To see an example, look at `StringAttribute`. Note especially that both `StringAttribute`
+     *and* `String` implement this protocol, and `String` implements `ComparableExpression`.
+    */
     associatedtype ExpressionValueType
 }
 

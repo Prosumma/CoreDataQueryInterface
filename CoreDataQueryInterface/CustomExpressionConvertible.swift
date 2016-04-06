@@ -9,6 +9,9 @@
 import Foundation
 import CoreData
 
+/**
+ A type which can represent itself as an `NSExpression`.
+ */
 public protocol CustomExpressionConvertible {
     var expression: NSExpression { get }
 }

@@ -10,6 +10,8 @@ import Foundation
 
 /**
  Helper class to build predicates.
+ 
+ Use this class to bypass CDQI's type safety in filter expressions, if needed.
  */
 public struct PredicateBuilder {
     private init() {}
