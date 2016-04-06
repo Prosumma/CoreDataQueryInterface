@@ -45,32 +45,16 @@ extension TypedExpressionConvertible where ExpressionValueType: ComparableExpres
         return PredicateBuilder.greaterThan(lhs: self, rhs: rhs, options: options)
     }
     
-    public func greaterThan(rhs: Null) -> NSPredicate {
-        return PredicateBuilder.greaterThan(lhs: self, rhs: rhs)
-    }
-    
     public func greaterThanOrEqualTo<R: TypedExpressionConvertible where Self.ExpressionValueType == R.ExpressionValueType>(rhs: R, options: NSComparisonPredicateOptions = []) -> NSPredicate {
         return PredicateBuilder.greaterThanOrEqualTo(lhs: self, rhs: rhs, options: options)
-    }
-    
-    public func greaterThanOrEqualTo(rhs: Null) -> NSPredicate {
-        return PredicateBuilder.greaterThanOrEqualTo(lhs: self, rhs: rhs)
     }
     
     public func lessThan<R: TypedExpressionConvertible where Self.ExpressionValueType == R.ExpressionValueType>(rhs: R, options: NSComparisonPredicateOptions = []) -> NSPredicate {
         return PredicateBuilder.lessThan(lhs: self, rhs: rhs, options: options)
     }
 
-    public func lessThan(rhs: Null) -> NSPredicate {
-        return PredicateBuilder.lessThan(lhs: self, rhs: rhs)
-    }
-
     public func lessThanOrEqualTo<R: TypedExpressionConvertible where Self.ExpressionValueType == R.ExpressionValueType>(rhs: R, options: NSComparisonPredicateOptions = []) -> NSPredicate {
         return PredicateBuilder.lessThanOrEqualTo(lhs: self, rhs: rhs, options: options)
-    }
-
-    public func lessThanOrEqualTo(rhs: Null) -> NSPredicate {
-        return PredicateBuilder.lessThanOrEqualTo(lhs: self, rhs: rhs)
     }
     
     public func between<R: TypedExpressionConvertible where Self.ExpressionValueType == R.ExpressionValueType>(start: R, and end: R, options: NSComparisonPredicateOptions = []) -> NSPredicate {

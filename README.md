@@ -13,7 +13,7 @@ Core Data Query Interface (CDQI) is a type-safe, fluent, intuitive library for w
 The best way to understand the advantages of CDQI is to see an example.
 
 ```swift
-try! managedObjectContext
+managedObjectContext
     .from(Employee)
     .filter{$0.salary > 70000 && $0.department.name == "Engineering"}
     .order(descending: {$0.lastName}, {$0.firstName})
@@ -302,7 +302,7 @@ In this case, since no managed object context has been specified, it will have t
 There are several query execution methods. I'll deal with each in turn, starting with `all`.
 
 ```swift
-try! moc.from(Department).filter {$0.name == "Engineering"}.all()
+moc.from(Department).filter {$0.name == "Engineering"}.all()
 ```
 
 Very simply, this returns all managed objects of the appropriate type—`Department` in this case—which satisfy the query.
@@ -310,7 +310,7 @@ Very simply, this returns all managed objects of the appropriate type—`Departm
 For a query that did not start with a managed object context, it can be passed as the first parameter to `all`.
 
 ```swift
-try! EntityQuery.from(Department).order({$0.name}).all(moc)
+EntityQuery.from(Department).order({$0.name}).all(moc)
 ```
 
 As shown in the example above, all of the query execution methods take an optional `NSManagedObjectContext` as a parameter (though it isn't always the first parameter), so I won't show further examples of that.
@@ -318,13 +318,13 @@ As shown in the example above, all of the query execution methods take an option
 Next up is `count`, which works as advertised:
 
 ```swift
-let departmentCount = try! moc.from(Department).filter{$0.employees.count > 10}.count()
+let departmentCount = moc.from(Department).filter{$0.employees.count > 10}.count()
 ```
 
 The `first` method returns either the first matching result or `nil`.
 
 ```swift
-let department = try! moc.from(Department).first()!
+let department = moc.from(Department).first()!
 ```
 
 Obviously if there are no departments, we'll get a runtime exception, so I don't recommend force-unwrapping the optional returned by `first` unless you're very certain.
@@ -332,7 +332,7 @@ Obviously if there are no departments, we'll get a runtime exception, so I don't
 The `array` query execution method is best demonstrated by example:
 
 ```swift
-let names: [String] = try! moc.from(Department).array {$0.name}
+let names: [String] = moc.from(Department).array {$0.name}
 ```
 
 This returns an array of department names. Because it can only return a _single_ attribute of an entity, any previous `select`s are ignored. You must give the compiler enough type evidence to know what to cast its result to, which is why `[String]` was specified explicitly.
@@ -340,7 +340,7 @@ This returns an array of department names. Because it can only return a _single_
 `value` is to `array` what `first` is to `all`. In other words, it returns the first matching attribute value.
 
 ```swift
-let name: String = try! moc.from(Department).filter({none($0.employees.salary < 40000)}).value({$0.name})!
+let name: String = moc.from(Department).filter({none($0.employees.salary < 40000)}).value({$0.name})!
 ```
 
 Like `first`, `value` returns `nil` if there was no matching value. Like `array`, it supercedes any prior `select`s and requires type evidence to know what to cast its value to.
