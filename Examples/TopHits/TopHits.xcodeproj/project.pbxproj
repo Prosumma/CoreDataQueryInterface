@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E4919041CB6197000DFB3C8 /* SongAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4919021CB6197000DFB3C8 /* SongAttribute.swift */; };
+		8E4919051CB6197000DFB3C8 /* ArtistAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4919031CB6197000DFB3C8 /* ArtistAttribute.swift */; };
 		F340B30E1C40EA08008CF49E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F340B30D1C40EA08008CF49E /* Assets.xcassets */; };
 		F340B3111C40EA08008CF49E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F340B30F1C40EA08008CF49E /* LaunchScreen.storyboard */; };
 		F340B3191C40EA78008CF49E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340B3181C40EA78008CF49E /* AppDelegate.swift */; };
@@ -14,13 +16,11 @@
 		F340B3211C40EAF0008CF49E /* TopHits.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F340B31F1C40EAF0008CF49E /* TopHits.xcdatamodeld */; };
 		F340B32E1C40EB31008CF49E /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340B3221C40EB31008CF49E /* Artist.swift */; };
 		F340B32F1C40EB31008CF49E /* Artist+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340B3231C40EB31008CF49E /* Artist+CoreDataProperties.swift */; };
-		F340B3301C40EB31008CF49E /* ArtistAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340B3241C40EB31008CF49E /* ArtistAttribute.swift */; };
 		F340B3311C40EB31008CF49E /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340B3251C40EB31008CF49E /* CoreDataController.swift */; };
 		F340B3321C40EB31008CF49E /* NSManagedObjectContextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340B3261C40EB31008CF49E /* NSManagedObjectContextExtensions.swift */; };
 		F340B3331C40EB31008CF49E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340B3271C40EB31008CF49E /* SearchViewController.swift */; };
 		F340B3341C40EB31008CF49E /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340B3281C40EB31008CF49E /* Song.swift */; };
 		F340B3351C40EB31008CF49E /* Song+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340B3291C40EB31008CF49E /* Song+CoreDataProperties.swift */; };
-		F340B3361C40EB31008CF49E /* SongAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340B32A1C40EB31008CF49E /* SongAttribute.swift */; };
 		F340B3371C40EB31008CF49E /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340B32B1C40EB31008CF49E /* SongTableViewCell.swift */; };
 		F340B3381C40EB31008CF49E /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340B32C1C40EB31008CF49E /* UIViewControllerExtensions.swift */; };
 		F340B3391C40EB31008CF49E /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340B32D1C40EB31008CF49E /* SetupViewController.swift */; };
@@ -82,6 +82,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8E4919021CB6197000DFB3C8 /* SongAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongAttribute.swift; sourceTree = "<group>"; };
+		8E4919031CB6197000DFB3C8 /* ArtistAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistAttribute.swift; sourceTree = "<group>"; };
 		F340B3031C40EA08008CF49E /* TopHits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopHits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F340B30D1C40EA08008CF49E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F340B3101C40EA08008CF49E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -91,13 +93,11 @@
 		F340B3201C40EAF0008CF49E /* TopHits.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TopHits.xcdatamodel; sourceTree = "<group>"; };
 		F340B3221C40EB31008CF49E /* Artist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		F340B3231C40EB31008CF49E /* Artist+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Artist+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		F340B3241C40EB31008CF49E /* ArtistAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistAttribute.swift; sourceTree = "<group>"; };
 		F340B3251C40EB31008CF49E /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		F340B3261C40EB31008CF49E /* NSManagedObjectContextExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContextExtensions.swift; sourceTree = "<group>"; };
 		F340B3271C40EB31008CF49E /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F340B3281C40EB31008CF49E /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		F340B3291C40EB31008CF49E /* Song+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Song+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		F340B32A1C40EB31008CF49E /* SongAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongAttribute.swift; sourceTree = "<group>"; };
 		F340B32B1C40EB31008CF49E /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		F340B32C1C40EB31008CF49E /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		F340B32D1C40EB31008CF49E /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
@@ -160,13 +160,13 @@
 			isa = PBXGroup;
 			children = (
 				F340B3221C40EB31008CF49E /* Artist.swift */,
+				8E4919031CB6197000DFB3C8 /* ArtistAttribute.swift */,
 				F340B3231C40EB31008CF49E /* Artist+CoreDataProperties.swift */,
-				F340B3241C40EB31008CF49E /* ArtistAttribute.swift */,
 				F340B3251C40EB31008CF49E /* CoreDataController.swift */,
 				F340B3261C40EB31008CF49E /* NSManagedObjectContextExtensions.swift */,
 				F340B3281C40EB31008CF49E /* Song.swift */,
+				8E4919021CB6197000DFB3C8 /* SongAttribute.swift */,
 				F340B3291C40EB31008CF49E /* Song+CoreDataProperties.swift */,
-				F340B32A1C40EB31008CF49E /* SongAttribute.swift */,
 				F340B32B1C40EB31008CF49E /* SongTableViewCell.swift */,
 				F340B34E1C40EC08008CF49E /* TopHits.psv */,
 				F340B31F1C40EAF0008CF49E /* TopHits.xcdatamodeld */,
@@ -301,16 +301,16 @@
 				F340B3371C40EB31008CF49E /* SongTableViewCell.swift in Sources */,
 				F340B3341C40EB31008CF49E /* Song.swift in Sources */,
 				F340B32F1C40EB31008CF49E /* Artist+CoreDataProperties.swift in Sources */,
+				8E4919041CB6197000DFB3C8 /* SongAttribute.swift in Sources */,
 				F340B3381C40EB31008CF49E /* UIViewControllerExtensions.swift in Sources */,
+				8E4919051CB6197000DFB3C8 /* ArtistAttribute.swift in Sources */,
 				F340B3391C40EB31008CF49E /* SetupViewController.swift in Sources */,
 				F340B3321C40EB31008CF49E /* NSManagedObjectContextExtensions.swift in Sources */,
 				F340B3331C40EB31008CF49E /* SearchViewController.swift in Sources */,
 				F340B3351C40EB31008CF49E /* Song+CoreDataProperties.swift in Sources */,
 				F340B32E1C40EB31008CF49E /* Artist.swift in Sources */,
-				F340B3361C40EB31008CF49E /* SongAttribute.swift in Sources */,
 				F340B3311C40EB31008CF49E /* CoreDataController.swift in Sources */,
 				F340B3191C40EA78008CF49E /* AppDelegate.swift in Sources */,
-				F340B3301C40EB31008CF49E /* ArtistAttribute.swift in Sources */,
 				F340B3211C40EAF0008CF49E /* TopHits.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
