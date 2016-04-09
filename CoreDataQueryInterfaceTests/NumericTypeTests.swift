@@ -12,13 +12,13 @@ import XCTest
 class NumericTypeTests: BaseTestCase {
     
     func testIntValueComparison() {
-        let resultCount = managedObjectContext.from(TestEntity).filter({ $0.integer64 == Int.max }).count()
+        let resultCount = managedObjectContext.from(TestEntity).filter({ $0.integer64 >= Int.max }).count()
         XCTAssert(resultCount == 1)
     }
     
     func testNSNumberValueComparison() {
         let intMax = Int.max as NSNumber
-        let resultCount = managedObjectContext.from(TestEntity).filter({ $0.integer64 == intMax }).count()
+        let resultCount = managedObjectContext.from(TestEntity).filter({ $0.integer64 >= intMax }).count()
         XCTAssert(resultCount == 1)
     }
     
