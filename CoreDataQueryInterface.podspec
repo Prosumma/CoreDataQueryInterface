@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'CoreDataQueryInterface'
-  s.version = '4.0.1'
+  s.version = '4.0.2'
   s.license = 'MIT'
   s.summary = 'A type-safe, fluent Swift library for working with Core Data.'
   s.homepage = 'https://github.com/Prosumma/CoreDataQueryInterface'
