@@ -28,6 +28,11 @@ import XCTest
 
 class SanityTests: BaseTestCase {
     
+    func testThatComplexBooleansStillWork() {
+        let x = 14
+        XCTAssertTrue(x > 0 && x < 47)
+    }
+    
     func testCountDepartments() {
         let departmentCount = managedObjectContext.from(Department).count()
         XCTAssertEqual(departmentCount, 3)

@@ -29,7 +29,7 @@ import CoreData
  The base class for attributes.
  - note: Don't use this class directly. Create or use one of its subclasses, such as `KeyAttribute`.
 */
-public class Attribute: CustomStringConvertible, CustomExpressionConvertible {
+public class Attribute: CustomStringConvertible, CustomExpressionConvertible, PredicateComparable {
     private let _name: String?
     private let _parent: Attribute?
     private let _type: NSAttributeType?

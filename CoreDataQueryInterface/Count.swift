@@ -24,7 +24,7 @@ SOFTWARE.
 
 import Foundation
 
-public struct Count: TypedExpressionConvertible, ComparableExpression {
+public struct Count: TypedExpressionConvertible, ComparableExpression, PredicateComparable {
     public typealias ExpressionValueType = NSNumber
     private var parent: CustomExpressionConvertible
     
