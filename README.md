@@ -55,7 +55,7 @@ In many of the examples, CDQI queries are started with an expression such as `ma
 
 Since it's highly unlikely that any other first- or third-party framework will add a `from` method to `NSManagedObjectContext`, this necessity will be removed in CDQI 5.0.
 
-It is possible to use CDQI without doing this:
+It is possible to use CDQI without doing implementing `ManagedObjectContextType`:
 
 ```swift
 let query = EntityQuery.from(Developer).filter{ $0.lastName == "Morrissey" }
