@@ -82,7 +82,7 @@ class CoreDataController {
                 let position = numberFormatter.numberFromString(fields[POSITION])!
                 let artistName = fields[ARTIST]
                 let songName = fields[SONG]
-                let artist = try! managedObjectContext.from(Artist).filter({$0.name == artistName}).first() ?? managedObjectContext.newEntity(Artist)
+                let artist = managedObjectContext.from(Artist).filter({$0.name == artistName}).first() ?? managedObjectContext.newEntity(Artist)
                 artist.name = artistName
                 let song = managedObjectContext.newEntity(Song)
                 song.year = year.intValue
