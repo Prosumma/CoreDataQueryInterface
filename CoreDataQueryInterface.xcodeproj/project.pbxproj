@@ -167,6 +167,40 @@
 		F3E6B5511B2BFCA500F735EE /* FilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */; };
 		F3E6B5531B2C01CC00F735EE /* OrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6B5521B2C01CC00F735EE /* OrderTests.swift */; };
 		F3E6B5541B2C01CC00F735EE /* OrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6B5521B2C01CC00F735EE /* OrderTests.swift */; };
+		F3F1BC561CD0020100F9072D /* CoreDataQueryInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = F3F1BC551CD0020100F9072D /* CoreDataQueryInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F3F1BC5B1CD0025700F9072D /* Aggregable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33863971C322BDB00818352 /* Aggregable.swift */; };
+		F3F1BC5C1CD0025700F9072D /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A46EF1B2BD61700D4EE61 /* Attribute.swift */; };
+		F3F1BC5D1CD0025700F9072D /* BooleanAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DD37B1CB01D1600FB2EF8 /* BooleanAttribute.swift */; };
+		F3F1BC5E1CD0025700F9072D /* Count.swift in Sources */ = {isa = PBXBuildFile; fileRef = F379BB001C3470FA001BC25B /* Count.swift */; };
+		F3F1BC5F1CD0025700F9072D /* CustomExpressionConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33863921C322AFE00818352 /* CustomExpressionConvertible.swift */; };
+		F3F1BC601CD0025700F9072D /* CustomPropertyConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33863A11C322DB700818352 /* CustomPropertyConvertible.swift */; };
+		F3F1BC611CD0025700F9072D /* CustomSortDescriptorConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367DE2F1B2D6149009C1020 /* CustomSortDescriptorConvertible.swift */; };
+		F3F1BC621CD0025700F9072D /* DataAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DD3761CB01C5300FB2EF8 /* DataAttribute.swift */; };
+		F3F1BC631CD0025700F9072D /* DateAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DD3711CB01BC300FB2EF8 /* DateAttribute.swift */; };
+		F3F1BC641CD0025700F9072D /* EntityAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38B43031CB04AFE0028E515 /* EntityAttribute.swift */; };
+		F3F1BC651CD0025700F9072D /* EntityQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABBC1B2BA9DA002A8A85 /* EntityQuery.swift */; };
+		F3F1BC661CD0025700F9072D /* EntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3158D1B1B2A91040041B125 /* EntityType.swift */; };
+		F3F1BC671CD0025700F9072D /* Executing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABDA1B2BC15C002A8A85 /* Executing.swift */; };
+		F3F1BC681CD0025700F9072D /* ExpressionQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABC11B2BAC28002A8A85 /* ExpressionQuery.swift */; };
+		F3F1BC691CD0025700F9072D /* ExpressionQueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABCB1B2BBB15002A8A85 /* ExpressionQueryType.swift */; };
+		F3F1BC6A1CD0025700F9072D /* Filtering.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABD01B2BC122002A8A85 /* Filtering.swift */; };
+		F3F1BC6B1CD0025700F9072D /* Grouping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E749D1B2E576000FAA04A /* Grouping.swift */; };
+		F3F1BC6C1CD0025700F9072D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335F5D21CB2CE370044A826 /* Logger.swift */; };
+		F3F1BC6D1CD0025700F9072D /* ManagedObjectContextType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABEA1B2BC4CB002A8A85 /* ManagedObjectContextType.swift */; };
+		F3F1BC6E1CD0025700F9072D /* ManagedObjectIDQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABE41B2BC2E7002A8A85 /* ManagedObjectIDQuery.swift */; };
+		F3F1BC6F1CD0025700F9072D /* NSManagedObjectID.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E485C1CB0208F00A60255 /* NSManagedObjectID.swift */; };
+		F3F1BC701CD0025700F9072D /* Null.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DD36C1CB0160400FB2EF8 /* Null.swift */; };
+		F3F1BC711CD0025700F9072D /* NumericAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DD3801CB01D3C00FB2EF8 /* NumericAttribute.swift */; };
+		F3F1BC721CD0025700F9072D /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3754CCA1B35FBE5004B46B3 /* Operators.swift */; };
+		F3F1BC731CD0025700F9072D /* Ordering.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABD51B2BC14A002A8A85 /* Ordering.swift */; };
+		F3F1BC741CD0025700F9072D /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A46F41B2BD77900D4EE61 /* Predicate.swift */; };
+		F3F1BC751CD0025700F9072D /* PredicateBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DD3671CAF8BC400FB2EF8 /* PredicateBuilder.swift */; };
+		F3F1BC761CD0025700F9072D /* PredicateComparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE4B181CC960F100AAEE1D /* PredicateComparable.swift */; };
+		F3F1BC771CD0025700F9072D /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABB71B2BA8BA002A8A85 /* QueryBuilder.swift */; };
+		F3F1BC781CD0025700F9072D /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABC61B2BB80E002A8A85 /* QueryType.swift */; };
+		F3F1BC791CD0025700F9072D /* Selecting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371ABDF1B2BC1F7002A8A85 /* Selecting.swift */; };
+		F3F1BC7A1CD0025700F9072D /* StringAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4918DE1CAF6F1200DFB3C8 /* StringAttribute.swift */; };
+		F3F1BC7B1CD0025700F9072D /* TypedExpressionConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC22BBE1CAA37D500642BB6 /* TypedExpressionConvertible.swift */; };
 		F3FE7AD11B2B87CF00AA5845 /* SanityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37C46B11B2A780200B35B1B /* SanityTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -259,6 +293,9 @@
 		F3DEBD9F1B40FCCD00EE1382 /* bin */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bin; sourceTree = "<group>"; };
 		F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTests.swift; sourceTree = "<group>"; };
 		F3E6B5521B2C01CC00F735EE /* OrderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTests.swift; sourceTree = "<group>"; };
+		F3F1BC531CD0020100F9072D /* CoreDataQueryInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataQueryInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3F1BC551CD0020100F9072D /* CoreDataQueryInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataQueryInterface.h; sourceTree = "<group>"; };
+		F3F1BC571CD0020100F9072D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +341,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F37C46AD1B2A780200B35B1B /* CoreDataQueryInterface.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3F1BC4F1CD0020100F9072D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +431,7 @@
 				F356831B1B43AC040089F0A0 /* README.md */,
 				F37C46A41B2A780200B35B1B /* CoreDataQueryInterface */,
 				F37C46B01B2A780200B35B1B /* CoreDataQueryInterfaceTests */,
+				F3F1BC541CD0020100F9072D /* CoreDataQueryInterface */,
 				F37C46A31B2A780200B35B1B /* Products */,
 				F3DEBD9F1B40FCCD00EE1382 /* bin */,
 			);
@@ -401,6 +446,7 @@
 				F30D1CD31B2A891100AF80A1 /* CoreDataQueryInterfaceOSXTests.xctest */,
 				F356DC2B1CCFFF4C00BF0907 /* CoreDataQueryInterface.framework */,
 				F356DC341CCFFF4C00BF0907 /* CoreDataQueryInterfacetvOSTests.xctest */,
+				F3F1BC531CD0020100F9072D /* CoreDataQueryInterface.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -428,6 +474,15 @@
 			path = CoreDataQueryInterfaceTests;
 			sourceTree = "<group>";
 		};
+		F3F1BC541CD0020100F9072D /* CoreDataQueryInterface */ = {
+			isa = PBXGroup;
+			children = (
+				F3F1BC551CD0020100F9072D /* CoreDataQueryInterface.h */,
+				F3F1BC571CD0020100F9072D /* Info.plist */,
+			);
+			path = CoreDataQueryInterface;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -451,6 +506,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F37C46A61B2A780200B35B1B /* CoreDataQueryInterface.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3F1BC501CD0020100F9072D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3F1BC561CD0020100F9072D /* CoreDataQueryInterface.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,6 +628,24 @@
 			productReference = F37C46AC1B2A780200B35B1B /* CoreDataQueryInterfaceiOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		F3F1BC521CD0020100F9072D /* CoreDataQueryInterfacewatchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3F1BC5A1CD0020100F9072D /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfacewatchOS" */;
+			buildPhases = (
+				F3F1BC4E1CD0020100F9072D /* Sources */,
+				F3F1BC4F1CD0020100F9072D /* Frameworks */,
+				F3F1BC501CD0020100F9072D /* Headers */,
+				F3F1BC511CD0020100F9072D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoreDataQueryInterfacewatchOS;
+			productName = CoreDataQueryInterface;
+			productReference = F3F1BC531CD0020100F9072D /* CoreDataQueryInterface.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -593,6 +674,9 @@
 					F37C46AB1B2A780200B35B1B = {
 						CreatedOnToolsVersion = 7.0;
 					};
+					F3F1BC521CD0020100F9072D = {
+						CreatedOnToolsVersion = 7.3;
+					};
 				};
 			};
 			buildConfigurationList = F37C469C1B2A780200B35B1B /* Build configuration list for PBXProject "CoreDataQueryInterface" */;
@@ -613,6 +697,7 @@
 				F30D1CD21B2A891100AF80A1 /* CoreDataQueryInterfaceOSXTests */,
 				F356DC2A1CCFFF4C00BF0907 /* CoreDataQueryInterfacetvOS */,
 				F356DC331CCFFF4C00BF0907 /* CoreDataQueryInterfacetvOSTests */,
+				F3F1BC521CD0020100F9072D /* CoreDataQueryInterfacewatchOS */,
 			);
 		};
 /* End PBXProject section */
@@ -660,6 +745,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3251A081B2BDA260031B817 /* Employees.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3F1BC511CD0020100F9072D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -858,6 +950,46 @@
 				8E4918D61CAF432100DFB3C8 /* TestEntityAttribute.swift in Sources */,
 				F3251A101B2BDE6E0031B817 /* Department.swift in Sources */,
 				8E4918D11CAF41B100DFB3C8 /* TestEntity+CoreDataProperties.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3F1BC4E1CD0020100F9072D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3F1BC5F1CD0025700F9072D /* CustomExpressionConvertible.swift in Sources */,
+				F3F1BC741CD0025700F9072D /* Predicate.swift in Sources */,
+				F3F1BC601CD0025700F9072D /* CustomPropertyConvertible.swift in Sources */,
+				F3F1BC7B1CD0025700F9072D /* TypedExpressionConvertible.swift in Sources */,
+				F3F1BC651CD0025700F9072D /* EntityQuery.swift in Sources */,
+				F3F1BC5C1CD0025700F9072D /* Attribute.swift in Sources */,
+				F3F1BC671CD0025700F9072D /* Executing.swift in Sources */,
+				F3F1BC5D1CD0025700F9072D /* BooleanAttribute.swift in Sources */,
+				F3F1BC701CD0025700F9072D /* Null.swift in Sources */,
+				F3F1BC731CD0025700F9072D /* Ordering.swift in Sources */,
+				F3F1BC621CD0025700F9072D /* DataAttribute.swift in Sources */,
+				F3F1BC661CD0025700F9072D /* EntityType.swift in Sources */,
+				F3F1BC761CD0025700F9072D /* PredicateComparable.swift in Sources */,
+				F3F1BC6F1CD0025700F9072D /* NSManagedObjectID.swift in Sources */,
+				F3F1BC711CD0025700F9072D /* NumericAttribute.swift in Sources */,
+				F3F1BC791CD0025700F9072D /* Selecting.swift in Sources */,
+				F3F1BC6E1CD0025700F9072D /* ManagedObjectIDQuery.swift in Sources */,
+				F3F1BC5B1CD0025700F9072D /* Aggregable.swift in Sources */,
+				F3F1BC611CD0025700F9072D /* CustomSortDescriptorConvertible.swift in Sources */,
+				F3F1BC631CD0025700F9072D /* DateAttribute.swift in Sources */,
+				F3F1BC771CD0025700F9072D /* QueryBuilder.swift in Sources */,
+				F3F1BC5E1CD0025700F9072D /* Count.swift in Sources */,
+				F3F1BC751CD0025700F9072D /* PredicateBuilder.swift in Sources */,
+				F3F1BC691CD0025700F9072D /* ExpressionQueryType.swift in Sources */,
+				F3F1BC781CD0025700F9072D /* QueryType.swift in Sources */,
+				F3F1BC721CD0025700F9072D /* Operators.swift in Sources */,
+				F3F1BC6D1CD0025700F9072D /* ManagedObjectContextType.swift in Sources */,
+				F3F1BC6C1CD0025700F9072D /* Logger.swift in Sources */,
+				F3F1BC7A1CD0025700F9072D /* StringAttribute.swift in Sources */,
+				F3F1BC681CD0025700F9072D /* ExpressionQuery.swift in Sources */,
+				F3F1BC6A1CD0025700F9072D /* Filtering.swift in Sources */,
+				F3F1BC641CD0025700F9072D /* EntityAttribute.swift in Sources */,
+				F3F1BC6B1CD0025700F9072D /* Grouping.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1173,6 +1305,48 @@
 			};
 			name = Release;
 		};
+		F3F1BC581CD0020100F9072D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = CoreDataQueryInterface/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.CoreDataQueryInterface;
+				PRODUCT_NAME = CoreDataQueryInterface;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		F3F1BC591CD0020100F9072D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = CoreDataQueryInterface/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.CoreDataQueryInterface;
+				PRODUCT_NAME = CoreDataQueryInterface;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1201,6 +1375,7 @@
 				F356DC3D1CCFFF4C00BF0907 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F356DC411CCFFF4C00BF0907 /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfacetvOSTests" */ = {
 			isa = XCConfigurationList;
@@ -1209,6 +1384,7 @@
 				F356DC3F1CCFFF4C00BF0907 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F37C469C1B2A780200B35B1B /* Build configuration list for PBXProject "CoreDataQueryInterface" */ = {
 			isa = XCConfigurationList;
@@ -1236,6 +1412,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		F3F1BC5A1CD0020100F9072D /* Build configuration list for PBXNativeTarget "CoreDataQueryInterfacewatchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3F1BC581CD0020100F9072D /* Debug */,
+				F3F1BC591CD0020100F9072D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
