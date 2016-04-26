@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F3F1BC521CD0020100F9072D"
-               BuildableName = "CoreDataQueryInterfacewatchOS.framework"
+               BuildableName = "CoreDataQueryInterface.framework"
                BlueprintName = "CoreDataQueryInterfacewatchOS"
                ReferencedContainer = "container:CoreDataQueryInterface.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F3F1BC521CD0020100F9072D"
-            BuildableName = "CoreDataQueryInterfacewatchOS.framework"
+            BuildableName = "CoreDataQueryInterface.framework"
             BlueprintName = "CoreDataQueryInterfacewatchOS"
             ReferencedContainer = "container:CoreDataQueryInterface.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F3F1BC521CD0020100F9072D"
-            BuildableName = "CoreDataQueryInterfacewatchOS.framework"
+            BuildableName = "CoreDataQueryInterface.framework"
             BlueprintName = "CoreDataQueryInterfacewatchOS"
             ReferencedContainer = "container:CoreDataQueryInterface.xcodeproj">
          </BuildableReference>
