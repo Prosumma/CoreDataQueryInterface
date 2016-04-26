@@ -9,6 +9,8 @@ Pod::Spec.new do |s|
   s.source = { :git => "#{s.homepage}.git", :tag => "v#{s.version}" }
   s.ios.deployment_target = '8.1'
   s.osx.deployment_target = '10.9'
+  s.watchos.deployment_target = '9.0'
+  s.tvos.deployment_target = '2.0'
   s.source_files = 'CoreDataQueryInterface/*.swift'
   s.requires_arc = true
 end
