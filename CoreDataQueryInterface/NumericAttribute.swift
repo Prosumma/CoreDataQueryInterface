@@ -24,7 +24,7 @@ SOFTWARE.
 
 import Foundation
 
-public class NumericAttribute: KeyAttribute, TypedExpressionConvertible {
+public class NumericAttribute: Attribute, TypedExpressionConvertible {
     public typealias ExpressionValueType = NSNumber
 }
 

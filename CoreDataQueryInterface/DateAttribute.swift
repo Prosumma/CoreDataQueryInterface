@@ -25,7 +25,7 @@ SOFTWARE.
 import CoreData
 import Foundation
 
-public class DateAttribute: KeyAttribute, TypedExpressionConvertible {
+public class DateAttribute: Attribute, TypedExpressionConvertible {
     public typealias ExpressionValueType = NSDate
     public required init(_ name: String, parent: Attribute? = nil, type: NSAttributeType? = nil) {
         super.init(name, parent: parent, type: .DateAttributeType)

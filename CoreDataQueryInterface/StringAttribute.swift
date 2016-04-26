@@ -25,7 +25,7 @@ SOFTWARE.
 import CoreData
 import Foundation
 
-public class StringAttribute: KeyAttribute, TypedExpressionConvertible {
+public class StringAttribute: Attribute, TypedExpressionConvertible {
     public typealias ExpressionValueType = String
     public required init(_ name: String, parent: Attribute? = nil, type: NSAttributeType? = nil) {
         super.init(name, parent: parent, type: .StringAttributeType)

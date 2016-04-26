@@ -32,7 +32,7 @@ extension Bool: TypedExpressionConvertible {
     }
 }
 
-public class BooleanAttribute: KeyAttribute, TypedExpressionConvertible {
+public class BooleanAttribute: Attribute, TypedExpressionConvertible {
     public typealias ExpressionValueType = Bool
     public required init(_ name: String, parent: Attribute? = nil, type: NSAttributeType? = nil) {
         super.init(name, parent: parent, type: .BooleanAttributeType)

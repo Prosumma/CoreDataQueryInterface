@@ -32,7 +32,7 @@ extension NSData: TypedExpressionConvertible {
     }
 }
 
-public class DataAttribute: KeyAttribute, TypedExpressionConvertible {
+public class DataAttribute: Attribute, TypedExpressionConvertible {
     public typealias ExpressionValueType = NSData
     public required init(_ name: String, parent: Attribute? = nil, type: NSAttributeType? = nil) {
         super.init(name, parent: parent, type: .BinaryDataAttributeType)

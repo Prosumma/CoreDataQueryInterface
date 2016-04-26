@@ -24,6 +24,9 @@ SOFTWARE.
 
 import Foundation
 
+/**
+ Implemented by `Attribute` subclasses to participate in subqueries and KVC aggregation expressions.
+ */
 public protocol Aggregable: Countable {
     associatedtype AggregateType: Attribute = Self
     func subquery(variable: String, predicate: AggregateType -> NSPredicate) -> Countable
