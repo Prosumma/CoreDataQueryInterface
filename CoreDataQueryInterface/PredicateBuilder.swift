@@ -28,6 +28,9 @@ import Foundation
  Helper class to build predicates.
  
  Use this class to bypass CDQI's type safety in filter expressions, if needed.
+ Any type which implements `CustomExpressionConvertible` or its subclass
+ `TypedExpressionConvertible` can be used here. Types such as `Int`, `String`,
+ `NSNumber` and so on can be used directly.
  */
 public struct PredicateBuilder {
     private init() {}

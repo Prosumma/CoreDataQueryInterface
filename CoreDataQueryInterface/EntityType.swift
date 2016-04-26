@@ -46,10 +46,8 @@ public func entityNameForClass(aClass: AnyClass, inManagedObjectModel managedObj
     dispatch_sync(EntityCacheQueue) {
         entityName = EntityCache[className]
         if entityName == nil {
-            entityName = managedObjectModel.entities.filter({ $0.managedObjectClassName == className }).first!.name!
-            if entityName != nil {
-                EntityCache[className] = entityName
-            }
+            entityName = managedObjectModel.entities.filter{ $0.managedObjectClassName == className }.first?.name
+            EntityCache[className] = entityName
         }
     }
     return entityName
