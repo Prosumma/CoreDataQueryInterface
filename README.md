@@ -17,7 +17,7 @@ Core Data Query Interface (CDQI) is a type-safe, fluent, intuitive library for w
 - [x] Filtering, sorting, grouping, aggregate expressions, limits, etc.
 - [x] Optionally eliminates the use of magic strings so common in Core Data
 - [x] Query reuse, i.e., no side-effects from chaining
-- [x] Support for iOS and OS X
+- [x] Support for iOS, OS X, tvOS, and watchOS
 
 ### Overview
 
