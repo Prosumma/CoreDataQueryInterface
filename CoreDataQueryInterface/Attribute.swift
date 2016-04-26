@@ -43,6 +43,9 @@ public class Attribute: CustomStringConvertible, CustomExpressionConvertible, Pr
         _parent = parent
         _type = type
     }
+    /**
+     Returns the attribute as a keypath.
+    */
     public private(set) lazy var description: String = {
         if let parent = self._parent {
             let parentName = String(parent)
@@ -52,6 +55,11 @@ public class Attribute: CustomStringConvertible, CustomExpressionConvertible, Pr
             return self._name ?? ""
         }
     }()
+    /**
+     The `NSExpression` to which this attribute resolves.
+     
+     - note: This is usually a keypath expression.
+    */
     public private(set) lazy var expression: NSExpression = {
         let keyPath = String(self)
         if keyPath.hasPrefix("$") {
@@ -62,6 +70,10 @@ public class Attribute: CustomStringConvertible, CustomExpressionConvertible, Pr
             return NSExpression(forKeyPath: keyPath)
         }
     }()
+    
+    /**
+     
+    */
     public func named(name: String, type: NSAttributeType? = nil) -> NSExpressionDescription {
         let e = NSExpressionDescription()
         e.expression = expression
@@ -97,11 +109,5 @@ extension Aggregable where Self: Attribute {
     }
     public var min: AggregateType {
         return AggregateType("@min", parent: self)
-    }
-}
-
-extension Attribute: CustomPropertyConvertible {
-    public var property: AnyObject {
-        return String(self)
     }
 }

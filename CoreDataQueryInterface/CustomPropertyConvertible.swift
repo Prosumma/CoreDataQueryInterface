@@ -25,6 +25,13 @@ SOFTWARE.
 import Foundation
 import CoreData
 
+/**
+ Represents a type that can be used with `NSFetchRequest`'s `propertiesToFetch`
+ and `propertiesToGroupBy` properties.
+ 
+ - note: In Swift, these properties have the type `[AnyObject]` (i.e., `NSArray`), but
+ in practice only strings and subtypes of `NSPropertyDescription` can be used.
+ */
 public protocol CustomPropertyConvertible {
     var property: AnyObject { get }
 }
@@ -41,3 +48,8 @@ extension NSPropertyDescription: CustomPropertyConvertible {
     }
 }
 
+extension Attribute: CustomPropertyConvertible {
+    public var property: AnyObject {
+        return String(self)
+    }
+}

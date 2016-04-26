@@ -25,13 +25,6 @@ SOFTWARE.
 import Foundation
 import CoreData
 
-extension NSManagedObject: TypedExpressionConvertible, ComparableExpression {
-    public typealias ExpressionValueType = NSManagedObject
-    public var expression: NSExpression {
-        return NSExpression(forConstantValue: self)
-    }
-}
-
 public class EntityAttribute: Attribute, TypedExpressionConvertible {
     public typealias ExpressionValueType = NSManagedObject
     public required init(_ name: String, parent: Attribute? = nil, type: NSAttributeType? = nil) {
@@ -41,3 +34,11 @@ public class EntityAttribute: Attribute, TypedExpressionConvertible {
         super.init()
     }
 }
+
+extension NSManagedObject: TypedExpressionConvertible, ComparableExpression {
+    public typealias ExpressionValueType = NSManagedObject
+    public var expression: NSExpression {
+        return NSExpression(forConstantValue: self)
+    }
+}
+

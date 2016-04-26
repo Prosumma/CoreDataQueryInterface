@@ -25,13 +25,6 @@ SOFTWARE.
 import CoreData
 import Foundation
 
-extension Bool: TypedExpressionConvertible {
-    public typealias ExpressionValueType = Bool
-    public var expression: NSExpression {
-        return NSExpression(forConstantValue: self)
-    }
-}
-
 public class BooleanAttribute: Attribute, TypedExpressionConvertible {
     public typealias ExpressionValueType = Bool
     public required init(_ name: String, parent: Attribute? = nil, type: NSAttributeType? = nil) {
@@ -42,3 +35,9 @@ public class BooleanAttribute: Attribute, TypedExpressionConvertible {
     }
 }
 
+extension Bool: TypedExpressionConvertible {
+    public typealias ExpressionValueType = Bool
+    public var expression: NSExpression {
+        return NSExpression(forConstantValue: self)
+    }
+}

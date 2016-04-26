@@ -27,30 +27,60 @@ import Foundation
 
 extension ExpressionQueryType {
 
+    /**
+     Projection, i.e., select attributes of an entity rather than the entities themselves.
+     
+     `CustomPropertyConvertible` is implemented by `String`, `Attribute` and `NSPropertyDescription`,
+     so any of these can be used here.
+    */
     public func select(expressions: [CustomPropertyConvertible]) -> ExpressionQuery<QueryEntityType> {
         var builder = self.builder
         builder.expressions.appendContentsOf(expressions)
         return ExpressionQuery(builder: builder)
     }
-    
+
+    /**
+     Projection, i.e., select attributes of an entity rather than the entities themselves.
+     
+     `CustomPropertyConvertible` is implemented by `String`, `Attribute` and `NSPropertyDescription`,
+     so any of these can be used here.
+    */
     public func select(expressions: CustomPropertyConvertible...) -> ExpressionQuery<QueryEntityType> {
         return select(expressions)
     }
     
+    /**
+     Projection, i.e., select attributes of an entity rather than the entities themselves.
+     
+         .select(employee in [employee.firstName, employee.lastName])
+    */
     public func select(expressions: QueryEntityType.EntityAttributeType -> [CustomPropertyConvertible]) -> ExpressionQuery<QueryEntityType> {
         let attribute = QueryEntityType.EntityAttributeType()
         return select(expressions(attribute))
     }
-    
+
+    /**
+     Projection, i.e., select attributes of an entity rather than the entities themselves.
+
+         .select([{$0.firstName}, {$0.lastName}])
+    */
     public func select(expressions: [QueryEntityType.EntityAttributeType -> CustomPropertyConvertible]) -> ExpressionQuery<QueryEntityType> {
         let attribute = QueryEntityType.EntityAttributeType()
         return select(expressions.map() { $0(attribute) })
     }
-    
+
+    /**
+     Projection, i.e., select attributes of an entity rather than the entities themselves.
+     
+         .select({$0.firstName}, {$0.lastName})
+    */
     public func select(expressions: (QueryEntityType.EntityAttributeType -> CustomPropertyConvertible)...) -> ExpressionQuery<QueryEntityType> {
         return select(expressions)
     }
     
+    /**
+     Return only the distinct attributes requested in the fetch.
+    */
     public func distinct() -> ExpressionQuery<QueryEntityType> {
         var builder = self.builder
         builder.returnsDistinctResults = true
@@ -58,7 +88,7 @@ extension ExpressionQueryType {
     }
     
     /**
-    Resets the list of selected expressions
+     Resets the list of selected expressions
     */
     public func reselect() -> ExpressionQuery<QueryEntityType> {
         var builder = self.builder

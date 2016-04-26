@@ -25,13 +25,6 @@ SOFTWARE.
 import CoreData
 import Foundation
 
-extension NSData: TypedExpressionConvertible {
-    public typealias ExpressionValueType = NSData
-    public var expression: NSExpression {
-        return NSExpression(forConstantValue: self)
-    }
-}
-
 public class DataAttribute: Attribute, TypedExpressionConvertible {
     public typealias ExpressionValueType = NSData
     public required init(_ name: String, parent: Attribute? = nil, type: NSAttributeType? = nil) {
@@ -39,6 +32,13 @@ public class DataAttribute: Attribute, TypedExpressionConvertible {
     }
     public required init() {
         super.init()
+    }
+}
+
+extension NSData: TypedExpressionConvertible {
+    public typealias ExpressionValueType = NSData
+    public var expression: NSExpression {
+        return NSExpression(forConstantValue: self)
     }
 }
 
