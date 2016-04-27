@@ -131,7 +131,7 @@ The second statement causes no side effects on the first one.
 
 ### Examples
 
-A great number of examples can be found in the unit tests, but here are a few at a glance.
+A great number of examples can be found in the unit tests and the "Top Hits" example app in the `Examples` folder, but here are a few at a glance.
 
 ```swift
 let developerQuery = managedObjectContext.from(Developer)
