@@ -164,3 +164,7 @@ swiftProjectNames = projectQuery.array(project.name)
 ### Kudos
 
 My thanks to [Pat Goley](https://github.com/patgoley) for providing the impetus for and assistance with type safety in filter expressions.
+
+### Help & Support
+
+If you need help with CDQI, send me a message on [Twitter](https://twitter.com/prosumma). If you've found a problem with CDQI or think you can improve upon it, open an [issue](https://github.com/Prosumma/CoreDataQueryInterface/issues) or send me a pull request.
