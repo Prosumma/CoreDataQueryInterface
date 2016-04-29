@@ -177,18 +177,19 @@ end
 File::open(model_path) do |fd|
   xml = REXML::Document::new(fd)
   classes_by_entity_name = {}
-  #build map of entity_name => class and excluded entities
+  # Build map of entity_name => class and excluded entities
   xml.root.elements.each('entity') do |entity_node|
-    represented_class = entity_node.attributes['representedClassName']
-    represented_class = represented_class.split('.')[-1]
     entity_name = entity_node.attributes['name']
+    represented_class = entity_node.attributes['representedClassName']
     excluded = false
     if represented_class.nil?
-      $stderr.puts "WARNING: The '#{entity_name}' entity was skipped because it has no represented class."
+      $stderr.puts "WARNING: The entity '#{entity_name}' was skipped because it has no represented class."
       excluded = true
+    else
+      represented_class = represented_class.split('.')[-1]
     end
-    if represented_class == 'Key' && $options.suffix == 'Attribute'
-      $stderr.puts "WARNING: The entity '#{entity_name}' represented by the class 'Key' was skipped because its name would conflict with CDQI's 'KeyAttribute'. You can avoid this by using a different represented class name or a suffix other than 'Attribute'."
+    if ['String', 'Numeric', 'Date', 'Data', 'Entity'].include?(represented_class) && $options.suffix == 'Attribute'
+      $stderr.puts "WARNING: The entity '#{entity_name}' represented by the class '#{represented_class}' was skipped because the name of its generated proxy would conflict with CDQI's '#{represented_class}Attribute'. You can avoid this by using a different represented class name or a suffix other than 'Attribute'."
       excluded = true
     end
     if excluded
