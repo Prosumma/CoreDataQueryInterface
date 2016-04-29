@@ -161,6 +161,10 @@ projectQuery = projectQuery.order(project.name)
 swiftProjectNames = projectQuery.array(project.name)
 ```
 
+### Debugging & Logging
+
+Add the launch argument `-com.prosumma.CoreDataQueryInterface.Debug` to your application while debugging and CDQI will emit useful details about every generated fetch request. When used in combination with Apple's `-com.apple.CoreData.SQLDebug` launch argument, a wealth of information becomes available.
+
 ### Kudos
 
 My thanks to [Pat Goley](https://github.com/patgoley) for providing the impetus for and assistance with type safety in filter expressions.
