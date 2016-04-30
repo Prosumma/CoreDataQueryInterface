@@ -172,3 +172,7 @@ My thanks to [Pat Goley](https://github.com/patgoley) for providing the impetus 
 ### Help & Support
 
 If you need help with CDQI, send me a message on [Twitter](https://twitter.com/prosumma). If you've found a problem with CDQI or think you can improve upon it, open an [issue](https://github.com/Prosumma/CoreDataQueryInterface/issues) or send me a pull request.
+
+### Shameless Plug
+
+Need an iOS app written or a codebase untangled? Perhaps you want to migrate from Objective-C to Swift. Maybe you need advanced help with Core Data. If you want someone who provides high quality results in a timely fashion and plays well with others, please [get in touch](http://gregoryhigley.me). My work speaks for itself, as does my [StackOverflow rank](http://stackoverflow.com/users/27779/gregory-higley?tab=topactivity) in the top 5%. 
