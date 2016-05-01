@@ -30,6 +30,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8E009ECA1CD5759B00B056B4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F340B33A1C40EB3B008CF49E /* CoreDataQueryInterface.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F356DC2B1CCFFF4C00BF0907;
+			remoteInfo = CoreDataQueryInterfacetvOS;
+		};
+		8E009ECC1CD5759B00B056B4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F340B33A1C40EB3B008CF49E /* CoreDataQueryInterface.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F356DC341CCFFF4C00BF0907;
+			remoteInfo = CoreDataQueryInterfacetvOSTests;
+		};
+		8E009ECE1CD5759B00B056B4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F340B33A1C40EB3B008CF49E /* CoreDataQueryInterface.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F3F1BC531CD0020100F9072D;
+			remoteInfo = CoreDataQueryInterfacewatchOS;
+		};
 		F340B3411C40EB3B008CF49E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F340B33A1C40EB3B008CF49E /* CoreDataQueryInterface.xcodeproj */;
@@ -152,6 +173,9 @@
 				F340B3441C40EB3B008CF49E /* CoreDataQueryInterfaceiOSTests.xctest */,
 				F340B3461C40EB3B008CF49E /* CoreDataQueryInterface.framework */,
 				F340B3481C40EB3B008CF49E /* CoreDataQueryInterfaceOSXTests.xctest */,
+				8E009ECB1CD5759B00B056B4 /* CoreDataQueryInterface.framework */,
+				8E009ECD1CD5759B00B056B4 /* CoreDataQueryInterfacetvOSTests.xctest */,
+				8E009ECF1CD5759B00B056B4 /* CoreDataQueryInterface.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,6 +218,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F340B3151C40EA08008CF49E /* Build configuration list for PBXNativeTarget "TopHits" */;
 			buildPhases = (
+				8E009EC31CD5759B00B056B4 /* CDQI */,
 				F340B2FF1C40EA08008CF49E /* Sources */,
 				F340B3001C40EA08008CF49E /* Frameworks */,
 				F340B3011C40EA08008CF49E /* Resources */,
@@ -249,6 +274,27 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		8E009ECB1CD5759B00B056B4 /* CoreDataQueryInterface.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CoreDataQueryInterface.framework;
+			remoteRef = 8E009ECA1CD5759B00B056B4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8E009ECD1CD5759B00B056B4 /* CoreDataQueryInterfacetvOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CoreDataQueryInterfacetvOSTests.xctest;
+			remoteRef = 8E009ECC1CD5759B00B056B4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8E009ECF1CD5759B00B056B4 /* CoreDataQueryInterface.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CoreDataQueryInterface.framework;
+			remoteRef = 8E009ECE1CD5759B00B056B4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		F340B3421C40EB3B008CF49E /* CoreDataQueryInterface.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -292,6 +338,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8E009EC31CD5759B00B056B4 /* CDQI */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = CDQI;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TARGET_DIR=\"${PROJECT_DIR}/${TARGET_NAME}\"\nCDQI=\"$(dirname $(dirname ${PROJECT_DIR}))/bin/cdqi\"\n# for carthage install use ${PROJECT_DIR}/Carthage/Checkouts/CoreDataQueryInterface/bin/cdqi\n\nfor f in $(find $TARGET_DIR -name \"*.xcdatamodeld\")\ndo\n    FILENAME=\"$(basename $f)\"\n    MODEL_DIR=\"$(dirname $f)\"\n    MODEL=${FILENAME%.*}\n    echo \"Generating model attributes for ${f}\"\n    $($CDQI --in $MODEL_DIR --force \"${MODEL}\")\ndone";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F340B2FF1C40EA08008CF49E /* Sources */ = {
