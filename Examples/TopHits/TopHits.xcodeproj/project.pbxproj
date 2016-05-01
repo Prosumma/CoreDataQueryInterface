@@ -352,7 +352,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "TARGET_DIR=\"${PROJECT_DIR}/${TARGET_NAME}\"\nCDQI=\"$(dirname $(dirname ${PROJECT_DIR}))/bin/cdqi\"\n# for carthage install use ${PROJECT_DIR}/Carthage/Checkouts/CoreDataQueryInterface/bin/cdqi\n\nfor f in $(find $TARGET_DIR -name \"*.xcdatamodeld\")\ndo\n    FILENAME=$(basename $f)\n    MODEL_DIR=$(dirname $f)\n    MODEL=${FILENAME%.*}\n    echo \"Generating model attributes for ${MODEL} in ${MODEL_DIR}\"\n    $($CDQI --in $MODEL_DIR --force \"${MODEL}\")\ndone";
+			shellScript = "TARGET_DIR=\"${PROJECT_DIR}/${TARGET_NAME}\"\nCDQI=\"$(dirname $(dirname ${PROJECT_DIR}))/bin/cdqi\"\n# for carthage install use ${PROJECT_DIR}/Carthage/Checkouts/CoreDataQueryInterface/bin/cdqi\n\nfor f in $(find $TARGET_DIR -name \"*.xcdatamodeld\")\ndo\n    FILENAME=\"$(basename $f)\"\n    MODEL_DIR=\"$(dirname $f)\"\n    MODEL=${FILENAME%.*}\n    echo \"Generating model attributes for ${f}\"\n    $($CDQI --in $MODEL_DIR --force \"${MODEL}\")\ndone";
 		};
 /* End PBXShellScriptBuildPhase section */
 
