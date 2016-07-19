@@ -167,7 +167,6 @@
 		F3E6B5511B2BFCA500F735EE /* FilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */; };
 		F3E6B5531B2C01CC00F735EE /* OrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6B5521B2C01CC00F735EE /* OrderTests.swift */; };
 		F3E6B5541B2C01CC00F735EE /* OrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6B5521B2C01CC00F735EE /* OrderTests.swift */; };
-		F3F1BC561CD0020100F9072D /* CoreDataQueryInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = F3F1BC551CD0020100F9072D /* CoreDataQueryInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F3F1BC5B1CD0025700F9072D /* Aggregable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33863971C322BDB00818352 /* Aggregable.swift */; };
 		F3F1BC5C1CD0025700F9072D /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A46EF1B2BD61700D4EE61 /* Attribute.swift */; };
 		F3F1BC5D1CD0025700F9072D /* BooleanAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DD37B1CB01D1600FB2EF8 /* BooleanAttribute.swift */; };
@@ -294,8 +293,6 @@
 		F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTests.swift; sourceTree = "<group>"; };
 		F3E6B5521B2C01CC00F735EE /* OrderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTests.swift; sourceTree = "<group>"; };
 		F3F1BC531CD0020100F9072D /* CoreDataQueryInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataQueryInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3F1BC551CD0020100F9072D /* CoreDataQueryInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataQueryInterface.h; sourceTree = "<group>"; };
-		F3F1BC571CD0020100F9072D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -431,7 +428,6 @@
 				F356831B1B43AC040089F0A0 /* README.md */,
 				F37C46A41B2A780200B35B1B /* CoreDataQueryInterface */,
 				F37C46B01B2A780200B35B1B /* CoreDataQueryInterfaceTests */,
-				F3F1BC541CD0020100F9072D /* CoreDataQueryInterface */,
 				F37C46A31B2A780200B35B1B /* Products */,
 				F3DEBD9F1B40FCCD00EE1382 /* bin */,
 			);
@@ -474,15 +470,6 @@
 			path = CoreDataQueryInterfaceTests;
 			sourceTree = "<group>";
 		};
-		F3F1BC541CD0020100F9072D /* CoreDataQueryInterface */ = {
-			isa = PBXGroup;
-			children = (
-				F3F1BC551CD0020100F9072D /* CoreDataQueryInterface.h */,
-				F3F1BC571CD0020100F9072D /* Info.plist */,
-			);
-			path = CoreDataQueryInterface;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -513,7 +500,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3F1BC561CD0020100F9072D /* CoreDataQueryInterface.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
