@@ -61,7 +61,7 @@ class SelectionTests : BaseTestCase {
     }
     
     func testDistinctArray() {
-        let query = managedObjectContext.from(Employee).order({$0.salary})
+        let query = managedObjectContext.from(Employee.self).order{ $0.salary }
         let distinctSalaries: [Int] = query.distinct().array({$0.salary})
         XCTAssertEqual(distinctSalaries.count, 23)
         let salaries: [Int] = query.array({$0.salary})

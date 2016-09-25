@@ -134,8 +134,16 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
         return results.map { $0[key]! as! T }
     }
     
+    public func array<T>(managedObjectContext: NSManagedObjectContext? = nil, _ block: (M.CDQIAttribute) -> PropertyConvertible) throws -> [T] {
+        return try array(block(M.CDQIAttribute()), managedObjectContext: managedObjectContext)
+    }
+    
     public func value<T>(_ property: PropertyConvertible, managedObjectContext: NSManagedObjectContext? = nil) throws -> T? {
         let results: [T] = try limit(1).array(property)
         return results.count == 0 ? nil : results[0]
+    }
+    
+    public func value<T>(managedObjectContext: NSManagedObjectContext? = nil, _ block: (M.CDQIAttribute) -> PropertyConvertible) throws -> T? {
+        return try value(block(M.CDQIAttribute()), managedObjectContext: managedObjectContext)
     }
 }
