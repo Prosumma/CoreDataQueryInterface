@@ -63,6 +63,46 @@
 		F37C46A61B2A780200B35B1B /* CoreDataQueryInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = F37C46A51B2A780200B35B1B /* CoreDataQueryInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F37C46AD1B2A780200B35B1B /* CoreDataQueryInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F37C46A21B2A780200B35B1B /* CoreDataQueryInterface.framework */; };
 		F37C46B21B2A780200B35B1B /* SanityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37C46B11B2A780200B35B1B /* SanityTests.swift */; };
+		F3967ED91D9844CD006382C6 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967ED81D9844CD006382C6 /* Protocols.swift */; };
+		F3967EDA1D9844CD006382C6 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967ED81D9844CD006382C6 /* Protocols.swift */; };
+		F3967EDB1D9844CD006382C6 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967ED81D9844CD006382C6 /* Protocols.swift */; };
+		F3967EDC1D9844CD006382C6 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967ED81D9844CD006382C6 /* Protocols.swift */; };
+		F3967EDE1D984563006382C6 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EDD1D984563006382C6 /* Functions.swift */; };
+		F3967EDF1D984563006382C6 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EDD1D984563006382C6 /* Functions.swift */; };
+		F3967EE01D984563006382C6 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EDD1D984563006382C6 /* Functions.swift */; };
+		F3967EE11D984563006382C6 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EDD1D984563006382C6 /* Functions.swift */; };
+		F3967EE31D984610006382C6 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EE21D984610006382C6 /* Types.swift */; };
+		F3967EE41D984610006382C6 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EE21D984610006382C6 /* Types.swift */; };
+		F3967EE51D984610006382C6 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EE21D984610006382C6 /* Types.swift */; };
+		F3967EE61D984610006382C6 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EE21D984610006382C6 /* Types.swift */; };
+		F3967EE81D9846C7006382C6 /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EE71D9846C7006382C6 /* Attributes.swift */; };
+		F3967EE91D9846C7006382C6 /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EE71D9846C7006382C6 /* Attributes.swift */; };
+		F3967EEA1D9846C7006382C6 /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EE71D9846C7006382C6 /* Attributes.swift */; };
+		F3967EEB1D9846C7006382C6 /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EE71D9846C7006382C6 /* Attributes.swift */; };
+		F3967EED1D984715006382C6 /* Comparisons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EEC1D984715006382C6 /* Comparisons.swift */; };
+		F3967EEE1D984715006382C6 /* Comparisons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EEC1D984715006382C6 /* Comparisons.swift */; };
+		F3967EEF1D984715006382C6 /* Comparisons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EEC1D984715006382C6 /* Comparisons.swift */; };
+		F3967EF01D984715006382C6 /* Comparisons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EEC1D984715006382C6 /* Comparisons.swift */; };
+		F3967EF21D984748006382C6 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EF11D984748006382C6 /* Operators.swift */; };
+		F3967EF31D984748006382C6 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EF11D984748006382C6 /* Operators.swift */; };
+		F3967EF41D984748006382C6 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EF11D984748006382C6 /* Operators.swift */; };
+		F3967EF51D984748006382C6 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EF11D984748006382C6 /* Operators.swift */; };
+		F3967EF71D984758006382C6 /* Miscellanea.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EF61D984758006382C6 /* Miscellanea.swift */; };
+		F3967EF81D984758006382C6 /* Miscellanea.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EF61D984758006382C6 /* Miscellanea.swift */; };
+		F3967EF91D984758006382C6 /* Miscellanea.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EF61D984758006382C6 /* Miscellanea.swift */; };
+		F3967EFA1D984758006382C6 /* Miscellanea.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EF61D984758006382C6 /* Miscellanea.swift */; };
+		F3967EFC1D9847D7006382C6 /* NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EFB1D9847D7006382C6 /* NSManagedObjectContext.swift */; };
+		F3967EFD1D9847D7006382C6 /* NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EFB1D9847D7006382C6 /* NSManagedObjectContext.swift */; };
+		F3967EFE1D9847D7006382C6 /* NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EFB1D9847D7006382C6 /* NSManagedObjectContext.swift */; };
+		F3967EFF1D9847D7006382C6 /* NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EFB1D9847D7006382C6 /* NSManagedObjectContext.swift */; };
+		F3967F011D984801006382C6 /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967F001D984801006382C6 /* QueryBuilder.swift */; };
+		F3967F021D984801006382C6 /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967F001D984801006382C6 /* QueryBuilder.swift */; };
+		F3967F031D984801006382C6 /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967F001D984801006382C6 /* QueryBuilder.swift */; };
+		F3967F041D984801006382C6 /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967F001D984801006382C6 /* QueryBuilder.swift */; };
+		F3967F061D98481E006382C6 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967F051D98481E006382C6 /* Query.swift */; };
+		F3967F071D98481E006382C6 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967F051D98481E006382C6 /* Query.swift */; };
+		F3967F081D98481E006382C6 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967F051D98481E006382C6 /* Query.swift */; };
+		F3967F091D98481E006382C6 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967F051D98481E006382C6 /* Query.swift */; };
 		F39C7A741B718E34008DB31C /* CoreDataQueryInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = F37C46A51B2A780200B35B1B /* CoreDataQueryInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F3E6B5501B2BFCA500F735EE /* FilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */; };
 		F3E6B5511B2BFCA500F735EE /* FilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */; };
@@ -123,6 +163,16 @@
 		F37C46AC1B2A780200B35B1B /* CoreDataQueryInterfaceiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataQueryInterfaceiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F37C46B11B2A780200B35B1B /* SanityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanityTests.swift; sourceTree = "<group>"; };
 		F37C46B31B2A780200B35B1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3967ED81D9844CD006382C6 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		F3967EDD1D984563006382C6 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		F3967EE21D984610006382C6 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		F3967EE71D9846C7006382C6 /* Attributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attributes.swift; sourceTree = "<group>"; };
+		F3967EEC1D984715006382C6 /* Comparisons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comparisons.swift; sourceTree = "<group>"; };
+		F3967EF11D984748006382C6 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		F3967EF61D984758006382C6 /* Miscellanea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Miscellanea.swift; sourceTree = "<group>"; };
+		F3967EFB1D9847D7006382C6 /* NSManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContext.swift; sourceTree = "<group>"; };
+		F3967F001D984801006382C6 /* QueryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryBuilder.swift; sourceTree = "<group>"; };
+		F3967F051D98481E006382C6 /* Query.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
 		F39C7A711B718DB2008DB31C /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		F3DEBD9F1B40FCCD00EE1382 /* bin */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bin; sourceTree = "<group>"; };
 		F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTests.swift; sourceTree = "<group>"; };
@@ -219,6 +269,16 @@
 		F371ABE91B2BC3FF002A8A85 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				F3967EE71D9846C7006382C6 /* Attributes.swift */,
+				F3967EEC1D984715006382C6 /* Comparisons.swift */,
+				F3967EDD1D984563006382C6 /* Functions.swift */,
+				F3967EF61D984758006382C6 /* Miscellanea.swift */,
+				F3967EFB1D9847D7006382C6 /* NSManagedObjectContext.swift */,
+				F3967EF11D984748006382C6 /* Operators.swift */,
+				F3967ED81D9844CD006382C6 /* Protocols.swift */,
+				F3967F051D98481E006382C6 /* Query.swift */,
+				F3967F001D984801006382C6 /* QueryBuilder.swift */,
+				F3967EE21D984610006382C6 /* Types.swift */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -446,24 +506,28 @@
 				TargetAttributes = {
 					F30D1CC91B2A891100AF80A1 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 					F30D1CD21B2A891100AF80A1 = {
 						CreatedOnToolsVersion = 7.0;
 					};
 					F356DC2A1CCFFF4C00BF0907 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 					F356DC331CCFFF4C00BF0907 = {
 						CreatedOnToolsVersion = 7.3;
 					};
 					F37C46A11B2A780200B35B1B = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 					F37C46AB1B2A780200B35B1B = {
 						CreatedOnToolsVersion = 7.0;
 					};
 					F3F1BC521CD0020100F9072D = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -550,6 +614,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3967F071D98481E006382C6 /* Query.swift in Sources */,
+				F3967EE41D984610006382C6 /* Types.swift in Sources */,
+				F3967EFD1D9847D7006382C6 /* NSManagedObjectContext.swift in Sources */,
+				F3967EEE1D984715006382C6 /* Comparisons.swift in Sources */,
+				F3967EDA1D9844CD006382C6 /* Protocols.swift in Sources */,
+				F3967EE91D9846C7006382C6 /* Attributes.swift in Sources */,
+				F3967EF81D984758006382C6 /* Miscellanea.swift in Sources */,
+				F3967F021D984801006382C6 /* QueryBuilder.swift in Sources */,
+				F3967EDF1D984563006382C6 /* Functions.swift in Sources */,
+				F3967EF31D984748006382C6 /* Operators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,6 +656,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3967F081D98481E006382C6 /* Query.swift in Sources */,
+				F3967EE51D984610006382C6 /* Types.swift in Sources */,
+				F3967EFE1D9847D7006382C6 /* NSManagedObjectContext.swift in Sources */,
+				F3967EEF1D984715006382C6 /* Comparisons.swift in Sources */,
+				F3967EDB1D9844CD006382C6 /* Protocols.swift in Sources */,
+				F3967EEA1D9846C7006382C6 /* Attributes.swift in Sources */,
+				F3967EF91D984758006382C6 /* Miscellanea.swift in Sources */,
+				F3967F031D984801006382C6 /* QueryBuilder.swift in Sources */,
+				F3967EE01D984563006382C6 /* Functions.swift in Sources */,
+				F3967EF41D984748006382C6 /* Operators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,6 +698,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3967F061D98481E006382C6 /* Query.swift in Sources */,
+				F3967EE31D984610006382C6 /* Types.swift in Sources */,
+				F3967EFC1D9847D7006382C6 /* NSManagedObjectContext.swift in Sources */,
+				F3967EED1D984715006382C6 /* Comparisons.swift in Sources */,
+				F3967ED91D9844CD006382C6 /* Protocols.swift in Sources */,
+				F3967EE81D9846C7006382C6 /* Attributes.swift in Sources */,
+				F3967EF71D984758006382C6 /* Miscellanea.swift in Sources */,
+				F3967F011D984801006382C6 /* QueryBuilder.swift in Sources */,
+				F3967EDE1D984563006382C6 /* Functions.swift in Sources */,
+				F3967EF21D984748006382C6 /* Operators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,6 +740,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3967F091D98481E006382C6 /* Query.swift in Sources */,
+				F3967EE61D984610006382C6 /* Types.swift in Sources */,
+				F3967EFF1D9847D7006382C6 /* NSManagedObjectContext.swift in Sources */,
+				F3967EF01D984715006382C6 /* Comparisons.swift in Sources */,
+				F3967EDC1D9844CD006382C6 /* Protocols.swift in Sources */,
+				F3967EEB1D9846C7006382C6 /* Attributes.swift in Sources */,
+				F3967EFA1D984758006382C6 /* Miscellanea.swift in Sources */,
+				F3967F041D984801006382C6 /* QueryBuilder.swift in Sources */,
+				F3967EE11D984563006382C6 /* Functions.swift in Sources */,
+				F3967EF51D984748006382C6 /* Operators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,6 +793,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -710,12 +815,14 @@
 				PRODUCT_NAME = CoreDataQueryInterface;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		F30D1CDF1B2A891200AF80A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = CoreDataQueryInterfaceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -730,6 +837,7 @@
 		F30D1CE01B2A891200AF80A1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = CoreDataQueryInterfaceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -745,6 +853,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -756,6 +865,8 @@
 				PRODUCT_NAME = CoreDataQueryInterface;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -765,6 +876,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -776,6 +888,7 @@
 				PRODUCT_NAME = CoreDataQueryInterface;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -784,6 +897,7 @@
 		F356DC3E1CCFFF4C00BF0907 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				INFOPLIST_FILE = CoreDataQueryInterfaceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -798,6 +912,7 @@
 		F356DC3F1CCFFF4C00BF0907 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				INFOPLIST_FILE = CoreDataQueryInterfaceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -918,6 +1033,7 @@
 				PRODUCT_NAME = CoreDataQueryInterface;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -936,12 +1052,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.CoreDataQueryInterface;
 				PRODUCT_NAME = CoreDataQueryInterface;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		F37C46BA1B2A780200B35B1B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = CoreDataQueryInterfaceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.CoreDataQueryInterfaceTests;
@@ -953,6 +1071,7 @@
 		F37C46BB1B2A780200B35B1B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = CoreDataQueryInterfaceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.CoreDataQueryInterfaceTests;
@@ -966,6 +1085,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -977,6 +1097,8 @@
 				PRODUCT_NAME = CoreDataQueryInterface;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
@@ -987,6 +1109,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -998,6 +1121,7 @@
 				PRODUCT_NAME = CoreDataQueryInterface;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
