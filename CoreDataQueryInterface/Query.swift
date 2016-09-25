@@ -44,22 +44,36 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
     }
     
     public func select<P: Sequence>(_ properties: P) -> Query<M, NSDictionary> where P.Iterator.Element: PropertyConvertible {
+        var builder = self.builder
+        builder.properties.append(contentsOf: properties.map{ $0.cdqiProperty })
         return Query<M, NSDictionary>(builder: builder)
     }
     
     public func select(_ properties: PropertyConvertible...) -> Query<M, NSDictionary> {
+        var builder = self.builder
+        builder.properties.append(contentsOf: properties.map{ $0.cdqiProperty })
         return Query<M, NSDictionary>(builder: builder)
     }
     
     public func select(_ block: (M.CDQIAttribute) -> [PropertyConvertible]) -> Query<M, NSDictionary> {
+        var builder = self.builder
+        builder.properties.append(contentsOf: block(M.CDQIAttribute()).map{ $0.cdqiProperty })
         return Query<M, NSDictionary>(builder: builder)
     }
     
     public func select<P: Sequence>(_ blocks: P) -> Query<M, NSDictionary> where P.Iterator.Element == ((M.CDQIAttribute) -> PropertyConvertible) {
+        var builder = self.builder
+        let attribute = M.CDQIAttribute()
+        let properties = blocks.map{ $0(attribute).cdqiProperty }
+        builder.properties.append(contentsOf: properties)
         return Query<M, NSDictionary>(builder: builder)
     }
     
     public func select(_ blocks: ((M.CDQIAttribute) -> PropertyConvertible)...) -> Query<M, NSDictionary> {
+        var builder = self.builder
+        let attribute = M.CDQIAttribute()
+        let properties = blocks.map{ $0(attribute).cdqiProperty }
+        builder.properties.append(contentsOf: properties)
         return Query<M, NSDictionary>(builder: builder)
     }
     
