@@ -9,6 +9,12 @@
 import CoreData
 import Foundation
 
+extension NSManagedObjectContext {
+    public func from<M: NSManagedObject>(_ entity: M.Type = M.self) -> Query<M, M> where M: Entity {
+        return Query<M, M>()
+    }
+}
+
 extension ExpressionConvertible {
     public func cdqiCount() -> FunctionExpression<Int> {
         return count(self)

@@ -91,10 +91,6 @@
 		F3967EF81D984758006382C6 /* Miscellanea.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EF61D984758006382C6 /* Miscellanea.swift */; };
 		F3967EF91D984758006382C6 /* Miscellanea.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EF61D984758006382C6 /* Miscellanea.swift */; };
 		F3967EFA1D984758006382C6 /* Miscellanea.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EF61D984758006382C6 /* Miscellanea.swift */; };
-		F3967EFC1D9847D7006382C6 /* NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EFB1D9847D7006382C6 /* NSManagedObjectContext.swift */; };
-		F3967EFD1D9847D7006382C6 /* NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EFB1D9847D7006382C6 /* NSManagedObjectContext.swift */; };
-		F3967EFE1D9847D7006382C6 /* NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EFB1D9847D7006382C6 /* NSManagedObjectContext.swift */; };
-		F3967EFF1D9847D7006382C6 /* NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967EFB1D9847D7006382C6 /* NSManagedObjectContext.swift */; };
 		F3967F011D984801006382C6 /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967F001D984801006382C6 /* QueryBuilder.swift */; };
 		F3967F021D984801006382C6 /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967F001D984801006382C6 /* QueryBuilder.swift */; };
 		F3967F031D984801006382C6 /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3967F001D984801006382C6 /* QueryBuilder.swift */; };
@@ -178,7 +174,6 @@
 		F3967EEC1D984715006382C6 /* Comparisons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comparisons.swift; sourceTree = "<group>"; };
 		F3967EF11D984748006382C6 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		F3967EF61D984758006382C6 /* Miscellanea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Miscellanea.swift; sourceTree = "<group>"; };
-		F3967EFB1D9847D7006382C6 /* NSManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContext.swift; sourceTree = "<group>"; };
 		F3967F001D984801006382C6 /* QueryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryBuilder.swift; sourceTree = "<group>"; };
 		F3967F051D98481E006382C6 /* Query.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
 		F39C7A711B718DB2008DB31C /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -284,7 +279,6 @@
 				F3F52CE81D9848F0009D8DFB /* Extensions.swift */,
 				F3967EDD1D984563006382C6 /* Functions.swift */,
 				F3967EF61D984758006382C6 /* Miscellanea.swift */,
-				F3967EFB1D9847D7006382C6 /* NSManagedObjectContext.swift */,
 				F3967EF11D984748006382C6 /* Operators.swift */,
 				F3F52CED1D984CB4009D8DFB /* Predicate.swift */,
 				F3967ED81D9844CD006382C6 /* Protocols.swift */,
@@ -628,7 +622,6 @@
 			files = (
 				F3967F071D98481E006382C6 /* Query.swift in Sources */,
 				F3967EE41D984610006382C6 /* Types.swift in Sources */,
-				F3967EFD1D9847D7006382C6 /* NSManagedObjectContext.swift in Sources */,
 				F3967EEE1D984715006382C6 /* Comparisons.swift in Sources */,
 				F3967EDA1D9844CD006382C6 /* Protocols.swift in Sources */,
 				F3967EE91D9846C7006382C6 /* Attributes.swift in Sources */,
@@ -672,7 +665,6 @@
 			files = (
 				F3967F081D98481E006382C6 /* Query.swift in Sources */,
 				F3967EE51D984610006382C6 /* Types.swift in Sources */,
-				F3967EFE1D9847D7006382C6 /* NSManagedObjectContext.swift in Sources */,
 				F3967EEF1D984715006382C6 /* Comparisons.swift in Sources */,
 				F3967EDB1D9844CD006382C6 /* Protocols.swift in Sources */,
 				F3967EEA1D9846C7006382C6 /* Attributes.swift in Sources */,
@@ -716,7 +708,6 @@
 			files = (
 				F3967F061D98481E006382C6 /* Query.swift in Sources */,
 				F3967EE31D984610006382C6 /* Types.swift in Sources */,
-				F3967EFC1D9847D7006382C6 /* NSManagedObjectContext.swift in Sources */,
 				F3967EED1D984715006382C6 /* Comparisons.swift in Sources */,
 				F3967ED91D9844CD006382C6 /* Protocols.swift in Sources */,
 				F3967EE81D9846C7006382C6 /* Attributes.swift in Sources */,
@@ -760,7 +751,6 @@
 			files = (
 				F3967F091D98481E006382C6 /* Query.swift in Sources */,
 				F3967EE61D984610006382C6 /* Types.swift in Sources */,
-				F3967EFF1D9847D7006382C6 /* NSManagedObjectContext.swift in Sources */,
 				F3967EF01D984715006382C6 /* Comparisons.swift in Sources */,
 				F3967EDC1D9844CD006382C6 /* Protocols.swift in Sources */,
 				F3967EEB1D9846C7006382C6 /* Attributes.swift in Sources */,

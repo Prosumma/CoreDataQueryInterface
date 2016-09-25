@@ -61,10 +61,10 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
         return Query<M, NSDictionary>(builder: builder)
     }
     
-    public func select() -> Query<M, NSDictionary> {
-        return Query<M, NSDictionary>(builder: builder)
-    }
-    
+//    public func select() -> Query<M, NSDictionary> {
+//        return Query<M, NSDictionary>(builder: builder)
+//    }
+//    
     public func reselect() -> Query<M, NSDictionary> {
         var builder = self.builder
         builder.properties = []
