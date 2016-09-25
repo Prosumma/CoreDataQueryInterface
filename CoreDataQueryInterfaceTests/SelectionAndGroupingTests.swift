@@ -30,8 +30,8 @@ import XCTest
 class SelectionTests : BaseTestCase {
  
     func testSelection() {
-        let salary: NSNumber = managedObjectContext.from(Employee).order(descending: {$0.salary}).value({$0.salary})!
-        XCTAssertEqual(salary.integerValue, 100_000)
+        let salary: NSNumber = managedObjectContext.from(Employee).order(ascending: false, {$0.salary}).value({$0.salary})!
+        XCTAssertEqual(salary.intValue, 100_000)
     }
     
     func testMaximumSalaryGroupedByDepartment() {

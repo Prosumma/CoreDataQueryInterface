@@ -28,15 +28,15 @@ import XCTest
 class AttributeTests: BaseTestCase {
     
     func testDataAttribute() {
-        let bundle = NSBundle(forClass: self.dynamicType)
-        let path = bundle.pathForResource("Employees", ofType: "txt")!
-        let data = NSData(contentsOfFile: path)!
+        let bundle = Bundle(for: type(of: self))
+        let path = bundle.path(forResource: "Employees", ofType: "txt")!
+        let data = try! Data(contentsOf: URL(fileURLWithPath: path))
         let result = managedObjectContext.from(TestEntity).filter({ $0.binary == data }).count()
         XCTAssertEqual(result, 1)
     }
     
     func testDateAttribute() {
-        let date = NSDate(timeIntervalSince1970: 5)
+        let date = Date(timeIntervalSince1970: 5)
         let result = managedObjectContext.from(TestEntity).filter({ $0.date == date }).count()
         XCTAssertEqual(result, 1)
     }

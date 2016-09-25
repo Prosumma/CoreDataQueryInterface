@@ -24,20 +24,20 @@ SOFTWARE.
 
 import CoreDataQueryInterface
 
-class TestEntityAttribute: EntityAttribute, Aggregable {
-    private(set) lazy var binary: DataAttribute = { DataAttribute("binary", parent: self) }()
-    private(set) lazy var boolean: BooleanAttribute = { BooleanAttribute("boolean", parent: self) }()
-    private(set) lazy var date: DateAttribute = { DateAttribute("date", parent: self) }()
-    private(set) lazy var decimal: NumericAttribute = { NumericAttribute("decimal", parent: self, type: .DecimalAttributeType) }()
-    private(set) lazy var double: NumericAttribute = { NumericAttribute("double", parent: self, type: .DoubleAttributeType) }()
-    private(set) lazy var float: NumericAttribute = { NumericAttribute("float", parent: self, type: .FloatAttributeType) }()
-    private(set) lazy var integer16: NumericAttribute = { NumericAttribute("integer16", parent: self, type: .Integer16AttributeType) }()
-    private(set) lazy var integer32: NumericAttribute = { NumericAttribute("integer32", parent: self, type: .Integer32AttributeType) }()
-    private(set) lazy var integer64: NumericAttribute = { NumericAttribute("integer64", parent: self, type: .Integer64AttributeType) }()
-    private(set) lazy var string: StringAttribute = { StringAttribute("string", parent: self) }()
+class TestEntityAttribute: EntityAttribute {
+    private(set) lazy var binary: DataAttribute = { DataAttribute(key: "binary", parent: self) }()
+    private(set) lazy var boolean: BoolAttribute = { BoolAttribute(key: "boolean", parent: self) }()
+    private(set) lazy var date: DateAttribute = { DateAttribute(key: "date", parent: self) }()
+    private(set) lazy var decimal: DecimalAttribute = { DecimalAttribute(key: "decimal", parent: self) }()
+    private(set) lazy var double: DoubleAttribute = { DoubleAttribute(key: "double", parent: self) }()
+    private(set) lazy var float: FloatAttribute = { FloatAttribute(key: "float", parent: self) }()
+    private(set) lazy var integer16: Integer16Attribute = { Integer16Attribute(key: "integer16", parent: self) }()
+    private(set) lazy var integer32: Integer32Attribute = { Integer32Attribute(key: "integer32", parent: self) }()
+    private(set) lazy var integer64: Integer64Attribute = { Integer64Attribute(key: "integer64", parent: self) }()
+    private(set) lazy var string: StringAttribute = { StringAttribute(key: "string", parent: self) }()
 }
 
-extension TestEntity: EntityType {
-    typealias EntityAttributeType = TestEntityAttribute
+extension TestEntity: Entity {
+    typealias CDQIAttribute = TestEntityAttribute
 }
 

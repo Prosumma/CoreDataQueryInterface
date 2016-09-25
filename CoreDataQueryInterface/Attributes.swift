@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-public class EntityAttribute: PredicateComparableTypedExpressionConvertible, KeyPathExpressionConvertible, PropertyConvertible {
+open class EntityAttribute: PredicateComparableTypedExpressionConvertible, KeyPathExpressionConvertible, PropertyConvertible {
     public typealias CDQIComparisonType = NSManagedObjectID
     
     public let cdqiKey: String?
@@ -43,8 +43,15 @@ public struct ScalarAttribute<E: TypedExpressionConvertible>: PredicateComparabl
     }
 }
 
+public typealias BoolAttribute = ScalarAttribute<Bool>
 public typealias StringAttribute = ScalarAttribute<String>
+public typealias Integer16Attribute = ScalarAttribute<Int16>
 public typealias Integer32Attribute = ScalarAttribute<Int32>
 public typealias Integer64Attribute = ScalarAttribute<Int64>
 public typealias DoubleAttribute = ScalarAttribute<Double>
+public typealias DataAttribute = ScalarAttribute<NSData>
 public typealias DateAttribute = ScalarAttribute<Date>
+public typealias DecimalAttribute = ScalarAttribute<Decimal>
+public typealias FloatAttribute = ScalarAttribute<Float>
+
+

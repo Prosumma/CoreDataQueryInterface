@@ -117,14 +117,25 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
         return builder.request()
     }
     
-    public func first(_ managedObjectContext: NSManagedObjectContext? = nil) throws -> R? {
-        let results = try limit(1).all(managedObjectContext)
+    public func first(managedObjectContext: NSManagedObjectContext? = nil) throws -> R? {
+        let results = try limit(1).all(managedObjectContext: managedObjectContext)
         return results.count == 0 ? nil : results[0]
     }
     
-    public func all(_ managedObjectContext: NSManagedObjectContext? = nil) throws -> [R] {
+    public func all(managedObjectContext: NSManagedObjectContext? = nil) throws -> [R] {
         let request: NSFetchRequest<R> = builder.request()
         return try (managedObjectContext ?? builder.managedObjectContext)!.fetch(request)
     }
     
+    public func array<T>(_ property: PropertyConvertible, managedObjectContext: NSManagedObjectContext? = nil) throws -> [T] {
+        let results: [NSDictionary] = try reselect().select(property).all(managedObjectContext: managedObjectContext)
+        if results.count == 0 { return [] }
+        let key = results[0].allKeys[0]
+        return results.map { $0[key]! as! T }
+    }
+    
+    public func value<T>(_ property: PropertyConvertible, managedObjectContext: NSManagedObjectContext? = nil) throws -> T? {
+        let results: [T] = try limit(1).array(property)
+        return results.count == 0 ? nil : results[0]
+    }
 }

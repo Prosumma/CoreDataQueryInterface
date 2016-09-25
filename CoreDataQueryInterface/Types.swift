@@ -18,6 +18,11 @@ extension Int: TypedConstantExpressionConvertible {
 #endif
 }
 
+extension Int16: TypedConstantExpressionConvertible {
+    public typealias CDQIComparisonType = NSNumber
+    public static let cdqiStaticType = NSAttributeType.integer16AttributeType
+}
+
 extension Int32: TypedConstantExpressionConvertible {
     public typealias CDQIComparisonType = NSNumber
     public static let cdqiStaticType = NSAttributeType.integer32AttributeType
@@ -43,14 +48,29 @@ extension Bool: TypedConstantExpressionConvertible {
     public static let cdqiStaticType = NSAttributeType.booleanAttributeType
 }
 
+extension Decimal: TypedConstantExpressionConvertible {
+    public typealias CDQIComparisonType = NSNumber
+    public static let cdqiStaticType = NSAttributeType.decimalAttributeType
+}
+
 extension Double: TypedConstantExpressionConvertible {
     public typealias CDQIComparisonType = NSNumber
     public static let cdqiStaticType = NSAttributeType.doubleAttributeType
 }
 
+extension Float: TypedConstantExpressionConvertible {
+    public typealias CDQIComparisonType = NSNumber
+    public static let cdqiStaticType = NSAttributeType.floatAttributeType
+}
+
 extension NSNumber: TypedConstantExpressionConvertible {
     public typealias CDQIComparisonType = NSNumber
     @nonobjc public static let cdqiStaticType = NSAttributeType.doubleAttributeType
+}
+
+extension NSData: TypedConstantExpressionConvertible {
+    public typealias CDQIComparisonType = NSData
+    @nonobjc public static let cdqiStaticType = NSAttributeType.binaryDataAttributeType
 }
 
 extension NSManagedObjectID: TypedConstantExpressionConvertible {

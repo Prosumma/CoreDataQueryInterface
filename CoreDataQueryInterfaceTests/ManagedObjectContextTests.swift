@@ -30,7 +30,7 @@ class ManagedObjectContextTests: BaseTestCase {
 
     func testNewEntity() {
         let employee: Employee = managedObjectContext.newEntity()
-        managedObjectContext.deleteObject(employee)
+        managedObjectContext.delete(employee)
     }
     
     func testRequestWithMOC() {

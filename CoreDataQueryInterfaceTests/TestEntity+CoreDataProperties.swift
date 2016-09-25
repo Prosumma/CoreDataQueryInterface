@@ -27,9 +27,9 @@ import CoreData
 
 extension TestEntity {
 
-    @NSManaged var binary: NSData?
+    @NSManaged var binary: Data?
     @NSManaged var boolean: NSNumber?
-    @NSManaged var date: NSDate?
+    @NSManaged var date: Date?
     @NSManaged var decimal: NSDecimalNumber?
     @NSManaged var double: NSNumber?
     @NSManaged var float: NSNumber?
