@@ -15,6 +15,7 @@ struct QueryBuilder<M: NSManagedObject> where M: Entity {
     var resultType: NSFetchRequestResultType = .managedObjectResultType
     var predicates = [NSPredicate]()
     var properties = [Any]()
+    var propertiesToGroupBy = [Any]()
     var sortDescriptors = [NSSortDescriptor]()
     var managedObjectContext: NSManagedObjectContext!
     
@@ -24,6 +25,9 @@ struct QueryBuilder<M: NSManagedObject> where M: Entity {
         request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         if properties.count > 0 {
             request.propertiesToFetch = properties
+        }
+        if propertiesToGroupBy.count > 0 {
+            request.propertiesToGroupBy = propertiesToGroupBy
         }
         //        request.resultType = resultType
         return request

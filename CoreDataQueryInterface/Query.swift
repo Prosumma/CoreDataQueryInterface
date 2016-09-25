@@ -55,6 +55,12 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
         return Query<M, NSDictionary>(builder: builder)
     }
     
+    public func select(_ block: (M.CDQIAttribute) -> PropertyConvertible) -> Query<M, NSDictionary> {
+        var builder = self.builder
+        builder.properties.append(block(M.CDQIAttribute()))
+        return Query<M, NSDictionary>(builder: builder)
+    }
+    
     public func select(_ block: (M.CDQIAttribute) -> [PropertyConvertible]) -> Query<M, NSDictionary> {
         var builder = self.builder
         builder.properties.append(contentsOf: block(M.CDQIAttribute()).map{ $0.cdqiProperty })
@@ -68,6 +74,30 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
     public func reselect() -> Query<M, NSDictionary> {
         var builder = self.builder
         builder.properties = []
+        return Query<M, NSDictionary>(builder: builder)
+    }
+    
+    public func groupBy<P: Sequence>(_ properties: P) -> Query<M, NSDictionary> where P.Iterator.Element: PropertyConvertible {
+        var builder = self.builder
+        builder.propertiesToGroupBy.append(contentsOf: properties.map{ $0.cdqiProperty })
+        return Query<M, NSDictionary>(builder: builder)
+    }
+    
+    public func groupBy(_ properties: PropertyConvertible...) -> Query<M, NSDictionary> {
+        var builder = self.builder
+        builder.propertiesToGroupBy.append(contentsOf: properties.map{ $0.cdqiProperty })
+        return Query<M, NSDictionary>(builder: builder)
+    }
+    
+    public func groupBy(_ block: (M.CDQIAttribute) -> PropertyConvertible) -> Query<M, NSDictionary> {
+        var builder = self.builder
+        builder.propertiesToGroupBy.append(block(M.CDQIAttribute()))
+        return Query<M, NSDictionary>(builder: builder)
+    }
+    
+    public func groupBy(_ block: (M.CDQIAttribute) -> [PropertyConvertible]) -> Query<M, NSDictionary> {
+        var builder = self.builder
+        builder.propertiesToGroupBy.append(contentsOf: block(M.CDQIAttribute()).map{ $0.cdqiProperty })
         return Query<M, NSDictionary>(builder: builder)
     }
     

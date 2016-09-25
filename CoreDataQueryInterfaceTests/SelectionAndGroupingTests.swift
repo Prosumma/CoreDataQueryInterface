@@ -30,13 +30,13 @@ import XCTest
 class SelectionTests : BaseTestCase {
  
     func testSelection() {
-        let salary: NSNumber = managedObjectContext.from(Employee).order(ascending: false, {$0.salary}).value({$0.salary})!
+        let salary: NSNumber = try! managedObjectContext.from(Employee.self).order(ascending: false, {$0.salary}).value({$0.salary})!
         XCTAssertEqual(salary.intValue, 100_000)
     }
     
     func testMaximumSalaryGroupedByDepartment() {
         let employee = EmployeeAttribute()
-        let result = managedObjectContext.from(Employee).groupBy(employee.department.name).select(employee.department.name, employee.max.salary.named("maxSalary")).order(descending: employee.department.name).all()
+        let result = managedObjectContext.from(Employee).groupBy(employee.department.name).select(employee.department.name, employee.max.salary.named("maxSalary")).order(ascending: false, employee.department.name).all()
         let salaries: [String: Int] = result.toDictionary() { ($0["department.name"]! as! String, ($0["maxSalary"]! as! NSNumber).integerValue) }
         XCTAssertEqual(salaries["Accounting"]!, 97000)
         XCTAssertEqual(salaries["Engineering"]!, 100000)
@@ -45,7 +45,7 @@ class SelectionTests : BaseTestCase {
     
     func testMinimumSalaryGroupedByDepartment() {
         let employee = EmployeeAttribute()
-        let result = managedObjectContext.from(Employee).groupBy(employee.department.name).select(employee.department.name, employee.min.salary.named("minSalary")).order(descending: employee.department.name).all()
+        let result = managedObjectContext.from(Employee).groupBy(employee.department.name).select(employee.department.name, employee.min.salary.named("minSalary")).order(ascending: false, employee.department.name).all()
         let salaries: [String: Int] = result.toDictionary() { ($0["department.name"]! as! String, ($0["minSalary"]! as! NSNumber).integerValue) }
         XCTAssertEqual(salaries["Accounting"]!, 32000)
         XCTAssertEqual(salaries["Engineering"]!, 54000)
@@ -53,7 +53,7 @@ class SelectionTests : BaseTestCase {
     }
     
     func testAverageSalaryGroupedByDepartment() {
-        let result = managedObjectContext.from(Employee).groupBy({$0.department.name}).select({$0.department.name}, {$0.average.salary.named("averageSalary")}).order(descending: {$0.department.name}).all()
+        let result = managedObjectContext.from(Employee).groupBy({$0.department.name}).select({$0.department.name}, {$0.average.salary.named("averageSalary")}).order(ascending: false, {$0.department.name}).all()
         let salaries: [String: Int] = result.toDictionary() { ($0["department.name"]! as! String, ($0["averageSalary"]! as! NSNumber).integerValue) }
         XCTAssertEqual(salaries["Accounting"]!, 71000)
         XCTAssertEqual(salaries["Engineering"]!, 75625)
@@ -84,22 +84,22 @@ class SelectionTests : BaseTestCase {
     }
     
     func testStringAsSelectionProperty() {
-        let result = managedObjectContext.from(Employee).groupBy("lastName").select("lastName").all()
+        let result = managedObjectContext.from(Employee.self).groupBy("lastName").select("lastName").all()
         XCTAssertEqual(result.count, 5)
     }
     
     func testClosureAsSelectionProperty() {
-        let result = managedObjectContext.from(Employee).groupBy("lastName").select({employee in [employee.lastName]}).all()
+        let result = managedObjectContext.from(Employee.self).groupBy("lastName").select({employee in [employee.lastName]}).all()
         XCTAssertEqual(result.count, 5)
     }
     
     func testMultipleGroupByProperty() {
-        let result = managedObjectContext.from(Employee).groupBy({[$0.lastName, $0.department]}).select("lastName", "department").all()
+        let result = managedObjectContext.from(Employee.self).groupBy({[$0.lastName, $0.department]}).select("lastName", "department").all()
         XCTAssertEqual(result.count, 13)
     }
     
     func testOrderByNSSortDescriptor() {
-        let results = managedObjectContext.from(Employee).order(NSSortDescriptor(key: "firstName", ascending: true)).all()
+        let results = managedObjectContext.from(Employee.self).order(NSSortDescriptor(key: "firstName", ascending: true)).all()
         XCTAssert(results.first!.firstName == "David" && results.last!.firstName == "Lana")
     }
 }
