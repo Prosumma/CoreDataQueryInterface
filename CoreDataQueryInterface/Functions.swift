@@ -66,7 +66,7 @@ public func sum(_ expression: ExpressionConvertible, type: NSAttributeType? = ni
     return FunctionExpression(function: .sum, expression: expression, type: type)
 }
 
-public func sum(_ expression: ExpressionConvertible, name: String, type: NSAttributeType? = nil) -> PropertyConvertible {
+public func sum(_ expression: ExpressionConvertible, alias name: String, type: NSAttributeType? = nil) -> PropertyConvertible {
     let f = sum(expression)
     return alias(f, name: name, type: type ?? f.cdqiType)
 }

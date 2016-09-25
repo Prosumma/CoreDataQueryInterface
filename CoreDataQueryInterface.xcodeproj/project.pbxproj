@@ -108,6 +108,14 @@
 		F3E6B5511B2BFCA500F735EE /* FilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */; };
 		F3E6B5531B2C01CC00F735EE /* OrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6B5521B2C01CC00F735EE /* OrderTests.swift */; };
 		F3E6B5541B2C01CC00F735EE /* OrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6B5521B2C01CC00F735EE /* OrderTests.swift */; };
+		F3F52CE91D9848F0009D8DFB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F52CE81D9848F0009D8DFB /* Extensions.swift */; };
+		F3F52CEA1D9848F0009D8DFB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F52CE81D9848F0009D8DFB /* Extensions.swift */; };
+		F3F52CEB1D9848F0009D8DFB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F52CE81D9848F0009D8DFB /* Extensions.swift */; };
+		F3F52CEC1D9848F0009D8DFB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F52CE81D9848F0009D8DFB /* Extensions.swift */; };
+		F3F52CEE1D984CB4009D8DFB /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F52CED1D984CB4009D8DFB /* Predicate.swift */; };
+		F3F52CEF1D984CB4009D8DFB /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F52CED1D984CB4009D8DFB /* Predicate.swift */; };
+		F3F52CF01D984CB4009D8DFB /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F52CED1D984CB4009D8DFB /* Predicate.swift */; };
+		F3F52CF11D984CB4009D8DFB /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F52CED1D984CB4009D8DFB /* Predicate.swift */; };
 		F3FE7AD11B2B87CF00AA5845 /* SanityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37C46B11B2A780200B35B1B /* SanityTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -178,6 +186,8 @@
 		F3E6B54F1B2BFCA500F735EE /* FilterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTests.swift; sourceTree = "<group>"; };
 		F3E6B5521B2C01CC00F735EE /* OrderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTests.swift; sourceTree = "<group>"; };
 		F3F1BC531CD0020100F9072D /* CoreDataQueryInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataQueryInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3F52CE81D9848F0009D8DFB /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F3F52CED1D984CB4009D8DFB /* Predicate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Predicate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,10 +281,12 @@
 			children = (
 				F3967EE71D9846C7006382C6 /* Attributes.swift */,
 				F3967EEC1D984715006382C6 /* Comparisons.swift */,
+				F3F52CE81D9848F0009D8DFB /* Extensions.swift */,
 				F3967EDD1D984563006382C6 /* Functions.swift */,
 				F3967EF61D984758006382C6 /* Miscellanea.swift */,
 				F3967EFB1D9847D7006382C6 /* NSManagedObjectContext.swift */,
 				F3967EF11D984748006382C6 /* Operators.swift */,
+				F3F52CED1D984CB4009D8DFB /* Predicate.swift */,
 				F3967ED81D9844CD006382C6 /* Protocols.swift */,
 				F3967F051D98481E006382C6 /* Query.swift */,
 				F3967F001D984801006382C6 /* QueryBuilder.swift */,
@@ -501,7 +513,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Prosumma LLC";
 				TargetAttributes = {
 					F30D1CC91B2A891100AF80A1 = {
@@ -621,8 +633,10 @@
 				F3967EDA1D9844CD006382C6 /* Protocols.swift in Sources */,
 				F3967EE91D9846C7006382C6 /* Attributes.swift in Sources */,
 				F3967EF81D984758006382C6 /* Miscellanea.swift in Sources */,
+				F3F52CEF1D984CB4009D8DFB /* Predicate.swift in Sources */,
 				F3967F021D984801006382C6 /* QueryBuilder.swift in Sources */,
 				F3967EDF1D984563006382C6 /* Functions.swift in Sources */,
+				F3F52CEA1D9848F0009D8DFB /* Extensions.swift in Sources */,
 				F3967EF31D984748006382C6 /* Operators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -663,8 +677,10 @@
 				F3967EDB1D9844CD006382C6 /* Protocols.swift in Sources */,
 				F3967EEA1D9846C7006382C6 /* Attributes.swift in Sources */,
 				F3967EF91D984758006382C6 /* Miscellanea.swift in Sources */,
+				F3F52CF01D984CB4009D8DFB /* Predicate.swift in Sources */,
 				F3967F031D984801006382C6 /* QueryBuilder.swift in Sources */,
 				F3967EE01D984563006382C6 /* Functions.swift in Sources */,
+				F3F52CEB1D9848F0009D8DFB /* Extensions.swift in Sources */,
 				F3967EF41D984748006382C6 /* Operators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -705,8 +721,10 @@
 				F3967ED91D9844CD006382C6 /* Protocols.swift in Sources */,
 				F3967EE81D9846C7006382C6 /* Attributes.swift in Sources */,
 				F3967EF71D984758006382C6 /* Miscellanea.swift in Sources */,
+				F3F52CEE1D984CB4009D8DFB /* Predicate.swift in Sources */,
 				F3967F011D984801006382C6 /* QueryBuilder.swift in Sources */,
 				F3967EDE1D984563006382C6 /* Functions.swift in Sources */,
+				F3F52CE91D9848F0009D8DFB /* Extensions.swift in Sources */,
 				F3967EF21D984748006382C6 /* Operators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -747,8 +765,10 @@
 				F3967EDC1D9844CD006382C6 /* Protocols.swift in Sources */,
 				F3967EEB1D9846C7006382C6 /* Attributes.swift in Sources */,
 				F3967EFA1D984758006382C6 /* Miscellanea.swift in Sources */,
+				F3F52CF11D984CB4009D8DFB /* Predicate.swift in Sources */,
 				F3967F041D984801006382C6 /* QueryBuilder.swift in Sources */,
 				F3967EE11D984563006382C6 /* Functions.swift in Sources */,
+				F3F52CEC1D9848F0009D8DFB /* Extensions.swift in Sources */,
 				F3967EF51D984748006382C6 /* Operators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -854,6 +874,7 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -877,6 +898,7 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -937,8 +959,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -987,8 +1011,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1010,6 +1036,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_SWIFT_FLAGS = "-DRELEASE";
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1021,6 +1048,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1041,6 +1069,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1086,6 +1115,7 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1110,6 +1140,7 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
