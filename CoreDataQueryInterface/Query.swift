@@ -61,22 +61,6 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
         return Query<M, NSDictionary>(builder: builder)
     }
     
-    public func select<P: Sequence>(_ blocks: P) -> Query<M, NSDictionary> where P.Iterator.Element == ((M.CDQIAttribute) -> PropertyConvertible) {
-        var builder = self.builder
-        let attribute = M.CDQIAttribute()
-        let properties = blocks.map{ $0(attribute).cdqiProperty }
-        builder.properties.append(contentsOf: properties)
-        return Query<M, NSDictionary>(builder: builder)
-    }
-    
-    public func select(_ blocks: ((M.CDQIAttribute) -> PropertyConvertible)...) -> Query<M, NSDictionary> {
-        var builder = self.builder
-        let attribute = M.CDQIAttribute()
-        let properties = blocks.map{ $0(attribute).cdqiProperty }
-        builder.properties.append(contentsOf: properties)
-        return Query<M, NSDictionary>(builder: builder)
-    }
-    
     public func select() -> Query<M, NSDictionary> {
         return Query<M, NSDictionary>(builder: builder)
     }
@@ -105,7 +89,7 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
         var builder = self.builder
         let attribute = M.CDQIAttribute()
         let sortDescriptors = blocks.map{ $0(attribute).cdqiSortDescriptor(ascending: ascending) }
-        builder.sortDescriptors.append(contentsOf: sortDescriptors)        
+        builder.sortDescriptors.append(contentsOf: sortDescriptors)
         return Query<M, R>(builder: builder)
     }
     
