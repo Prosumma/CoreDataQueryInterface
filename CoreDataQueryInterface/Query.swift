@@ -94,10 +94,18 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
     }
     
     public func order(ascending: Bool = true, _ blocks: ((M.CDQIAttribute) -> SortDescriptorConvertible)...) -> Query<M, R> {
+        var builder = self.builder
+        let attribute = M.CDQIAttribute()
+        let sortDescriptors = blocks.map{ $0(attribute).cdqiSortDescriptor(ascending: ascending) }
+        builder.sortDescriptors.append(contentsOf: sortDescriptors)
         return Query<M, R>(builder: builder)
     }
     
     public func order<O: Sequence>(ascending: Bool = true, _ blocks: O) -> Query<M, R> where O.Iterator.Element == ((M.CDQIAttribute) -> SortDescriptorConvertible) {
+        var builder = self.builder
+        let attribute = M.CDQIAttribute()
+        let sortDescriptors = blocks.map{ $0(attribute).cdqiSortDescriptor(ascending: ascending) }
+        builder.sortDescriptors.append(contentsOf: sortDescriptors)        
         return Query<M, R>(builder: builder)
     }
     
