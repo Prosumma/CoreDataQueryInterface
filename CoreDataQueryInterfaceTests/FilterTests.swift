@@ -28,33 +28,33 @@ import XCTest
 class FilterTests : BaseTestCase {
 
     func testCountEngineers() {
-        let engineerCount = managedObjectContext.from(Employee).filter({ $0.department.name == "Engineering" }).count()
+        let engineerCount = try! managedObjectContext.from(Employee.self).filter{ $0.department.name == "Engineering" }.count()
         XCTAssertEqual(engineerCount, 8)
     }
     
     func testCountEmployeesNamedSmith() {
-        let smithCount = managedObjectContext.from(Employee).filter("lastName == %@", "Smith").count()
+        let smithCount = try! managedObjectContext.from(Employee.self).filter("lastName == %@", "Smith").count()
         XCTAssertEqual(smithCount, 5)
     }
     
     func testCountEmployeesWithoutNickName() {
-        let nickNameLessCount = managedObjectContext.from(Employee).filter({ employee in employee.nickName == nil }).count()
+        let nickNameLessCount = try! managedObjectContext.from(Employee.self).filter{ employee in employee.nickName == nil }.count()
         XCTAssertEqual(nickNameLessCount, 10)
     }
     
     func testCountEmployeesWithLastNameNotJones() {
-        let nickNameLessCount = managedObjectContext.from(Employee).filter({ employee in employee.lastName != "Jones" }).count()
+        let nickNameLessCount = try! managedObjectContext.from(Employee.self).filter{ employee in employee.lastName != "Jones" }.count()
         XCTAssertEqual(nickNameLessCount, 20)
     }
     
     func testEmployeesWithNickName() {
-        let nickNameLessCount = managedObjectContext.from(Employee).filter({ employee in employee.nickName != nil }).count()
+        let nickNameLessCount = try! managedObjectContext.from(Employee.self).filter{ employee in employee.nickName != nil }.count()
         XCTAssertEqual(nickNameLessCount, 15)
     }
     
     func testCountEmployeesNameNotMortonOrJones() {
         let names = ["Morton", "Jones"]
-        let notMortonOrJonesCount = managedObjectContext.from(Employee).filter({ $0.lastName != names }).count()
+        let notMortonOrJonesCount = try! managedObjectContext.from(Employee.self).filter{ $0.lastName != names }.count()
         XCTAssertEqual(notMortonOrJonesCount, 15)
     }
     

@@ -115,7 +115,7 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
         return order(ascending: true, sortDescriptors)
     }
     
-    public func order(ascending: Bool = true, _ sortDescriptors: SortDescriptorConvertible...) -> Query<M, R> {
+    public func order(ascending: Bool, _ sortDescriptors: SortDescriptorConvertible...) -> Query<M, R> {
         var builder = self.builder
         builder.sortDescriptors.append(contentsOf: sortDescriptors.map{ $0.cdqiSortDescriptor(ascending: ascending)  })
         return Query<M, R>(builder: builder)
@@ -123,7 +123,7 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
     
     public func order(_ sortDescriptors: SortDescriptorConvertible...) -> Query<M, R> {
         var builder = self.builder
-        builder.sortDescriptors.append(contentsOf: sortDescriptors.map{ $0.cdqiSortDescriptor(ascending: true) })
+        builder.sortDescriptors.append(contentsOf: sortDescriptors.map{ $0.cdqiSortDescriptor(ascending: true)  })
         return Query<M, R>(builder: builder)
     }
     
