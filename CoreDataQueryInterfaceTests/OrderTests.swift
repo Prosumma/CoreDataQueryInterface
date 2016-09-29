@@ -29,13 +29,13 @@ import XCTest
 class OrderTests : BaseTestCase {
     
     func testFirstEmployeeInSalesOrderedDescendingByLastNameThenAscendingByFirstName() {
-        let employee = managedObjectContext.from(Employee).filter({ (employee: EmployeeAttribute) -> NSPredicate in employee.department.name == "Sales" }).order(descending: {$0.lastName}).order({$0.firstName}).first()!
+        let employee = try! managedObjectContext.from(Employee.self).filter({ (employee: EmployeeAttribute) -> NSPredicate in employee.department.name == "Sales" }).order(ascending: false, {$0.lastName}).order({$0.firstName}).first()!
         XCTAssertEqual(employee.lastName, "Smith")
         XCTAssertEqual(employee.firstName, "David")
     }
     
     func testFirstEmployeeInAccountingOrderedByFirstNameThenLastName() {
-        let employee = managedObjectContext.from(Employee).filter("department.name == %@", "Accounting").order("firstName", "lastName").first()!
+        let employee = try! managedObjectContext.from(Employee).filter("department.name == %@", "Accounting").order("firstName", "lastName").first()!
         XCTAssertEqual(employee.lastName, "Morton")
         XCTAssertEqual(employee.firstName, "Gregory")
     }

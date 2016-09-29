@@ -37,6 +37,7 @@ public func subquery<E: EntityAttribute>(_ items: E, _ query: (E) -> NSPredicate
     return NSExpression(forSubquery: items.cdqiExpression, usingIteratorVariable: variable, predicate: query(E(variable: variable)))
 }
 
-public func subqueryCount<E: EntityAttribute>(_ items: E, _ query: (E) -> NSPredicate) -> FunctionExpression<Int> where E: KeyPathExpressionConvertible {
+public func subqueryCount<E: EntityAttribute>(_ items: E, _ query: (E) -> NSPredicate) -> PropertyConvertible where E: KeyPathExpressionConvertible {
     return count(subquery(items, query))
 }
+

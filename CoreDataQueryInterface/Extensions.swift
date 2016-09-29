@@ -16,20 +16,16 @@ extension NSManagedObjectContext {
 }
 
 extension ExpressionConvertible {
-    public func cdqiCount() -> FunctionExpression<Int> {
-        return count(self)
+    public func cdqiCount(alias name: String? = nil) -> PropertyConvertible {
+        return count(self, alias: name, type: .integer32AttributeType)
     }
     
-    public func cdqiCount(alias name: String) -> PropertyConvertible {
-        return count(self, alias: name)
+    public func cdqiMax(alias name: String? = nil, type: NSAttributeType? = nil) -> PropertyConvertible {
+        return max(self, alias: name, type: type)
     }
     
-    public func cdqiSum() -> FunctionExpression<Double> {
-        return sum(self)
-    }
-    
-    public func cdqiSum(alias name: String) -> PropertyConvertible {
-        return sum(self, alias: name)
+    public func cdqiSum(alias name: String? = nil, type: NSAttributeType? = nil) -> PropertyConvertible {
+        return sum(self, alias: name, type: type)
     }
     
     public func cdqiCompare(_ op: NSComparisonPredicate.Operator, _ rhs: ExpressionConvertible, options: NSComparisonPredicate.Options = []) -> NSPredicate {

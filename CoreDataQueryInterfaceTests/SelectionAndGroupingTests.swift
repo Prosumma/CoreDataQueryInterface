@@ -36,7 +36,7 @@ class SelectionTests : BaseTestCase {
     
     func testMaximumSalaryGroupedByDepartment() {
         let employee = EmployeeAttribute()
-        let result = managedObjectContext.from(Employee).groupBy(employee.department.name).select(employee.department.name, employee.max.salary.named("maxSalary")).order(ascending: false, employee.department.name).all()
+        let result = try! managedObjectContext.from(Employee).groupBy(employee.department.name).select(employee.department.name, employee.salary.cdqiMax()).order(ascending: false, employee.department.name).all()
         let salaries: [String: Int] = result.toDictionary() { ($0["department.name"]! as! String, ($0["maxSalary"]! as! NSNumber).integerValue) }
         XCTAssertEqual(salaries["Accounting"]!, 97000)
         XCTAssertEqual(salaries["Engineering"]!, 100000)
