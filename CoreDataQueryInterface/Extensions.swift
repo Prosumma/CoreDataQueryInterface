@@ -16,8 +16,16 @@ extension NSManagedObjectContext {
 }
 
 extension ExpressionConvertible {
+    public func cdqiAverage(alias name: String? = nil, type: NSAttributeType? = nil) -> PropertyConvertible {
+        return average(self, alias: name, type: type)
+    }
+    
     public func cdqiCount(alias name: String? = nil) -> PropertyConvertible {
         return count(self, alias: name, type: .integer32AttributeType)
+    }
+    
+    public func cdqiMin(alias name: String? = nil, type: NSAttributeType? = nil) -> PropertyConvertible {
+        return min(self, alias: name, type: type)
     }
     
     public func cdqiMax(alias name: String? = nil, type: NSAttributeType? = nil) -> PropertyConvertible {
@@ -32,11 +40,23 @@ extension ExpressionConvertible {
         return compare(self, op, rhs, options: options)
     }
     
+    public func cdqiCompare(_ op: NSComparisonPredicate.Operator, _ rhs: Null, options: NSComparisonPredicate.Options = []) -> NSPredicate {
+        return compare(self, op, rhs, options: options)
+    }
+    
     public func cdqiEqualTo(_ rhs: ExpressionConvertible, options: NSComparisonPredicate.Options = []) -> NSPredicate {
         return compare(self, .equalTo, rhs, options: options)
     }
     
+    public func cdqiEqualTo(_ rhs: Null, options: NSComparisonPredicate.Options = []) -> NSPredicate {
+        return compare(self, .equalTo, rhs, options: options)
+    }
+    
     public func cdqiNotEqualTo(_ rhs: ExpressionConvertible, options: NSComparisonPredicate.Options = []) -> NSPredicate {
+        return compare(self, .notEqualTo, rhs, options: options)
+    }
+    
+    public func cdqiNotEqualTo(_ rhs: Null, options: NSComparisonPredicate.Options = []) -> NSPredicate {
         return compare(self, .notEqualTo, rhs, options: options)
     }
     
@@ -56,10 +76,30 @@ extension ExpressionConvertible {
         return compare(self, .greaterThanOrEqualTo, rhs, options: options)
     }
     
-    public func cdiAmong<R: Sequence>(_ rhs: R, options: NSComparisonPredicate.Options = []) -> NSPredicate where R.Iterator.Element: ExpressionConvertible {
+    public func cdqiAmong<R: Sequence>(_ rhs: R, options: NSComparisonPredicate.Options = []) -> NSPredicate where R.Iterator.Element: ExpressionConvertible {
         return compare(self, .in, aggregate(rhs), options: options)
     }
 
+    public func cdqiContains(_ rhs: ExpressionConvertible, options: NSComparisonPredicate.Options = []) -> NSPredicate {
+        return compare(self, .contains, rhs, options: options)
+    }
+    
+    public func cdqiLike(_ rhs: ExpressionConvertible, options: NSComparisonPredicate.Options = []) -> NSPredicate {
+        return compare(self, .like, rhs, options: options)
+    }
+    
+    public func cdqiBeginsWith(_ rhs: ExpressionConvertible, options: NSComparisonPredicate.Options = []) -> NSPredicate {
+        return compare(self, .beginsWith, rhs, options: options)
+    }
+    
+    public func cdqiEndsWith(_ rhs: ExpressionConvertible, options: NSComparisonPredicate.Options = []) -> NSPredicate {
+        return compare(self, .endsWith, rhs, options: options)
+    }
+    
+    public func cdqiMatches(_ rhs: String, options: NSComparisonPredicate.Options = []) -> NSPredicate {
+        return matches(self, rhs, options: options)
+    }
+    
     public func cdqiAlias(name: String, type: NSAttributeType) -> PropertyConvertible {
         let property = NSExpressionDescription()
         property.expression = cdqiExpression
@@ -84,3 +124,17 @@ extension KeyPathExpressionConvertible {
     }
 }
 
+extension NSPredicate {
+    public func cdqiAll() -> NSPredicate {
+        return all(self)
+    }
+    public func cdqiAny() -> NSPredicate {
+        return any(self)
+    }
+    public func cdqiSome() -> NSPredicate {
+        return some(self)
+    }
+    public func cdqiNot() -> NSPredicate {
+        return !self
+    }
+}

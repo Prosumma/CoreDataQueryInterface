@@ -12,12 +12,24 @@ public func ==<L: PredicateComparableTypedExpressionConvertible, R: TypedExpress
     return equalTo(lhs, rhs)
 }
 
+public func ==<L: PredicateComparableTypedExpressionConvertible>(lhs: L, rhs: Null) -> NSPredicate {
+    return equalTo(lhs, rhs)
+}
+
 public func !=<L: PredicateComparableTypedExpressionConvertible, R: TypedExpressionConvertible>(lhs: L, rhs: R) -> NSPredicate where L.CDQIComparisonType == R.CDQIComparisonType {
     return notEqualTo(lhs, rhs)
 }
 
 public func ==<L: PredicateComparableTypedExpressionConvertible, E: TypedExpressionConvertible, R: Sequence>(lhs: L, rhs: R) -> NSPredicate where L.CDQIComparisonType == E.CDQIComparisonType, R.Iterator.Element == E {
     return among(lhs, rhs)
+}
+
+public func !=<L: PredicateComparableTypedExpressionConvertible>(lhs: L, rhs: Null) -> NSPredicate {
+    return notEqualTo(lhs, rhs)
+}
+
+public func !=<L: PredicateComparableTypedExpressionConvertible, E: TypedExpressionConvertible, R: Sequence>(lhs: L, rhs: R) -> NSPredicate where L.CDQIComparisonType == E.CDQIComparisonType, R.Iterator.Element == E {
+    return !among(lhs, rhs)
 }
 
 public func <<L: PredicateComparableTypedExpressionConvertible, R: TypedExpressionConvertible>(lhs: L, rhs: R) -> NSPredicate where L.CDQIComparisonType == R.CDQIComparisonType {

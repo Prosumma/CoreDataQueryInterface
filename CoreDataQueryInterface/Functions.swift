@@ -10,6 +10,7 @@ import CoreData
 import Foundation
 
 public enum Function: String {
+    case average = "average:"
     case count = "count:"
     case max = "max:"
     case min = "min:"
@@ -60,6 +61,10 @@ public func function(function: Function, expression: ExpressionConvertible, alia
     let functionExpression = FunctionExpression(function: function, expression: expression, type: type)
     guard let name = name else { return functionExpression }
     return alias(functionExpression, name: name, type: functionExpression.cdqiType)
+}
+
+public func average(_ expression: ExpressionConvertible, alias name: String? = nil, type: NSAttributeType? = nil) -> PropertyConvertible {
+    return function(function: .average, expression: expression, alias: name, type: type)
 }
 
 public func count(_ expression: ExpressionConvertible, alias name: String? = nil, type: NSAttributeType? = nil) -> PropertyConvertible {

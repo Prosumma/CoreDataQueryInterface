@@ -59,35 +59,35 @@ class FilterTests : BaseTestCase {
     }
     
     func testCountEmployeesWithNameLike() {
-        let count = managedObjectContext.from(Employee).filter({ $0.lastName.like("*nes") }).count()
+        let count = try! managedObjectContext.from(Employee).filter({ $0.lastName.like("*nes") }).count()
         XCTAssertEqual(count, 5)
     }
     
     func testEmptyKeyRepresentsSelf() {
-        let employeeQuery = managedObjectContext.from(Employee)
-        let firstObjectID = employeeQuery.objectIDs().first()!
+        let employeeQuery = managedObjectContext.from(Employee.self)
+        let firstObjectID = try! employeeQuery.ids().first()!
         // Since employee in the filter resolves to the empty string, it is treated as SELF in the query.
         let predicate: (EmployeeAttribute) -> NSPredicate = { employee in employee == [firstObjectID] }
-        let firstEmployee = employeeQuery.filter(predicate).first()!
+        let firstEmployee = try! employeeQuery.filter(predicate).first()!
         XCTAssertEqual(firstObjectID, firstEmployee.objectID)
     }
     
     func testEmployeesWithHighSalaries() {
         let salary = 80000.32 // This will be a Double
         let e = EmployeeAttribute()
-        let highSalaryCount = managedObjectContext.from(Employee).filter(e.salary >= salary).count()
+        let highSalaryCount = try! managedObjectContext.from(Employee.self).filter(e.salary >= salary).count()
         XCTAssertEqual(highSalaryCount, 8)
     }
     
     func testEmployeesWithLessThanOrEqualToSalary() {
         let salary = 80000
         let e = EmployeeAttribute()
-        let highSalaryCount = managedObjectContext.from(Employee).filter(e.salary <= salary).count()
+        let highSalaryCount = try! managedObjectContext.from(Employee.self).filter(e.salary <= salary).count()
         XCTAssertEqual(highSalaryCount, 17)
     }
     
     func testNumberOfDepartmentsWithEmployeesWhoseLastNamesStartWithSUsingSubquery() {
-        let departmentCount = managedObjectContext.from(Department).filter{ department in
+        let departmentCount = try! managedObjectContext.from(Department).filter{ department in
             department.employees.subquery {
                 some($0.lastName.beginsWith("S", options: .CaseInsensitivePredicateOption))
             }.count > 0
@@ -96,58 +96,58 @@ class FilterTests : BaseTestCase {
     }
     
     func testNumberOfDepartmentsWithNoSalariesLessThanOrEqualTo() {
-        let departmentCount = managedObjectContext.from(Department).filter {
+        let departmentCount = try! managedObjectContext.from(Department).filter {
                 none($0.employees.salary <= 50000)
             }.count()
         XCTAssertEqual(departmentCount, 3)
     }
     
     func testNumberOfDepartmentsWithAnySalariesLessThan() {
-        let departmentCount = managedObjectContext.from(Department).filter {
+        let departmentCount = try! managedObjectContext.from(Department).filter {
             any($0.employees.salary < 40000)
             }.count()
         XCTAssertEqual(departmentCount, 1)
     }
     
     func testCountEmployeesWithFirstNameBeginningWithL () {
-        let count = managedObjectContext.from(Employee).filter({ employee in employee.firstName.beginsWith("L") }).count()
+        let count = try! managedObjectContext.from(Employee).filter({ employee in employee.firstName.cdqiBeginsWith("L") }).count()
         XCTAssertEqual(count, 5)
     }
     
     func testCountEmployeesWithFirstNameEndingWithA () {
-        let count = managedObjectContext.from(Employee).filter({ employee in employee.firstName.endsWith("a") }).count()
+        let count = try! managedObjectContext.from(Employee).filter({ employee in employee.firstName.cdqiEndsWith("a") }).count()
         XCTAssertEqual(count, 10)
     }
     
     func testCountEmployeesWithFirstNameOrLastName () {
-        let firstOrLastNameCount = managedObjectContext.from(Employee).filter({ employee in employee.firstName == "Isabella" || employee.lastName == "Jones" }).count()
+        let firstOrLastNameCount = try! managedObjectContext.from(Employee.self).filter({ employee in employee.firstName == "Isabella" || employee.lastName == "Jones" }).count()
         XCTAssertEqual(firstOrLastNameCount, 9)
     }
     
     func testCountEmployeesWithFirstNameAndLastName () {
-        let count = managedObjectContext.from(Employee).filter({ employee in employee.firstName == "Isabella" && employee.lastName == "Jones" }).count()
+        let count = try! managedObjectContext.from(Employee.self).filter({ employee in employee.firstName == "Isabella" && employee.lastName == "Jones" }).count()
         XCTAssertEqual(count, 1)
     }
     
     func testEmployeesWithFirstNameContaining () {
-        let count = managedObjectContext.from(Employee).filter({ employee in employee.firstName.contains("an")}).count()
+        let count = try! managedObjectContext.from(Employee).filter({ employee in employee.firstName.cdqiContains("an")}).count()
         XCTAssertEqual(count, 10)
     }
     
     func testDepartmentsWithNameMatchingRegex() {
-        let departmentCount = managedObjectContext.from(Department).filter({ department in department.name.matches("^[AE].*$") }).count()
+        let departmentCount = try! managedObjectContext.from(Department).filter({ department in department.name.matches("^[AE].*$") }).count()
         XCTAssertEqual(departmentCount, 2)
     }
     
     func testEmployeesWithSalariesBetween80000And100000() {
-        let employeeCount = managedObjectContext.from(Employee).filter{
+        let employeeCount = try! managedObjectContext.from(Employee).filter{
             employee in employee.salary.between(80000, and: 100000)
         }.count()
         XCTAssertEqual(employeeCount, 8)
     }
     
     func testDepartmentsWithEmployeesHavingSalary70000OrSalary61000() {
-        let departmentCount = managedObjectContext.from(Department).filter{
+        let departmentCount = try! managedObjectContext.from(Department).filter{
             any($0.employees.salary == [61000, 70000])
         }.count()
         XCTAssertEqual(departmentCount, 2)

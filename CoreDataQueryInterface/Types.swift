@@ -33,6 +33,30 @@ extension Int64: TypedConstantExpressionConvertible {
     public static let cdqiStaticType = NSAttributeType.integer64AttributeType
 }
 
+extension UInt: TypedConstantExpressionConvertible {
+    public typealias CDQIComparisonType = NSNumber
+#if arch(x86_64) || arch(arm64)
+    public static let cdqiStaticType = NSAttributeType.integer64AttributeType
+#else
+    public static let cdqiStaticType = NSAttributeType.integer32AttributeType
+#endif
+}
+
+extension UInt16: TypedConstantExpressionConvertible {
+    public typealias CDQIComparisonType = NSNumber
+    public static let cdqiStaticType = NSAttributeType.integer16AttributeType
+}
+
+extension UInt32: TypedConstantExpressionConvertible {
+    public typealias CDQIComparisonType = NSNumber
+    public static let cdqiStaticType = NSAttributeType.integer32AttributeType
+}
+
+extension UInt64: TypedConstantExpressionConvertible {
+    public typealias CDQIComparisonType = NSNumber
+    public static let cdqiStaticType = NSAttributeType.integer32AttributeType
+}
+
 extension Date: TypedConstantExpressionConvertible {
     public typealias CDQIComparisonType = Date
     public static let cdqiStaticType = NSAttributeType.dateAttributeType

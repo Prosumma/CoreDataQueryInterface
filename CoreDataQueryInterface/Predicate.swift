@@ -15,3 +15,24 @@ public func &&(lhs: NSPredicate, rhs: NSPredicate) -> NSPredicate {
 public func ||(lhs: NSPredicate, rhs: NSPredicate) -> NSPredicate {
     return NSCompoundPredicate(orPredicateWithSubpredicates: [lhs, rhs])
 }
+
+public prefix func !(predicate: NSPredicate) -> NSPredicate {
+    return not(predicate)
+}
+
+public func all(_ predicate: NSPredicate) -> NSPredicate {
+    return NSPredicate(format: "ALL %@", predicate)
+}
+
+public func any(_ predicate: NSPredicate) -> NSPredicate {
+    return NSPredicate(format: "ANY %@", predicate)
+}
+
+public func some(_ predicate: NSPredicate) -> NSPredicate {
+    return NSPredicate(format: "SOME %@", predicate)
+}
+
+public func not(_ predicate: NSPredicate) -> NSPredicate {
+    return NSCompoundPredicate(notPredicateWithSubpredicate: predicate)
+}
+

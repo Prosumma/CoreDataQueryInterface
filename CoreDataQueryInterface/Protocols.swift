@@ -73,6 +73,12 @@ public protocol SortDescriptorConvertible {
     func cdqiSortDescriptor(ascending: Bool) -> NSSortDescriptor
 }
 
+extension String: SortDescriptorConvertible {
+    public func cdqiSortDescriptor(ascending: Bool) -> NSSortDescriptor {
+        return NSSortDescriptor(key: self, ascending: ascending)
+    }
+}
+
 extension NSSortDescriptor: SortDescriptorConvertible {
     public func cdqiSortDescriptor(ascending: Bool) -> NSSortDescriptor {
         return self

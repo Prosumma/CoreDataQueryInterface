@@ -9,15 +9,15 @@
 import CoreData
 import Foundation
 
-struct QueryBuilder<M: NSManagedObject> where M: Entity {
+public struct QueryBuilder<M: NSManagedObject> where M: Entity {
     public init() {}
-    var fetchLimit: Int = 0 // Is this the right default?
-    var resultType: NSFetchRequestResultType = .managedObjectResultType
-    var predicates = [NSPredicate]()
-    var properties = [Any]()
-    var propertiesToGroupBy = [Any]()
-    var sortDescriptors = [NSSortDescriptor]()
-    var managedObjectContext: NSManagedObjectContext!
+    public var fetchLimit: Int = 0 // Is this the right default?
+    public var resultType: NSFetchRequestResultType = .managedObjectResultType
+    public var predicates = [NSPredicate]()
+    public var properties = [Any]()
+    public var propertiesToGroupBy = [Any]()
+    public var sortDescriptors = [NSSortDescriptor]()
+    public var managedObjectContext: NSManagedObjectContext!
     
     func request<R>() -> NSFetchRequest<R> {
         let request = NSFetchRequest<R>()

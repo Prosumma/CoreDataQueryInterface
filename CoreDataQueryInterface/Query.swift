@@ -10,9 +10,9 @@ import CoreData
 import Foundation
 
 public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity {
-    private let builder: QueryBuilder<M>
+    public let builder: QueryBuilder<M>
     
-    internal init(builder: QueryBuilder<M> = QueryBuilder<M>()) {
+    public init(builder: QueryBuilder<M> = QueryBuilder<M>()) {
         self.builder = builder
     }
     
@@ -71,10 +71,6 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
         return Query<M, NSDictionary>(builder: builder)
     }
     
-//    public func select() -> Query<M, NSDictionary> {
-//        return Query<M, NSDictionary>(builder: builder)
-//    }
-//    
     public func reselect() -> Query<M, NSDictionary> {
         var builder = self.builder
         builder.properties = []
@@ -157,6 +153,14 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
         return Query<M, R>(builder: builder)
     }
     
+    public func offset(_ offset: Int) -> Query<M, R> {
+        return self
+    }
+    
+    public func distinct() -> Query<M, R> {
+        return self
+    }
+    
     public func request() -> NSFetchRequest<R> {
         return builder.request()
     }
@@ -194,5 +198,9 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
     
     public func value<T>(managedObjectContext: NSManagedObjectContext? = nil, _ block: (M.CDQIAttribute) -> PropertyConvertible) throws -> T? {
         return try value(block(M.CDQIAttribute()), managedObjectContext: managedObjectContext)
+    }
+    
+    public func exists(managedObjectContext: NSManagedObjectContext? = nil) throws -> Bool {
+        return try limit(1).count(managedObjectContext: managedObjectContext) > 0
     }
 }

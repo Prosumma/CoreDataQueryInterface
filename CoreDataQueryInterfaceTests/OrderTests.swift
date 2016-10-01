@@ -35,32 +35,32 @@ class OrderTests : BaseTestCase {
     }
     
     func testFirstEmployeeInAccountingOrderedByFirstNameThenLastName() {
-        let employee = try! managedObjectContext.from(Employee).filter("department.name == %@", "Accounting").order("firstName", "lastName").first()!
+        let employee = try! managedObjectContext.from(Employee.self).filter("department.name == %@", "Accounting").order("firstName", "lastName").first()!
         XCTAssertEqual(employee.lastName, "Morton")
         XCTAssertEqual(employee.firstName, "Gregory")
     }
     
     func testReorder() {
-        let department = Department.EntityAttributeType()
-        let query = managedObjectContext.from(Department).order(descending: department.name)
-        let departmentName: String = query.reorder().order(department.name).value(department.name)!
+        let department = Department.CDQIAttribute()
+        let query = managedObjectContext.from(Department.self).order(ascending: false, department.name)
+        let departmentName: String = try! query.reorder().order(department.name).value(department.name)!
         XCTAssertEqual(departmentName, "Accounting")
     }
     
     func testOffset() {
-        let department = Department.EntityAttributeType()
-        let secondDepartment = managedObjectContext.from(Department).order(department.name).offset(1).first()!
+        let department = Department.CDQIAttribute()
+        let secondDepartment = try! managedObjectContext.from(Department.self).order(department.name).offset(1).first()!
         XCTAssertEqual(secondDepartment.name, "Engineering")
     }
     
     func testMultipleOrderings() {
-        let employees = managedObjectContext.from(Employee).order({employee in [employee.lastName, employee.firstName]}).all()
+        let employees = try! managedObjectContext.from(Employee.self).order({employee in [employee.lastName, employee.firstName]}).all()
         XCTAssertEqual(employees.first!.firstName, "David")
         XCTAssertEqual(employees.last!.firstName, "Lana")
     }
     
     func testMultipleDescendingOrderings() {
-        let employees = managedObjectContext.from(Employee).order(descending: {employee in [employee.lastName, employee.firstName]}).all()
+        let employees = try! managedObjectContext.from(Employee.self).order(ascending: false, {employee in [employee.lastName, employee.firstName]}).all()
         XCTAssertEqual(employees.first!.firstName, "Lana")
         XCTAssertEqual(employees.last!.firstName, "David")
     }
