@@ -47,18 +47,18 @@ class AttributeTests: BaseTestCase {
     }
     
     func testBooleanAttribute() {
-        let result = try! managedObjectContext.from(TestEntity.self).filter({ $0.boolean == true }).count()
+        let result = try! managedObjectContext.from(TestEntity.self).filter{ $0.boolean == true }.count()
         XCTAssertEqual(result, 1)
     }
     
     func testToOneRelationshipAttribute() {
-        let department = try! managedObjectContext.from(Department.self).filter({ $0.name == "Accounting" }).first()!
-        let result = try! managedObjectContext.from(Employee.self).filter({ $0.department == department }).count()
+        let department = try! managedObjectContext.from(Department.self).filter{ $0.name == "Accounting" }.first()!
+        let result = try! managedObjectContext.from(Employee.self).filter{ $0.department == department }.count()
         XCTAssertEqual(result, 8)
     }
     
     func testToManyRelationshipAttribute() {
-        let result = try! managedObjectContext.from(Department.self).filter({ any($0.employees.lastName == "Gahan") }).count()
+        let result = try! managedObjectContext.from(Department.self).filter{ any($0.employees.lastName == "Gahan") }.count()
         XCTAssertEqual(result, 3)
     }
 }

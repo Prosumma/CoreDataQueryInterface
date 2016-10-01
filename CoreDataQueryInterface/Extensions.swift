@@ -11,7 +11,7 @@ import Foundation
 
 extension NSManagedObjectContext {
     public func from<M: NSManagedObject>(_ entity: M.Type = M.self) -> Query<M, M> where M: Entity {
-        return Query<M, M>()
+        return Query<M, M>().context(managedObjectContext: self)
     }
     
     public func cdqiNewEntity<M: NSManagedObject>(_ entity: M.Type = M.self) -> M {

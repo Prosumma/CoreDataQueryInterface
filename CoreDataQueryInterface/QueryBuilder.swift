@@ -12,10 +12,10 @@ import Foundation
 public struct QueryBuilder<M: NSManagedObject> where M: Entity {
     public init() {}
     public var fetchLimit: Int = 0 // Is this the right default?
-    public var resultType: NSFetchRequestResultType = .managedObjectResultType
     public var predicates = [NSPredicate]()
     public var properties = [Any]()
     public var propertiesToGroupBy = [Any]()
+    public var resultType: NSFetchRequestResultType = .managedObjectResultType
     public var sortDescriptors = [NSSortDescriptor]()
     public var managedObjectContext: NSManagedObjectContext!
     
