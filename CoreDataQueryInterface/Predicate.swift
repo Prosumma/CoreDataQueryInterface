@@ -21,19 +21,19 @@ public prefix func !(predicate: NSPredicate) -> NSPredicate {
 }
 
 public func all(_ predicate: NSPredicate) -> NSPredicate {
-    return NSPredicate(format: "ALL %@", predicate)
+    return NSPredicate(format: "ALL \(predicate)")
 }
 
 public func any(_ predicate: NSPredicate) -> NSPredicate {
-    return NSPredicate(format: "ANY %@", predicate)
+    return NSPredicate(format: "ANY \(predicate)")
 }
 
 public func some(_ predicate: NSPredicate) -> NSPredicate {
-    return NSPredicate(format: "SOME %@", predicate)
+    return NSPredicate(format: "SOME \(predicate)")
 }
 
 public func none(_ predicate: NSPredicate) -> NSPredicate {
-    return NSPredicate(format: "NONE %@", predicate)
+    return NSPredicate(format: "NONE \(predicate)")
 }
 
 public func not(_ predicate: NSPredicate) -> NSPredicate {
