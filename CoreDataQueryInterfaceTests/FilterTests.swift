@@ -59,7 +59,7 @@ class FilterTests : BaseTestCase {
     }
     
     func testCountEmployeesWithNameLike() {
-        let count = try! managedObjectContext.from(Employee).filter({ $0.lastName.cdqiLike("*nes") }).count()
+        let count = try! managedObjectContext.from(Employee.self).filter({ $0.lastName.cdqiLike("*nes") }).count()
         XCTAssertEqual(count, 5)
     }
     
