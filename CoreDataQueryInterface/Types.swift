@@ -101,3 +101,8 @@ extension NSManagedObjectID: TypedConstantExpressionConvertible {
     public typealias CDQIComparisonType = NSManagedObjectID
     @nonobjc public static let cdqiStaticType = NSAttributeType.objectIDAttributeType
 }
+
+extension NSManagedObject: TypedConstantExpressionConvertible {
+    public typealias CDQIComparisonType = NSManagedObjectID
+    @nonobjc public static let cdqiStaticType = NSAttributeType.objectIDAttributeType
+}

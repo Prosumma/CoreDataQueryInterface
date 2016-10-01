@@ -32,7 +32,10 @@ public func some(_ predicate: NSPredicate) -> NSPredicate {
     return NSPredicate(format: "SOME %@", predicate)
 }
 
+public func none(_ predicate: NSPredicate) -> NSPredicate {
+    return NSPredicate(format: "NONE %@", predicate)
+}
+
 public func not(_ predicate: NSPredicate) -> NSPredicate {
     return NSCompoundPredicate(notPredicateWithSubpredicate: predicate)
 }
-

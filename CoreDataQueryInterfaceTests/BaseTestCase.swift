@@ -52,26 +52,26 @@ class BaseTestCase: XCTestCase {
 
             for line in lines {
                 let fields = line.components(separatedBy: "|")
-                let employee = managedObjectContext.newEntity(Employee)
+                let employee = managedObjectContext.cdqiNewEntity(Employee.self)
                 employee.firstName = fields[1]
                 employee.nickName = nickNames[employee.firstName]
                 employee.lastName = fields[0]
                 employee.salary = Int32(fields[3])!
-                if let department = managedObjectContext.from(Department.self).filter({ $0.name == fields[2] }).first() {
+                if let department = try! managedObjectContext.from(Department.self).filter({ $0.name == fields[2] }).first() {
                     employee.department = department
                 } else {
-                    let department = managedObjectContext.newEntity(Department)
+                    let department = managedObjectContext.cdqiNewEntity(Department.self)
                     department.name = fields[2]
                     employee.department = department
                 }
             }
             
-            let testEntity = managedObjectContext.newEntity(TestEntity)
+            let testEntity = managedObjectContext.cdqiNewEntity(TestEntity.self)
             
-            testEntity.integer16 = NSNumber(short: Int16.max)
-            testEntity.integer32 = NSNumber(int: Int32.max)
-            testEntity.integer64 = NSNumber(longLong: Int64.max)
-            testEntity.decimal = NSDecimalNumber(double: 5.00)
+            testEntity.integer16 = NSNumber(value: Int16.max)
+            testEntity.integer32 = NSNumber(value: Int32.max)
+            testEntity.integer64 = NSNumber(value: Int64.max)
+            testEntity.decimal = NSDecimalNumber(value: 5.00)
             testEntity.float = 510.2304
             testEntity.double = 212309.00
             testEntity.string = "hello"

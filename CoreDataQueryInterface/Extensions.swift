@@ -13,6 +13,10 @@ extension NSManagedObjectContext {
     public func from<M: NSManagedObject>(_ entity: M.Type = M.self) -> Query<M, M> where M: Entity {
         return Query<M, M>()
     }
+    
+    public func cdqiNewEntity<M: NSManagedObject>(_ entity: M.Type = M.self) -> M {
+        return M(entity: M.entity(), insertInto: self)
+    }
 }
 
 extension ExpressionConvertible {
@@ -77,7 +81,12 @@ extension ExpressionConvertible {
     }
     
     public func cdqiAmong<R: Sequence>(_ rhs: R, options: NSComparisonPredicate.Options = []) -> NSPredicate where R.Iterator.Element: ExpressionConvertible {
-        return compare(self, .in, aggregate(rhs), options: options)
+        let re = NSExpression(forAggregate: rhs.map{ $0.cdqiExpression })
+        return compare(self, .in, re, options: options)
+    }
+    
+    public func cdqiBetween(_ lhs: ExpressionConvertible, and rhs: ExpressionConvertible, options: NSComparisonPredicate.Options = []) -> NSPredicate {
+        return between(self, lhs, and: rhs, options: options)
     }
 
     public func cdqiContains(_ rhs: ExpressionConvertible, options: NSComparisonPredicate.Options = []) -> NSPredicate {

@@ -18,11 +18,6 @@ public struct Null: ExpressibleByNilLiteral, ExpressionConvertible {
     }
 }
 
-public func aggregate<S: Sequence>(_ expressions: S) -> ExpressionConvertible where S.Iterator.Element: ExpressionConvertible {
-    let items = expressions.map{ $0.cdqiExpression }
-    return NSExpression(forAggregate: items)
-}
-
 public func compare(_ lhs: ExpressionConvertible, _ op: NSComparisonPredicate.Operator, _ rhs: ExpressionConvertible, options: NSComparisonPredicate.Options = []) -> NSPredicate {
     let (le, re) = (lhs.cdqiExpression, rhs.cdqiExpression)
     return NSComparisonPredicate(leftExpression: le, rightExpression: re, modifier: .direct, type: op, options: options)
@@ -65,8 +60,14 @@ public func greaterThanOrEqualTo(_ lhs: ExpressionConvertible, _ rhs: Expression
     return compare(lhs, .greaterThanOrEqualTo, rhs, options: options)
 }
 
+public func between(_ value: ExpressionConvertible, _ lhs: ExpressionConvertible, and rhs: ExpressionConvertible, options: NSComparisonPredicate.Options = []) -> NSPredicate {
+    let re = NSExpression(forAggregate: [lhs, rhs])
+    return compare(value, .between, re, options: options)
+}
+
 public func among<R: Sequence>(_ lhs: ExpressionConvertible, _ rhs: R, options: NSComparisonPredicate.Options = []) -> NSPredicate where R.Iterator.Element: ExpressionConvertible {
-    return compare(lhs, .in, aggregate(rhs), options: options)
+    let re = NSExpression(forAggregate: rhs.map{ $0.cdqiExpression })
+    return compare(lhs, .in, re, options: options)
 }
 
 public func contains(_ lhs: ExpressionConvertible, _ rhs: ExpressionConvertible, options: NSComparisonPredicate.Options = []) -> NSPredicate {
