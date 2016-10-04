@@ -147,6 +147,11 @@ extension KeyPathExpressionConvertible {
     }
     
     public var cdqiExpression: NSExpression {
+        if let key = cdqiKey, key.hasPrefix("$") {
+            return NSExpression(forVariable: key.substring(from: key.index(key.startIndex, offsetBy: 1)))
+        } else if cdqiKeyPath == "SELF" {
+            return NSExpression(format: "SELF")
+        }
         return NSExpression(forKeyPath: cdqiKeyPath)
     }
     
