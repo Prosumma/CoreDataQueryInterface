@@ -37,6 +37,18 @@ extension NSExpression: ExpressionConvertible {
     }
 }
 
+extension NSManagedObject: ExpressionConvertible {
+    public var cdqiExpression: NSExpression {
+        return NSExpression(forConstantValue: self)
+    }
+}
+
+extension NSManagedObjectID: ExpressionConvertible {
+    public var cdqiExpression: NSExpression {
+        return NSExpression(forConstantValue: self)
+    }
+}
+
 public protocol TypedExpressionConvertible: ExpressionConvertible, Typed {
     associatedtype CDQIComparisonType: Typed
 }
@@ -152,4 +164,3 @@ extension KeyPathExpressionConvertible {
         return NSSortDescriptor(key: cdqiKeyPath, ascending: ascending)
     }
 }
-

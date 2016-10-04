@@ -63,14 +63,14 @@ class FilterTests : BaseTestCase {
         XCTAssertEqual(count, 5)
     }
     
-//    func testEmptyKeyRepresentsSelf() {
-//        let employeeQuery = managedObjectContext.from(Employee.self)
-//        let firstObjectID = try! employeeQuery.ids().first()!
-//        // Since employee in the filter resolves to the empty string, it is treated as SELF in the query.
-//        let predicate: (EmployeeAttribute) -> NSPredicate = { employee in employee == [firstObjectID] }
-//        let firstEmployee = try! employeeQuery.filter(predicate).first()!
-//        XCTAssertEqual(firstObjectID, firstEmployee.objectID)
-//    }
+    func testEmptyKeyRepresentsSelf() {
+        let employeeQuery = managedObjectContext.from(Employee.self)
+        let firstObjectID = try! employeeQuery.ids().first()!
+        // Since employee in the filter resolves to the empty string, it is treated as SELF in the query.
+        let predicate: (EmployeeAttribute) -> NSPredicate = { employee in employee == firstObjectID }
+        let firstEmployee = try! employeeQuery.filter(predicate).first()!
+        XCTAssertEqual(firstObjectID, firstEmployee.objectID)
+    }
     
     func testEmployeesWithHighSalaries() {
         let salary = 80000.32 // This will be a Double
