@@ -50,69 +50,83 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
     public func select<P: Sequence>(_ properties: P) -> Query<M, NSDictionary> where P.Iterator.Element: PropertyConvertible {
         var builder = self.builder
         builder.resultType = .dictionaryResultType
-        builder.properties.append(contentsOf: properties.map{ $0.cdqiProperty })
+        builder.properties = builder.properties ?? []
+        builder.properties!.append(contentsOf: properties.map{ $0.cdqiProperty })
         return Query<M, NSDictionary>(builder: builder)
     }
     
     public func select(_ properties: PropertyConvertible...) -> Query<M, NSDictionary> {
         var builder = self.builder
         builder.resultType = .dictionaryResultType
-        builder.properties.append(contentsOf: properties.map{ $0.cdqiProperty })
+        builder.properties = builder.properties ?? []
+        builder.properties!.append(contentsOf: properties.map{ $0.cdqiProperty })
         return Query<M, NSDictionary>(builder: builder)
     }
     
     public func select(_ block: (M.CDQIAttribute) -> PropertyConvertible) -> Query<M, NSDictionary> {
         var builder = self.builder
         builder.resultType = .dictionaryResultType
-        builder.properties.append(block(M.CDQIAttribute()))
+        builder.properties = builder.properties ?? []
+        builder.properties!.append(block(M.CDQIAttribute()))
         return Query<M, NSDictionary>(builder: builder)
     }
     
     public func select(_ block: (M.CDQIAttribute) -> [PropertyConvertible]) -> Query<M, NSDictionary> {
         var builder = self.builder
         builder.resultType = .dictionaryResultType
-        builder.properties.append(contentsOf: block(M.CDQIAttribute()).map{ $0.cdqiProperty })
+        builder.properties = builder.properties ?? []
+        builder.properties!.append(contentsOf: block(M.CDQIAttribute()).map{ $0.cdqiProperty })
         return Query<M, NSDictionary>(builder: builder)
     }
     
     public func reselect() -> Query<M, NSDictionary> {
         var builder = self.builder
         builder.resultType = .dictionaryResultType
-        builder.properties = []
+        builder.properties = nil
         return Query<M, NSDictionary>(builder: builder)
     }
     
     public func groupBy<P: Sequence>(_ properties: P) -> Query<M, NSDictionary> where P.Iterator.Element: PropertyConvertible {
         var builder = self.builder
         builder.resultType = .dictionaryResultType
-        builder.propertiesToGroupBy.append(contentsOf: properties.map{ $0.cdqiProperty })
+        builder.propertiesToGroupBy = builder.propertiesToGroupBy ?? []
+        builder.propertiesToGroupBy!.append(contentsOf: properties.map{ $0.cdqiProperty })
         return Query<M, NSDictionary>(builder: builder)
     }
     
     public func groupBy(_ properties: PropertyConvertible...) -> Query<M, NSDictionary> {
         var builder = self.builder
         builder.resultType = .dictionaryResultType
-        builder.propertiesToGroupBy.append(contentsOf: properties.map{ $0.cdqiProperty })
+        builder.propertiesToGroupBy = builder.propertiesToGroupBy ?? []
+        builder.propertiesToGroupBy!.append(contentsOf: properties.map{ $0.cdqiProperty })
         return Query<M, NSDictionary>(builder: builder)
     }
     
     public func groupBy(_ block: (M.CDQIAttribute) -> PropertyConvertible) -> Query<M, NSDictionary> {
         var builder = self.builder
         builder.resultType = .dictionaryResultType
-        builder.propertiesToGroupBy.append(block(M.CDQIAttribute()))
+        builder.propertiesToGroupBy = builder.propertiesToGroupBy ?? []
+        builder.propertiesToGroupBy!.append(block(M.CDQIAttribute()))
         return Query<M, NSDictionary>(builder: builder)
     }
     
     public func groupBy(_ block: (M.CDQIAttribute) -> [PropertyConvertible]) -> Query<M, NSDictionary> {
         var builder = self.builder
         builder.resultType = .dictionaryResultType
-        builder.propertiesToGroupBy.append(contentsOf: block(M.CDQIAttribute()).map{ $0.cdqiProperty })
+        builder.propertiesToGroupBy = builder.propertiesToGroupBy ?? []
+        builder.propertiesToGroupBy!.append(contentsOf: block(M.CDQIAttribute()).map{ $0.cdqiProperty })
+        return Query<M, NSDictionary>(builder: builder)
+    }
+    
+    public func regroup() -> Query<M, NSDictionary> {
+        var builder = self.builder
+        builder.resultType = .dictionaryResultType
+        builder.propertiesToGroupBy = nil
         return Query<M, NSDictionary>(builder: builder)
     }
     
     public func order<O: Sequence>(ascending: Bool, _ sortDescriptors: O) -> Query<M, R> where O.Iterator.Element: SortDescriptorConvertible {
         var builder = self.builder
-        builder.resultType = .dictionaryResultType
         builder.sortDescriptors.append(contentsOf: sortDescriptors.map{ $0.cdqiSortDescriptor(ascending: ascending)  })
         return Query<M, R>(builder: builder)
     }
@@ -129,7 +143,6 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
     
     public func order(_ sortDescriptors: SortDescriptorConvertible...) -> Query<M, R> {
         var builder = self.builder
-        builder.resultType = .dictionaryResultType
         builder.sortDescriptors.append(contentsOf: sortDescriptors.map{ $0.cdqiSortDescriptor(ascending: true)  })
         return Query<M, R>(builder: builder)
     }
@@ -140,26 +153,28 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
     
     public func order(ascending: Bool = true, _ block: (M.CDQIAttribute) -> [SortDescriptorConvertible]) -> Query<M, R> {
         var builder = self.builder
-        builder.resultType = .dictionaryResultType
         builder.sortDescriptors.append(contentsOf: block(M.CDQIAttribute()).map{ $0.cdqiSortDescriptor(ascending: ascending) })
         return Query<M, R>(builder: builder)
     }
         
     public func reorder() -> Query<M, R> {
         var builder = self.builder
-        builder.resultType = .dictionaryResultType
         builder.sortDescriptors = []
         return Query<M, R>(builder: builder)
     }
     
     public func objects() -> Query<M, M> {
         var builder = self.builder
+        builder.properties = nil
+        builder.propertiesToGroupBy = nil
         builder.resultType = .managedObjectResultType
         return Query<M, M>(builder: builder)
     }
     
     public func ids() -> Query<M, NSManagedObjectID> {
         var builder = self.builder
+        builder.properties = nil
+        builder.propertiesToGroupBy = nil        
         builder.resultType = .managedObjectIDResultType
         return Query<M, NSManagedObjectID>(builder: builder)
     }
@@ -170,12 +185,17 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
         return Query<M, R>(builder: builder)
     }
     
-    public func offset(_ offset: Int) -> Query<M, R> {
-        return self
+    public func offset(_ fetchOffset: Int) -> Query<M, R> {
+        var builder = self.builder
+        builder.fetchOffset = fetchOffset
+        return Query<M, R>(builder: builder)
     }
     
-    public func distinct() -> Query<M, R> {
-        return self
+    public func distinct(_ distinct: Bool = true) -> Query<M, NSDictionary> {
+        var builder = self.builder
+        builder.distinct = distinct
+        builder.resultType = .dictionaryResultType
+        return Query<M, NSDictionary>(builder: builder)
     }
     
     public func request() -> NSFetchRequest<R> {
@@ -196,7 +216,6 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
     
     public func all(managedObjectContext: NSManagedObjectContext? = nil) throws -> [R] {
         let request: NSFetchRequest<R> = builder.request()
-        request.entity = M.entity()
         return try (managedObjectContext ?? builder.managedObjectContext)!.fetch(request)
     }
     

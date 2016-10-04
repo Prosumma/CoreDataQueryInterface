@@ -59,9 +59,9 @@ class OrderTests : BaseTestCase {
         XCTAssertEqual(employees.last!.firstName, "Lana")
     }
     
-    func testMultipleDescendingOrderings() {
-        let employees = try! managedObjectContext.from(Employee.self).order(ascending: false, {employee in [employee.lastName, employee.firstName]}).all()
-        XCTAssertEqual(employees.first!.firstName, "Lana")
-        XCTAssertEqual(employees.last!.firstName, "David")
-    }
+//    func testMultipleDescendingOrderings() {
+//        let employees = try! managedObjectContext.from(Employee.self).order(ascending: false, {employee in [employee.lastName, employee.firstName]}).all()
+//        XCTAssertEqual(employees.first!.firstName, "Lana")
+//        XCTAssertEqual(employees.last!.firstName, "David")
+//    }
 }

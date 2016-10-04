@@ -9,27 +9,30 @@
 import CoreData
 import Foundation
 
-public struct QueryBuilder<M: NSManagedObject> where M: Entity {
+public struct QueryBuilder<M: NSManagedObject> {
     public init() {}
-    public var fetchLimit: Int = 0 // Is this the right default?
+    public var fetchLimit: Int = 0
+    public var fetchOffset: Int = 0
     public var predicates = [NSPredicate]()
-    public var properties = [Any]()
-    public var propertiesToGroupBy = [Any]()
+    public var properties: [Any]?
+    public var propertiesToGroupBy: [Any]?
     public var resultType: NSFetchRequestResultType = .managedObjectResultType
     public var sortDescriptors = [NSSortDescriptor]()
     public var managedObjectContext: NSManagedObjectContext!
+    public var distinct = false
     
     func request<R>() -> NSFetchRequest<R> {
         let request = NSFetchRequest<R>()
+        request.entity = M.entity()
+        request.returnsDistinctResults = distinct
         request.fetchLimit = fetchLimit
+        request.fetchOffset = fetchOffset
         request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
-        if properties.count > 0 {
-            request.propertiesToFetch = properties
-        }
-        if propertiesToGroupBy.count > 0 {
-            request.propertiesToGroupBy = propertiesToGroupBy
-        }
-        //        request.resultType = resultType
+        request.sortDescriptors = sortDescriptors
+        request.propertiesToFetch = properties
+        request.propertiesToGroupBy = propertiesToGroupBy
+        request.resultType = resultType
+        NSLog("%@", request)
         return request
     }
 }
