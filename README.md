@@ -10,7 +10,15 @@ Core Data Query Interface (CDQI) is a type-safe, fluent, intuitive library for w
 
 ### Swift 3.0 Support
 
-I'm working hard on this. It should hae been ready before the release of Swift 3, but it will be available by Monday. It is 95% complete. Unfortunately it still does not support Core Data inheritance, but it is a much more compact implementation.
+If you&rsquo;re feeling adventures, the `cdqi5` branch contains the Swift 3 version of CDQI. Here&rsquo;s what you need to know:
+
+- Things have changed a bit. The unit tests are your friends. Look at them.
+- The `cdqi` tool has not yet been updated. You will have to hand-code your proxy classes. Again, look at the unit tests.
+- Comparisons involving `NSData` don&rsquo;t seem to work. The compiler cannot figure out which operator to apply. Working on it.
+- Subqueries don&rsquo;t work yet.
+- iOS 10 and macOS Sierra are supported. Nothing else is yet. I will support earlier/other operating systems soon.
+
+Use at your own risk! Subject to change without notice (but probably will not change much). When it is released, the `cdqi5` branch will be merged, **deleted**, and replaced with the appropriate tag. 
 
 ### Features
 
