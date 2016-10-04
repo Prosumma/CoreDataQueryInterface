@@ -203,14 +203,15 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
     }
     
     public func count(managedObjectContext: NSManagedObjectContext? = nil) throws -> Int {
+        var builder = self.builder
+        builder.resultType = .countResultType
         let request: NSFetchRequest<R> = builder.request()
-        request.entity = M.entity()
-        request.resultType = .countResultType
-        return try (managedObjectContext ?? builder.managedObjectContext)!.count(for: request)
+        return try (managedObjectContext ?? builder.managedObjectContext!).count(for: request)
     }
     
     public func first(managedObjectContext: NSManagedObjectContext? = nil) throws -> R? {
         let results = try limit(1).all(managedObjectContext: managedObjectContext)
+        assert(results.count < 2)
         return results.count == 0 ? nil : results[0]
     }
     

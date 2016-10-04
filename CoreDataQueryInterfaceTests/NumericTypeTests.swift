@@ -52,18 +52,18 @@ class NumericTypeTests: BaseTestCase {
     
     func testUInt32ValueComparison() {
         let int: UInt32 = 32767
-        let resultCount = try! managedObjectContext.from(TestEntity.self).filter({ $0.integer16 == int }).count()
+        let resultCount = try! managedObjectContext.from(TestEntity.self).filter{ $0.integer16 == int }.count()
         XCTAssert(resultCount == 1)
     }
     
     func testUInt64ValueComparison() {
         let int: UInt64 = 32767
-        let resultCount = try! managedObjectContext.from(TestEntity.self).filter({ $0.integer16 == int }).count()
+        let resultCount = try! managedObjectContext.from(TestEntity.self).filter{ $0.integer16 == int }.count()
         XCTAssert(resultCount == 1)
     }
     
     func testInt16OverflowValueComparison() {
-        let overflowCount = try! managedObjectContext.from(TestEntity.self).filter({ $0.integer16 == 500000000 }).count()
+        let overflowCount = try! managedObjectContext.from(TestEntity.self).filter{ $0.integer16 == 500000000 }.count()
         XCTAssert(overflowCount == 0)
     }
     
@@ -81,25 +81,25 @@ class NumericTypeTests: BaseTestCase {
     
     func testUIntInt32ValueComparison() {
         let integer: UInt = UInt(Int32.max)
-        let resultCount = try! managedObjectContext.from(TestEntity.self).filter({ $0.integer32 == integer }).count()
+        let resultCount = try! managedObjectContext.from(TestEntity.self).filter{ $0.integer32 == integer }.count()
         XCTAssert(resultCount == 1)
     }
     
     func testFloatValueComparison() {
         let float: Float = 510.2304
-        let resultCount = try! managedObjectContext.from(TestEntity.self).filter({ $0.float == float }).count()
+        let resultCount = try! managedObjectContext.from(TestEntity.self).filter{ $0.float == float }.count()
         XCTAssert(resultCount == 1)
     }
     
     func testIntDoubleValueComparison() {
         let intValue: Int = 212309
-        let resultCount = try! managedObjectContext.from(TestEntity.self).filter({ $0.double == intValue }).count()
+        let resultCount = try! managedObjectContext.from(TestEntity.self).filter{ $0.double == intValue }.count()
         XCTAssert(resultCount == 1)
     }
     
     func testDecimalValueComparison() {
         let double: Double = 5.0
-        let resultCount = try! managedObjectContext.from(TestEntity.self).filter({ $0.decimal == double }).count()
+        let resultCount = try! managedObjectContext.from(TestEntity.self).filter{ $0.decimal == double }.count()
         XCTAssert(resultCount == 1)
     }
  

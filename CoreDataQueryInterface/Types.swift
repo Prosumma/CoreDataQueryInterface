@@ -9,52 +9,84 @@
 import CoreData
 import Foundation
 
-extension Int: TypedConstantExpressionConvertible {
+extension Int: TypedExpressionConvertible {
     public typealias CDQIComparisonType = NSNumber
 #if arch(x86_64) || arch(arm64)
     public static let cdqiStaticType = NSAttributeType.integer64AttributeType
 #else
     public static let cdqiStaticType = NSAttributeType.integer32AttributeType
 #endif
+    public var cdqiExpression: NSExpression {
+        let number = NSNumber(value: self)
+        return NSExpression(forConstantValue: number)
+    }    
 }
 
-extension Int16: TypedConstantExpressionConvertible {
+extension Int16: TypedExpressionConvertible {
     public typealias CDQIComparisonType = NSNumber
     public static let cdqiStaticType = NSAttributeType.integer16AttributeType
+    public var cdqiExpression: NSExpression {
+        let number = NSNumber(value: self)
+        return NSExpression(forConstantValue: number)
+    }
 }
 
-extension Int32: TypedConstantExpressionConvertible {
+extension Int32: TypedExpressionConvertible {
     public typealias CDQIComparisonType = NSNumber
     public static let cdqiStaticType = NSAttributeType.integer32AttributeType
+    public var cdqiExpression: NSExpression {
+        let number = NSNumber(value: self)
+        return NSExpression(forConstantValue: number)
+    }
 }
 
-extension Int64: TypedConstantExpressionConvertible {
+extension Int64: TypedExpressionConvertible {
     public typealias CDQIComparisonType = NSNumber
     public static let cdqiStaticType = NSAttributeType.integer64AttributeType
+    public var cdqiExpression: NSExpression {
+        let number = NSNumber(value: self)
+        return NSExpression(forConstantValue: number)
+    }
 }
 
-extension UInt: TypedConstantExpressionConvertible {
+extension UInt: TypedExpressionConvertible {
     public typealias CDQIComparisonType = NSNumber
 #if arch(x86_64) || arch(arm64)
     public static let cdqiStaticType = NSAttributeType.integer64AttributeType
 #else
     public static let cdqiStaticType = NSAttributeType.integer32AttributeType
 #endif
+    public var cdqiExpression: NSExpression {
+        let number = NSNumber(value: self)
+        return NSExpression(forConstantValue: number)
+    }
 }
 
-extension UInt16: TypedConstantExpressionConvertible {
+extension UInt16: TypedExpressionConvertible {
     public typealias CDQIComparisonType = NSNumber
     public static let cdqiStaticType = NSAttributeType.integer16AttributeType
+    public var cdqiExpression: NSExpression {
+        let number = NSNumber(value: self)
+        return NSExpression(forConstantValue: number)
+    }
 }
 
-extension UInt32: TypedConstantExpressionConvertible {
+extension UInt32: TypedExpressionConvertible {
     public typealias CDQIComparisonType = NSNumber
     public static let cdqiStaticType = NSAttributeType.integer32AttributeType
+    public var cdqiExpression: NSExpression {
+        let number = NSNumber(value: self)
+        return NSExpression(forConstantValue: number)
+    }
 }
 
-extension UInt64: TypedConstantExpressionConvertible {
+extension UInt64: TypedExpressionConvertible {
     public typealias CDQIComparisonType = NSNumber
     public static let cdqiStaticType = NSAttributeType.integer32AttributeType
+    public var cdqiExpression: NSExpression {
+        let number = NSNumber(value: self)
+        return NSExpression(forConstantValue: number)
+    }
 }
 
 extension Date: TypedConstantExpressionConvertible {
