@@ -53,5 +53,3 @@ public typealias DataAttribute = ScalarAttribute<NSData>
 public typealias DateAttribute = ScalarAttribute<Date>
 public typealias DecimalAttribute = ScalarAttribute<Decimal>
 public typealias FloatAttribute = ScalarAttribute<Float>
-
-

@@ -31,7 +31,9 @@ class AttributeTests: BaseTestCase {
 //        let bundle = Bundle(for: type(of: self))
 //        let path = bundle.path(forResource: "Employees", ofType: "txt")!
 //        let data = try! Data(contentsOf: URL(fileURLWithPath: path))
-//        let result = try! managedObjectContext.from(TestEntity).filter({ $0.binary == data }).count()
+//        let testEntity = TestEntity.CDQIAttribute()
+//        let predicate = testEntity.binary == data
+//        let result = try! managedObjectContext.from(TestEntity.self).filter({ $0.binary == data }).count()
 //        XCTAssertEqual(result, 1)
 //    }
     
