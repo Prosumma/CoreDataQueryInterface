@@ -53,13 +53,13 @@ class SelectionTests : BaseTestCase {
         XCTAssertEqual(salaries["Sales"]!, 62000)
     }
     
-//    func testAverageSalaryGroupedByDepartment() {
-//        let result = try! managedObjectContext.from(Employee.self).groupBy({$0.department.name}).select({[$0.department.name, $0.department.salary.cdqiAverage()]}).order(ascending: false, {$0.department.name}).all()
-//        let salaries: [String: Int] = result.toDictionary() { ($0["departmentName"]! as! String, ($0["salaryAverage"]! as! NSNumber).intValue) }
-//        XCTAssertEqual(salaries["Accounting"]!, 71000)
-//        XCTAssertEqual(salaries["Engineering"]!, 75625)
-//        XCTAssertEqual(salaries["Sales"]!, 75111)
-//    }
+    func testAverageSalaryGroupedByDepartment() {
+        let result = try! managedObjectContext.from(Employee.self).groupBy{$0.department.name}.select({$0.department.name}, {$0.salary.cdqiAverage()}).order(ascending: false, {$0.department.name}).all()
+        let salaries: [String: Int] = result.toDictionary() { ($0["departmentName"]! as! String, ($0["salaryAverage"]! as! NSNumber).intValue) }
+        XCTAssertEqual(salaries["Accounting"]!, 71000)
+        XCTAssertEqual(salaries["Engineering"]!, 75625)
+        XCTAssertEqual(salaries["Sales"]!, 75111)
+    }
     
     func testDistinctArray() {
         let query = managedObjectContext.from(Employee.self).order{ $0.salary }

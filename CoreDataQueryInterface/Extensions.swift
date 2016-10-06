@@ -126,7 +126,6 @@ extension ExpressionConvertible {
     }
 }
 
-
 extension KeyPathExpressionConvertible {
     public func cdqiAlias(type: NSAttributeType) -> PropertyConvertible {
         return alias(self, name: cdqiName, type: type)
