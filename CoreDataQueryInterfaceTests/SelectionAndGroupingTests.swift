@@ -62,10 +62,10 @@ class SelectionTests : BaseTestCase {
     }
     
     func testDistinctArray() {
-        let query = managedObjectContext.from(Employee.self).order{ $0.salary }
-        let distinctSalaries: [Int] = try! query.distinct().array({$0.salary})
+        let query = managedObjectContext.from(Employee.self).order{$0.salary}
+        let distinctSalaries: [Int] = try! query.distinct().array{$0.salary}
         XCTAssertEqual(distinctSalaries.count, 23)
-        let salaries: [Int] = try! query.array({$0.salary})
+        let salaries: [Int] = try! query.array{$0.salary}
         XCTAssertEqual(salaries.count, 25)
         XCTAssertNotEqual(distinctSalaries, salaries)
     }
@@ -95,7 +95,7 @@ class SelectionTests : BaseTestCase {
     }
     
     func testMultipleGroupByProperty() {
-        let result = try! managedObjectContext.from(Employee.self).groupBy({[$0.lastName, $0.department]}).select("lastName", "department").all()
+        let result = try! managedObjectContext.from(Employee.self).groupBy{[$0.lastName, $0.department]}.select("lastName", "department").all()
         XCTAssertEqual(result.count, 13)
     }
     

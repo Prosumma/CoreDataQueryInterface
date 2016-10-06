@@ -20,23 +20,44 @@ extension NSManagedObjectContext {
 }
 
 extension ExpressionConvertible {
-    public func cdqiAverage(alias name: String? = nil, type: NSAttributeType? = nil) -> PropertyConvertible {
+    
+    public func cdqiAverage(type: NSAttributeType? = nil) -> FunctionExpression {
+        return average(self, type: type)
+    }
+    
+    public func cdqiAverage(alias name: String, type: NSAttributeType? = nil) -> PropertyConvertible {
         return average(self, alias: name, type: type)
     }
     
-    public func cdqiCount(alias name: String? = nil) -> PropertyConvertible {
+    public func cdqiCount(type: NSAttributeType? = nil) -> FunctionExpression {
+        return count(self, type: type)
+    }
+    
+    public func cdqiCount(alias name: String) -> PropertyConvertible {
         return count(self, alias: name, type: .integer32AttributeType)
     }
     
-    public func cdqiMin(alias name: String? = nil, type: NSAttributeType? = nil) -> PropertyConvertible {
+    public func cdqiMin(type: NSAttributeType? = nil) -> FunctionExpression {
+        return min(self, type: type)
+    }
+    
+    public func cdqiMin(alias name: String, type: NSAttributeType? = nil) -> PropertyConvertible {
         return min(self, alias: name, type: type)
     }
     
-    public func cdqiMax(alias name: String? = nil, type: NSAttributeType? = nil) -> PropertyConvertible {
+    public func cdqiMax(type: NSAttributeType? = nil) -> FunctionExpression {
+        return max(self, type: type)
+    }
+    
+    public func cdqiMax(alias name: String, type: NSAttributeType? = nil) -> PropertyConvertible {
         return max(self, alias: name, type: type)
     }
     
-    public func cdqiSum(alias name: String? = nil, type: NSAttributeType? = nil) -> PropertyConvertible {
+    public func cdqiSum(type: NSAttributeType? = nil) -> FunctionExpression {
+        return sum(self, type: type)
+    }
+    
+    public func cdqiSum(alias name: String, type: NSAttributeType? = nil) -> PropertyConvertible {
         return sum(self, alias: name, type: type)
     }
     

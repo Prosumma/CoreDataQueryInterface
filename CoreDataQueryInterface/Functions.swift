@@ -63,23 +63,43 @@ public func function(function: Function, expression: ExpressionConvertible, alia
     return alias(functionExpression, name: name, type: functionExpression.cdqiType)
 }
 
-public func average(_ expression: ExpressionConvertible, alias name: String? = nil, type: NSAttributeType? = nil) -> PropertyConvertible {
+public func average(_ expression: ExpressionConvertible, type: NSAttributeType? = nil) -> FunctionExpression {
+    return FunctionExpression(function: .average, expression: expression, type: type)
+}
+
+public func average(_ expression: ExpressionConvertible, alias name: String, type: NSAttributeType? = nil) -> PropertyConvertible {
     return function(function: .average, expression: expression, alias: name, type: type)
 }
 
-public func count(_ expression: ExpressionConvertible, alias name: String? = nil, type: NSAttributeType? = nil) -> PropertyConvertible {
+public func count(_ expression: ExpressionConvertible, type: NSAttributeType? = nil) -> FunctionExpression {
+    return FunctionExpression(function: .count, expression: expression, type: type)
+}
+
+public func count(_ expression: ExpressionConvertible, alias name: String, type: NSAttributeType? = nil) -> PropertyConvertible {
     return function(function: .count, expression: expression, alias: name, type: type)
 }
 
-public func max(_ expression: ExpressionConvertible, alias name: String? = nil, type: NSAttributeType? = nil) -> PropertyConvertible {
+public func max(_ expression: ExpressionConvertible, type: NSAttributeType? = nil) -> FunctionExpression {
+    return FunctionExpression(function: .max, expression: expression, type: type)
+}
+
+public func max(_ expression: ExpressionConvertible, alias name: String, type: NSAttributeType? = nil) -> PropertyConvertible {
     return function(function: .max, expression: expression, alias: name, type: type)
 }
 
-public func min(_ expression: ExpressionConvertible, alias name: String? = nil, type: NSAttributeType? = nil) -> PropertyConvertible {
+public func min(_ expression: ExpressionConvertible, type: NSAttributeType? = nil) -> FunctionExpression {
+    return FunctionExpression(function: .min, expression: expression, type: type)
+}
+
+public func min(_ expression: ExpressionConvertible, alias name: String, type: NSAttributeType? = nil) -> PropertyConvertible {
     return function(function: .min, expression: expression, alias: name, type: type)
 }
 
-public func sum(_ expression: ExpressionConvertible, alias name: String? = nil, type: NSAttributeType? = nil) -> PropertyConvertible {
+public func sum(_ expression: ExpressionConvertible, type: NSAttributeType? = nil) -> FunctionExpression {
+    return FunctionExpression(function: .sum, expression: expression, type: type)
+}
+
+public func sum(_ expression: ExpressionConvertible, alias name: String, type: NSAttributeType? = nil) -> PropertyConvertible {
     return function(function: .sum, expression: expression, alias: name, type: type)
 }
 
