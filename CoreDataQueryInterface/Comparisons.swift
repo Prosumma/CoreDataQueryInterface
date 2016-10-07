@@ -61,7 +61,7 @@ public func greaterThanOrEqualTo(_ lhs: ExpressionConvertible, _ rhs: Expression
 }
 
 public func between(_ value: ExpressionConvertible, _ lhs: ExpressionConvertible, and rhs: ExpressionConvertible, options: NSComparisonPredicate.Options = []) -> NSPredicate {
-    let re = NSExpression(forAggregate: [lhs, rhs])
+    let re = NSExpression(forAggregate: [lhs.cdqiExpression, rhs.cdqiExpression])
     return compare(value, .between, re, options: options)
 }
 
