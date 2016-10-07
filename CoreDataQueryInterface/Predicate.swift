@@ -39,3 +39,21 @@ public func none(_ predicate: NSPredicate) -> NSPredicate {
 public func not(_ predicate: NSPredicate) -> NSPredicate {
     return NSCompoundPredicate(notPredicateWithSubpredicate: predicate)
 }
+
+extension NSPredicate {
+    public func cdqiAll() -> NSPredicate {
+        return all(self)
+    }
+    public func cdqiAny() -> NSPredicate {
+        return any(self)
+    }
+    public func cdqiSome() -> NSPredicate {
+        return some(self)
+    }
+    public func cdqiNone() -> NSPredicate {
+        return none(self)
+    }
+    public func cdqiNot() -> NSPredicate {
+        return !self
+    }
+}

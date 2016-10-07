@@ -153,17 +153,3 @@ extension KeyPathExpressionConvertible {
     }
 }
 
-extension NSPredicate {
-    public func cdqiAll() -> NSPredicate {
-        return all(self)
-    }
-    public func cdqiAny() -> NSPredicate {
-        return any(self)
-    }
-    public func cdqiSome() -> NSPredicate {
-        return some(self)
-    }
-    public func cdqiNot() -> NSPredicate {
-        return !self
-    }
-}
