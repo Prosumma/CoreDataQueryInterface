@@ -27,7 +27,14 @@ import CoreData
 
 
 class TestEntity: NSManagedObject {
-
-// Insert code here to add functionality to your managed object subclass
-
+    @NSManaged var binary: Data?
+    @NSManaged var boolean: NSNumber?
+    @NSManaged var date: Date?
+    @NSManaged var decimal: NSDecimalNumber?
+    @NSManaged var double: NSNumber?
+    @NSManaged var float: NSNumber?
+    @NSManaged var integer16: NSNumber?
+    @NSManaged var integer32: NSNumber?
+    @NSManaged var integer64: NSNumber?
+    @NSManaged var string: String?
 }

@@ -124,8 +124,13 @@ extension NSNumber: TypedConstantExpressionConvertible {
     @nonobjc public static let cdqiStaticType = NSAttributeType.doubleAttributeType
 }
 
+extension Data: TypedConstantExpressionConvertible {
+    public typealias CDQIComparisonType = Data
+    public static let cdqiStaticType = NSAttributeType.binaryDataAttributeType
+}
+
 extension NSData: TypedConstantExpressionConvertible {
-    public typealias CDQIComparisonType = NSData
+    public typealias CDQIComparisonType = Data
     @nonobjc public static let cdqiStaticType = NSAttributeType.binaryDataAttributeType
 }
 

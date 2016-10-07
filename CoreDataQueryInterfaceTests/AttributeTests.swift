@@ -27,15 +27,13 @@ import XCTest
 
 class AttributeTests: BaseTestCase {
     
-//    func testDataAttribute() {
-//        let bundle = Bundle(for: type(of: self))
-//        let path = bundle.path(forResource: "Employees", ofType: "txt")!
-//        let data = try! Data(contentsOf: URL(fileURLWithPath: path))
-//        let testEntity = TestEntity.CDQIAttribute()
-//        let predicate = testEntity.binary == data
-//        let result = try! managedObjectContext.from(TestEntity.self).filter({ $0.binary == data }).count()
-//        XCTAssertEqual(result, 1)
-//    }
+    func testDataAttribute() {
+        let bundle = Bundle(for: type(of: self))
+        let path = bundle.path(forResource: "Employees", ofType: "txt")!
+        let data = try! Data(contentsOf: URL(fileURLWithPath: path))
+        let result = try! managedObjectContext.from(TestEntity.self).filter({ $0.binary == data }).count()
+        XCTAssertEqual(result, 1)
+    }
     
     func testDateAttribute() {
         let date = Date(timeIntervalSince1970: 5)
