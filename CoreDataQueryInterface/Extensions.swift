@@ -153,3 +153,12 @@ extension KeyPathExpressionConvertible {
     }
 }
 
+//extension NSManagedObject {
+//    public static var cdqiEntity: NSEntityDescription {
+//        if #available(iOS 9, macOS 10.12, tvOS 10, watchOS 3, *) {
+//            return entity()
+//        } else {
+//            
+//        }
+//    }
+//}
