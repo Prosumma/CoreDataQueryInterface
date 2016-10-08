@@ -47,3 +47,7 @@ public func ><L: PredicateComparableTypedExpressionConvertible, R: TypedExpressi
 public func >=<L: PredicateComparableTypedExpressionConvertible, R: TypedExpressionConvertible>(lhs: L, rhs: R) -> NSPredicate where L.CDQIComparisonType == R.CDQIComparisonType {
     return greaterThanOrEqualTo(lhs, rhs)
 }
+
+public func ~=<L: PredicateComparableTypedExpressionConvertible>(lhs: L, rhs: String) -> NSPredicate {
+    return matches(lhs, rhs)
+}
