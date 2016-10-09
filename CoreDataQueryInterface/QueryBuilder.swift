@@ -21,9 +21,9 @@ public struct QueryBuilder<M: NSManagedObject> {
     public var managedObjectContext: NSManagedObjectContext!
     public var distinct = false
     
-    func request<R>(managedObjectModel: NSManagedObjectModel? = nil) -> NSFetchRequest<R> {
+    private func request<R>(entity: NSEntityDescription) -> NSFetchRequest<R> {
         let request = NSFetchRequest<R>()
-        request.entity = M.cdqiEntity(managedObjectModel: managedObjectModel)
+        request.entity = entity
         request.returnsDistinctResults = distinct
         request.fetchLimit = fetchLimit
         request.fetchOffset = fetchOffset
@@ -34,5 +34,15 @@ public struct QueryBuilder<M: NSManagedObject> {
         request.resultType = resultType
         NSLog("%@", request)
         return request
+    }
+    
+    @available(iOS 10, macOS 10.12, tvOS 10, watchOS 3, *)
+    public func request<R>() -> NSFetchRequest<R> {
+        return request(entity: M.entity())
+    }
+    
+    @available(*, deprecated: 5.0)
+    public func request<R>(managedObjectModel: NSManagedObjectModel) -> NSFetchRequest<R> {
+        return request(entity: M.cdqiEntity(managedObjectModel: managedObjectModel))
     }
 }

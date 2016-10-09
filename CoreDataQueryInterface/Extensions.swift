@@ -15,7 +15,12 @@ extension NSManagedObjectContext {
     }
     
     public func cdqiNewEntity<M: NSManagedObject>(_ entity: M.Type = M.self) -> M {
-        return M(entity: M.entity(), insertInto: self)
+        if #available(iOS 10, macOS 10.12, tvOS 10, watchOS 3, *) {
+            return M(entity: M.entity(), insertInto: self)
+        } else {
+            let managedObjectModel = persistentStoreCoordinator!.managedObjectModel
+            return M(entity: M.cdqiEntity(managedObjectModel: managedObjectModel), insertInto: self)
+        }
     }
 }
 
@@ -177,12 +182,8 @@ public func entityNameForClass(aClass: AnyClass, inManagedObjectModel managedObj
 }
 
 extension NSManagedObject {
-    public static func cdqiEntity(managedObjectModel: NSManagedObjectModel? = nil) -> NSEntityDescription {
-        if #available(iOS 9, macOS 10.12, tvOS 10, watchOS 3, *) {
-            return entity()
-        } else {
-            let entityName = entityNameForClass(aClass: self, inManagedObjectModel: managedObjectModel!)!
-            return managedObjectModel!.entitiesByName[entityName]!
-        }
+    public static func cdqiEntity(managedObjectModel: NSManagedObjectModel) -> NSEntityDescription {
+        let entityName = entityNameForClass(aClass: self, inManagedObjectModel: managedObjectModel)!
+        return managedObjectModel.entitiesByName[entityName]!
     }
 }

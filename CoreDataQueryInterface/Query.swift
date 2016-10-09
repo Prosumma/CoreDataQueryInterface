@@ -203,7 +203,22 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
         return Query<M, NSDictionary>(builder: builder)
     }
     
-    public func request(managedObjectModel: NSManagedObjectModel? = nil) -> NSFetchRequest<R> {
+    public func request(managedObjectContext: NSManagedObjectContext) -> NSFetchRequest<R> {
+        if #available(iOS 10, macOS 10.12, tvOS 10, watchOS 3, *) {
+            return builder.request()
+        } else {
+            let managedObjectModel = managedObjectContext.persistentStoreCoordinator!.managedObjectModel
+            return builder.request(managedObjectModel: managedObjectModel)
+        }
+    }
+    
+    @available(iOS 10, macOS 10.12, tvOS 10, watchOS 3, *)
+    public func request() -> NSFetchRequest<R> {
+        return builder.request()
+    }
+    
+    @available(*, deprecated: 5.0)
+    public func request(managedObjectModel: NSManagedObjectModel) -> NSFetchRequest<R> {
         return builder.request(managedObjectModel: managedObjectModel)
     }
     
@@ -211,8 +226,7 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
         var builder = self.builder
         builder.resultType = .countResultType
         let managedObjectContext = managedObjectContext ?? builder.managedObjectContext!
-        let request: NSFetchRequest<R> = builder.request(managedObjectModel: managedObjectContext.persistentStoreCoordinator!.managedObjectModel)
-        return try managedObjectContext.count(for: request)
+        return try managedObjectContext.count(for: request(managedObjectContext: managedObjectContext))
     }
     
     public func first(managedObjectContext: NSManagedObjectContext? = nil) throws -> R? {
@@ -222,8 +236,8 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
     }
     
     public func all(managedObjectContext: NSManagedObjectContext? = nil) throws -> [R] {
-        let request: NSFetchRequest<R> = builder.request()
-        return try (managedObjectContext ?? builder.managedObjectContext)!.fetch(request)
+        let managedObjectContext = managedObjectContext ?? builder.managedObjectContext!
+        return try managedObjectContext.fetch(request(managedObjectContext: managedObjectContext))
     }
     
     public func array<T>(_ property: PropertyConvertible, managedObjectContext: NSManagedObjectContext? = nil) throws -> [T] {
