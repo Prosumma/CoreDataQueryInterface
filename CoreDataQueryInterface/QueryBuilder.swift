@@ -21,9 +21,9 @@ public struct QueryBuilder<M: NSManagedObject> {
     public var managedObjectContext: NSManagedObjectContext!
     public var distinct = false
     
-    func request<R>() -> NSFetchRequest<R> {
+    func request<R>(managedObjectModel: NSManagedObjectModel? = nil) -> NSFetchRequest<R> {
         let request = NSFetchRequest<R>()
-        request.entity = M.entity()
+        request.entity = M.cdqiEntity(managedObjectModel: managedObjectModel)
         request.returnsDistinctResults = distinct
         request.fetchLimit = fetchLimit
         request.fetchOffset = fetchOffset

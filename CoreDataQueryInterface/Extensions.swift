@@ -153,12 +153,36 @@ extension KeyPathExpressionConvertible {
     }
 }
 
-//extension NSManagedObject {
-//    public static var cdqiEntity: NSEntityDescription {
-//        if #available(iOS 9, macOS 10.12, tvOS 10, watchOS 3, *) {
-//            return entity()
-//        } else {
-//            
-//        }
-//    }
-//}
+/**
+ Returns the name of the entity corresponding to the current class.
+ - parameter aClass: The class for which to retrieve the entity
+ - parameter managedObjectModel: The managed object model in which to look for the entity.
+ - returns: The name of the entity.
+ */
+public func entityNameForClass(aClass: AnyClass, inManagedObjectModel managedObjectModel: NSManagedObjectModel) -> String? {
+    struct Static {
+        static var entityCache = [String: String]()
+        static let entityCacheQueue = DispatchQueue(label: "com.prosumma.coredataqueryinterface.EntityCacheQueue")
+    }
+    let className = String(validatingUTF8: class_getName(aClass))!
+    var entityName: String?
+    Static.entityCacheQueue.sync {
+        entityName = Static.entityCache[className]
+        if entityName == nil {
+            entityName = managedObjectModel.entities.filter{ $0.managedObjectClassName == className }.first?.name
+            Static.entityCache[className] = entityName
+        }
+    }
+    return entityName
+}
+
+extension NSManagedObject {
+    public static func cdqiEntity(managedObjectModel: NSManagedObjectModel? = nil) -> NSEntityDescription {
+        if #available(iOS 9, macOS 10.12, tvOS 10, watchOS 3, *) {
+            return entity()
+        } else {
+            let entityName = entityNameForClass(aClass: self, inManagedObjectModel: managedObjectModel!)!
+            return managedObjectModel!.entitiesByName[entityName]!
+        }
+    }
+}
