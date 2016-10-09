@@ -170,3 +170,12 @@ extension KeyPathExpressionConvertible {
     }
 }
 
+public protocol Subqueryable: KeyPathExpressionConvertible {
+    func cdqiSubquery(_ query: (Self) -> NSPredicate) -> ExpressionConvertible
+}
+
+extension Subqueryable where Self: EntityAttribute {
+    public func cdqiSubquery(_ query: (Self) -> NSPredicate) -> ExpressionConvertible {
+        return subquery(self, query)
+    }
+}

@@ -24,7 +24,7 @@ SOFTWARE.
 
 import CoreDataQueryInterface
 
-class TestEntityAttribute: EntityAttribute {
+final class TestEntityAttribute: EntityAttribute, Subqueryable {
     private(set) lazy var binary: DataAttribute = { DataAttribute(key: "binary", parent: self) }()
     private(set) lazy var boolean: BoolAttribute = { BoolAttribute(key: "boolean", parent: self) }()
     private(set) lazy var date: DateAttribute = { DateAttribute(key: "date", parent: self) }()

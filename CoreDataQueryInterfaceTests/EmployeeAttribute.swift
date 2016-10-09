@@ -24,7 +24,7 @@ SOFTWARE.
 
 import CoreDataQueryInterface
 
-class EmployeeAttribute: EntityAttribute {
+final class EmployeeAttribute: EntityAttribute, Subqueryable {
     private(set) lazy var firstName: StringAttribute = { StringAttribute(key: "firstName", parent: self) }()
     private(set) lazy var lastName: StringAttribute = { StringAttribute(key: "lastName", parent: self) }()
     private(set) lazy var nickName: StringAttribute = { StringAttribute(key: "nickName", parent: self) }()

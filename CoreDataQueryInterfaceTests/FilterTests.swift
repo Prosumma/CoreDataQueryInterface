@@ -88,8 +88,8 @@ class FilterTests : BaseTestCase {
     
     func testNumberOfDepartmentsWithEmployeesWhoseLastNamesStartWithSUsingSubquery() {
         let departmentCount = try! managedObjectContext.from(Department.self).filter{ department in
-            subquery(department.employees) { (employee: EmployeeAttribute) in
-                some(employee.lastName.cdqiBeginsWith("S", options: .caseInsensitive))
+            department.employees.cdqiSubquery {
+                some($0.lastName.cdqiBeginsWith("S", options: .caseInsensitive))
             }.cdqiCount() > 0
         }.count()
         XCTAssertEqual(departmentCount, 2)
