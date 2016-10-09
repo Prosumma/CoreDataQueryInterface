@@ -86,14 +86,14 @@ class FilterTests : BaseTestCase {
         XCTAssertEqual(highSalaryCount, 17)
     }
     
-//    func testNumberOfDepartmentsWithEmployeesWhoseLastNamesStartWithSUsingSubquery() {
-//        let departmentCount = try! managedObjectContext.from(Department).filter{ department in
-//            department.employees.subquery {
-//                some($0.lastName.beginsWith("S", options: .CaseInsensitivePredicateOption))
-//            }.cdqiCount() > 0
-//        }.count()
-//        XCTAssertEqual(departmentCount, 2)
-//    }
+    func testNumberOfDepartmentsWithEmployeesWhoseLastNamesStartWithSUsingSubquery() {
+        let departmentCount = try! managedObjectContext.from(Department.self).filter{ department in
+            subquery(department.employees) { (employee: EmployeeAttribute) in
+                some(employee.lastName.cdqiBeginsWith("S", options: .caseInsensitive))
+            }.cdqiCount() > 0
+        }.count()
+        XCTAssertEqual(departmentCount, 2)
+    }
     
     func testNumberOfDepartmentsWithNoSalariesLessThanOrEqualTo() {
         let departmentCount = try! managedObjectContext.from(Department.self).filter {
