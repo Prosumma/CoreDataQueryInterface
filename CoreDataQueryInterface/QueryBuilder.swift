@@ -14,7 +14,7 @@ public struct QueryBuilder<M: NSManagedObject> {
     public var fetchLimit: Int = 0
     public var fetchOffset: Int = 0
     public var predicates = [NSPredicate]()
-    public var properties: [Any]?
+    public var propertiesToFetch: [Any]?
     public var propertiesToGroupBy: [Any]?
     public var resultType: NSFetchRequestResultType = .managedObjectResultType
     public var sortDescriptors = [NSSortDescriptor]()
@@ -29,10 +29,9 @@ public struct QueryBuilder<M: NSManagedObject> {
         request.fetchOffset = fetchOffset
         request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         request.sortDescriptors = sortDescriptors
-        request.propertiesToFetch = properties
+        request.propertiesToFetch = propertiesToFetch
         request.propertiesToGroupBy = propertiesToGroupBy
         request.resultType = resultType
-        NSLog("%@", request)
         return request
     }
     
@@ -41,7 +40,6 @@ public struct QueryBuilder<M: NSManagedObject> {
         return request(entity: M.entity())
     }
     
-    @available(*, deprecated: 5.0)
     public func request<R>(managedObjectModel: NSManagedObjectModel) -> NSFetchRequest<R> {
         return request(entity: M.cdqiEntity(managedObjectModel: managedObjectModel))
     }

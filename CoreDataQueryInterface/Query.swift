@@ -50,40 +50,40 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
     public func select<P: Sequence>(_ properties: P) -> Query<M, NSDictionary> where P.Iterator.Element: PropertyConvertible {
         var builder = self.builder
         builder.resultType = .dictionaryResultType
-        builder.properties ??= []
-        builder.properties!.append(contentsOf: properties.map{ $0.cdqiProperty })
+        builder.propertiesToFetch ??= []
+        builder.propertiesToFetch!.append(contentsOf: properties.map{ $0.cdqiProperty })
         return Query<M, NSDictionary>(builder: builder)
     }
     
     public func select(_ properties: PropertyConvertible...) -> Query<M, NSDictionary> {
         var builder = self.builder
         builder.resultType = .dictionaryResultType
-        builder.properties ??= []
-        builder.properties!.append(contentsOf: properties.map{ $0.cdqiProperty })
+        builder.propertiesToFetch ??= []
+        builder.propertiesToFetch!.append(contentsOf: properties.map{ $0.cdqiProperty })
         return Query<M, NSDictionary>(builder: builder)
     }
     
     public func select(_ blocks: ((M.CDQIAttribute) -> PropertyConvertible)...) -> Query<M, NSDictionary> {
         var builder = self.builder
         builder.resultType = .dictionaryResultType
-        builder.properties ??= []
+        builder.propertiesToFetch ??= []
         let attribute = M.CDQIAttribute()
-        builder.properties!.append(contentsOf: blocks.map{ $0(attribute).cdqiProperty })
+        builder.propertiesToFetch!.append(contentsOf: blocks.map{ $0(attribute).cdqiProperty })
         return Query<M, NSDictionary>(builder: builder)
     }
     
     public func select(_ block: (M.CDQIAttribute) -> [PropertyConvertible]) -> Query<M, NSDictionary> {
         var builder = self.builder
         builder.resultType = .dictionaryResultType
-        builder.properties ??= []
-        builder.properties!.append(contentsOf: block(M.CDQIAttribute()).map{ $0.cdqiProperty })
+        builder.propertiesToFetch ??= []
+        builder.propertiesToFetch!.append(contentsOf: block(M.CDQIAttribute()).map{ $0.cdqiProperty })
         return Query<M, NSDictionary>(builder: builder)
     }
     
     public func reselect() -> Query<M, NSDictionary> {
         var builder = self.builder
         builder.resultType = .dictionaryResultType
-        builder.properties = nil
+        builder.propertiesToFetch = nil
         return Query<M, NSDictionary>(builder: builder)
     }
     
@@ -170,7 +170,7 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
     
     public func objects() -> Query<M, M> {
         var builder = self.builder
-        builder.properties = nil
+        builder.propertiesToFetch = nil
         builder.propertiesToGroupBy = nil
         builder.resultType = .managedObjectResultType
         return Query<M, M>(builder: builder)
@@ -178,7 +178,7 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
     
     public func ids() -> Query<M, NSManagedObjectID> {
         var builder = self.builder
-        builder.properties = nil
+        builder.propertiesToFetch = nil
         builder.propertiesToGroupBy = nil        
         builder.resultType = .managedObjectIDResultType
         return Query<M, NSManagedObjectID>(builder: builder)
