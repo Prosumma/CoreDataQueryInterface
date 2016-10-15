@@ -19,12 +19,12 @@ public struct QueryBuilder<M: NSManagedObject> {
     public var resultType: NSFetchRequestResultType = .managedObjectResultType
     public var sortDescriptors = [NSSortDescriptor]()
     public var managedObjectContext: NSManagedObjectContext!
-    public var distinct = false
+    public var returnsDistinctResults = false
     
     private func request<R>(entity: NSEntityDescription) -> NSFetchRequest<R> {
         let request = NSFetchRequest<R>()
         request.entity = entity
-        request.returnsDistinctResults = distinct
+        request.returnsDistinctResults = returnsDistinctResults
         request.fetchLimit = fetchLimit
         request.fetchOffset = fetchOffset
         request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)

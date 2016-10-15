@@ -198,7 +198,7 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
     
     public func distinct(_ distinct: Bool = true) -> Query<M, NSDictionary> {
         var builder = self.builder
-        builder.distinct = distinct
+        builder.returnsDistinctResults = distinct
         builder.resultType = .dictionaryResultType
         return Query<M, NSDictionary>(builder: builder)
     }
