@@ -10,7 +10,7 @@ Core Data Query Interface (CDQI) is a type-safe, fluent, intuitive library for w
 
 ### Swift 3.0 Support
 
-If you&rsquo;re feeling adventurous, the [cdqi5](https://github.com/Prosumma/CoreDataQueryInterface/tree/cdqi5) branch contains the Swift 3 version of CDQI, which is very close to a full release and has a stable API. Use at your own risk! Subject to change without notice (but probably will not change much). When it is released, the `cdqi5` branch will be merged, **deleted**, and replaced with the appropriate tag. 
+The Swift 3.0 version of CDQI is code complete. You can find it on the cdqi5 branch [here](https://github.com/Prosumma/CoreDataQueryInterface/tree/cdqi5). All that remains is to rewrite the README and add internal documentation. As soon as the README is complete, I will merge to `master` and create a release. I'll add internal documentation in subsequent point releases.
 
 ### Features
 
@@ -179,4 +179,4 @@ If you need help with CDQI, send me a message on [Twitter](https://twitter.com/p
 
 ### Shameless Plug
 
-Need an iOS app written or a codebase untangled? Perhaps you want to migrate from Objective-C to Swift. Maybe you need advanced help with Core Data. If you want someone who provides high quality results in a timely fashion and plays well with others, please [get in touch](http://gregoryhigley.me). My work speaks for itself, as does my [StackOverflow rank](http://stackoverflow.com/users/27779/gregory-higley?tab=topactivity) in the top 5%. 
+Need an iOS app written or a codebase untangled? Perhaps you want to migrate from Objective-C to Swift. Maybe you need advanced help with Core Data. If you want someone who provides high quality results in a timely fashion and plays well with others, please [get in touch](http://gregoryhigley.me). My work speaks for itself, as does my [StackOverflow rank](http://stackoverflow.com/users/27779/gregory-higley?tab=topactivity) in the top 5%.
