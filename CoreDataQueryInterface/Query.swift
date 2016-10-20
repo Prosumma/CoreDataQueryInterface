@@ -16,10 +16,6 @@ public struct Query<M: NSManagedObject, R: NSFetchRequestResult> where M: Entity
         self.builder = builder
     }
     
-    public static func from(_: M.Type) -> Query<M, M> {
-        return Query<M, M>()
-    }
-    
     public func context(managedObjectContext: NSManagedObjectContext) -> Query<M, R> {
         var builder = self.builder
         builder.managedObjectContext = managedObjectContext

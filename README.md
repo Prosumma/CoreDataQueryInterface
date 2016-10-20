@@ -109,10 +109,10 @@ Now we can say `$0.weekday == Weekday.Monday`. Any type can be made to participa
 
 ### Query Reuse
 
-CDQI uses value types wherever possible. Most CDQI methods such as `filter`, `order`, and so on return value types such as `EntityQuery` or `ExpressionQuery`. This allows techniques such as the following:
+CDQI uses value types wherever possible. Most CDQI methods such as `filter`, `order`, and so on return the value type `Query<M, R>`. This allows techniques such as the following:
 
 ```swift
-let projectQuery = Query<Project, Project>.from(Project.self)
+let projectQuery = Query<Project, Project>()
 let swiftProjectQuery = projectQuery.filter{ any($0.languages.name == "Swift") }
 ```
 
@@ -144,7 +144,7 @@ var swiftProjectNames: [String] = managedObjectContext.from(Project.self).
                                   order(project.name).array(project.name)
 
 // Or we can build it up in multiple lines
-var projectQuery = managedObjectContext.from(Project)
+var projectQuery = managedObjectContext.from(Project.self)
 projectQuery = projectQuery.filter(any(project.languages.name == "Swift"))
 projectQuery = projectQuery.order(project.name)
 swiftProjectNames = projectQuery.array(project.name)

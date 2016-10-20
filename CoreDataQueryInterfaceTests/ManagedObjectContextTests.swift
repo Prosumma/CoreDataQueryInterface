@@ -29,7 +29,7 @@ import CoreData
 class ManagedObjectContextTests: BaseTestCase {
 
     func testCountWithMOC() {
-        let departmentCount = try! Query<Department, Department>.from(Department.self).count(managedObjectContext: managedObjectContext)
+        let departmentCount = try! Query<Department, Department>().count(managedObjectContext: managedObjectContext)
         XCTAssertEqual(departmentCount, 3)
     }
     
