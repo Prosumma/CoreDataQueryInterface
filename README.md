@@ -47,9 +47,19 @@ pod 'CoreDataQueryInterface', '~> 5.0'
 
 The overall syntax of CDQI is unchanged from previous versions, as the examples in this document show. But there are small changes.
 
-First, `EntityQuery`, `ExpressionQuery` and the like are gone, replaced by a single type `Query<M, R>`. The first generic parameter is the type of managed object model to work with. The second parameter is the result type, which must conform to the `NSFetchResultType` protocol. So instead of saying `EntityQuery.from(Project.self)` we say `Query<Project, NSDictionary>.from(Project.self)`.
+First, `EntityQuery`, `ExpressionQuery` and the like are gone, replaced by a single type `Query<M, R>`. The first generic parameter is the type of managed object model to work with. The second parameter is the result type, which must conform to the `NSFetchResultType` protocol. So instead of saying `EntityQuery.from(Project.self)`, just create an instance with `Query<Project, NSDictionary>()`.
 
-The second major difference is the use of prefixes on methods, properties, and type aliases. CDQI extends types like `String`,
+The second major difference is the use of prefixes on methods, properties, and type aliases. CDQI extends common types like `String`, `NSExpression`, and so on. Previous versions of CDQI added method and property names that had a higher likelihood of conflict with other frameworks or future changes by Apple. To mitigate this, methods, properties, and associated types that may be added to arbitrary types use the `cdqi` or `CDQI` prefix as appropriate. For example:
+
+```swift
+public protocol ExpressionConvertible {
+  var cdqiExpression: NSExpression { get }
+}
+
+public protocol TypedExpressionConvertible: ExpressionConvertible, Typed {
+    associatedtype CDQIComparisonType: Typed
+}
+```
 
 ### Attribute Proxies
 
