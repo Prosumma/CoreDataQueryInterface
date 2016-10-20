@@ -30,17 +30,17 @@ class SetupViewController: UIViewController {
     @IBOutlet weak var progressIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var yearLabel: UILabel!
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let observer = NSNotificationCenter.defaultCenter().addObserverForName(CoreDataController.ProgressNotification, object: nil, queue: nil) { notification in
-            self.applicationSubtitleLabel.hidden = true
+        let observer = NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: CoreDataController.ProgressNotification), object: nil, queue: nil) { notification in
+            self.applicationSubtitleLabel.isHidden = true
             self.progressIndicatorView.startAnimating()
-            self.yearLabel.text = "Processing \(notification.userInfo!["year"]!)…"
-            self.yearLabel.hidden = false
+            self.yearLabel.text = "Processing \((notification as NSNotification).userInfo!["year"]!)…"
+            self.yearLabel.isHidden = false
         }
         CoreDataController.sharedInstance.setup {
-            NSNotificationCenter.defaultCenter().removeObserver(observer)
-            self.view.window!.rootViewController = self.storyboard!.instantiateViewControllerWithIdentifier("search")
+            NotificationCenter.default.removeObserver(observer)
+            self.view.window!.rootViewController = self.storyboard!.instantiateViewController(withIdentifier: "search")
         }
     }
     

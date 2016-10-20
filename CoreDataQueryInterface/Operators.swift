@@ -1,65 +1,53 @@
-/*
-The MIT License (MIT)
-
-Copyright (c) 2015 Gregory Higley (Prosumma)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
+//
+//  Operators.swift
+//  CoreDataQueryInterface
+//
+//  Created by Gregory Higley on 9/25/16.
+//  Copyright © 2016 Prosumma LLC. All rights reserved.
+//
 
 import Foundation
 
-public func ==<L: PredicateComparable, R: TypedExpressionConvertible where L: TypedExpressionConvertible, L.ExpressionValueType == R.ExpressionValueType>(lhs: L, rhs: R) -> NSPredicate {
-    return lhs.equalTo(rhs)
+public func ==<L: PredicateComparableTypedExpressionConvertible, R: TypedExpressionConvertible>(lhs: L, rhs: R) -> NSPredicate where L.CDQIComparisonType == R.CDQIComparisonType {
+    return equalTo(lhs, rhs)
 }
 
-public func ==<L: PredicateComparable, RE: TypedExpressionConvertible, R: SequenceType where L: TypedExpressionConvertible, L.ExpressionValueType == RE.ExpressionValueType, R.Generator.Element == RE>(lhs: L, rhs: R) -> NSPredicate {
-    return lhs.among(rhs)
+public func ==<L: PredicateComparableTypedExpressionConvertible>(lhs: L, rhs: Null) -> NSPredicate {
+    return equalTo(lhs, rhs)
 }
 
-public func ==<L: PredicateComparable where L: TypedExpressionConvertible>(lhs: L, rhs: Null) -> NSPredicate {
-    return lhs.equalTo(rhs)
+public func !=<L: PredicateComparableTypedExpressionConvertible, R: TypedExpressionConvertible>(lhs: L, rhs: R) -> NSPredicate where L.CDQIComparisonType == R.CDQIComparisonType {
+    return notEqualTo(lhs, rhs)
 }
 
-public func !=<L: PredicateComparable, R: TypedExpressionConvertible where L: TypedExpressionConvertible, L.ExpressionValueType == R.ExpressionValueType>(lhs: L, rhs: R) -> NSPredicate {
-    return lhs.notEqualTo(rhs)
+public func ==<L: PredicateComparableTypedExpressionConvertible, E: TypedExpressionConvertible, R: Sequence>(lhs: L, rhs: R) -> NSPredicate where L.CDQIComparisonType == E.CDQIComparisonType, R.Iterator.Element == E {
+    return among(lhs, rhs)
 }
 
-public func !=<L: PredicateComparable, RE: TypedExpressionConvertible, R: SequenceType where L: TypedExpressionConvertible, L.ExpressionValueType == RE.ExpressionValueType, R.Generator.Element == RE>(lhs: L, rhs: R) -> NSPredicate {
-    return !lhs.among(rhs)
+public func !=<L: PredicateComparableTypedExpressionConvertible>(lhs: L, rhs: Null) -> NSPredicate {
+    return notEqualTo(lhs, rhs)
 }
 
-public func !=<L: PredicateComparable where L: TypedExpressionConvertible>(lhs: L, rhs: Null) -> NSPredicate {
-    return lhs.notEqualTo(rhs)
+public func !=<L: PredicateComparableTypedExpressionConvertible, E: TypedExpressionConvertible, R: Sequence>(lhs: L, rhs: R) -> NSPredicate where L.CDQIComparisonType == E.CDQIComparisonType, R.Iterator.Element == E {
+    return !among(lhs, rhs)
 }
 
-public func ><L: PredicateComparable, R: TypedExpressionConvertible where L: TypedExpressionConvertible, L.ExpressionValueType == R.ExpressionValueType, L.ExpressionValueType: ComparableExpression>(lhs: L, rhs: R) -> NSPredicate {
-    return lhs.greaterThan(rhs)
+public func <<L: PredicateComparableTypedExpressionConvertible, R: TypedExpressionConvertible>(lhs: L, rhs: R) -> NSPredicate where L.CDQIComparisonType == R.CDQIComparisonType {
+    return lessThan(lhs, rhs)
 }
 
-public func >=<L: PredicateComparable, R: TypedExpressionConvertible where L: TypedExpressionConvertible, L.ExpressionValueType == R.ExpressionValueType, L.ExpressionValueType: ComparableExpression>(lhs: L, rhs: R) -> NSPredicate {
-    return lhs.greaterThanOrEqualTo(rhs)
+public func <=<L: PredicateComparableTypedExpressionConvertible, R: TypedExpressionConvertible>(lhs: L, rhs: R) -> NSPredicate where L.CDQIComparisonType == R.CDQIComparisonType {
+    return lessThanOrEqualTo(lhs, rhs)
 }
 
-public func <<L: PredicateComparable, R: TypedExpressionConvertible where L: TypedExpressionConvertible, L.ExpressionValueType == R.ExpressionValueType, L.ExpressionValueType: ComparableExpression>(lhs: L, rhs: R) -> NSPredicate {
-    return lhs.lessThan(rhs)
+public func ><L: PredicateComparableTypedExpressionConvertible, R: TypedExpressionConvertible>(lhs: L, rhs: R) -> NSPredicate where L.CDQIComparisonType == R.CDQIComparisonType {
+    return greaterThan(lhs, rhs)
 }
 
-public func <=<L: PredicateComparable, R: TypedExpressionConvertible where L: TypedExpressionConvertible, L.ExpressionValueType == R.ExpressionValueType, L.ExpressionValueType: ComparableExpression>(lhs: L, rhs: R) -> NSPredicate {
-    return lhs.lessThanOrEqualTo(rhs)
+public func >=<L: PredicateComparableTypedExpressionConvertible, R: TypedExpressionConvertible>(lhs: L, rhs: R) -> NSPredicate where L.CDQIComparisonType == R.CDQIComparisonType {
+    return greaterThanOrEqualTo(lhs, rhs)
+}
+
+public func ~=<L: PredicateComparableTypedExpressionConvertible>(lhs: L, rhs: String) -> NSPredicate {
+    return matches(lhs, rhs)
 }

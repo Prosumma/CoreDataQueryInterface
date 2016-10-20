@@ -87,73 +87,61 @@ class IndentWriter
 end
 
 class Attribute
-  attr_reader :name, :entity, :type
   def initialize(name, entity: nil, type: nil)
     @name = name
     @entity = entity
     @type = type
   end
-  def render_property(io)
-    if attribute_class =~ /^Numeric/
-      io.puts "#{$options.access_modifier}private(set) lazy var #{@name}: #{attribute_class} = { #{attribute_class}(\"#{@name}\", parent: self, type: #{attribute_type}) }()"
-    else
-      io.puts "#{$options.access_modifier}private(set) lazy var #{@name}: #{attribute_class} = { #{attribute_class}(\"#{@name}\", parent: self) }()"
-    end
-  end
-  def attribute_type
-    case @type
-    when 'Binary' then '.BinaryDataAttributeType'
-    when 'Boolean' then '.BooleanAttributeType'
-    when 'Date' then '.DateAttributeType'
-    when 'Decimal' then '.DecimalAttributeType'
-    when 'Double' then '.DoubleAttributeType'
-    when 'Float' then '.FloatAttributeType'
-    when 'Integer 16' then '.Integer16AttributeType'
-    when 'Integer 32' then '.Integer32AttributeType'
-    when 'Integer 64' then '.Integer64AttributeType'
-    when 'String' then '.StringAttributeType'
-    else 'nil'
-    end
-  end
-  def attribute_class
-    prefix = ""
-    unless @type.nil?
-      type_downcased = @type.downcase
-      if ["integer", "float", "double", "decimal"].any? { |type| type_downcased.include? type }
-        prefix = "Numeric"
-      elsif type_downcased == "binary"
-        prefix = "Data" 
+
+  def attribute_class_name
+    prefix = ''
+    if @type
+      case @type
+      when 'Binary' then 'DateAttribute'
+      when 'Boolean' then 'BooleanAttribute'
+      when 'Date' then 'DateAttribute'
+      when 'Decimal' then 'DecimalAttribute'
+      when 'Double' then 'DoubleAttribute'
+      when 'Float' then 'FloatAttribute'
+      when 'Integer 16' then 'Integer16Attribute'
+      when 'Integer 32' then 'Integer32Attribute'
+      when 'Integer 64' then 'Integer64Attribute'
+      when 'String' then 'StringAttribute'
       else
-        prefix = @type
+        raise @type
       end
     else
-      prefix = "#{@entity || 'Key'}"
+     "#{@entity}#{$options.suffix}"     
     end
-    "#{prefix}#{$options.suffix}"
+  end
+
+  def render(io)
+    io.puts "#{$options.access_modifier}private(set) lazy var #{@name}: #{attribute_class_name} = { #{attribute_class_name}(key: \"#{@name}\", parent: self) }()"
   end
 end
 
 class Entity
-  attr_reader :name
+  attr_reader :name, :entity_class_name
   def initialize(name)
     @name = name
     @attributes = []
+    @entity_class_name = "#{@name}#{$options.suffix}"
   end
   def <<(attribute)
     @attributes << attribute
   end
   def render(io)
-    io.puts "#{$options.access_modifier}class #{@name}#{$options.suffix}: EntityAttribute, Aggregable {"
+    io.puts "#{$options.access_modifier}final class #{@entity_class_name}: EntityAttribute, Subqueryable {"
     io.indent do
       @attributes.each do |attribute|
-        attribute.render_property(io)
+        attribute.render(io)
       end
     end
     io.puts "}"
     io.puts ""
-    io.puts "extension #{@name}: EntityType {"
+    io.puts "extension #{@name}: Entity {"
     io.indent do
-      io.puts "#{$options.access_modifier}typealias EntityAttributeType = #{@name}#{$options.suffix}"
+      io.puts "#{$options.access_modifier}typealias CDQIAttribute = #{@entity_class_name}"
     end
     io.puts "}"
     io.puts ""

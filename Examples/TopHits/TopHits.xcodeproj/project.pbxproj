@@ -16,7 +16,6 @@
 		F340B32F1C40EB31008CF49E /* Artist+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340B3231C40EB31008CF49E /* Artist+CoreDataProperties.swift */; };
 		F340B3301C40EB31008CF49E /* ArtistAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340B3241C40EB31008CF49E /* ArtistAttribute.swift */; };
 		F340B3311C40EB31008CF49E /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340B3251C40EB31008CF49E /* CoreDataController.swift */; };
-		F340B3321C40EB31008CF49E /* NSManagedObjectContextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340B3261C40EB31008CF49E /* NSManagedObjectContextExtensions.swift */; };
 		F340B3331C40EB31008CF49E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340B3271C40EB31008CF49E /* SearchViewController.swift */; };
 		F340B3341C40EB31008CF49E /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340B3281C40EB31008CF49E /* Song.swift */; };
 		F340B3351C40EB31008CF49E /* Song+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340B3291C40EB31008CF49E /* Song+CoreDataProperties.swift */; };
@@ -114,7 +113,6 @@
 		F340B3231C40EB31008CF49E /* Artist+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Artist+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F340B3241C40EB31008CF49E /* ArtistAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistAttribute.swift; sourceTree = "<group>"; };
 		F340B3251C40EB31008CF49E /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
-		F340B3261C40EB31008CF49E /* NSManagedObjectContextExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContextExtensions.swift; sourceTree = "<group>"; };
 		F340B3271C40EB31008CF49E /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F340B3281C40EB31008CF49E /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		F340B3291C40EB31008CF49E /* Song+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Song+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 				F340B3231C40EB31008CF49E /* Artist+CoreDataProperties.swift */,
 				F340B3241C40EB31008CF49E /* ArtistAttribute.swift */,
 				F340B3251C40EB31008CF49E /* CoreDataController.swift */,
-				F340B3261C40EB31008CF49E /* NSManagedObjectContextExtensions.swift */,
 				F340B3281C40EB31008CF49E /* Song.swift */,
 				F340B3291C40EB31008CF49E /* Song+CoreDataProperties.swift */,
 				F340B32A1C40EB31008CF49E /* SongAttribute.swift */,
@@ -241,11 +238,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Prosumma LLC";
 				TargetAttributes = {
 					F340B3021C40EA08008CF49E = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -366,7 +364,6 @@
 				F340B32F1C40EB31008CF49E /* Artist+CoreDataProperties.swift in Sources */,
 				F340B3381C40EB31008CF49E /* UIViewControllerExtensions.swift in Sources */,
 				F340B3391C40EB31008CF49E /* SetupViewController.swift in Sources */,
-				F340B3321C40EB31008CF49E /* NSManagedObjectContextExtensions.swift in Sources */,
 				F340B3331C40EB31008CF49E /* SearchViewController.swift in Sources */,
 				F340B3351C40EB31008CF49E /* Song+CoreDataProperties.swift in Sources */,
 				F340B32E1C40EB31008CF49E /* Artist.swift in Sources */,
@@ -421,8 +418,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -444,7 +443,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -466,8 +465,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -483,9 +484,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -494,27 +496,29 @@
 		F340B3161C40EA08008CF49E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = TopHits/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.TopHits;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		F340B3171C40EA08008CF49E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = TopHits/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.TopHits;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

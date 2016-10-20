@@ -24,12 +24,12 @@ SOFTWARE.
 
 import CoreDataQueryInterface
 
-class DepartmentAttribute: EntityAttribute, Aggregable {
-    private(set) lazy var name: StringAttribute = { StringAttribute("name", parent: self) }()
-    private(set) lazy var employees: EmployeeAttribute = { EmployeeAttribute("employees", parent: self) }()
+final class DepartmentAttribute: EntityAttribute, Subqueryable {
+    private(set) lazy var name: StringAttribute = { StringAttribute(key: "name", parent: self) }()
+    private(set) lazy var employees: EmployeeAttribute = { EmployeeAttribute(key: "employees", parent: self) }()
 }
 
-extension Department: EntityType {
-    typealias EntityAttributeType = DepartmentAttribute
+extension Department: Entity {
+    typealias CDQIAttribute = DepartmentAttribute
 }
 

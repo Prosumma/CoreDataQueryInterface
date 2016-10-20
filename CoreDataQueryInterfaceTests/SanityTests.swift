@@ -34,12 +34,12 @@ class SanityTests: BaseTestCase {
     }
     
     func testCountDepartments() {
-        let departmentCount = managedObjectContext.from(Department).count()
+        let departmentCount = try! managedObjectContext.from(Department.self).count()
         XCTAssertEqual(departmentCount, 3)
     }
     
     func testCountEmployees() {
-        let employeeCount = managedObjectContext.from(Employee).count()
+        let employeeCount = try! managedObjectContext.from(Employee.self).count()
         XCTAssertEqual(employeeCount, 25)
     }
         

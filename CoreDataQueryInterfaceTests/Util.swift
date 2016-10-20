@@ -25,8 +25,8 @@ SOFTWARE.
 @testable import CoreDataQueryInterface
 import Foundation
 
-extension SequenceType {
-    func toDictionary<Key: Hashable, Value>(transform: Generator.Element -> (Key, Value)) -> Dictionary<Key, Value> {
+extension Sequence {
+    func toDictionary<Key: Hashable, Value>(_ transform: (Iterator.Element) -> (Key, Value)) -> Dictionary<Key, Value> {
         var result = Dictionary<Key, Value>()
         for elem in self {
             let (key, value) = transform(elem)
@@ -35,3 +35,4 @@ extension SequenceType {
         return result
     }
 }
+

@@ -28,25 +28,9 @@ import CoreData
 
 class ManagedObjectContextTests: BaseTestCase {
 
-    func testNewEntity() {
-        let employee: Employee = managedObjectContext.newEntity()
-        managedObjectContext.deleteObject(employee)
-    }
-    
-    func testRequestWithMOC() {
-        let request = EntityQuery.from(Employee).request(managedObjectContext)
-        let employees = try! managedObjectContext.executeFetchRequest(request)
-        XCTAssertEqual(employees.count, 25)
-    }
-    
     func testCountWithMOC() {
-        let departmentCount = EntityQuery.from(Department).count(managedObjectContext)
+        let departmentCount = try! Query<Department, Department>().count(managedObjectContext: managedObjectContext)
         XCTAssertEqual(departmentCount, 3)
     }
     
-    func testRequestWithModel() {
-        let request = EntityQuery.from(Employee).request(BaseTestCase.managedObjectModel)
-        let employees = try! managedObjectContext.executeFetchRequest(request)
-        XCTAssertEqual(employees.count, 25)
-    }
 }

@@ -28,73 +28,75 @@ import XCTest
 
 class BaseTestCase: XCTestCase {
     
-    private static var managedObjectContext: NSManagedObjectContext!
-    
-    static var managedObjectModel: NSManagedObjectModel = NSManagedObjectModel.mergedModelFromBundles(NSBundle.allBundles())!
-    
-    var managedObjectContext: NSManagedObjectContext {
-        return BaseTestCase.managedObjectContext
-    }
-    
-    private static var once: dispatch_once_t = 0
-    
-    private static let nickNames = ["Gregory": "Greg", "David": "Dave", "Isabella": "Belle"]
-    
-    override class func setUp() {
-        dispatch_once(&once) {
+    private static var __once: () = {
             // Path
-            let identifier = NSUUID().UUIDString
-            let path = (NSTemporaryDirectory() as NSString).stringByAppendingPathComponent(identifier)
-            let url = NSURL(fileURLWithPath: path)
+            let identifier = UUID().uuidString
+            let path = (NSTemporaryDirectory() as NSString).appendingPathComponent(identifier)
+            let url = URL(fileURLWithPath: path)
 
             // Create the database
-            let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-            try! persistentStoreCoordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
-            let managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+            let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: BaseTestCase.managedObjectModel)
+            try! persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
+            let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
             managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
             
-            var fileData: NSData!
+            var fileData: Data!
             var lines: [String]!
-            for bundle in NSBundle.allBundles() {
-                if let path = bundle.pathForResource("Employees", ofType: "txt") {
-                    lines = try! String(contentsOfFile: path).componentsSeparatedByString("\n")
-                    fileData = NSData(contentsOfFile: path)
+            for bundle in Bundle.allBundles {
+                if let path = bundle.path(forResource: "Employees", ofType: "txt") {
+                    lines = try! String(contentsOfFile: path).components(separatedBy: "\n")
+                    fileData = try? Data(contentsOf: URL(fileURLWithPath: path))
                     break
                 }
             }
 
             for line in lines {
-                let fields = line.componentsSeparatedByString("|")
-                let employee = managedObjectContext.newEntity(Employee)
+                let fields = line.components(separatedBy: "|")
+                let employee = managedObjectContext.cdqiNewEntity(Employee.self)
                 employee.firstName = fields[1]
                 employee.nickName = nickNames[employee.firstName]
                 employee.lastName = fields[0]
                 employee.salary = Int32(fields[3])!
-                if let department = managedObjectContext.from(Department).filter({ $0.name == fields[2] }).first() {
+                if let department = try! managedObjectContext.from(Department.self).filter({ $0.name == fields[2] }).first() {
                     employee.department = department
                 } else {
-                    let department = managedObjectContext.newEntity(Department)
+                    let department = managedObjectContext.cdqiNewEntity(Department.self)
                     department.name = fields[2]
                     employee.department = department
                 }
             }
             
-            let testEntity = managedObjectContext.newEntity(TestEntity)
+            let testEntity = managedObjectContext.cdqiNewEntity(TestEntity.self)
             
-            testEntity.integer16 = NSNumber(short: Int16.max)
-            testEntity.integer32 = NSNumber(int: Int32.max)
-            testEntity.integer64 = NSNumber(longLong: Int64.max)
-            testEntity.decimal = NSDecimalNumber(double: 5.00)
+            testEntity.integer16 = NSNumber(value: Int16.max)
+            testEntity.integer32 = NSNumber(value: Int32.max)
+            testEntity.integer64 = NSNumber(value: Int64.max)
+            testEntity.decimal = NSDecimalNumber(value: 5.00)
             testEntity.float = 510.2304
             testEntity.double = 212309.00
             testEntity.string = "hello"
-            testEntity.date = NSDate(timeIntervalSince1970: 5)
+            testEntity.date = Date(timeIntervalSince1970: 5)
             testEntity.binary = fileData
             testEntity.boolean = true
             
             try! managedObjectContext.save()
-            self.managedObjectContext = managedObjectContext
-        }
+            BaseTestCase.managedObjectContext = managedObjectContext
+        }()
+    
+    fileprivate static var managedObjectContext: NSManagedObjectContext!
+    
+    static var managedObjectModel: NSManagedObjectModel = NSManagedObjectModel.mergedModel(from: Bundle.allBundles)!
+    
+    var managedObjectContext: NSManagedObjectContext {
+        return BaseTestCase.managedObjectContext
+    }
+    
+    fileprivate static var once: Int = 0
+    
+    fileprivate static let nickNames = ["Gregory": "Greg", "David": "Dave", "Isabella": "Belle"]
+    
+    override class func setUp() {
+        _ = BaseTestCase.__once
     }
     
 }

@@ -24,15 +24,15 @@ SOFTWARE.
 
 import CoreDataQueryInterface
 
-class EmployeeAttribute: EntityAttribute, Aggregable {
-    private(set) lazy var firstName: StringAttribute = { StringAttribute("firstName", parent: self) }()
-    private(set) lazy var lastName: StringAttribute = { StringAttribute("lastName", parent: self) }()
-    private(set) lazy var nickName: StringAttribute = { StringAttribute("nickName", parent: self) }()
-    private(set) lazy var salary: NumericAttribute = { NumericAttribute("salary", parent: self, type: .Integer32AttributeType) }()
-    private(set) lazy var department: DepartmentAttribute = { DepartmentAttribute("department", parent: self) }()
+final class EmployeeAttribute: EntityAttribute, Subqueryable {
+    private(set) lazy var firstName: StringAttribute = { StringAttribute(key: "firstName", parent: self) }()
+    private(set) lazy var lastName: StringAttribute = { StringAttribute(key: "lastName", parent: self) }()
+    private(set) lazy var nickName: StringAttribute = { StringAttribute(key: "nickName", parent: self) }()
+    private(set) lazy var salary: Integer32Attribute = { Integer32Attribute(key: "salary", parent: self) }()
+    private(set) lazy var department: DepartmentAttribute = { DepartmentAttribute(key: "department", parent: self) }()
 }
 
-extension Employee: EntityType {
-    typealias EntityAttributeType = EmployeeAttribute
+extension Employee: Entity {
+    typealias CDQIAttribute = EmployeeAttribute
 }
 
