@@ -11,15 +11,18 @@ Core Data Query Interface (CDQI) is a type-safe, fluent, intuitive library for w
 - [x] Optionally eliminates the use of magic strings so common in Core Data
 - [x] Query reuse, i.e., no side-effects from chaining
 - [x] Support for iOS 9+, macOS 10.11+, tvOS 9+, and watchOS 2+.
+- [x] Swift 3 (for Swift 2.2, use v4.0)
 
 ### Overview
 
 In essence, CDQI is a tool that allows the creation (and execution) of fetch requests using a fluent syntax. In most cases, this can reduce many lines of code to a single (but still highly readable) line.
 
 ```swift
-let swiftDevelopers = managedObjectContext.from(Developer).
+let swiftDevelopers = managedObjectContext.from(Developer.self).
                       filter{ any($0.languages.name == "Swift") }.
-                      order(descending: {$0.lastName}).limit(5).all()
+                      order(ascending: false, {$0.lastName})
+                      .limit(5)
+                      .all()
 ```
 
 ### Integration
@@ -40,7 +43,15 @@ Add the following to your `Podfile`. If it isn't already present, you will have 
 pod 'CoreDataQueryInterface', '~> 5.0'
 ```
 
-#### Attribute Proxies
+### Changes From Previous Versions
+
+The overall syntax of CDQI is unchanged from previous versions, as the examples in this document show. But there are small changes.
+
+First, `EntityQuery`, `ExpressionQuery` and the like are gone, replaced by a single type `Query<M, R>`. The first generic parameter is the type of managed object model to work with. The second parameter is the result type, which must conform to the `NSFetchResultType` protocol. So instead of saying `EntityQuery.from(Project.self)` we say `Query<Project, NSDictionary>.from(Project.self)`.
+
+The second major difference is the use of prefixes on methods, properties, and type aliases. CDQI extends types like `String`,
+
+### Attribute Proxies
 
 In order to use expressions such as `$0.languages.name` as in the example above, proxy objects must be created. In the `bin` folder at the root of the project is a simple tool called `cdqi` that accomplishes this. Before running this tool, make sure that each `NSManagedObject` is represented by a corresponding class in your Swift project.
 
@@ -115,7 +126,7 @@ A great number of examples can be found in the unit tests and the "Top Hits" exa
 let developerQuery = managedObjectContext.from(Developer.self)
 // predicate: languages.@count == 3 AND ANY languages.name == "Rust"
 // developersWhoKnowThreeLanguagesIncludingRust is an array of Developer entities
-let developersWhoKnowThreeLanguagesIncludingRust = developerQuery.filter{ $0.languages.count == 3 &&
+let developersWhoKnowThreeLanguagesIncludingRust = developerQuery.filter{ $0.languages.cdqiCount() == 3 &&
                                                    any($0.languages.name == "Rust") }.all()
 
 // predicate: ANY languages.name == "Haskell"
