@@ -8,6 +8,15 @@
 
 import Foundation
 
+var debug: Bool = {
+    for arg in ProcessInfo.processInfo.arguments {
+        if arg == "-com.prosumma.CoreDataQueryInterface.Debug" {
+            return true
+        }
+    }
+    return false
+}()
+
 infix operator ??= : AssignmentPrecedence
 
 func ??=<T>(lhs: inout T?, rhs: @autoclosure () -> T?) {
