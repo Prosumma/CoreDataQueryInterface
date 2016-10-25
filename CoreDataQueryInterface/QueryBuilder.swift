@@ -11,6 +11,7 @@ import Foundation
 
 public struct QueryBuilder<M: NSManagedObject> {
     public init() {}
+    
     public var fetchLimit: Int = 0
     public var fetchOffset: Int = 0
     public var predicates = [NSPredicate]()
@@ -32,6 +33,9 @@ public struct QueryBuilder<M: NSManagedObject> {
         request.propertiesToFetch = propertiesToFetch
         request.propertiesToGroupBy = propertiesToGroupBy
         request.resultType = resultType
+        if debug {
+            NSLog("%@", request)
+        }
         return request
     }
     
