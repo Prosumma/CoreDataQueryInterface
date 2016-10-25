@@ -9,12 +9,10 @@
 import Foundation
 
 var debug: Bool = {
-    var debug = false
     for arg in ProcessInfo.processInfo.arguments {
         if arg == "-com.prosumma.CoreDataQueryInterface.Debug" {
-            debug = true
-            break
+            return true
         }
     }
-    return debug
+    return false
 }()
