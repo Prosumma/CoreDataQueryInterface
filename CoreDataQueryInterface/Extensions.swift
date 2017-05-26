@@ -187,3 +187,4 @@ extension NSManagedObject {
         return managedObjectModel.entitiesByName[entityName]!
     }
 }
+

@@ -13,6 +13,16 @@ public protocol Entity {
     associatedtype CDQIAttribute: EntityAttribute
 }
 
+extension Entity where Self: NSManagedObject {
+    public static func cdqiQuery(managedObjectContext: NSManagedObjectContext? = nil) -> Query<Self, Self> {
+        var query = Query<Self, Self>()
+        if let managedObjectContext = managedObjectContext {
+            query = query.context(managedObjectContext: managedObjectContext)
+        }
+        return query
+    }
+}
+
 public protocol Typed {
     static var cdqiStaticType: NSAttributeType { get }
     var cdqiType: NSAttributeType { get }
