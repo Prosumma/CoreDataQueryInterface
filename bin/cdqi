@@ -98,7 +98,7 @@ class Attribute
     if @type
       case @type
       when 'Binary' then 'DateAttribute'
-      when 'Boolean' then 'BooleanAttribute'
+      when 'Boolean' then 'BoolAttribute'
       when 'Date' then 'DateAttribute'
       when 'Decimal' then 'DecimalAttribute'
       when 'Double' then 'DoubleAttribute'
