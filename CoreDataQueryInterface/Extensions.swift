@@ -14,13 +14,17 @@ extension NSManagedObjectContext {
         return Query<M, M>().context(managedObjectContext: self)
     }
     
-    public func cdqiNewEntity<M: NSManagedObject>(_ entity: M.Type = M.self) -> M {
+    public func cdqiNewEntity<M: NSManagedObject>(_ entity: M.Type = M.self, attributes: [String: Any] = [:], initialize: ((M) -> Void)? = nil) -> M {
+        let entity: M
         if #available(iOS 10, macOS 10.12, tvOS 10, watchOS 3, *) {
-            return M(entity: M.entity(), insertInto: self)
+            entity = M(entity: M.entity(), insertInto: self)
         } else {
             let managedObjectModel = persistentStoreCoordinator!.managedObjectModel
-            return M(entity: M.cdqiEntity(managedObjectModel: managedObjectModel), insertInto: self)
+            entity = M(entity: M.cdqiEntity(managedObjectModel: managedObjectModel), insertInto: self)
         }
+        entity.setValuesForKeys(attributes)
+        initialize?(entity)
+        return entity
     }
 }
 
