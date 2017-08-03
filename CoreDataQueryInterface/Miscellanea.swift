@@ -29,7 +29,7 @@ public func alias(_ expression: KeyPathExpressionConvertible, type: NSAttributeT
     return alias(expression, name: expression.cdqiName, type: type)
 }
 
-public func subquery<E: EntityAttribute>(_ items: E, _ query: (E) -> NSPredicate) -> ExpressionConvertible where E: ExpressionConvertible {
+public func subquery<E: EntityAttribute>(_ items: E, _ query: (E) -> NSPredicate) -> ExpressionConvertible {
     let uuid = NSUUID().uuidString
     let index = uuid.index(uuid.startIndex, offsetBy: 6)
     let randomString = uuid.substring(to: index)
@@ -37,6 +37,6 @@ public func subquery<E: EntityAttribute>(_ items: E, _ query: (E) -> NSPredicate
     return NSExpression(forSubquery: items.cdqiExpression, usingIteratorVariable: variable, predicate: query(E(variable: variable)))
 }
 
-public func subqueryCount<E: EntityAttribute>(_ items: E, _ query: (E) -> NSPredicate) -> FunctionExpression where E: ExpressionConvertible {
+public func subqueryCount<E: EntityAttribute>(_ items: E, _ query: (E) -> NSPredicate) -> FunctionExpression {
     return count(subquery(items, query))
 }
