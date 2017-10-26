@@ -2,7 +2,7 @@
 
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/CoreDataQueryInterface.svg)](https://cocoapods.org)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Language](https://img.shields.io/badge/Swift-3.0-orange.svg)](http://swift.org)
+[![Language](https://img.shields.io/badge/Swift-4.0-orange.svg)](http://swift.org)
 ![Platforms](https://img.shields.io/cocoapods/p/CoreDataQueryInterface.svg)
 
 Core Data Query Interface (CDQI) is a type-safe, fluent, intuitive library for working with Core Data in Swift. CDQI tremendously reduces the amount of code needed to do Core Data, and dramatically improves readability by allowing method chaining and by eliminating magic strings. CDQI is a bit like jQuery or LINQ, but for Core Data.
@@ -16,7 +16,7 @@ Core Data Query Interface (CDQI) is a type-safe, fluent, intuitive library for w
 - [x] Optionally eliminates the use of magic strings so common in Core Data
 - [x] Query reuse, i.e., no side-effects from chaining
 - [x] Support for iOS 9+, macOS 10.11+, tvOS 9+, and watchOS 2+.
-- [x] Swift 3 (for Swift 2.2, use v4.0)
+- [x] Swift 4 
 
 ### Overview
 
