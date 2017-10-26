@@ -144,8 +144,10 @@ extension KeyPathExpressionConvertible {
         }
         if let parentName = cdqiParent?.cdqiRawName {
             let index = key.index(key.startIndex, offsetBy: 1)
-            let start = key.substring(to: index)
-            let remainder = key.substring(from: index)
+//            let start = key.substring(to: index)
+            let start = key[..<index]
+//            let remainder = key.substring(from: index)
+            let remainder = key[index...]
             let name = "\(start.uppercased())\(remainder)"
             return "\(parentName)\(name)"
         }
@@ -158,7 +160,7 @@ extension KeyPathExpressionConvertible {
     
     public var cdqiExpression: NSExpression {
         if let key = cdqiKey, key.hasPrefix("$") {
-            return NSExpression(forVariable: key.substring(from: key.index(key.startIndex, offsetBy: 1)))
+            return NSExpression(forVariable: String(key[key.index(key.startIndex, offsetBy: 1)...]))
         } else if cdqiKeyPath == "SELF" {
             return NSExpression(format: "SELF")
         }

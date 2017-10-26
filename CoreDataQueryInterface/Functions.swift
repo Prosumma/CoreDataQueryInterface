@@ -44,7 +44,7 @@ public struct FunctionExpression: PredicateComparableTypedExpressionConvertible,
             cdqiParent = nil
         }
         let range = self.function.range(of: ":")!
-        cdqiKey = self.function.substring(to: range.lowerBound)
+        cdqiKey = String(self.function[..<range.lowerBound])
     }
     
     public var cdqiExpression: NSExpression {

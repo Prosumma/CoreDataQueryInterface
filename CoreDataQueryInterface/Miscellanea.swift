@@ -32,7 +32,7 @@ public func alias(_ expression: KeyPathExpressionConvertible, type: NSAttributeT
 public func subquery<E: EntityAttribute>(_ items: E, _ query: (E) -> NSPredicate) -> ExpressionConvertible {
     let uuid = NSUUID().uuidString
     let index = uuid.index(uuid.startIndex, offsetBy: 6)
-    let randomString = uuid.substring(to: index)
+    let randomString = uuid[..<index]
     let variable = "v\(randomString)"
     return NSExpression(forSubquery: items.cdqiExpression, usingIteratorVariable: variable, predicate: query(E(variable: variable)))
 }
