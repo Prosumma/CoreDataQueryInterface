@@ -144,9 +144,7 @@ extension KeyPathExpressionConvertible {
         }
         if let parentName = cdqiParent?.cdqiRawName {
             let index = key.index(key.startIndex, offsetBy: 1)
-//            let start = key.substring(to: index)
             let start = key[..<index]
-//            let remainder = key.substring(from: index)
             let remainder = key[index...]
             let name = "\(start.uppercased())\(remainder)"
             return "\(parentName)\(name)"

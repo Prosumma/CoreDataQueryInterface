@@ -1093,7 +1093,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.CoreDataQueryInterfaceTests;
 				PRODUCT_MODULE_NAME = CoreDataQueryInterfaceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -1108,7 +1107,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.prosumma.CoreDataQueryInterfaceTests;
 				PRODUCT_MODULE_NAME = CoreDataQueryInterfaceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
