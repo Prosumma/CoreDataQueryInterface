@@ -20,6 +20,10 @@ public struct Regex: CustomStringConvertible {
 
 }
 
+public func regex(_ string: String) -> Regex {
+    return Regex(string)
+}
+
 public prefix func /(string: String) -> Regex {
     return Regex(string)
 }

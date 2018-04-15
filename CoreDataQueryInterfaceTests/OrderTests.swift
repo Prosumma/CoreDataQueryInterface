@@ -35,7 +35,7 @@ class OrderTests : BaseTestCase {
     }
     
     func testReorder() {
-        let department = Department.CDQIEntityAttribute()
+        let department = Department.e
         let query = managedObjectContext.from(Department.self).orderDesc(by: department.name)
         let departmentName: String = try! query.reorder().order(by: department.name).value(department.name)!
         XCTAssertEqual(departmentName, "Accounting")
@@ -48,7 +48,7 @@ class OrderTests : BaseTestCase {
     }
     
     func testMultipleOrderings() {
-        let employees = try! managedObjectContext.from(Employee.self).orderBy{employee in [employee.lastName, employee.firstName]}.all()
+        let employees = try! managedObjectContext.from(Employee.self).order(by: Employee.e.lastName, Employee.e.firstName).all()
         XCTAssertEqual(employees.first!.firstName, "David")
         XCTAssertEqual(employees.last!.firstName, "Lana")
     }

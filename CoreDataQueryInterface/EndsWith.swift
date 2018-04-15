@@ -8,14 +8,14 @@
 
 import Foundation
 
-public func endsWith<L: Expression & TypeComparable>(_ lhs: L, _ rhs: String, options: NSComparisonPredicate.Options = [], modifier: NSComparisonPredicate.Modifier = .direct) -> NSPredicate where L.CDQIComparableType == String {
-    return NSComparisonPredicate(leftExpression: lhs.cdqiExpression, rightExpression: NSExpression(forConstantValue: rhs), modifier: modifier, type: .endsWith, options: options)
+public func endsWith<L: Expression & TypeComparable>(_ lhs: L, _ rhs: String, options: NSComparisonPredicate.Options = []) -> NSPredicate where L.CDQIComparableType == String {
+    return NSComparisonPredicate(leftExpression: lhs.cdqiExpression, rightExpression: NSExpression(forConstantValue: rhs), modifier: .direct, type: .endsWith, options: options)
 }
 
 public extension Expression where Self: TypeComparable, Self.CDQIComparableType == String {
     
-    func cdqiEndsWith(_ rhs: String, options: NSComparisonPredicate.Options = [], modifier: NSComparisonPredicate.Modifier = .direct) -> NSPredicate {
-        return endsWith(self, rhs, options: options, modifier: modifier)
+    func cdqiEndsWith(_ rhs: String, options: NSComparisonPredicate.Options = []) -> NSPredicate {
+        return endsWith(self, rhs, options: options)
     }
     
 }

@@ -22,6 +22,3 @@ public func inconstant<E: Expression & TypeComparable>(_ constant: E) -> Inconst
     return InconstantConstant(constant)
 }
 
-func foo() {
-    
-}

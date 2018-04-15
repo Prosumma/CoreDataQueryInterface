@@ -135,7 +135,7 @@ class FilterTests : BaseTestCase {
     
     func testDepartmentsWithEmployeesHavingSalary70000OrSalary61000() {
         let departmentCount = try! managedObjectContext.from(Department.self).filter{
-            any($0.employees.salary == [61000, 70000])
+            any([61000, 70000] == $0.employees.salary)
         }.count()
         XCTAssertEqual(departmentCount, 2)
     }
