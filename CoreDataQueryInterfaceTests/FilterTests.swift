@@ -32,11 +32,6 @@ class FilterTests : BaseTestCase {
         XCTAssertEqual(engineerCount, 8)
     }
     
-    func testCountEmployeesNamedSmith() {
-        let smithCount = try! managedObjectContext.from(Employee.self).filter("lastName == %@", "Smith").count()
-        XCTAssertEqual(smithCount, 5)
-    }
-    
     func testCountEmployeesWithoutNickName() {
         let nickNameLessCount = try! managedObjectContext.from(Employee.self).filter{ employee in employee.nickName == nil }.count()
         XCTAssertEqual(nickNameLessCount, 10)
@@ -89,8 +84,8 @@ class FilterTests : BaseTestCase {
     func testNumberOfDepartmentsWithEmployeesWhoseLastNamesStartWithSUsingSubquery() {
         let departmentCount = try! managedObjectContext.from(Department.self).filter{ department in
             department.employees.cdqiSubquery {
-                $0.lastName.cdqiBeginsWith("S", options: .caseInsensitive).cdqiSome()
-            }.cdqiCount() > 0
+                any($0.lastName.cdqiBeginsWith("S"))
+            }.cdqiCount > 0
         }.count()
         XCTAssertEqual(departmentCount, 2)
     }
@@ -101,10 +96,10 @@ class FilterTests : BaseTestCase {
             }.count()
         XCTAssertEqual(departmentCount, 3)
     }
-    
+
     func testNumberOfDepartmentsWithAnySalariesLessThan() {
         let departmentCount = try! managedObjectContext.from(Department.self).filter {
-            any($0.employees.salary < 40000)
+                any($0.employees.salary < 40000)
             }.count()
         XCTAssertEqual(departmentCount, 1)
     }
@@ -135,7 +130,7 @@ class FilterTests : BaseTestCase {
     }
     
     func testDepartmentsWithNameMatchingRegex() {
-        let departmentCount = try! managedObjectContext.from(Department.self).filter({ department in department.name ~= "^[AE].*$" }).count()
+        let departmentCount = try! managedObjectContext.from(Department.self).filter({ department in department.name =~ "^[AE].*$" }).count()
         XCTAssertEqual(departmentCount, 2)
     }
     

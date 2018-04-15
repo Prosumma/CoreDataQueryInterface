@@ -30,13 +30,13 @@ import XCTest
 class SelectionTests : BaseTestCase {
  
     func testSelection() {
-        let salary: NSNumber = try! managedObjectContext.from(Employee.self).order(ascending: false, {$0.salary}).value({$0.salary})!
+        let salary: NSNumber = try! managedObjectContext.from(Employee.self).orderDesc{$0.salary}.value({$0.salary})!
         XCTAssertEqual(salary.intValue, 100_000)
     }
     
     func testMaximumSalaryGroupedByDepartment() {
         let employee = EmployeeAttribute()
-        let result = try! managedObjectContext.from(Employee.self).groupBy(employee.department.name).select(employee.department.name, employee.salary.cdqiMax()).order(ascending: false, employee.department.name).all()
+        let result = try! managedObjectContext.from(Employee.self).group(by: employee.department.name).select(employee.department.name, employee.salary.cdqiMax).orderDesc(by: employee.department.name).all()
         print(result)
         let salaries: [String: Int] = result.toDictionary() { ($0["departmentName"]! as! String, ($0["salaryMax"]! as! NSNumber).intValue) }
         XCTAssertEqual(salaries["Accounting"]!, 97000)
@@ -46,7 +46,7 @@ class SelectionTests : BaseTestCase {
     
     func testMinimumSalaryGroupedByDepartment() {
         let employee = EmployeeAttribute()
-        let result = try! managedObjectContext.from(Employee.self).groupBy(employee.department.name).select(employee.department.name, employee.salary.cdqiMin()).order(ascending: false, employee.department.name).all()
+        let result = try! managedObjectContext.from(Employee.self).group(by: employee.department.name).select(employee.department.name, employee.salary.cdqiMin).orderDesc(by: employee.department.name).all()
         let salaries: [String: Int] = result.toDictionary() { ($0["departmentName"]! as! String, ($0["salaryMin"]! as! NSNumber).intValue) }
         XCTAssertEqual(salaries["Accounting"]!, 32000)
         XCTAssertEqual(salaries["Engineering"]!, 54000)
@@ -54,7 +54,7 @@ class SelectionTests : BaseTestCase {
     }
     
     func testAverageSalaryGroupedByDepartment() {
-        let result = try! managedObjectContext.from(Employee.self).groupBy{$0.department.name}.select({$0.department.name}, {$0.salary.cdqiAverage()}).order(ascending: false, {$0.department.name}).all()
+        let result = try! managedObjectContext.from(Employee.self).group{$0.department.name}.select({$0.department.name}, {$0.salary.cdqiAverage}).orderDesc{$0.department.name}.all()
         let salaries: [String: Int] = result.toDictionary() { ($0["departmentName"]! as! String, ($0["salaryAverage"]! as! NSNumber).intValue) }
         XCTAssertEqual(salaries["Accounting"]!, 71000)
         XCTAssertEqual(salaries["Engineering"]!, 75625)
@@ -63,44 +63,39 @@ class SelectionTests : BaseTestCase {
     
     func testDistinctArray() {
         let query = managedObjectContext.from(Employee.self).order{$0.salary}
-        let distinctSalaries: [Int] = try! query.distinct().array{$0.salary}
+        let distinctSalaries: [Int] = try! query.distinct().array({$0.salary}, type: Int.self)
         XCTAssertEqual(distinctSalaries.count, 23)
-        let salaries: [Int] = try! query.array{$0.salary}
+        let salaries: [Int] = try! query.array({$0.salary}, type: Int.self)
         XCTAssertEqual(salaries.count, 25)
         XCTAssertNotEqual(distinctSalaries, salaries)
     }
     
     func testThatThereExistsAnEmployeeNamedIsabella() {
-        let employee = Employee.CDQIAttribute()
-        let query = managedObjectContext.from(Employee.self).filter(employee.firstName.cdqiEqualTo("Isabella", options: .caseInsensitive))
+        let employee = Employee.CDQIEntityAttribute()
+        let query = managedObjectContext.from(Employee.self).filter(employee.firstName.cdqiEqualTo("Isabella", options: []))
         XCTAssertTrue(try! query.exists())
     }
     
     func testReselection() {
-        let employee = Employee.CDQIAttribute()
-        let query = managedObjectContext.from(Employee.self).select(employee.lastName).order(ascending: false, employee.firstName)
-        let employees = try! query.reselect().select(employee.firstName).all()
+        let employee = Employee.CDQIEntityAttribute()
+        let query = managedObjectContext.from(Employee.self).select(employee.lastName).orderDesc(by: employee.firstName)
+        let employees = try! query.dictionary().reselect().select(employee.firstName).all()
         let firstName = employees.first!["firstName"]! as! String
         XCTAssertEqual(firstName, "Lana")
     }
     
-    func testStringAsSelectionProperty() {
-        let result = try! managedObjectContext.from(Employee.self).groupBy("lastName").select("lastName").all()
-        XCTAssertEqual(result.count, 5)
-    }
-    
     func testClosureAsSelectionProperty() {
-        let result = try! managedObjectContext.from(Employee.self).groupBy("lastName").select({employee in [employee.lastName]}).all()
+        let result = try! managedObjectContext.from(Employee.self).group(by: {$0.lastName}).select({employee in [employee.lastName]}).all()
         XCTAssertEqual(result.count, 5)
     }
     
     func testMultipleGroupByProperty() {
-        let result = try! managedObjectContext.from(Employee.self).groupBy{[$0.lastName, $0.department]}.select("lastName", "department").all()
+        let result = try! managedObjectContext.from(Employee.self).group{[$0.lastName, $0.department]}.select({$0.lastName},{$0.department}).all()
         XCTAssertEqual(result.count, 13)
     }
     
     func testOrderByNSSortDescriptor() {
-        let results = try! managedObjectContext.from(Employee.self).order(NSSortDescriptor(key: "firstName", ascending: true)).all()
+        let results = try! managedObjectContext.from(Employee.self).order(by: NSSortDescriptor(key: "firstName", ascending: true)).all()
         XCTAssert(results.first!.firstName == "David" && results.last!.firstName == "Lana")
     }
 }

@@ -24,6 +24,7 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+*.profraw
 
 # CocoaPods
 #

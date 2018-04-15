@@ -31,13 +31,13 @@ final class TestEntityAttribute: EntityAttribute, Subqueryable {
     private(set) lazy var decimal: DecimalAttribute = { DecimalAttribute(key: "decimal", parent: self) }()
     private(set) lazy var double: DoubleAttribute = { DoubleAttribute(key: "double", parent: self) }()
     private(set) lazy var float: FloatAttribute = { FloatAttribute(key: "float", parent: self) }()
-    private(set) lazy var integer16: Integer16Attribute = { Integer16Attribute(key: "integer16", parent: self) }()
-    private(set) lazy var integer32: Integer32Attribute = { Integer32Attribute(key: "integer32", parent: self) }()
-    private(set) lazy var integer64: Integer64Attribute = { Integer64Attribute(key: "integer64", parent: self) }()
+    private(set) lazy var integer16: Int16Attribute = { Int16Attribute(key: "integer16", parent: self) }()
+    private(set) lazy var integer32: Int32Attribute = { Int32Attribute(key: "integer32", parent: self) }()
+    private(set) lazy var integer64: Int64Attribute = { Int64Attribute(key: "integer64", parent: self) }()
     private(set) lazy var string: StringAttribute = { StringAttribute(key: "string", parent: self) }()
 }
 
 extension TestEntity: Entity {
-    typealias CDQIAttribute = TestEntityAttribute
+    typealias CDQIEntityAttribute = TestEntityAttribute
 }
 

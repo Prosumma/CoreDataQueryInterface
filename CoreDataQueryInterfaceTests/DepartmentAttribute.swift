@@ -30,6 +30,6 @@ final class DepartmentAttribute: EntityAttribute, Subqueryable {
 }
 
 extension Department: Entity {
-    typealias CDQIAttribute = DepartmentAttribute
+    typealias CDQIEntityAttribute = DepartmentAttribute
 }
 

@@ -32,33 +32,9 @@ class NumericTypeTests: BaseTestCase {
         XCTAssert(resultCount == 1)
     }
     
-    func testNSNumberValueComparison() {
-        let intMax = Int.max as NSNumber
-        let resultCount = try! managedObjectContext.from(TestEntity.self).filter({ $0.integer64 >= intMax }).count()
-        XCTAssert(resultCount == 1)
-    }
-    
     func testInt16ValueComparison() {
         let int: Int16 = 32767
         let resultCount = try! managedObjectContext.from(TestEntity.self).filter({ $0.integer16 == int }).count()
-        XCTAssert(resultCount == 1)
-    }
-    
-    func testUInt16ValueComparison() {
-        let int: UInt16 = 32767
-        let resultCount = try! managedObjectContext.from(TestEntity.self).filter({ $0.integer16 == int }).count()
-        XCTAssert(resultCount == 1)
-    }
-    
-    func testUInt32ValueComparison() {
-        let int: UInt32 = 32767
-        let resultCount = try! managedObjectContext.from(TestEntity.self).filter{ $0.integer16 == int }.count()
-        XCTAssert(resultCount == 1)
-    }
-    
-    func testUInt64ValueComparison() {
-        let int: UInt64 = 32767
-        let resultCount = try! managedObjectContext.from(TestEntity.self).filter{ $0.integer16 == int }.count()
         XCTAssert(resultCount == 1)
     }
     
@@ -76,12 +52,6 @@ class NumericTypeTests: BaseTestCase {
     func testInt64ValueComparison() {
         let integer: Int64 = Int64.max
         let resultCount = try! managedObjectContext.from(TestEntity.self).filter({ $0.integer64 == integer }).count()
-        XCTAssert(resultCount == 1)
-    }
-    
-    func testUIntInt32ValueComparison() {
-        let integer: UInt = UInt(Int32.max)
-        let resultCount = try! managedObjectContext.from(TestEntity.self).filter{ $0.integer32 == integer }.count()
         XCTAssert(resultCount == 1)
     }
     
