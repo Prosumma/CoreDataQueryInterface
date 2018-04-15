@@ -54,14 +54,14 @@ class FilterTests : BaseTestCase {
     }
     
     func testCountEmployeesWithNameLike() {
-        let count = try! managedObjectContext.from(Employee.self).filter(Employee.cdqi.lastName =* "*nes").count()
+        let count = try! managedObjectContext.from(Employee.self).filter(Employee.e.lastName =* "*nes").count()
         XCTAssertEqual(count, 5)
     }
     
     func testEmptyKeyRepresentsSelf() {
         let employeeQuery = managedObjectContext.from(Employee.self)
         let firstObjectID = try! employeeQuery.ids().first()!
-        let firstEmployee = try! employeeQuery.filter(Employee.cdqi == [firstObjectID]).first()!
+        let firstEmployee = try! employeeQuery.filter(Employee.e == [firstObjectID]).first()!
         XCTAssertEqual(firstObjectID, firstEmployee.objectID)
     }
     
@@ -74,7 +74,7 @@ class FilterTests : BaseTestCase {
     
     func testEmployeesWithLessThanOrEqualToSalary() {
         let salary = 80000
-        let highSalaryCount = try! managedObjectContext.from(Employee.self).filter(Employee.cdqi.salary <= salary).count()
+        let highSalaryCount = try! managedObjectContext.from(Employee.self).filter(Employee.e.salary <= salary).count()
         XCTAssertEqual(highSalaryCount, 17)
     }
     
@@ -88,7 +88,7 @@ class FilterTests : BaseTestCase {
     }
     
     func testNumberOfDepartmentsWithNoSalariesLessThanOrEqualTo() {
-        let departmentCount = try! managedObjectContext.from(Department.self).filter(none(Department.cdqi.employees.salary <= 50000)).count()
+        let departmentCount = try! managedObjectContext.from(Department.self).filter(none(Department.e.employees.salary <= 50000)).count()
         XCTAssertEqual(departmentCount, 3)
     }
 
@@ -105,12 +105,13 @@ class FilterTests : BaseTestCase {
     }
     
     func testCountEmployeesWithFirstNameEndingWithA () {
-        let count = try! managedObjectContext.from(Employee.self).filter({ employee in employee.firstName.cdqiEndsWith("a") }).count()
+        let count = try! managedObjectContext.from(Employee.self).filter(Employee.e.firstName.cdqiEndsWith("a")).count()
         XCTAssertEqual(count, 10)
     }
     
     func testCountEmployeesWithFirstNameOrLastName () {
-        let firstOrLastNameCount = try! managedObjectContext.from(Employee.self).filter({ employee in employee.firstName == "Isabella" || employee.lastName == "Jones" }).count()
+        let e = Employee.e
+        let firstOrLastNameCount = try! managedObjectContext.from(Employee.self).filter(e.firstName == "Isabella" || e.lastName == "Jones").count()
         XCTAssertEqual(firstOrLastNameCount, 9)
     }
     
@@ -125,7 +126,7 @@ class FilterTests : BaseTestCase {
     }
     
     func testDepartmentsWithNameMatchingRegex() {
-        let departmentCount = try! managedObjectContext.from(Department.self).filter({ department in department.name =~ "^[AE].*$" }).count()
+        let departmentCount = try! managedObjectContext.from(Department.self).filter(Department.e.name =~ "^[AE].*$").count()
         XCTAssertEqual(departmentCount, 2)
     }
     

@@ -14,7 +14,7 @@ public protocol Entity {
 
 public extension Entity {
     
-    static var cdqi: CDQIEntityAttribute {
+    static var e: CDQIEntityAttribute {
         return CDQIEntityAttribute()
     }
     
