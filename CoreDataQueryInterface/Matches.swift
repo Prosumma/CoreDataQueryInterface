@@ -8,8 +8,6 @@
 
 import Foundation
 
-infix operator =~: ComparisonPrecedence
-
 public func matches<L: Expression & TypeComparable>(_ lhs: L, _ rhs: String, options: NSComparisonPredicate.Options = []) -> NSPredicate where L.CDQIComparableType == String {
     return NSComparisonPredicate(leftExpression: lhs.cdqiExpression, rightExpression: NSExpression(forConstantValue: rhs), modifier: .direct, type: .matches, options: options)
 }
