@@ -79,7 +79,7 @@ class SelectionTests : BaseTestCase {
     func testReselection() {
         let employee = Employee.CDQIEntityAttribute()
         let query = managedObjectContext.from(Employee.self).select(employee.lastName).orderDesc(by: employee.firstName)
-        let employees = try! query.dictionary().reselect().select(employee.firstName).all()
+        let employees = try! query.dictionaries().reselect().select(employee.firstName).all()
         let firstName = employees.first!["firstName"]! as! String
         XCTAssertEqual(firstName, "Lana")
     }

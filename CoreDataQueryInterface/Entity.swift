@@ -11,3 +11,11 @@ import Foundation
 public protocol Entity {
     associatedtype CDQIEntityAttribute: EntityAttribute
 }
+
+public extension Entity {
+    
+    static var cdqi: CDQIEntityAttribute {
+        return CDQIEntityAttribute()
+    }
+    
+}

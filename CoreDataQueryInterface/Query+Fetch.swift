@@ -89,7 +89,7 @@ public extension Query {
     
     func array<T>(_ expression: Property, managedObjectContext: NSManagedObjectContext? = nil, type: T.Type = T.self) throws -> [T] {
         let property = NSExpressionDescription(expression: expression)
-        return try dictionary().reselect().select(property).all(managedObjectContext: managedObjectContext).map{ $0.allValues[0] as! T }
+        return try dictionaries().reselect().select(property).all(managedObjectContext: managedObjectContext).map{ $0.allValues[0] as! T }
     }
     
     func array<T>(_ make: Make<Property>, managedObjectContext: NSManagedObjectContext? = nil, type: T.Type = T.self) throws -> [T] {

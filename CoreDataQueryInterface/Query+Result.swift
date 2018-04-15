@@ -19,7 +19,7 @@ public extension Query {
         return Query<M, M>(self)
     }
     
-    func dictionary() -> Query<M, NSDictionary> {
+    func dictionaries() -> Query<M, NSDictionary> {
         return Query<M, NSDictionary>(self)
     }
     

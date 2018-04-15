@@ -54,16 +54,14 @@ class FilterTests : BaseTestCase {
     }
     
     func testCountEmployeesWithNameLike() {
-        let count = try! managedObjectContext.from(Employee.self).filter({ $0.lastName.cdqiLike("*nes") }).count()
+        let count = try! managedObjectContext.from(Employee.self).filter(Employee.cdqi.lastName =* "*nes").count()
         XCTAssertEqual(count, 5)
     }
     
     func testEmptyKeyRepresentsSelf() {
         let employeeQuery = managedObjectContext.from(Employee.self)
         let firstObjectID = try! employeeQuery.ids().first()!
-        // Since employee in the filter resolves to the empty string, it is treated as SELF in the query.
-        let predicate: (EmployeeAttribute) -> NSPredicate = { employee in employee == [firstObjectID] }
-        let firstEmployee = try! employeeQuery.filter(predicate).first()!
+        let firstEmployee = try! employeeQuery.filter(Employee.cdqi == [firstObjectID]).first()!
         XCTAssertEqual(firstObjectID, firstEmployee.objectID)
     }
     
@@ -76,8 +74,7 @@ class FilterTests : BaseTestCase {
     
     func testEmployeesWithLessThanOrEqualToSalary() {
         let salary = 80000
-        let e = EmployeeAttribute()
-        let highSalaryCount = try! managedObjectContext.from(Employee.self).filter(e.salary <= salary).count()
+        let highSalaryCount = try! managedObjectContext.from(Employee.self).filter(Employee.cdqi.salary <= salary).count()
         XCTAssertEqual(highSalaryCount, 17)
     }
     
@@ -91,9 +88,7 @@ class FilterTests : BaseTestCase {
     }
     
     func testNumberOfDepartmentsWithNoSalariesLessThanOrEqualTo() {
-        let departmentCount = try! managedObjectContext.from(Department.self).filter {
-                none($0.employees.salary <= 50000)
-            }.count()
+        let departmentCount = try! managedObjectContext.from(Department.self).filter(none(Department.cdqi.employees.salary <= 50000)).count()
         XCTAssertEqual(departmentCount, 3)
     }
 
