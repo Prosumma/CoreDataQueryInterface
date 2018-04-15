@@ -1,5 +1,5 @@
 //
-//  Query+Order.swift
+//  Query+OrderBy.swift
 //  CoreDataQueryInterface
 //
 //  Created by Gregory Higley on 4/13/18.

@@ -131,10 +131,10 @@
 		F30EF94C208134E800B9475F /* NSPredicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF94A208134E800B9475F /* NSPredicate.swift */; };
 		F30EF94D208134E800B9475F /* NSPredicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF94A208134E800B9475F /* NSPredicate.swift */; };
 		F30EF94E208134E800B9475F /* NSPredicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF94A208134E800B9475F /* NSPredicate.swift */; };
-		F30EF9502081357300B9475F /* Query+Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF94F2081357300B9475F /* Query+Order.swift */; };
-		F30EF9512081357300B9475F /* Query+Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF94F2081357300B9475F /* Query+Order.swift */; };
-		F30EF9522081357300B9475F /* Query+Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF94F2081357300B9475F /* Query+Order.swift */; };
-		F30EF9532081357300B9475F /* Query+Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF94F2081357300B9475F /* Query+Order.swift */; };
+		F30EF9502081357300B9475F /* Query+OrderBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF94F2081357300B9475F /* Query+OrderBy.swift */; };
+		F30EF9512081357300B9475F /* Query+OrderBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF94F2081357300B9475F /* Query+OrderBy.swift */; };
+		F30EF9522081357300B9475F /* Query+OrderBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF94F2081357300B9475F /* Query+OrderBy.swift */; };
+		F30EF9532081357300B9475F /* Query+OrderBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF94F2081357300B9475F /* Query+OrderBy.swift */; };
 		F30EF95520813A6F00B9475F /* Query+Select.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF95420813A6F00B9475F /* Query+Select.swift */; };
 		F30EF95620813A6F00B9475F /* Query+Select.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF95420813A6F00B9475F /* Query+Select.swift */; };
 		F30EF95720813A6F00B9475F /* Query+Select.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF95420813A6F00B9475F /* Query+Select.swift */; };
@@ -342,6 +342,10 @@
 		F35C7F2220831DFB00A7BDE9 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C7F2020831DFB00A7BDE9 /* Regex.swift */; };
 		F35C7F2320831DFB00A7BDE9 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C7F2020831DFB00A7BDE9 /* Regex.swift */; };
 		F35C7F2420831DFB00A7BDE9 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C7F2020831DFB00A7BDE9 /* Regex.swift */; };
+		F35C7F2B2083B28300A7BDE9 /* NSExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C7F2A2083B28300A7BDE9 /* NSExpression.swift */; };
+		F35C7F2C2083B28300A7BDE9 /* NSExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C7F2A2083B28300A7BDE9 /* NSExpression.swift */; };
+		F35C7F2D2083B28300A7BDE9 /* NSExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C7F2A2083B28300A7BDE9 /* NSExpression.swift */; };
+		F35C7F2E2083B28300A7BDE9 /* NSExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C7F2A2083B28300A7BDE9 /* NSExpression.swift */; };
 		F37C46A61B2A780200B35B1B /* CoreDataQueryInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = F37C46A51B2A780200B35B1B /* CoreDataQueryInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F37C46AD1B2A780200B35B1B /* CoreDataQueryInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F37C46A21B2A780200B35B1B /* CoreDataQueryInterface.framework */; };
 		F37C46B21B2A780200B35B1B /* SanityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37C46B11B2A780200B35B1B /* SanityTests.swift */; };
@@ -415,7 +419,7 @@
 		F30EF93B2081336300B9475F /* Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
 		F30EF9452081341D00B9475F /* Query+Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Query+Filter.swift"; sourceTree = "<group>"; };
 		F30EF94A208134E800B9475F /* NSPredicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPredicate.swift; sourceTree = "<group>"; };
-		F30EF94F2081357300B9475F /* Query+Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Query+Order.swift"; sourceTree = "<group>"; };
+		F30EF94F2081357300B9475F /* Query+OrderBy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Query+OrderBy.swift"; sourceTree = "<group>"; };
 		F30EF95420813A6F00B9475F /* Query+Select.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Query+Select.swift"; sourceTree = "<group>"; };
 		F30EF95E2081473800B9475F /* Query+Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Query+Result.swift"; sourceTree = "<group>"; };
 		F30EF968208148A600B9475F /* Query+GroupBy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Query+GroupBy.swift"; sourceTree = "<group>"; };
@@ -469,6 +473,7 @@
 		F356DC341CCFFF4C00BF0907 /* CoreDataQueryInterfacetvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataQueryInterfacetvOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F35C7F1B208314B700A7BDE9 /* Alias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alias.swift; sourceTree = "<group>"; };
 		F35C7F2020831DFB00A7BDE9 /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		F35C7F2A2083B28300A7BDE9 /* NSExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSExpression.swift; sourceTree = "<group>"; };
 		F37C46A21B2A780200B35B1B /* CoreDataQueryInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataQueryInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F37C46A51B2A780200B35B1B /* CoreDataQueryInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataQueryInterface.h; sourceTree = "<group>"; };
 		F37C46A71B2A780200B35B1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -616,6 +621,7 @@
 				F30EF99A208157BB00B9475F /* Matches.swift */,
 				F30EF8CD2081228900B9475F /* Named.swift */,
 				F30EF97720814E5900B9475F /* NotEqualTo.swift */,
+				F35C7F2A2083B28300A7BDE9 /* NSExpression.swift */,
 				F341B8BA2082B62E002E4648 /* NSExpressionDescription.swift */,
 				F341B8A62082ABAD002E4648 /* NSManagedObject.swift */,
 				F30EF97220814D4400B9475F /* NSManagedObjectContext.swift */,
@@ -628,7 +634,7 @@
 				F30EF96D208149EB00B9475F /* Query+Fetch.swift */,
 				F30EF9452081341D00B9475F /* Query+Filter.swift */,
 				F30EF968208148A600B9475F /* Query+GroupBy.swift */,
-				F30EF94F2081357300B9475F /* Query+Order.swift */,
+				F30EF94F2081357300B9475F /* Query+OrderBy.swift */,
 				F30EF95E2081473800B9475F /* Query+Result.swift */,
 				F30EF95420813A6F00B9475F /* Query+Select.swift */,
 				F35C7F2020831DFB00A7BDE9 /* Regex.swift */,
@@ -999,6 +1005,7 @@
 				F30EF93D2081336300B9475F /* Query.swift in Sources */,
 				F30EF901208128C900B9475F /* Function.swift in Sources */,
 				F30EF9C42081886A00B9475F /* BoolAttribute.swift in Sources */,
+				F35C7F2C2083B28300A7BDE9 /* NSExpression.swift in Sources */,
 				F30EF91520812B0000B9475F /* Null.swift in Sources */,
 				F30EF95620813A6F00B9475F /* Query+Select.swift in Sources */,
 				F30EF91020812ADA00B9475F /* EqualTo.swift in Sources */,
@@ -1035,7 +1042,7 @@
 				F341B8B22082AE3E002E4648 /* Aggregate.swift in Sources */,
 				F30EF98D2081550300B9475F /* LessThanOrEqualTo.swift in Sources */,
 				F30EF9472081341D00B9475F /* Query+Filter.swift in Sources */,
-				F30EF9512081357300B9475F /* Query+Order.swift in Sources */,
+				F30EF9512081357300B9475F /* Query+OrderBy.swift in Sources */,
 				F30EF9382081333200B9475F /* Date.swift in Sources */,
 				F341B8CB2082C636002E4648 /* Int16.swift in Sources */,
 				F30EF9C92081926A00B9475F /* Decimal.swift in Sources */,
@@ -1101,6 +1108,7 @@
 				F30EF93E2081336300B9475F /* Query.swift in Sources */,
 				F30EF902208128C900B9475F /* Function.swift in Sources */,
 				F30EF9C52081886A00B9475F /* BoolAttribute.swift in Sources */,
+				F35C7F2D2083B28300A7BDE9 /* NSExpression.swift in Sources */,
 				F30EF91620812B0000B9475F /* Null.swift in Sources */,
 				F30EF95720813A6F00B9475F /* Query+Select.swift in Sources */,
 				F30EF91120812ADA00B9475F /* EqualTo.swift in Sources */,
@@ -1137,7 +1145,7 @@
 				F341B8B32082AE3E002E4648 /* Aggregate.swift in Sources */,
 				F30EF98E2081550300B9475F /* LessThanOrEqualTo.swift in Sources */,
 				F30EF9482081341D00B9475F /* Query+Filter.swift in Sources */,
-				F30EF9522081357300B9475F /* Query+Order.swift in Sources */,
+				F30EF9522081357300B9475F /* Query+OrderBy.swift in Sources */,
 				F30EF9392081333200B9475F /* Date.swift in Sources */,
 				F341B8CC2082C636002E4648 /* Int16.swift in Sources */,
 				F30EF9CA2081926A00B9475F /* Decimal.swift in Sources */,
@@ -1203,6 +1211,7 @@
 				F30EF93C2081336300B9475F /* Query.swift in Sources */,
 				F30EF900208128C900B9475F /* Function.swift in Sources */,
 				F30EF9C32081886A00B9475F /* BoolAttribute.swift in Sources */,
+				F35C7F2B2083B28300A7BDE9 /* NSExpression.swift in Sources */,
 				F30EF91420812B0000B9475F /* Null.swift in Sources */,
 				F30EF95520813A6F00B9475F /* Query+Select.swift in Sources */,
 				F30EF90F20812ADA00B9475F /* EqualTo.swift in Sources */,
@@ -1239,7 +1248,7 @@
 				F341B8B12082AE3E002E4648 /* Aggregate.swift in Sources */,
 				F30EF98C2081550300B9475F /* LessThanOrEqualTo.swift in Sources */,
 				F30EF9462081341D00B9475F /* Query+Filter.swift in Sources */,
-				F30EF9502081357300B9475F /* Query+Order.swift in Sources */,
+				F30EF9502081357300B9475F /* Query+OrderBy.swift in Sources */,
 				F30EF9372081333200B9475F /* Date.swift in Sources */,
 				F341B8CA2082C636002E4648 /* Int16.swift in Sources */,
 				F30EF9C82081926A00B9475F /* Decimal.swift in Sources */,
@@ -1305,6 +1314,7 @@
 				F30EF93F2081336300B9475F /* Query.swift in Sources */,
 				F30EF903208128C900B9475F /* Function.swift in Sources */,
 				F30EF9C62081886A00B9475F /* BoolAttribute.swift in Sources */,
+				F35C7F2E2083B28300A7BDE9 /* NSExpression.swift in Sources */,
 				F30EF91720812B0000B9475F /* Null.swift in Sources */,
 				F30EF95820813A6F00B9475F /* Query+Select.swift in Sources */,
 				F30EF91220812ADA00B9475F /* EqualTo.swift in Sources */,
@@ -1341,7 +1351,7 @@
 				F341B8B42082AE3E002E4648 /* Aggregate.swift in Sources */,
 				F30EF98F2081550300B9475F /* LessThanOrEqualTo.swift in Sources */,
 				F30EF9492081341D00B9475F /* Query+Filter.swift in Sources */,
-				F30EF9532081357300B9475F /* Query+Order.swift in Sources */,
+				F30EF9532081357300B9475F /* Query+OrderBy.swift in Sources */,
 				F30EF93A2081333200B9475F /* Date.swift in Sources */,
 				F341B8CD2082C636002E4648 /* Int16.swift in Sources */,
 				F30EF9CB2081926A00B9475F /* Decimal.swift in Sources */,

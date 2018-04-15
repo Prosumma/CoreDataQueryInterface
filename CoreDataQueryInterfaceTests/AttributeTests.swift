@@ -42,7 +42,7 @@ class AttributeTests: BaseTestCase {
     }
     
     func testStringAttribute() {
-        let result = try! managedObjectContext.from(TestEntity.self).filter({ $0.string == "hello" }).count()
+        let result = try! managedObjectContext.from(TestEntity.self).filter(TestEntity.e.string == "hello").count()
         XCTAssertEqual(result, 1)
     }
     

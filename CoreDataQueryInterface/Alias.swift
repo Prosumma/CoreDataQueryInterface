@@ -35,6 +35,10 @@ public func alias(_ expression: Expression & Typed, name: String, type: NSAttrib
     return Alias(expression, name: name, type: type ?? expression.cdqiType)
 }
 
+public func keypath(_ keyPath: String, name: String, type: NSAttributeType) -> Alias {
+    return Alias(NSExpression(forKeyPath: keyPath), name: name, type: type)
+}
+
 public extension Expression {
     
     func cdqiAlias(name: String, type: NSAttributeType) -> Alias {
