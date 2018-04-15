@@ -35,11 +35,11 @@ public extension Query {
         return group(by: expressions)
     }
     
-    public func group(by grouper: Make<[Property]>) -> Query<M, NSDictionary> {
+    public func groupBy(_ grouper: Make<[Property]>) -> Query<M, NSDictionary> {
         return group(by: grouper(entity))
     }
     
-    public func group(by grouper: Make<Property>...) -> Query<M, NSDictionary> {
+    public func groupBy(_ grouper: Make<Property>...) -> Query<M, NSDictionary> {
         return group(by: grouper.map{ $0(entity) })
     }
     

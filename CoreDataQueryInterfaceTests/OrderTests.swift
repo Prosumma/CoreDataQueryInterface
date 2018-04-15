@@ -29,7 +29,7 @@ import XCTest
 class OrderTests : BaseTestCase {
     
     func testFirstEmployeeInSalesOrderedDescendingByLastNameThenAscendingByFirstName() {
-        let employee = try! managedObjectContext.from(Employee.self).filter({ employee in employee.department.name == "Sales" }).orderDesc{$0.lastName}.order{$0.firstName}.first()!
+        let employee = try! managedObjectContext.from(Employee.self).filter({ employee in employee.department.name == "Sales" }).orderDescBy{$0.lastName}.orderBy{$0.firstName}.first()!
         XCTAssertEqual(employee.lastName, "Smith")
         XCTAssertEqual(employee.firstName, "David")
     }
@@ -48,13 +48,13 @@ class OrderTests : BaseTestCase {
     }
     
     func testMultipleOrderings() {
-        let employees = try! managedObjectContext.from(Employee.self).order{employee in [employee.lastName, employee.firstName]}.all()
+        let employees = try! managedObjectContext.from(Employee.self).orderBy{employee in [employee.lastName, employee.firstName]}.all()
         XCTAssertEqual(employees.first!.firstName, "David")
         XCTAssertEqual(employees.last!.firstName, "Lana")
     }
     
     func testMultipleDescendingOrderings() {
-        let employees = try! managedObjectContext.from(Employee.self).orderDesc{employee in [employee.lastName, employee.firstName]}.all()
+        let employees = try! managedObjectContext.from(Employee.self).orderDescBy{employee in [employee.lastName, employee.firstName]}.all()
         XCTAssertEqual(employees.first!.firstName, "Lana")
         XCTAssertEqual(employees.last!.firstName, "David")
     }

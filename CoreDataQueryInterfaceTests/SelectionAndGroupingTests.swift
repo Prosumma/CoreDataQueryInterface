@@ -30,7 +30,7 @@ import XCTest
 class SelectionTests : BaseTestCase {
  
     func testSelection() {
-        let salary: NSNumber = try! managedObjectContext.from(Employee.self).orderDesc{$0.salary}.value({$0.salary})!
+        let salary: NSNumber = try! managedObjectContext.from(Employee.self).orderDescBy{$0.salary}.value({$0.salary})!
         XCTAssertEqual(salary.intValue, 100_000)
     }
     
@@ -54,7 +54,7 @@ class SelectionTests : BaseTestCase {
     }
     
     func testAverageSalaryGroupedByDepartment() {
-        let result = try! managedObjectContext.from(Employee.self).group{$0.department.name}.select({$0.department.name}, {$0.salary.cdqiAverage}).orderDesc{$0.department.name}.all()
+        let result = try! managedObjectContext.from(Employee.self).groupBy{$0.department.name}.select({$0.department.name}, {$0.salary.cdqiAverage}).orderDescBy{$0.department.name}.all()
         let salaries: [String: Int] = result.toDictionary() { ($0["departmentName"]! as! String, ($0["salaryAverage"]! as! NSNumber).intValue) }
         XCTAssertEqual(salaries["Accounting"]!, 71000)
         XCTAssertEqual(salaries["Engineering"]!, 75625)
@@ -62,7 +62,7 @@ class SelectionTests : BaseTestCase {
     }
     
     func testDistinctArray() {
-        let query = managedObjectContext.from(Employee.self).order{$0.salary}
+        let query = managedObjectContext.from(Employee.self).orderBy{$0.salary}
         let distinctSalaries: [Int] = try! query.distinct().array({$0.salary}, type: Int.self)
         XCTAssertEqual(distinctSalaries.count, 23)
         let salaries: [Int] = try! query.array({$0.salary}, type: Int.self)
@@ -85,12 +85,12 @@ class SelectionTests : BaseTestCase {
     }
     
     func testClosureAsSelectionProperty() {
-        let result = try! managedObjectContext.from(Employee.self).group(by: {$0.lastName}).select({employee in [employee.lastName]}).all()
+        let result = try! managedObjectContext.from(Employee.self).groupBy({$0.lastName}).select({employee in [employee.lastName]}).all()
         XCTAssertEqual(result.count, 5)
     }
     
     func testMultipleGroupByProperty() {
-        let result = try! managedObjectContext.from(Employee.self).group{[$0.lastName, $0.department]}.select({$0.lastName},{$0.department}).all()
+        let result = try! managedObjectContext.from(Employee.self).groupBy{[$0.lastName, $0.department]}.select({$0.lastName},{$0.department}).all()
         XCTAssertEqual(result.count, 13)
     }
     
