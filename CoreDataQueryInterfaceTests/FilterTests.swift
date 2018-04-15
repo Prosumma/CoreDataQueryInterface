@@ -54,7 +54,7 @@ class FilterTests : BaseTestCase {
     }
     
     func testCountEmployeesWithNameLike() {
-        let count = try! managedObjectContext.from(Employee.self).filter(Employee.e.lastName =* "*nes").count()
+        let count = try! managedObjectContext.from(Employee.self).filter("*nes" ~= Employee.e.lastName).count()
         XCTAssertEqual(count, 5)
     }
     
@@ -124,7 +124,7 @@ class FilterTests : BaseTestCase {
     }
     
     func testDepartmentsWithNameMatchingRegex() {
-        let departmentCount = try! managedObjectContext.from(Department.self).filter("^[AE].*$" ~= Department.e.name).count()
+        let departmentCount = try! managedObjectContext.from(Department.self).filter(/"^[AE].*$" ~= Department.e.name).count()
         XCTAssertEqual(departmentCount, 2)
     }
     
