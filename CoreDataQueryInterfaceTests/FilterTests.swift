@@ -49,7 +49,7 @@ class FilterTests : BaseTestCase {
     
     func testCountEmployeesNameNotMortonOrJones() {
         let names = ["Morton", "Jones"]
-        let notMortonOrJonesCount = try! managedObjectContext.from(Employee.self).filter{ $0.lastName != names }.count()
+        let notMortonOrJonesCount = try! managedObjectContext.from(Employee.self).filter(Employee.e.lastName != names).count()
         XCTAssertEqual(notMortonOrJonesCount, 15)
     }
     
