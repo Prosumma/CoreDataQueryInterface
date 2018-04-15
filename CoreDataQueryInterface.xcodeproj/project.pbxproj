@@ -334,6 +334,10 @@
 		F356DC741CD000A400BF0907 /* Employees.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3251A071B2BDA260031B817 /* Employees.txt */; };
 		F356DC751CD000A800BF0907 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3251A0E1B2BDE6E0031B817 /* Department.swift */; };
 		F356DC761CD000A800BF0907 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3251A0F1B2BDE6E0031B817 /* Employee.swift */; };
+		F35C7F1C208314B700A7BDE9 /* Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C7F1B208314B700A7BDE9 /* Alias.swift */; };
+		F35C7F1D208314B700A7BDE9 /* Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C7F1B208314B700A7BDE9 /* Alias.swift */; };
+		F35C7F1E208314B700A7BDE9 /* Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C7F1B208314B700A7BDE9 /* Alias.swift */; };
+		F35C7F1F208314B700A7BDE9 /* Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C7F1B208314B700A7BDE9 /* Alias.swift */; };
 		F37C46A61B2A780200B35B1B /* CoreDataQueryInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = F37C46A51B2A780200B35B1B /* CoreDataQueryInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F37C46AD1B2A780200B35B1B /* CoreDataQueryInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F37C46A21B2A780200B35B1B /* CoreDataQueryInterface.framework */; };
 		F37C46B21B2A780200B35B1B /* SanityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37C46B11B2A780200B35B1B /* SanityTests.swift */; };
@@ -459,6 +463,7 @@
 		F356831B1B43AC040089F0A0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F356DC2B1CCFFF4C00BF0907 /* CoreDataQueryInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataQueryInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F356DC341CCFFF4C00BF0907 /* CoreDataQueryInterfacetvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataQueryInterfacetvOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F35C7F1B208314B700A7BDE9 /* Alias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alias.swift; sourceTree = "<group>"; };
 		F37C46A21B2A780200B35B1B /* CoreDataQueryInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataQueryInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F37C46A51B2A780200B35B1B /* CoreDataQueryInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataQueryInterface.h; sourceTree = "<group>"; };
 		F37C46A71B2A780200B35B1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -562,6 +567,7 @@
 			children = (
 				F30EF931208132FB00B9475F /* AdaptedScalar.swift */,
 				F341B8B02082AE3E002E4648 /* Aggregate.swift */,
+				F35C7F1B208314B700A7BDE9 /* Alias.swift */,
 				F341B8BF2082C402002E4648 /* BeginsWith.swift */,
 				F30EF99F20815ABB00B9475F /* Between.swift */,
 				F30EF9BD2081881000B9475F /* Bool.swift */,
@@ -997,6 +1003,7 @@
 				F30EF9BA208173BD00B9475F /* DateAttribute.swift in Sources */,
 				F30EF9D8208193A300B9475F /* Subquery.swift in Sources */,
 				F30EF90B20812A2500B9475F /* Sum.swift in Sources */,
+				F35C7F1D208314B700A7BDE9 /* Alias.swift in Sources */,
 				F30EF997208155C300B9475F /* Sequence.swift in Sources */,
 				F341B88A208288BC002E4648 /* DataAttribute.swift in Sources */,
 				F341B87B208286D1002E4648 /* Float.swift in Sources */,
@@ -1097,6 +1104,7 @@
 				F30EF9BB208173BD00B9475F /* DateAttribute.swift in Sources */,
 				F30EF9D9208193A300B9475F /* Subquery.swift in Sources */,
 				F30EF90C20812A2500B9475F /* Sum.swift in Sources */,
+				F35C7F1E208314B700A7BDE9 /* Alias.swift in Sources */,
 				F30EF998208155C300B9475F /* Sequence.swift in Sources */,
 				F341B88B208288BC002E4648 /* DataAttribute.swift in Sources */,
 				F341B87C208286D1002E4648 /* Float.swift in Sources */,
@@ -1197,6 +1205,7 @@
 				F30EF9B9208173BD00B9475F /* DateAttribute.swift in Sources */,
 				F30EF9D7208193A300B9475F /* Subquery.swift in Sources */,
 				F30EF90A20812A2500B9475F /* Sum.swift in Sources */,
+				F35C7F1C208314B700A7BDE9 /* Alias.swift in Sources */,
 				F30EF996208155C300B9475F /* Sequence.swift in Sources */,
 				F341B889208288BC002E4648 /* DataAttribute.swift in Sources */,
 				F341B87A208286D1002E4648 /* Float.swift in Sources */,
@@ -1297,6 +1306,7 @@
 				F30EF9BC208173BD00B9475F /* DateAttribute.swift in Sources */,
 				F30EF9DA208193A300B9475F /* Subquery.swift in Sources */,
 				F30EF90D20812A2500B9475F /* Sum.swift in Sources */,
+				F35C7F1F208314B700A7BDE9 /* Alias.swift in Sources */,
 				F30EF999208155C300B9475F /* Sequence.swift in Sources */,
 				F341B88C208288BC002E4648 /* DataAttribute.swift in Sources */,
 				F341B87D208286D1002E4648 /* Float.swift in Sources */,
