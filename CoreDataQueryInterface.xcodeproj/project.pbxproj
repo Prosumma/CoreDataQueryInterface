@@ -338,6 +338,10 @@
 		F35C7F1D208314B700A7BDE9 /* Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C7F1B208314B700A7BDE9 /* Alias.swift */; };
 		F35C7F1E208314B700A7BDE9 /* Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C7F1B208314B700A7BDE9 /* Alias.swift */; };
 		F35C7F1F208314B700A7BDE9 /* Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C7F1B208314B700A7BDE9 /* Alias.swift */; };
+		F35C7F2120831DFB00A7BDE9 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C7F2020831DFB00A7BDE9 /* Regex.swift */; };
+		F35C7F2220831DFB00A7BDE9 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C7F2020831DFB00A7BDE9 /* Regex.swift */; };
+		F35C7F2320831DFB00A7BDE9 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C7F2020831DFB00A7BDE9 /* Regex.swift */; };
+		F35C7F2420831DFB00A7BDE9 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C7F2020831DFB00A7BDE9 /* Regex.swift */; };
 		F37C46A61B2A780200B35B1B /* CoreDataQueryInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = F37C46A51B2A780200B35B1B /* CoreDataQueryInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F37C46AD1B2A780200B35B1B /* CoreDataQueryInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F37C46A21B2A780200B35B1B /* CoreDataQueryInterface.framework */; };
 		F37C46B21B2A780200B35B1B /* SanityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37C46B11B2A780200B35B1B /* SanityTests.swift */; };
@@ -464,6 +468,7 @@
 		F356DC2B1CCFFF4C00BF0907 /* CoreDataQueryInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataQueryInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F356DC341CCFFF4C00BF0907 /* CoreDataQueryInterfacetvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataQueryInterfacetvOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F35C7F1B208314B700A7BDE9 /* Alias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alias.swift; sourceTree = "<group>"; };
+		F35C7F2020831DFB00A7BDE9 /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		F37C46A21B2A780200B35B1B /* CoreDataQueryInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataQueryInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F37C46A51B2A780200B35B1B /* CoreDataQueryInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataQueryInterface.h; sourceTree = "<group>"; };
 		F37C46A71B2A780200B35B1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -626,6 +631,7 @@
 				F30EF94F2081357300B9475F /* Query+Order.swift */,
 				F30EF95E2081473800B9475F /* Query+Result.swift */,
 				F30EF95420813A6F00B9475F /* Query+Select.swift */,
+				F35C7F2020831DFB00A7BDE9 /* Regex.swift */,
 				F30EF91820812B9B00B9475F /* Scalar.swift */,
 				F30EF8EB208125F500B9475F /* ScalarAttribute.swift */,
 				F30EF995208155C300B9475F /* Sequence.swift */,
@@ -1013,6 +1019,7 @@
 				F30EF97E2081522500B9475F /* GreaterThan.swift in Sources */,
 				F30EF9BF2081881000B9475F /* Bool.swift in Sources */,
 				F30EF8DE208123E900B9475F /* TypeComparable.swift in Sources */,
+				F35C7F2220831DFB00A7BDE9 /* Regex.swift in Sources */,
 				F341B8C12082C402002E4648 /* BeginsWith.swift in Sources */,
 				F30EF97920814E5900B9475F /* NotEqualTo.swift in Sources */,
 				F30EF8E82081256900B9475F /* ConstantExpression.swift in Sources */,
@@ -1114,6 +1121,7 @@
 				F30EF97F2081522500B9475F /* GreaterThan.swift in Sources */,
 				F30EF9C02081881000B9475F /* Bool.swift in Sources */,
 				F30EF8DF208123E900B9475F /* TypeComparable.swift in Sources */,
+				F35C7F2320831DFB00A7BDE9 /* Regex.swift in Sources */,
 				F341B8C22082C402002E4648 /* BeginsWith.swift in Sources */,
 				F30EF97A20814E5900B9475F /* NotEqualTo.swift in Sources */,
 				F30EF8E92081256900B9475F /* ConstantExpression.swift in Sources */,
@@ -1215,6 +1223,7 @@
 				F30EF97D2081522500B9475F /* GreaterThan.swift in Sources */,
 				F30EF9BE2081881000B9475F /* Bool.swift in Sources */,
 				F30EF8DD208123E900B9475F /* TypeComparable.swift in Sources */,
+				F35C7F2120831DFB00A7BDE9 /* Regex.swift in Sources */,
 				F341B8C02082C402002E4648 /* BeginsWith.swift in Sources */,
 				F30EF97820814E5900B9475F /* NotEqualTo.swift in Sources */,
 				F30EF8E72081256900B9475F /* ConstantExpression.swift in Sources */,
@@ -1316,6 +1325,7 @@
 				F30EF9802081522500B9475F /* GreaterThan.swift in Sources */,
 				F30EF9C12081881000B9475F /* Bool.swift in Sources */,
 				F30EF8E0208123E900B9475F /* TypeComparable.swift in Sources */,
+				F35C7F2420831DFB00A7BDE9 /* Regex.swift in Sources */,
 				F341B8C32082C402002E4648 /* BeginsWith.swift in Sources */,
 				F30EF97B20814E5900B9475F /* NotEqualTo.swift in Sources */,
 				F30EF8EA2081256900B9475F /* ConstantExpression.swift in Sources */,

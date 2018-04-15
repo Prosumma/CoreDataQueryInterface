@@ -17,3 +17,7 @@ public extension Expression where Self: TypeComparable {
         return between(self, rhs1, and: rhs2, options: options, modifier: modifier)
     }
 }
+
+public func ~=<L: Expression & TypeComparable & Comparable, R: Expression & Inconstant & TypeComparable>(pattern: ClosedRange<L>, value: R) -> NSPredicate where L.CDQIComparableType == R.CDQIComparableType {
+    return between(value, pattern.lowerBound, and: pattern.upperBound)
+}

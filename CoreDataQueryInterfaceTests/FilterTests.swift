@@ -124,14 +124,12 @@ class FilterTests : BaseTestCase {
     }
     
     func testDepartmentsWithNameMatchingRegex() {
-        let departmentCount = try! managedObjectContext.from(Department.self).filter(Department.e.name =~ "^[AE].*$").count()
+        let departmentCount = try! managedObjectContext.from(Department.self).filter("^[AE].*$" ~= Department.e.name).count()
         XCTAssertEqual(departmentCount, 2)
     }
     
     func testEmployeesWithSalariesBetween80000And100000() {
-        let employeeCount = try! managedObjectContext.from(Employee.self).filter{
-            employee in employee.salary.cdqiBetween(80000, and: 100000)
-        }.count()
+        let employeeCount = try! managedObjectContext.from(Employee.self).filter(80000...100000 ~= Employee.e.salary).count()
         XCTAssertEqual(employeeCount, 8)
     }
     
