@@ -11,15 +11,15 @@ import Foundation
 
 public extension Query {
     
-    func ids() -> Query<M, NSManagedObjectID> {
+    var ids: Query<M, NSManagedObjectID> {
         return Query<M, NSManagedObjectID>(self)
     }
     
-    func objects() -> Query<M, M> {
+    var objects: Query<M, M> {
         return Query<M, M>(self)
     }
     
-    func dictionaries() -> Query<M, NSDictionary> {
+    var items: Query<M, NSDictionary> {
         return Query<M, NSDictionary>(self)
     }
     

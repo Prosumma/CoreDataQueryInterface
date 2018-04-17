@@ -16,22 +16,18 @@ public struct Sum: Function {
     public let cdqiName: String
     public let cdqiExpression: NSExpression
     
-    init(_ argument: Expression & Typed) {
+    init(_ argument: Property) {
         cdqiType = argument.cdqiType
-        if let named = argument as? Named {
-            cdqiName = "\(named.cdqiName)Sum"
-        } else {
-            cdqiName = "Sum"
-        }
+        cdqiName = "\(argument.cdqiName)Sum"
         cdqiExpression = NSExpression(forFunction: "sum:", arguments: [argument.cdqiExpression])
     }
 }
 
-public func sum(_ argument: Expression & Typed) -> Sum {
+public func sum(_ argument: Property) -> Sum {
     return Sum(argument)
 }
 
-public extension Expression where Self: Typed {
+public extension Expression where Self: Typed & Named {
     var cdqiSum: Sum {
         return Sum(self)
     }

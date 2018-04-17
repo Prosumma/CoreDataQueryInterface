@@ -63,7 +63,8 @@ class SelectionTests : BaseTestCase {
     
     func testDistinctArray() {
         let query = managedObjectContext.from(Employee.self).orderBy{$0.salary}
-        let distinctSalaries: [Int] = try! query.distinct().array({$0.salary}, type: Int.self)
+        let distinctSalaries: [Int] = try! query.distinct().array{$0.salary} // Does not compile
+//        let distinctSalaries: [Int] = try! query.distinct().array({$0.salary}) // Compiles and works!
         XCTAssertEqual(distinctSalaries.count, 23)
         let salaries: [Int] = try! query.array({$0.salary}, type: Int.self)
         XCTAssertEqual(salaries.count, 25)
@@ -79,7 +80,7 @@ class SelectionTests : BaseTestCase {
     func testReselection() {
         let employee = Employee.CDQIEntityAttribute()
         let query = managedObjectContext.from(Employee.self).select(employee.lastName).orderDesc(by: employee.firstName)
-        let employees = try! query.dictionaries().reselect().select(employee.firstName).all()
+        let employees = try! query.items.reselect().select(employee.firstName).all()
         let firstName = employees.first!["firstName"]! as! String
         XCTAssertEqual(firstName, "Lana")
     }

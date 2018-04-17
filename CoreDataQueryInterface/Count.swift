@@ -16,12 +16,8 @@ public struct Count: Function {
     public let cdqiName: String
     public let cdqiExpression: NSExpression
     
-    public init(_ argument: Expression) {
-        if let named = argument as? Named {
-            cdqiName = "\(named.cdqiName)Count"
-        } else {
-            cdqiName = "Count"
-        }
+    public init(_ argument: Expression & Named) {
+        cdqiName = "\(argument.cdqiName)Count"
         if argument is Subquery {
             cdqiExpression = NSExpression(format: "%@.@count", argument.cdqiExpression)
         } else {
@@ -30,11 +26,11 @@ public struct Count: Function {
     }
 }
 
-public func count(_ argument: Expression) -> Count {
+public func count(_ argument: Expression & Named) -> Count {
     return Count(argument)
 }
 
-public extension Expression {
+public extension Expression where Self: Named {
     var cdqiCount: Count {
         return Count(self)
     }

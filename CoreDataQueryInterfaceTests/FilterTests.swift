@@ -60,7 +60,7 @@ class FilterTests : BaseTestCase {
     
     func testEmptyKeyRepresentsSelf() {
         let employeeQuery = managedObjectContext.from(Employee.self)
-        let firstObjectID = try! employeeQuery.ids().first()!
+        let firstObjectID = try! employeeQuery.ids.first()!
         let firstEmployee = try! employeeQuery.filter(Employee.e == [firstObjectID]).first()!
         XCTAssertEqual(firstObjectID, firstEmployee.objectID)
     }
@@ -76,6 +76,11 @@ class FilterTests : BaseTestCase {
         let salary = 80000
         let highSalaryCount = try! managedObjectContext.from(Employee.self).filter(Employee.e.salary <= salary).count()
         XCTAssertEqual(highSalaryCount, 17)
+    }
+    
+    func testSomething() {
+        let something = try! managedObjectContext.from(Department.self).group(by: Department.e.name).select(Department.e.name, Department.e.employees.cdqiCount).all()
+        print(something)
     }
     
     func testNumberOfDepartmentsWithEmployeesWhoseLastNamesStartWithSUsingSubquery() {
