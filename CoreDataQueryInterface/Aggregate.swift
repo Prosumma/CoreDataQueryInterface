@@ -41,7 +41,7 @@ public func min<E: Property & TypeComparable>(_ argument: E) -> Aggregate<E> {
     return Aggregate(function: .min, argument: argument)
 }
 
-extension Expression where Self: Typed & Named & TypeComparable {
+public extension Expression where Self: Typed & Named & TypeComparable {
     
     var cdqiAverage: Aggregate<Self> {
         return Aggregate(function: .average, argument: self)

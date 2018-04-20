@@ -63,8 +63,7 @@ class SelectionTests : BaseTestCase {
     
     func testDistinctArray() {
         let query = managedObjectContext.from(Employee.self).orderBy{$0.salary}
-        let distinctSalaries: [Int] = try! query.distinct().array{$0.salary} // Does not compile
-//        let distinctSalaries: [Int] = try! query.distinct().array({$0.salary}) // Compiles and works!
+        let distinctSalaries: [Int] = try! query.distinct().array(Employee.e.salary)
         XCTAssertEqual(distinctSalaries.count, 23)
         let salaries: [Int] = try! query.array({$0.salary}, type: Int.self)
         XCTAssertEqual(salaries.count, 25)
