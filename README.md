@@ -24,8 +24,8 @@ In essence, CDQI is a tool that allows the creation (and execution) of fetch req
 
 ```swift
 let swiftDevelopers = managedObjectContext.from(Developer.self).
-                      filter{ any($0.languages.name == "Swift") }.
-                      order(ascending: false, {$0.lastName})
+                      filter(any(Developer.e.languages.name == "Swift"))
+                      orderDesc(by: Developer.e.lastName)
                       .limit(5)
                       .all()
 ```
