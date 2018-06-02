@@ -128,6 +128,11 @@ class FilterTests : BaseTestCase {
         XCTAssertEqual(count, 10)
     }
     
+    func testEmployeesWithFirstNameEqualToLastName() {
+        let count = try! managedObjectContext.from(Employee.self).filter(Employee.e.firstName == Employee.e.lastName).count()
+        XCTAssertEqual(count, 0)
+    }
+    
     func testDepartmentsWithNameMatchingRegex() {
         let departmentCount = try! managedObjectContext.from(Department.self).filter(/"^[AE].*$" ~= Department.e.name).count()
         XCTAssertEqual(departmentCount, 2)

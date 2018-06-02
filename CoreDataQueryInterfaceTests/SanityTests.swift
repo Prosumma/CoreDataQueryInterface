@@ -28,9 +28,25 @@ import XCTest
 
 class SanityTests: BaseTestCase {
     
+    /**
+     This test exists to ensure that our operator
+     overloads don't conflict with Swift's built-ins.
+     */
     func testThatComplexBooleansStillWork() {
         let x = 14
-        XCTAssertTrue(x > 0 && x < 47)
+        XCTAssertTrue(x > 0 && x < 47 && !(x == 99))
+    }
+    
+    func testImplicitBooleanPredicate() {
+        var count = try! managedObjectContext.from(TestEntity.self).filter(TestEntity.e.boolean).count()
+        XCTAssertEqual(count, 1)
+        count = try! managedObjectContext.from(TestEntity.self).filter(TestEntity.e.boolean && true).count()
+        XCTAssertEqual(count, 1)
+    }
+    
+    func testImplicitBooleanPredicateNegation() {
+        let count = try! managedObjectContext.from(TestEntity.self).filter(!TestEntity.e.boolean).count()
+        XCTAssertEqual(count, 0)
     }
     
     func testCountDepartments() {
