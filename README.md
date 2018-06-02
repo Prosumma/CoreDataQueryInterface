@@ -65,32 +65,11 @@ let developerDictionaryQuery = Query<Developer, NSDictionary>()
 
 ### Filtering
 
-One of the most common operations performed in Core Data is filtering using `NSPredicate`. While it is possible to use `NSPredicate` directly with CDQI, this is not recommended. Instead, the generated attribute proxies should be used. These are accessed by the static `e` property that is added to every `NSManagedObject` subclass by the `cdqi` tool.
+Filtering in Core Data requires an `NSPredicate`. CDQI has overloads of many of the built-in operators. These overloads generate Core Data friendly `NSPredicate`s instead of `Bool`s. They are carefully designed so as not to conflict with the ordinary operators.
 
-```swift
-let query = Query<Developer, Developer>().filter(Developer.e.lastName == "Higley")
-```
-
-The expression `Developer.e.lastName == "Higley"` actually generates an `NSPredicate` rather than `Bool`. CDQI has clever overloads of the basic operators that work with the attribute proxies and a few other types that implement the `Inconstant` protocol. These overloads are designed to prevent collisions with the ordinary functions of the built-in operators.
-
-#### Comparisons
-
-CDQI has comparison operators, comparison methods, and comparison functions. Only the operators and methods will be covered here. See the source code for the functions.
-
-The operators all perform _case-insensitive_ operations, which is the default for Core Data (and `NSPredicate`). The methods take an `options` parameter of type `NSComparisonPredicate.Options` that allows for case- and diacritic-insensitivity if desired.
-
-Operator | Method | Examples and Description
-:---: | --- | ---
-`==` | `cdqiEqualTo` | `Person.e.firstName == "Robert"` or `Person.e.firstName.cdqiEqualTo("Robert")`.
-`==` | `cdqiIn` | `Person.e.lastName == ["Smith", "Hayek"]` or `Person.e.lastName.cdqiIn("Smith", "Hayek")`.
-`!=` | `cdqiNotEqualTo` | `Person.e.age != 47` or `Person.e.age.cdqiNotEqualTo(47)`.
-`!=` | &nbsp; | `Person.e.age != [18, 44, 99]` or `!Person.e.age.cdqiIn(18, 44, 99)`.
-`>` | `cdqiGreaterThan` | `Person.e.age > 42` or `Person.e.age.cdqiGreaterThan(42)`.
-`>=` | `cdqiGreaterThanOrEqualTo` | `Person.e.age >= 18` or `Person.e.age.greaterThanOrEqualTo(18)`.
-`<` | `cdqiLessThan` | `Soldier.e.rank < Rank.lieutenant` or `Soldier.e.rank.cdqiLessThan(Rank.lieutenant)`.
-`<=` | `cdqiLessThanOrEqualTo` | `Soldier.e.rank <= Rank.colonel` or `Soldier.e.rank.cdqiLessThanOrEqualTo(Rank.colonel)`.
-`~=` | `cdqiLike` | `"*obert*" ~= Person.e.firstName` or `Person.e.firstName.cdqiLike("*obert*")`.
-`~=` | `cdqiMatches` | `/"^[Rr]ob" ~= Person.e.firstName` or `Person.e.firstName.cdqiMatches("^[Rr]ob")`. Note the `/` before `"^[Rr]ob"`. This turns it into a CDQI `Regex`. Otherwise `~=` is the `LIKE` operator. When using the method `cdqiMatches`, the argument can be a `String` or `Regex`.
-&nbsp; | `cdqiContains` | `Person.e.lastName.cdqiContains("von", options: .caseInsensitive)`.
-&nbsp; | `cdqiBeginsWith` | `Person.e.lastName.cdqiBeginsWith("X")`.
-&nbsp; | `cdqiEndsWith` | `Person.e.firstName.cdqiEndsWith("n", options: .caseInsensitive)`.
+| Swift | `NSPredicate` |
+| --- | --- |
+| `Developer.e.lastName == "Li"` | `"lastName == 'Li'"` |
+| `Person.e.age >= 18` | `"age >= 18"` |
+| `21...55 ~= Person.e.age` | `"age BETWEEN 21 AND 55"` |
+| `Person.e.firstName == "Friedrich"  && Person.e.lastName == "Hayek"` | `"firstName == 'Friedrich' AND lastName == 'Hayek'"` |
