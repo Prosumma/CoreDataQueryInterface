@@ -22,6 +22,10 @@ public extension Query {
         return query
     }
     
+    func filter<E>(_ expression: E) -> Query<M, R> where E: Expression & TypeComparable, E.CDQIComparableType == Bool {
+        return filter(equalTo(expression, true))
+    }
+    
     func filter(_ where: Make<NSPredicate>) -> Query<M, R> {
         return filter(`where`(entity))
     }
