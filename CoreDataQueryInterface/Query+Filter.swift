@@ -26,7 +26,7 @@ public extension Query {
         return filter(equalTo(expression, true))
     }
     
-    func filter(_ where: Make<NSPredicate>) -> Query<M, R> {
+    func filter(_ where: MakeResult<NSPredicate>) -> Query<M, R> {
         return filter(`where`(entity))
     }
 }

@@ -92,7 +92,7 @@ public extension Query {
         return try items.reselect().select(property).all(managedObjectContext: managedObjectContext).map{ $0.allValues[0] as! T }
     }
     
-    func array<T>(_ make: Make<Property>, managedObjectContext: NSManagedObjectContext? = nil, type: T.Type = T.self) throws -> [T] {
+    func array<T>(_ make: MakeResult<Property>, managedObjectContext: NSManagedObjectContext? = nil, type: T.Type = T.self) throws -> [T] {
         return try array(make(entity))
     }
     
@@ -100,7 +100,7 @@ public extension Query {
         return try limit(1).array(expression, managedObjectContext: managedObjectContext).first
     }
     
-    func value<T>(_ make: Make<Property>, managedObjectContext: NSManagedObjectContext? = nil, type: T.Type = T.self) throws -> T? {
+    func value<T>(_ make: MakeResult<Property>, managedObjectContext: NSManagedObjectContext? = nil, type: T.Type = T.self) throws -> T? {
         return try value(make(entity), managedObjectContext: managedObjectContext)
     }
 }

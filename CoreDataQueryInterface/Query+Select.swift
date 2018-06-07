@@ -35,11 +35,11 @@ public extension Query {
         return select(expressions)
     }
     
-    func select(_ selector: Make<[Property]>) -> Query<M, R> {
+    func select(_ selector: MakeResult<[Property]>) -> Query<M, R> {
         return select(selector(entity))
     }
     
-    func select(_ selectors: Make<Property>...) -> Query<M, R> {
+    func select(_ selectors: MakeResult<Property>...) -> Query<M, R> {
         return select(selectors.map { $0(entity) })
     }
     

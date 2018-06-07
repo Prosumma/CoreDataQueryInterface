@@ -11,7 +11,7 @@ import Foundation
 
 public struct Query<M: NSManagedObject & Entity, R: NSFetchRequestResult> {
     public typealias E = M.CDQIEntityAttribute
-    public typealias Make<R> = (E) -> R
+    public typealias MakeResult<R> = (E) -> R
     
     internal let entity = E()
     

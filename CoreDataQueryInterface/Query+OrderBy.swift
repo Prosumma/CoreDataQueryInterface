@@ -42,19 +42,19 @@ public extension Query {
         return orderDesc(by: expressions)
     }
     
-    func orderBy(_ make: Make<[KeyPathExpression]>) -> Query<M, R> {
+    func orderBy(_ make: MakeResult<[KeyPathExpression]>) -> Query<M, R> {
         return order(by: make(entity))
     }
     
-    func orderBy(_ makers: Make<KeyPathExpression>...) -> Query<M, R> {
+    func orderBy(_ makers: MakeResult<KeyPathExpression>...) -> Query<M, R> {
         return order(by: makers.map{ NSSortDescriptor(key: $0(entity).cdqiKeyPath, ascending: true) })
     }
     
-    func orderDescBy(_ make: Make<[KeyPathExpression]>) -> Query<M, R> {
+    func orderDescBy(_ make: MakeResult<[KeyPathExpression]>) -> Query<M, R> {
         return order(by: make(entity).map { NSSortDescriptor(key: $0.cdqiKeyPath, ascending: false) })
     }
     
-    func orderDescBy(_ make: Make<KeyPathExpression>...) -> Query<M, R> {
+    func orderDescBy(_ make: MakeResult<KeyPathExpression>...) -> Query<M, R> {
         return order(by: make.map{ NSSortDescriptor(key: $0(entity).cdqiKeyPath, ascending: false) })
     }
     
