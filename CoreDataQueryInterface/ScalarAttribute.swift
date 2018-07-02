@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// A convenience protocol for scalar (as opposed to entity) attributes such as `StringAttribute`, `DoubleAttribute`, etc.
 public protocol ScalarAttribute: Inconstant, Typed, TypeComparable, KeyPathExpression {
     init(key: String, parent: EntityAttribute)
 }

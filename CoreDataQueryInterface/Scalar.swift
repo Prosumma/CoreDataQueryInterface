@@ -8,4 +8,5 @@
 
 import Foundation
 
+/// A convenience protocol for scalars such as `String`, `Int`, `Double`, etc.
 public protocol Scalar: Typed, TypeComparable, ConstantExpression {}

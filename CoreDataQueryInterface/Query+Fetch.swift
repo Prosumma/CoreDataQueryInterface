@@ -51,12 +51,10 @@ public extension Query {
             fetchRequest.sortDescriptors = sortDescriptors
         }
         let resultType: NSFetchRequestResultType
-        if R.self is NSDictionary.Type {
-            resultType = .dictionaryResultType
-        } else if R.self is NSManagedObjectID.Type {
-            resultType = .managedObjectIDResultType
-        } else {
-            resultType = .managedObjectResultType
+        switch R.self {
+        case is NSDictionary.Type: resultType = .dictionaryResultType
+        case is NSManagedObjectID.Type: resultType = .managedObjectIDResultType
+        default: resultType = .managedObjectResultType
         }
         fetchRequest.resultType = resultType
         fetchRequest.returnsDistinctResults = returnsDistinctResults
