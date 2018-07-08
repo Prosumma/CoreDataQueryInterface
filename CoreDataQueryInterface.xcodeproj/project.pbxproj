@@ -79,10 +79,6 @@
 		F30EF906208128E500B9475F /* Count.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF904208128E500B9475F /* Count.swift */; };
 		F30EF907208128E500B9475F /* Count.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF904208128E500B9475F /* Count.swift */; };
 		F30EF908208128E500B9475F /* Count.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF904208128E500B9475F /* Count.swift */; };
-		F30EF90A20812A2500B9475F /* Sum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF90920812A2500B9475F /* Sum.swift */; };
-		F30EF90B20812A2500B9475F /* Sum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF90920812A2500B9475F /* Sum.swift */; };
-		F30EF90C20812A2500B9475F /* Sum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF90920812A2500B9475F /* Sum.swift */; };
-		F30EF90D20812A2500B9475F /* Sum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF90920812A2500B9475F /* Sum.swift */; };
 		F30EF90F20812ADA00B9475F /* EqualTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF90E20812ADA00B9475F /* EqualTo.swift */; };
 		F30EF91020812ADA00B9475F /* EqualTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF90E20812ADA00B9475F /* EqualTo.swift */; };
 		F30EF91120812ADA00B9475F /* EqualTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EF90E20812ADA00B9475F /* EqualTo.swift */; };
@@ -406,7 +402,6 @@
 		F30EF8FA2081288300B9475F /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		F30EF8FF208128C900B9475F /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		F30EF904208128E500B9475F /* Count.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Count.swift; sourceTree = "<group>"; };
-		F30EF90920812A2500B9475F /* Sum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sum.swift; sourceTree = "<group>"; };
 		F30EF90E20812ADA00B9475F /* EqualTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualTo.swift; sourceTree = "<group>"; };
 		F30EF91320812B0000B9475F /* Null.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Null.swift; sourceTree = "<group>"; };
 		F30EF91820812B9B00B9475F /* Scalar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scalar.swift; sourceTree = "<group>"; };
@@ -645,7 +640,6 @@
 				F30EF9A42081720500B9475F /* StringAttribute.swift */,
 				F30EF9D6208193A300B9475F /* Subquery.swift */,
 				F30EF9DB2081E53800B9475F /* Subqueryable.swift */,
-				F30EF90920812A2500B9475F /* Sum.swift */,
 				F30EF8DC208123E900B9475F /* TypeComparable.swift */,
 				F30EF8C82081226300B9475F /* Typed.swift */,
 			);
@@ -1015,7 +1009,6 @@
 				F30EF8F72081281900B9475F /* NSManagedObjectID.swift in Sources */,
 				F30EF9BA208173BD00B9475F /* DateAttribute.swift in Sources */,
 				F30EF9D8208193A300B9475F /* Subquery.swift in Sources */,
-				F30EF90B20812A2500B9475F /* Sum.swift in Sources */,
 				F35C7F1D208314B700A7BDE9 /* Alias.swift in Sources */,
 				F30EF997208155C300B9475F /* Sequence.swift in Sources */,
 				F341B88A208288BC002E4648 /* DataAttribute.swift in Sources */,
@@ -1118,7 +1111,6 @@
 				F30EF8F82081281900B9475F /* NSManagedObjectID.swift in Sources */,
 				F30EF9BB208173BD00B9475F /* DateAttribute.swift in Sources */,
 				F30EF9D9208193A300B9475F /* Subquery.swift in Sources */,
-				F30EF90C20812A2500B9475F /* Sum.swift in Sources */,
 				F35C7F1E208314B700A7BDE9 /* Alias.swift in Sources */,
 				F30EF998208155C300B9475F /* Sequence.swift in Sources */,
 				F341B88B208288BC002E4648 /* DataAttribute.swift in Sources */,
@@ -1221,7 +1213,6 @@
 				F30EF8F62081281900B9475F /* NSManagedObjectID.swift in Sources */,
 				F30EF9B9208173BD00B9475F /* DateAttribute.swift in Sources */,
 				F30EF9D7208193A300B9475F /* Subquery.swift in Sources */,
-				F30EF90A20812A2500B9475F /* Sum.swift in Sources */,
 				F35C7F1C208314B700A7BDE9 /* Alias.swift in Sources */,
 				F30EF996208155C300B9475F /* Sequence.swift in Sources */,
 				F341B889208288BC002E4648 /* DataAttribute.swift in Sources */,
@@ -1324,7 +1315,6 @@
 				F30EF8F92081281900B9475F /* NSManagedObjectID.swift in Sources */,
 				F30EF9BC208173BD00B9475F /* DateAttribute.swift in Sources */,
 				F30EF9DA208193A300B9475F /* Subquery.swift in Sources */,
-				F30EF90D20812A2500B9475F /* Sum.swift in Sources */,
 				F35C7F1F208314B700A7BDE9 /* Alias.swift in Sources */,
 				F30EF999208155C300B9475F /* Sequence.swift in Sources */,
 				F341B88C208288BC002E4648 /* DataAttribute.swift in Sources */,

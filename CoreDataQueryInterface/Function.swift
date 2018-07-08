@@ -8,4 +8,8 @@
 
 import Foundation
 
+/**
+ A convenience protocol that groups those protocols
+ that a function must support.
+ */
 public protocol Function: Inconstant, Typed, TypeComparable, Expression, Named {}

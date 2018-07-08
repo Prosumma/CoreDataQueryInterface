@@ -38,6 +38,9 @@ import Foundation
     .filter(Merchandise.e.size == Size.large)
  ```
  
+ You can of course just make your type conform to `Type`,
+ `TypeComparable` and `Expression` separately. This is just a
+ convenience.
  */
 public protocol AdaptedScalar: Typed, TypeComparable, Expression {}
 

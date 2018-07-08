@@ -9,6 +9,10 @@
 import CoreData
 import Foundation
 
+/**
+ The underlying type that represents an aggregate, such as `average`,
+ `sum`, `min`, and `max`.
+ */
 public struct Aggregate<E: Property & TypeComparable>: Function {
     public typealias CDQIComparableType = E.CDQIComparableType
     
@@ -16,6 +20,7 @@ public struct Aggregate<E: Property & TypeComparable>: Function {
         case average
         case max
         case min
+        case sum
     }
     
     public let cdqiType: NSAttributeType
@@ -41,6 +46,10 @@ public func min<E: Property & TypeComparable>(_ argument: E) -> Aggregate<E> {
     return Aggregate(function: .min, argument: argument)
 }
 
+public func sum<E: Property & TypeComparable>(_ argument: E) -> Aggregate<E> {
+    return Aggregate(function: .sum, argument: argument)
+}
+
 public extension Expression where Self: Typed & Named & TypeComparable {
     
     var cdqiAverage: Aggregate<Self> {
@@ -54,5 +63,8 @@ public extension Expression where Self: Typed & Named & TypeComparable {
     var cdqiMin: Aggregate<Self> {
         return Aggregate(function: .min, argument: self)
     }
-    
+ 
+    var cdqiSum: Aggregate<Self> {
+        return Aggregate(function: .sum, argument: self)
+    }
 }
