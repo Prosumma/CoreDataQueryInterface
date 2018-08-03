@@ -8,6 +8,8 @@
 
 import Foundation
 
+#warning("Rename this!")
+
 public struct InconstantConstant<E: Expression & TypeComparable>: Expression, Inconstant, TypeComparable {
     public typealias CDQIComparableType = E.CDQIComparableType
     

@@ -9,10 +9,9 @@
 import CoreData
 import Foundation
 
-public struct Subquery: Expression & Named {
+public struct Subquery: Expression {
     
     public let cdqiExpression: NSExpression
-    public let cdqiName = "subquery"
     
     init(_ subentity: Expression, variable: String, predicate: NSPredicate) {
         cdqiExpression = NSExpression(forSubquery: subentity.cdqiExpression, usingIteratorVariable: variable, predicate: predicate)

@@ -17,7 +17,7 @@ public struct Query<M: NSManagedObject & Entity, R: NSFetchRequestResult> {
     
     internal var fetchLimit: Int = 0
     internal var fetchOffset: Int = 0
-    internal var managedObjectContext: NSManagedObjectContext?
+    internal weak var managedObjectContext: NSManagedObjectContext?
     internal var predicates = [NSPredicate]()
     internal var propertiesToFetch = [NSPropertyDescription]()
     internal var propertiesToGroupBy = [NSPropertyDescription]()

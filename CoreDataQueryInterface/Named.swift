@@ -8,6 +8,11 @@
 
 import Foundation
 
+/**
+ The protocol implemented by those things which have names.
+ 
+ 
+ */
 public protocol Named {
     var cdqiName: String { get }
 }
