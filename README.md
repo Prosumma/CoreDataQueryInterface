@@ -63,6 +63,25 @@ let developerQuery = Query<Developer, Developer>()
 let developerDictionaryQuery = Query<Developer, NSDictionary>()
 ```
 
+Most `Query` instances are of the form `Query<M, M>` where `M` is an `NSManagedObject`. A perhaps better way to start a query is…
+
+```swift
+let developerQuery = Developer.cdqiQuery
+```
+
+Queries started with `Query<Developer, Developer>` or `Developer.cdqiQuery` have no implicit `NSManagedObjectContext`, so one must be passed when executing a query.
+
+```swift
+try Developer.cdqiQuery.order(by: Developer.e.lastName).all(managedObjectContext: moc)
+try Developer.cdqiQuery,order(by: Developer.e.lastName).context(moc).all()
+```
+
+This pattern is so common that a convenience method exists on `NSManagedObjectContext`.
+
+```swift
+try moc.from(Developer.self).order(by: Developer.e.lastName).all()
+```
+
 ### Filtering
 
 Filtering in Core Data requires an `NSPredicate`. CDQI has overloads of many of the built-in operators. These overloads generate Core Data friendly `NSPredicate`s instead of `Bool`s. They are carefully designed so as not to conflict with the ordinary operators.
