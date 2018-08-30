@@ -50,7 +50,7 @@ public struct Aggregate<E: Expression & Typed & TypeComparable>: Function {
         if let argument = argument as? Named {
             cdqiName = "\(argument.cdqiName)\(function.rawValue.titlecased())"
         } else {
-            cdqiName = function.rawValue.titlecased()
+            cdqiName = function.rawValue
         }
     }
 }
@@ -74,18 +74,18 @@ public func sum<E: Expression & Typed & TypeComparable>(_ argument: E) -> Aggreg
 public extension Expression where Self: Typed & TypeComparable {
     
     var cdqiAverage: Aggregate<Self> {
-        return Aggregate(function: .average, argument: self)
+        return average(self)
     }
     
     var cdqiMax: Aggregate<Self> {
-        return Aggregate(function: .max, argument: self)
+        return max(self)
     }
     
     var cdqiMin: Aggregate<Self> {
-        return Aggregate(function: .min, argument: self)
+        return min(self)
     }
  
     var cdqiSum: Aggregate<Self> {
-        return Aggregate(function: .sum, argument: self)
+        return sum(self)
     }
 }
