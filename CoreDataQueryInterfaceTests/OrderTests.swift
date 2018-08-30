@@ -43,7 +43,7 @@ class OrderTests : BaseTestCase {
     
     func testOffset() {
         let department = Department.CDQIEntityAttribute()
-        let secondDepartment = try! managedObjectContext.from(Department.self).order(by: department.name).offset(1).first()!
+        let secondDepartment = try! managedObjectContext.from(Department.self).caseInsensitiveOrder(by: department.name).offset(1).first()!
         XCTAssertEqual(secondDepartment.name, "Engineering")
     }
     

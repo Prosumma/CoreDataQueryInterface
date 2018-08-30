@@ -75,3 +75,55 @@ public extension Query {
     }
     
 }
+
+public extension Query {
+    
+    func caseInsensitiveOrder(by expressions: [KeyPathExpression]) -> Query<M, R> {
+        return order(by: expressions.map{ NSSortDescriptor(key: $0.cdqiKeyPath, ascending: true, selector: #selector(NSString.localizedCaseInsensitiveCompare(_:))) })
+    }
+    
+    func caseInsensitiveOrder(by expressions: KeyPathExpression...) -> Query<M, R> {
+        return caseInsensitiveOrder(by: expressions)
+    }
+    
+    func caseInsensitiveOrderDesc(by expressions: [KeyPathExpression]) -> Query<M, R> {
+        return order(by: expressions.map { NSSortDescriptor(key: $0.cdqiKeyPath, ascending: false, selector: #selector(NSString.localizedCaseInsensitiveCompare(_:))) })
+    }
+    
+    func caseInsensitiveOrderDesc(by expressions: KeyPathExpression...) -> Query<M, R> {
+        return caseInsensitiveOrderDesc(by: expressions)
+    }
+    
+    func caseInsensitiveOrderBy(_ make: MakeResult<[KeyPathExpression]>) -> Query<M, R> {
+        return caseInsensitiveOrder(by: make(entity))
+    }
+    
+    func caseInsensitiveOrderBy(_ makers: MakeResult<KeyPathExpression>...) -> Query<M, R> {
+        return order(by: makers.map{ NSSortDescriptor(key: $0(entity).cdqiKeyPath, ascending: true, selector: #selector(NSString.localizedCaseInsensitiveCompare(_:))) })
+    }
+    
+    func caseInsensitiveOrderDescBy(_ make: MakeResult<[KeyPathExpression]>) -> Query<M, R> {
+        return order(by: make(entity).map { NSSortDescriptor(key: $0.cdqiKeyPath, ascending: false, selector: #selector(NSString.localizedCaseInsensitiveCompare(_:))) })
+    }
+    
+    func caseInsensitiveOrderDescBy(_ make: MakeResult<KeyPathExpression>...) -> Query<M, R> {
+        return order(by: make.map{ NSSortDescriptor(key: $0(entity).cdqiKeyPath, ascending: false, selector: #selector(NSString.localizedCaseInsensitiveCompare(_:))) })
+    }
+    
+    func caseInsensitiveOrder<K: KeyPathExpression>(by keyPaths: [KeyPath<E, K>]) -> Query<M, R> {
+        return order(by: keyPaths.map{ NSSortDescriptor(key: entity[keyPath: $0].cdqiKeyPath, ascending: true, selector: #selector(NSString.localizedCaseInsensitiveCompare(_:))) })
+    }
+    
+    func caseInsensitiveOrder<K: KeyPathExpression>(by keyPaths: KeyPath<E, K>...) -> Query<M, R> {
+        return order(by: keyPaths.map{ NSSortDescriptor(key: entity[keyPath: $0].cdqiKeyPath, ascending: true, selector: #selector(NSString.localizedCaseInsensitiveCompare(_:))) })
+    }
+    
+    func caseInsensitiveOrderDesc<K: KeyPathExpression>(by keyPaths: [KeyPath<E, K>]) -> Query<M, R> {
+        return order(by: keyPaths.map{ NSSortDescriptor(key: entity[keyPath: $0].cdqiKeyPath, ascending: false, selector: #selector(NSString.localizedCaseInsensitiveCompare(_:))) })
+    }
+    
+    func caseInsensitiveOrderDesc<K: KeyPathExpression>(by keyPaths: KeyPath<E, K>...) -> Query<M, R> {
+        return order(by: keyPaths.map{ NSSortDescriptor(key: entity[keyPath: $0].cdqiKeyPath, ascending: false, selector: #selector(NSString.localizedCaseInsensitiveCompare(_:))) })
+    }
+    
+}
