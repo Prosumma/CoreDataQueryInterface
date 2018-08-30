@@ -24,7 +24,7 @@ public struct Query<M: NSManagedObject & Entity, R: NSFetchRequestResult> {
     internal var returnsDistinctResults = false
     internal var sortDescriptors = [NSSortDescriptor]()
     
-    init() {}
+    public init() {}
     
     init<R: NSFetchRequestResult>(_ query: Query<M, R>) {
         fetchLimit = query.fetchLimit
