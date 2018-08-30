@@ -90,7 +90,7 @@ class SelectionTests : BaseTestCase {
     }
     
     func testMultipleGroupByProperty() {
-        let result = try! managedObjectContext.from(Employee.self).groupBy{[$0.lastName, $0.department]}.select({$0.lastName},{$0.department}).all()
+        let result = try! Employee.cdqiQuery.context(managedObjectContext).groupBy{[$0.lastName, $0.department]}.select({$0.lastName},{$0.department}).all()
         XCTAssertEqual(result.count, 13)
     }
     

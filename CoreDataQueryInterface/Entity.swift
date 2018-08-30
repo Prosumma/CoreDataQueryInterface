@@ -6,6 +6,7 @@
 //  Copyright © 2018 Prosumma LLC. All rights reserved.
 //
 
+import CoreData
 import Foundation
 
 public protocol Entity {
@@ -16,6 +17,14 @@ public extension Entity {
     
     static var e: CDQIEntityAttribute {
         return CDQIEntityAttribute()
+    }
+    
+}
+
+public extension Entity where Self: NSManagedObject {
+    
+    public static var cdqiQuery: Query<Self, Self> {
+        return Query()
     }
     
 }
