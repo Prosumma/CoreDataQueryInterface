@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 extension NSManagedObjectID: Scalar {
-    public var cdqiType: NSAttributeType {
+    public var cdqiAttributeType: NSAttributeType {
         return .objectIDAttributeType
     }
 }

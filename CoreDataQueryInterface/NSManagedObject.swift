@@ -12,7 +12,7 @@ import Foundation
 extension NSManagedObject: Scalar {
     public typealias CDQIComparableType = NSManagedObjectID
     
-    public var cdqiType: NSAttributeType {
+    public var cdqiAttributeType: NSAttributeType {
         return .objectIDAttributeType
     }
 }

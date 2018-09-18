@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// A convenience protocol used internally by CDQI.
 public protocol ConstantExpression: Expression {}
 
 public extension ConstantExpression {

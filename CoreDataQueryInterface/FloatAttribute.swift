@@ -12,7 +12,7 @@ import Foundation
 public struct FloatAttribute: ScalarAttribute {
     public typealias CDQIComparableType = NSNumber
     
-    public let cdqiType: NSAttributeType = .floatAttributeType
+    public let cdqiAttributeType: NSAttributeType = .floatAttributeType
     public let cdqiExpressionKeyPath: ExpressionKeyPath
     
     public init(key: String, parent: EntityAttribute) {

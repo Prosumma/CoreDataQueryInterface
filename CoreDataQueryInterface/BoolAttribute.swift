@@ -9,10 +9,11 @@
 import CoreData
 import Foundation
 
+/// Represents a Boolean attribute in a Core Data model.
 public struct BoolAttribute: ScalarAttribute {
     public typealias CDQIComparableType = Bool
     
-    public let cdqiType: NSAttributeType = .booleanAttributeType
+    public let cdqiAttributeType: NSAttributeType = .booleanAttributeType
     public let cdqiExpressionKeyPath: ExpressionKeyPath
     
     public init(key: String, parent: EntityAttribute) {

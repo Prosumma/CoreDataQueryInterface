@@ -12,5 +12,5 @@ import Foundation
 /// Surfaces the `NSAttributeType` of the implementing instance.
 public protocol Typed {
     /// The `NSAttributeType` of this instance.
-    var cdqiType: NSAttributeType { get }
+    var cdqiAttributeType: NSAttributeType { get }
 }

@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 extension Data: Scalar {
-    public var cdqiType: NSAttributeType {
+    public var cdqiAttributeType: NSAttributeType {
         return .binaryDataAttributeType
     }
 }

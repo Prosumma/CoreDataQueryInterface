@@ -9,10 +9,11 @@
 import CoreData
 import Foundation
 
+/// Represents a `Date` in a Core Data model.
 public struct DateAttribute: ScalarAttribute {
     public typealias CDQIComparableType = Date
     
-    public let cdqiType: NSAttributeType = .dateAttributeType
+    public let cdqiAttributeType: NSAttributeType = .dateAttributeType
     public let cdqiExpressionKeyPath: ExpressionKeyPath
     
     public init(key: String, parent: EntityAttribute) {

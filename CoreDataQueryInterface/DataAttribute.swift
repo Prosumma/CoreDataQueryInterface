@@ -9,10 +9,11 @@
 import CoreData
 import Foundation
 
+/// Represents a binary data attribute in a Core Data model.
 public struct DataAttribute: ScalarAttribute {
     public typealias CDQIComparableType = Data
     
-    public let cdqiType: NSAttributeType = .binaryDataAttributeType
+    public let cdqiAttributeType: NSAttributeType = .binaryDataAttributeType
     public let cdqiExpressionKeyPath: ExpressionKeyPath
     
     public init(key: String, parent: EntityAttribute) {

@@ -15,7 +15,7 @@ extension NSExpressionDescription {
         self.init()
         self.name = expression.cdqiName
         self.expression = expression.cdqiExpression
-        self.expressionResultType = expression.cdqiType
+        self.expressionResultType = expression.cdqiAttributeType
     }
     
 }

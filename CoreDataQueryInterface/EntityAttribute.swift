@@ -9,11 +9,12 @@
 import CoreData
 import Foundation
 
+/// Represents an Entity in a Core Data model.
 open class EntityAttribute: Inconstant, TypeComparable, KeyPathExpression, Typed {
     public typealias CDQIComparableType = NSManagedObjectID
     
     public let cdqiExpressionKeyPath: ExpressionKeyPath
-    public let cdqiType: NSAttributeType = .objectIDAttributeType
+    public let cdqiAttributeType: NSAttributeType = .objectIDAttributeType
     
     public required init(path: ExpressionKeyPath) {
         cdqiExpressionKeyPath = path

@@ -9,15 +9,29 @@
 import CoreData
 import Foundation
 
+/**
+ A type that generates a Core Data expression to count its wrapped expression.
+ 
+ Use the `count` function and `cdqiCount` attribute to create an instance of `Count`.
+ 
+ ```
+ Employee.e.cdqiQuery
+    .group(by: Employee.e.department.name)
+    .select(
+        Employee.e.department.name,
+        Employee.e.cdqiCount
+    )
+ ```
+ */
 public struct Count: Function {
     public typealias CDQIComparableType = NSNumber
     
-    public let cdqiType: NSAttributeType = .integer64AttributeType
+    public let cdqiAttributeType: NSAttributeType = .integer64AttributeType
     public let cdqiName: String
     public let cdqiExpression: NSExpression
     
-    public init(_ argument: Expression) {
-        if let argument = argument as? Named {
+    init(_ argument: Expression) {
+        if let argument = argument as? Named, argument.cdqiName.count > 0 {
             cdqiName = "\(argument.cdqiName)Count"
         } else {
             cdqiName = "count"

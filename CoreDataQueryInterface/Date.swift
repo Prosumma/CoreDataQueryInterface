@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 
 extension Date: Scalar {
-    public var cdqiType: NSAttributeType {
+    public var cdqiAttributeType: NSAttributeType {
         return .dateAttributeType
     }
 }

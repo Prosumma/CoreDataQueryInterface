@@ -12,7 +12,7 @@ import Foundation
 extension Int64: Scalar {
     public typealias CDQIComparableType = NSNumber
     
-    public var cdqiType: NSAttributeType {
+    public var cdqiAttributeType: NSAttributeType {
         return .integer64AttributeType
     }
 }

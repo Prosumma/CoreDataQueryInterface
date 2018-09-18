@@ -9,10 +9,11 @@
 import CoreData
 import Foundation
 
+/// Represents a decimal in a Core Data model.
 public struct DecimalAttribute: ScalarAttribute {
     public typealias CDQIComparableType = NSNumber
     
-    public let cdqiType: NSAttributeType = .decimalAttributeType
+    public let cdqiAttributeType: NSAttributeType = .decimalAttributeType
     public let cdqiExpressionKeyPath: ExpressionKeyPath
     
     public init(key: String, parent: EntityAttribute) {

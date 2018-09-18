@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// An internal type used by CDQI.
 public enum ExpressionKeyPath: CustomStringConvertible {
     case root
     case variable(String)

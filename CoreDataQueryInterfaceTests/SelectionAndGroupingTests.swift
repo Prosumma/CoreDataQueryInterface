@@ -36,7 +36,7 @@ class SelectionTests : BaseTestCase {
     
     func testMaximumSalaryGroupedByDepartment() {
         let employee = Employee.e
-        let result = try! managedObjectContext.from(Employee.self).group(by: employee.department.name).select(employee.department.name.cdqiAlias(name: "department"), employee.salary.cdqiMax.cdqiAlias(name: "salary")).orderDesc(by: employee.department.name).all()
+        let result = try! managedObjectContext.from(Employee.self).group(by: employee.department.name).select(employee.department.name.cdqiAlias(as: "department"), employee.salary.cdqiMax.cdqiAlias(as: "salary")).orderDesc(by: employee.department.name).all()
         print(result)
         let salaries: [String: Int] = result.toDictionary() { ($0["department"]! as! String, ($0["salary"]! as! NSNumber).intValue) }
         XCTAssertEqual(salaries["Accounting"]!, 97000)
@@ -87,6 +87,17 @@ class SelectionTests : BaseTestCase {
     func testClosureAsSelectionProperty() {
         let result = try! managedObjectContext.from(Employee.self).groupBy({$0.lastName}).select({employee in [employee.lastName]}).all()
         XCTAssertEqual(result.count, 5)
+    }
+    
+    func testGroupByDepartmentCountEntitiesDirectly() {
+        let query = Employee.cdqiQuery.group(by: Employee.e.department.name).select(Employee.e.department.name, Employee.e.cdqiCount)
+        let result = try! query.all(managedObjectContext: managedObjectContext) as! [[String: Any]]
+        let employees: [String: Int64] = result.reduce([:]) { result, employee in
+            var result = result
+            result[employee["departmentName"]! as! String] = (employee["count"]! as! Int64)
+            return result
+        }
+        XCTAssertEqual(employees["Sales"]!, 9)
     }
     
     func testMultipleGroupByProperty() {

@@ -27,8 +27,8 @@ import Foundation
  the argument's name is `age`, then a `sum` would have the name
  `ageSum`.
  
- While this type can be used directly, there are many convenient
- methods and functions instead, such as `sum` and `cdqiSum`.
+ Don't use this type directly. Instead, use the various methods
+ and functions that return it, such as `sum` and `cdqiSum`.
  */
 public struct Aggregate<E: Expression & Typed & TypeComparable>: Function {
     public typealias CDQIComparableType = E.CDQIComparableType
@@ -40,12 +40,12 @@ public struct Aggregate<E: Expression & Typed & TypeComparable>: Function {
         case sum
     }
     
-    public let cdqiType: NSAttributeType
+    public let cdqiAttributeType: NSAttributeType
     public let cdqiName: String
     public let cdqiExpression: NSExpression
     
     init(function: Function, argument: E) {
-        cdqiType = argument.cdqiType
+        cdqiAttributeType = argument.cdqiAttributeType
         cdqiExpression = NSExpression(forFunction: "\(function):", arguments: [argument.cdqiExpression])
         if let argument = argument as? Named {
             cdqiName = "\(argument.cdqiName)\(function.rawValue.titlecased())"
@@ -55,36 +55,120 @@ public struct Aggregate<E: Expression & Typed & TypeComparable>: Function {
     }
 }
 
+/**
+ Get the average of `argument`.
+ 
+ For example, to `select` the average of employee salaries:
+ 
+ ```
+ Employee.cdqiQuery.select(average(Employee.e.salary))
+ ```
+ 
+ - parameter argument: The expression whose average to get.
+ - returns: An aggregate expression producing an average.
+ */
 public func average<E: Expression & Typed & TypeComparable>(_ argument: E) -> Aggregate<E> {
     return Aggregate(function: .average, argument: argument)
 }
 
+/**
+ Get the maximum of `argument`.
+ 
+ For example, to `select` the maximum employee salary:
+ 
+ ```
+ Employee.cdqiQuery.select(max(Employee.e.salary))
+ ```
+ 
+ - parameter argument: The expression whose maximum to get.
+ - returns: An aggregate expression producing a maximum.
+ */
 public func max<E: Expression & Typed & TypeComparable>(_ argument: E) -> Aggregate<E> {
     return Aggregate(function: .max, argument: argument)
 }
 
+/**
+ Get the minimum of `argument`.
+ 
+ For example, to `select` the minimum employee salary:
+ 
+ ```
+ Employee.cdqiQuery.select(min(Employee.e.salary))
+ ```
+ 
+ - parameter argument: The expression whose minimum to get.
+ - returns: An aggregate expression producing a minimum.
+ */
 public func min<E: Expression & Typed & TypeComparable>(_ argument: E) -> Aggregate<E> {
     return Aggregate(function: .min, argument: argument)
 }
 
+/**
+ Get the sum of `argument`.
+ 
+ For example, to `select` the sum of employee salaries:
+ 
+ ```
+ Employee.cdqiQuery.select(sum(Employee.e.salary))
+ ```
+ 
+ - parameter argument: The expression whose sum to calculate.
+ - returns: An expression producing a sum.
+ */
 public func sum<E: Expression & Typed & TypeComparable>(_ argument: E) -> Aggregate<E> {
     return Aggregate(function: .sum, argument: argument)
 }
 
 public extension Expression where Self: Typed & TypeComparable {
     
+    /**
+     Get the average of the receiver.
+     
+     For example, to `select` the average of employee salaries:
+     
+     ```
+     Employee.cdqiQuery.select(average(Employee.e.salary.cdqiAverage))
+     ```
+     */
     var cdqiAverage: Aggregate<Self> {
         return average(self)
     }
     
+    /**
+     Get the maximum of the receiver.
+     
+     For example, to `select` the maximum employee salary:
+     
+     ```
+     Employee.cdqiQuery.select(Employee.e.salary.cdqiMax))
+     ```
+     */
     var cdqiMax: Aggregate<Self> {
         return max(self)
     }
     
+    /**
+     Get the minimum of the receiver.
+     
+     For example, to `select` the minimum employee salary:
+     
+     ```
+     Employee.cdqiQuery.select(Employee.e.salary.cdqiMin)
+     ```
+     */
     var cdqiMin: Aggregate<Self> {
         return min(self)
     }
  
+    /**
+     Get the sum of the receiver.
+     
+     For example, to `select` the sum of employee salaries:
+     
+     ```
+     Employee.cdqiQuery.select(Employee.e.salary.cdqiSum)
+     ```
+     */
     var cdqiSum: Aggregate<Self> {
         return sum(self)
     }

@@ -12,7 +12,7 @@ import Foundation
 extension Int: Scalar {
     public typealias CDQIComparableType = NSNumber
     
-    public var cdqiType: NSAttributeType {
+    public var cdqiAttributeType: NSAttributeType {
         switch MemoryLayout<Int>.size {
         case 2: return .integer16AttributeType
         case 4: return .integer32AttributeType

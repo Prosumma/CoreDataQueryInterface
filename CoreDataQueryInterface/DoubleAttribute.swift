@@ -9,10 +9,11 @@
 import CoreData
 import Foundation
 
+/// Represents a `Double` in a Core Data model.
 public struct DoubleAttribute: ScalarAttribute {
     public typealias CDQIComparableType = NSNumber
     
-    public let cdqiType: NSAttributeType = .doubleAttributeType
+    public let cdqiAttributeType: NSAttributeType = .doubleAttributeType
     public let cdqiExpressionKeyPath: ExpressionKeyPath
     
     public init(key: String, parent: EntityAttribute) {

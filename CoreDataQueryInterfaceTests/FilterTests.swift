@@ -138,8 +138,13 @@ class FilterTests : BaseTestCase {
         XCTAssertEqual(departmentCount, 2)
     }
     
+    func testEmployeesWithSalariesBetween70000And90000() {
+        let employeeCount = try! Employee.cdqiQuery.context(managedObjectContext).filter(between(Employee.e.salary, 70_000, and: 90_000)).count()
+        XCTAssertEqual(employeeCount, 9)
+    }
+    
     func testEmployeesWithSalariesBetween80000And100000() {
-        let employeeCount = try! managedObjectContext.from(Employee.self).filter(80000...100000 ~= Employee.e.salary).count()
+        let employeeCount = try! managedObjectContext.from(Employee.self).filter(80_000...100_000 ~= Employee.e.salary).count()
         XCTAssertEqual(employeeCount, 8)
     }
     

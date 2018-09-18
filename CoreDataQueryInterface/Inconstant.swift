@@ -8,8 +8,6 @@
 
 import Foundation
 
-#warning("Rename this!")
-
 /**
  A protocol which allows clean overloading of Swift's built-in operators.
  

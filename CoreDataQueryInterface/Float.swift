@@ -11,7 +11,7 @@ import Foundation
 
 extension Float: Scalar {
     public typealias CDQIComparableType = NSNumber
-    public var cdqiType: NSAttributeType {
+    public var cdqiAttributeType: NSAttributeType {
         return .floatAttributeType
     }
 }

@@ -12,7 +12,7 @@ import Foundation
 public struct StringAttribute: ScalarAttribute {
     public typealias CDQIComparableType = String
     
-    public let cdqiType: NSAttributeType = .stringAttributeType
+    public let cdqiAttributeType: NSAttributeType = .stringAttributeType
     public let cdqiExpressionKeyPath: ExpressionKeyPath
     
     public init(key: String, parent: EntityAttribute) {
