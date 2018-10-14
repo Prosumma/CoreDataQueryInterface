@@ -8,6 +8,21 @@
 
 import Foundation
 
+/**
+ A type used to construct an `NSExpression` for `NULL` and for
+ use in predicates.
+ 
+ ```
+ query.filter(Employee.e.middleName == Null.null)
+ ```
+ 
+ However, since `Null` implements `ExpressibleByNilLiteral`,
+ a simple `nil` can (and should) be used in most cases:
+ 
+ ```
+ query.filter(Employee.e.middleName == nil)
+ ```
+ */
 public struct Null: ExpressibleByNilLiteral, Expression {
     public init(nilLiteral: ()) {
         
