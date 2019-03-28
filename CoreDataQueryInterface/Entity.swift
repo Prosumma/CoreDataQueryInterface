@@ -48,7 +48,7 @@ public extension Entity where Self: NSManagedObject {
      Employee.cdqiQuery.select(Employee.e.name)
      ```
      */
-    public static var cdqiQuery: Query<Self, Self> {
+    static var cdqiQuery: Query<Self, Self> {
         return Query()
     }
     
