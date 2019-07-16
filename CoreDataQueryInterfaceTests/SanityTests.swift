@@ -34,7 +34,7 @@ class SanityTests: BaseTestCase {
      */
     func testThatComplexBooleansStillWork() {
         let x = 14
-        XCTAssertTrue(x > 0 && x < 47 && !(x == 99))
+        XCTAssertTrue(x > 0 && x < 47 && !(x == 99) && (x != 22))
     }
     
     func testImplicitBooleanPredicate() {
