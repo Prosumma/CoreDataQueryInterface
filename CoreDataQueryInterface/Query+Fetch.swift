@@ -109,6 +109,16 @@ public extension Query {
         }
     }
     
+    /**
+     Returns the count of query results.
+     
+     - warning: If no managed object context is passed to this method, the managed
+     object context associated with the current query is used. If no managed object
+     context is associated with the current query, the managed object context
+     associated with the current queue is used. If no managed object context
+     is associated with the current queue, an unrecoverable runtime exception
+     will occur.
+     */
     func count(managedObjectContext: NSManagedObjectContext? = nil) throws -> Int {
         let managedObjectContext = managedObjectContext ?? self.managedObjectContext!
         return try managedObjectContext.count(for: fetchRequest)
@@ -231,7 +241,7 @@ public extension Query {
      ```
      let age: Int = try managedObjectContext
                      .from(Person.self)
-                     .filter(Person.e.firstName = "Eric" && Person.e.lastName == "Idle")
+                     .filter(Person.e.firstName == "Eric" && Person.e.lastName == "Idle")
                      .value({ $0.age })
      ```
      

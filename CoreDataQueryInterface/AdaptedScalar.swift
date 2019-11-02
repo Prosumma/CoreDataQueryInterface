@@ -25,7 +25,8 @@ import Foundation
     }
  
     var cdqiExpression: NSExpression {
-    return NSExpression(forConstantValue: rawValue)
+        return NSExpression(forConstantValue: rawValue)
+    }
  }
  ```
  
