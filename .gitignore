@@ -9,6 +9,8 @@ qt-build-*
 # Xcode
 #
 build/
+.build/
+.swiftpm/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
