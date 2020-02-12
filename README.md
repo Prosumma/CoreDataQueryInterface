@@ -7,6 +7,8 @@
 
 Core Data Query Interface (CDQI) is a type-safe, fluent, intuitive library for working with Core Data in Swift. CDQI tremendously reduces the amount of code needed to do Core Data, and dramatically improves readability by allowing method chaining and by eliminating magic strings. CDQI is a bit like jQuery or LINQ, but for Core Data.
 
+NOTE: The `cdqi` tool used to generate attribute proxies is deprecated. Bug fixes and changes in Swift make it very simple to hand-code attribute proxies, so the `cdqi` tool is no longer necessary.
+
 ### Features
 
 - [x] [Fluent interface](http://en.wikipedia.org/wiki/Fluent_interface), i.e., chainable methods
@@ -48,9 +50,45 @@ Add the following to your `Podfile`. If it isn't already present, you will have 
 pod 'CoreDataQueryInterface', '~> 7.0'
 ```
 
-### Attribute Proxies
+### Attribute And Model Proxies
 
-TODO: Talk about attribute proxies
+CDQI works through the use of _attribute and model proxies_. In CDQI, a proxy is a type that stands in for a Core Data model or attribute. There are built-in proxies for all the Core Data attribute types, e.g., `Int32Attribute`, `StringAttribute` and so on. For your own Core Data models, you will need to create your own proxies, which is very simple to do. Imagine we have two Core Data models, `Employee` and `Department`. There is a many-to-one relationship in Core Data between these models. To keep things simple, each has a simple `name` attribute of type `String`:
+
+```swift
+class Employee: NSManagedObjectModel {
+    @NSManaged var name: String
+    @NSManaged var department: Department
+}
+
+class Department: NSManagedObjectModel {
+    @NSManaged var name: String
+    @NSManaged var employees: Set<Employee>
+}
+```
+
+The proxy classes for these should look like this:
+
+```swift
+class EmployeeAttribute: EntityAttribute, Subqueryable {
+    public private(set) lazy var name = StringAttribute(key: "name", parent: self)
+    public private(set) lazy var department = DepartmentAttribute(key: "department", parent: self)
+}
+
+extension Employee: Entity {
+    public typealias CDQIEntityAttribute = EmployeeAttribute
+}
+
+class DepartmentAttribute: EntityAttribute, Subqueryable {
+    public private(set) lazy var name = StringAttribute(key: "name", parent: self)
+    public private(set) lazy var employees: EmployeeAttribute(key: "employees", parent: self)    
+}
+
+extension Department: Entity {
+    public typealias CDQIEntityAttribute = DepartmentAttribute
+}
+```
+
+Once this is done, CDQI can do its magic.
 
 ### Starting a Query
 

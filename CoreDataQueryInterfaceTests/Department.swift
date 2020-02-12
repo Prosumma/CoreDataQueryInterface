@@ -27,5 +27,6 @@ import CoreData
 
 class Department: NSManagedObject {
     @NSManaged var name: String
+    @NSManaged var employees: Set<Employee>
 }
 

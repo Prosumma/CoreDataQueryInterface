@@ -6,11 +6,11 @@
 import CoreDataQueryInterface
 
 public final class EmployeeAttribute: EntityAttribute, Subqueryable {
-    public private(set) lazy var firstName: StringAttribute = { StringAttribute(key: "firstName", parent: self) }()
-    public private(set) lazy var lastName: StringAttribute = { StringAttribute(key: "lastName", parent: self) }()
-    public private(set) lazy var nickName: StringAttribute = { StringAttribute(key: "nickName", parent: self) }()
-    public private(set) lazy var salary: Int32Attribute = { Int32Attribute(key: "salary", parent: self) }()
-    public private(set) lazy var department: DepartmentAttribute = { DepartmentAttribute(key: "department", parent: self) }()
+    public private(set) lazy var firstName = StringAttribute(key: "firstName", parent: self)
+    public private(set) lazy var lastName = StringAttribute(key: "lastName", parent: self)
+    public private(set) lazy var nickName = StringAttribute(key: "nickName", parent: self)
+    public private(set) lazy var salary = Int32Attribute(key: "salary", parent: self)
+    public private(set) lazy var department = DepartmentAttribute(key: "department", parent: self)
 }
 
 extension Employee: Entity {

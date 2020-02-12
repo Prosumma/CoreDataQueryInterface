@@ -6,8 +6,8 @@
 import CoreDataQueryInterface
 
 public final class DepartmentAttribute: EntityAttribute, Subqueryable {
-    public private(set) lazy var name: StringAttribute = { StringAttribute(key: "name", parent: self) }()
-    public private(set) lazy var employees: EmployeeAttribute = { EmployeeAttribute(key: "employees", parent: self) }()
+    public private(set) lazy var name = StringAttribute(key: "name", parent: self)
+    public private(set) lazy var employees = EmployeeAttribute(key: "employees", parent: self)
 }
 
 extension Department: Entity {
