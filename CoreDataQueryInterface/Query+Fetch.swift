@@ -65,6 +65,9 @@ public extension Query {
         return query
     }
     
+    /**
+     Builds and returns the `NSFetchRequest` for the current query.
+     */
     var fetchRequest: NSFetchRequest<R> {
         let fetchRequest = NSFetchRequest<R>()
         fetchRequest.entity = M.entity()

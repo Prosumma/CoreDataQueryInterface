@@ -88,7 +88,7 @@ extension Department: Entity {
 }
 ```
 
-Once this is done, CDQI can do its magic.
+Once this is done, CDQI can do its magic. Read on.
 
 ### Starting a Query
 
@@ -101,7 +101,7 @@ let developerQuery = Query<Developer, Developer>()
 let developerDictionaryQuery = Query<Developer, NSDictionary>()
 ```
 
-Most `Query` instances are of the form `Query<M, M>` where `M` is an `NSManagedObject`. A perhaps better way to start a query is…
+Most `Query` instances are of the form `Query<M, M>` where `M` is an `NSManagedObject` which implements the `Entity` protocol. A perhaps better way to start a query is…
 
 ```swift
 let developerQuery = Developer.cdqiQuery

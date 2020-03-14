@@ -30,8 +30,7 @@ import Foundation
  
  this would not compile. `String` *does* implement `TypeComparable`, but its
  `CDQIComparableType` is `String`, not `NSNumber`, which means it cannot
- participate in a comparison with `Person.e.age`. The code above will not
- even compile.
+ participate in a comparison with `Person.e.age`.
  
  - note: In addition to implementing `TypeComparable`, at least one
  side of a comparison must also implement `Inconstant`.
