@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "predicateqi",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/prosumma/PredicateQI",
+      "state" : {
+        "revision" : "903898de3a9a3ffc2c64460b83d57d56e7a6f59c",
+        "version" : "0.1.3"
+      }
+    }
+  ],
+  "version" : 2
+}
