@@ -1,5 +1,5 @@
 //
-//  QueryBuilder+Sort.swift
+//  QueryBuilder+Order.swift
 //  CoreDataQueryInterface
 //
 //  Created by Gregory Higley on 2022-10-22.

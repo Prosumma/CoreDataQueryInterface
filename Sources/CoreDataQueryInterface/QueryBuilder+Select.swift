@@ -67,6 +67,20 @@ public extension QueryBuilder {
       .select(keyPath4)
   }
   
+  func select<V1, V2, V3, V4, V5>(
+    _ keyPath1: KeyPath<M, V1>,
+    _ keyPath2: KeyPath<M, V2>,
+    _ keyPath3: KeyPath<M, V3>,
+    _ keyPath4: KeyPath<M, V4>,
+    _ keyPath5: KeyPath<M, V5>
+  ) -> QueryBuilder<M, R> {
+    select(keyPath1)
+      .select(keyPath2)
+      .select(keyPath3)
+      .select(keyPath4)
+      .select(keyPath5)
+  }
+  
   private func select(_ properties: [FetchedProperty]) -> QueryBuilder<M, R> {
     var query = self
     query.propertiesToFetch.append(contentsOf: properties)
