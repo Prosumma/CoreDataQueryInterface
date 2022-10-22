@@ -18,7 +18,11 @@ let package = Package(
   targets: [
     .target(
       name: "CoreDataQueryInterface",
-      dependencies: ["PredicateQI"]
+      dependencies: ["PredicateQI"],
+      exclude: [
+        "QueryBuilder+Order.swift.gyb",
+        "QueryBuilder+Select.swift.gyb"
+      ]
     ),
     .testTarget(
       name: "CoreDataQueryInterfaceTests",
