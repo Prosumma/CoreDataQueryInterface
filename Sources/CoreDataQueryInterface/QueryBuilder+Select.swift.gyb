@@ -1,0 +1,63 @@
+//
+//  QueryBuilder+Select.swift
+//  CoreDataQueryInterface
+//
+//  Created by Gregory Higley on 2022-10-22.
+//
+%{
+
+def args(items, fmt=lambda i: f'{i}', sep=', '):
+  return sep.join(map(fmt, items))
+}%
+
+import CoreData
+import Foundation
+
+public extension QueryBuilder {
+  internal enum FetchedProperty {
+    case string(String)
+    case property(NSPropertyDescription)
+  }
+  
+  func select(_ properties: [NSPropertyDescription]) -> QueryBuilder<M, R> {
+    select(properties.map(FetchedProperty.property))
+  }
+  
+  func select(_ properties: NSPropertyDescription...) -> QueryBuilder<M, R> {
+    select(properties)
+  }
+  
+  func select(_ properties: [String]) -> QueryBuilder<M, R> {
+    select(properties.map(FetchedProperty.string))
+  }
+  
+  func select(_ properties: String...) -> QueryBuilder<M, R> {
+    select(properties)
+  }
+  
+  func select<V>(_ keyPath: KeyPath<M, V>) -> QueryBuilder<M, R> {
+    guard let keyPathString = keyPath._kvcKeyPathString else {
+      preconditionFailure("\(keyPath) is not valid for Key-Value Coding.")
+    }
+    return select(keyPathString)
+  }
+  
+% for i in range(2, 8):
+
+  func select<${args(range(1, i + 1), lambda i: f'V{i}')}>(
+    _ ${args(range(1, i + 1), lambda i: f'keyPath{i}: KeyPath<M, V{i}>', ',\n    _ ')}
+  ) -> QueryBuilder<M, R> {
+    select(keyPath1)
+% for k in range(2, i + 1):
+      .select(keyPath${k})
+% end
+  }
+% end
+  
+  private func select(_ properties: [FetchedProperty]) -> QueryBuilder<M, R> {
+    var query = self
+    query.propertiesToFetch.append(contentsOf: properties)
+    return query
+  }
+}
+
