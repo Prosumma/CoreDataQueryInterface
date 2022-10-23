@@ -26,7 +26,8 @@ let package = Package(
     ),
     .testTarget(
       name: "CoreDataQueryInterfaceTests",
-      dependencies: ["CoreDataQueryInterface"]
+      dependencies: ["CoreDataQueryInterface"],
+      resources: [.copy("Developers.xcdatamodeld")]
     ),
   ]
 )

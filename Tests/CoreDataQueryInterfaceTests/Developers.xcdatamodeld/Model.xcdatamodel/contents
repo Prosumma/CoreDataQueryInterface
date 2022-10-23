@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Developer" representedClassName="Developer" syncable="YES">
+        <attribute name="firstName" attributeType="String"/>
+        <attribute name="lastName" attributeType="String"/>
+        <relationship name="languages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Language" inverseName="developers" inverseEntity="Language"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="firstName"/>
+                <constraint value="lastName"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="Language" representedClassName="Language" syncable="YES">
+        <attribute name="name" attributeType="String"/>
+        <relationship name="developers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Developer" inverseName="languages" inverseEntity="Developer"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+</model>

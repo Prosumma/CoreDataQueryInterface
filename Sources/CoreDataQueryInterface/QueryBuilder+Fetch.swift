@@ -24,6 +24,9 @@ public extension QueryBuilder {
       }
       fetchRequest.propertiesToFetch = properties
     }
+    if !sortDescriptors.isEmpty {
+      fetchRequest.sortDescriptors = sortDescriptors
+    }
     let resultType: NSFetchRequestResultType
     switch R.self {
     case is NSManagedObject.Type:
