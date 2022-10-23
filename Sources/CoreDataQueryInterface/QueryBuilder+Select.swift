@@ -9,11 +9,6 @@ import CoreData
 import Foundation
 
 public extension QueryBuilder {
-  internal enum FetchedProperty {
-    case string(String)
-    case property(NSPropertyDescription)
-  }
-  
   func select(_ properties: [NSPropertyDescription]) -> QueryBuilder<M, R> {
     select(properties.map(FetchedProperty.property))
   }
@@ -123,3 +118,7 @@ public extension QueryBuilder {
   }
 }
 
+enum FetchedProperty {
+  case string(String)
+  case property(NSPropertyDescription)
+}

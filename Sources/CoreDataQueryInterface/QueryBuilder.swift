@@ -18,30 +18,21 @@ public struct QueryBuilder<M: NSManagedObject, R: NSFetchRequestResult> {
   var sortDescriptors: [NSSortDescriptor] = []
   var propertiesToFetch: [FetchedProperty] = []
   
+  init() {}
+  
+  init<R2>(copying query: QueryBuilder<M, R2>) {
+    managedObjectContext = query.managedObjectContext
+    predicates = query.predicates
+    sortDescriptors = query.sortDescriptors
+    propertiesToFetch = query.propertiesToFetch
+  }
+  
   public func context(_ moc: NSManagedObjectContext) -> QueryBuilder<M, R> {
     var query = self
     query.managedObjectContext = moc
     return query
   }
   
-  public var fetchRequest: NSFetchRequest<R> {
-    let fetchRequest = NSFetchRequest<R>(entityName: M.entity().name!)
-    if !predicates.isEmpty {
-      fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
-    }
-    if !propertiesToFetch.isEmpty {
-      let properties: [Any] = propertiesToFetch.map {
-        switch $0 {
-        case .string(let property):
-          return property
-        case .property(let property):
-          return property
-        }
-      }
-      fetchRequest.propertiesToFetch = properties
-    }
-    return fetchRequest
-  }
   
   /**
    Resets the set of the receiver so that it can be filtered,
