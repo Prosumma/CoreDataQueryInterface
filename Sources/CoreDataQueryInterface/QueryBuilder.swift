@@ -17,6 +17,7 @@ public struct QueryBuilder<M: NSManagedObject, R: NSFetchRequestResult> {
   var predicates: [NSPredicate] = []
   var sortDescriptors: [NSSortDescriptor] = []
   var propertiesToFetch: [FetchedProperty] = []
+  var returnsDistinctResults = false
   
   init() {}
   
@@ -25,6 +26,7 @@ public struct QueryBuilder<M: NSManagedObject, R: NSFetchRequestResult> {
     predicates = query.predicates
     sortDescriptors = query.sortDescriptors
     propertiesToFetch = query.propertiesToFetch
+    returnsDistinctResults = query.returnsDistinctResults
   }
   
   public func context(_ moc: NSManagedObjectContext) -> QueryBuilder<M, R> {

@@ -10,6 +10,7 @@ import CoreData
 public extension QueryBuilder {
   var fetchRequest: NSFetchRequest<R> {
     let fetchRequest = NSFetchRequest<R>(entityName: M.entity().name!)
+    fetchRequest.returnsDistinctResults = returnsDistinctResults
     if !predicates.isEmpty {
       fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
     }

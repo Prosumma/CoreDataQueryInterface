@@ -14,6 +14,12 @@ import CoreData
 import Foundation
 
 public extension QueryBuilder {
+  func distinct(_ returnsDistinctResults: Bool = true) -> QueryBuilder<M, R> {
+    var query = self
+    query.returnsDistinctResults = returnsDistinctResults
+    return query
+  }
+
   func select(_ properties: [NSPropertyDescription]) -> QueryBuilder<M, R> {
     select(properties.map(FetchedProperty.property))
   }
@@ -59,4 +65,13 @@ public extension QueryBuilder {
 enum FetchedProperty {
   case string(String)
   case property(NSPropertyDescription)
+  
+  var asAny: Any {
+    switch self {
+    case .string(let value):
+      return value
+    case .property(let value):
+      return value
+    }
+  }
 }
