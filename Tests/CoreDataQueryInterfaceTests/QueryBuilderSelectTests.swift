@@ -9,8 +9,6 @@ import CoreDataQueryInterface
 import PredicateQI
 import XCTest
 
-import XCTest
-
 final class QueryBuilderSelectTests: XCTestCase {
   func testSelectWithKeyPaths() throws {
     let moc = Store.container.viewContext
@@ -32,6 +30,15 @@ final class QueryBuilderSelectTests: XCTestCase {
       .filter { $0.languages.where { any($0.name == "Rust") } }
       .select(firstName)
       .fetchDictionaries()
+    XCTAssertFalse(developers.isEmpty)
+  }
+  
+  func testDistinct() throws {
+    let moc = Store.container.viewContext
+    let developers = try Query(Developer.self)
+      .distinct()
+      .select(\.lastName)
+      .fetchDictionaries(moc)
     XCTAssertFalse(developers.isEmpty)
   }
 }

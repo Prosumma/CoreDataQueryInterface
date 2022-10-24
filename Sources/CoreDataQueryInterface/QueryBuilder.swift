@@ -9,10 +9,6 @@ import CoreData
 import PredicateQI
 
 public struct QueryBuilder<M: NSManagedObject, R: NSFetchRequestResult> {
-  public enum State {
-    case filter, order, select
-  }
-  
   weak var managedObjectContext: NSManagedObjectContext?
   var predicates: [NSPredicate] = []
   var sortDescriptors: [NSSortDescriptor] = []
@@ -50,7 +46,7 @@ public struct QueryBuilder<M: NSManagedObject, R: NSFetchRequestResult> {
    `re(.filter)` erases all previous filters, allowing new ones to
    be added.
    */
-  public func re(_ states: [State]) -> QueryBuilder<M, R> {
+  public func re(_ states: [QueryBuilderState]) -> QueryBuilder<M, R> {
     var query = self
     for state in states {
       switch state {
@@ -65,7 +61,7 @@ public struct QueryBuilder<M: NSManagedObject, R: NSFetchRequestResult> {
     return query
   }
   
-  public func re(_ states: State...) -> QueryBuilder<M, R> {
+  public func re(_ states: QueryBuilderState...) -> QueryBuilder<M, R> {
     re(states)
   }
 }
@@ -82,4 +78,8 @@ public struct QueryBuilder<M: NSManagedObject, R: NSFetchRequestResult> {
  */
 public func Query<M: NSManagedObject>(_ entityType: M.Type) -> QueryBuilder<M, M> {
   .init()
+}
+
+public enum QueryBuilderState: CaseIterable {
+  case filter, order, select
 }

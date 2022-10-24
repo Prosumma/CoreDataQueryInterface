@@ -137,3 +137,18 @@ enum FetchedProperty {
     }
   }
 }
+
+extension FetchedProperty: Equatable {
+  static func == (lhs: FetchedProperty, rhs: FetchedProperty) -> Bool {
+    let equal: Bool
+    switch (lhs, rhs) {
+    case let (.string(value1), .string(value2)):
+      equal = value1 == value2
+    case let (.property(value1), .property(value2)):
+      equal = value1 == value2
+    default:
+      equal = false
+    }
+    return equal
+  }
+}
