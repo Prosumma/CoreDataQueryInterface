@@ -121,4 +121,15 @@ public extension QueryBuilder {
 enum FetchedProperty {
   case string(String)
   case property(NSPropertyDescription)
+  
+  var asAny: Any {
+    let result: Any
+    switch self {
+    case .string(let value):
+      result = value
+    case .property(let value):
+      result = value
+    }
+    return result
+  }
 }

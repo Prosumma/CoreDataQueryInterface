@@ -14,14 +14,7 @@ public extension QueryBuilder {
       fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
     }
     if !propertiesToFetch.isEmpty {
-      let properties: [Any] = propertiesToFetch.map {
-        switch $0 {
-        case .string(let property):
-          return property
-        case .property(let property):
-          return property
-        }
-      }
+      let properties = propertiesToFetch.map(\.asAny)
       fetchRequest.propertiesToFetch = properties
     }
     if !sortDescriptors.isEmpty {
@@ -36,6 +29,7 @@ public extension QueryBuilder {
     case is NSDictionary.Type:
       resultType = .dictionaryResultType
     case is NSNumber.Type:
+      // TODO: Figure out what the hell this is.
       resultType = .countResultType // ???
     default:
       resultType = .managedObjectResultType
