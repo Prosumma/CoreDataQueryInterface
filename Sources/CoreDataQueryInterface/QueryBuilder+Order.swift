@@ -28,10 +28,7 @@ public extension QueryBuilder {
   }
   
   func order<V: Expression>(_ direction: SortDirection = .ascending, by keyPath: KeyPath<Object<M>, V>) -> QueryBuilder<M, R> {
-    let sortDescriptor = NSSortDescriptor(objectKeyPath: keyPath, ascending: direction.isAscending)
-    var query = self
-    query.sortDescriptors.append(sortDescriptor)
-    return query
+    order(by: .init(objectKeyPath: keyPath, ascending: direction.isAscending))
   }
 
   func order<V1: Expression, V2: Expression>(
