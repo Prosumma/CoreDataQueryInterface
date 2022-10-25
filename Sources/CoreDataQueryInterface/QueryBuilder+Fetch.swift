@@ -11,6 +11,8 @@ public extension QueryBuilder {
   var fetchRequest: NSFetchRequest<R> {
     let fetchRequest = NSFetchRequest<R>(entityName: M.entity().name!)
     fetchRequest.returnsDistinctResults = returnsDistinctResults
+    fetchRequest.fetchLimit = fetchLimit
+    fetchRequest.fetchOffset = fetchOffset
     if !predicates.isEmpty {
       fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
     }
@@ -37,6 +39,18 @@ public extension QueryBuilder {
     }
     fetchRequest.resultType = resultType
     return fetchRequest
+  }
+  
+  func limit(_ fetchLimit: Int) -> QueryBuilder<M, R> {
+    var query = self
+    query.fetchLimit = fetchLimit
+    return query
+  }
+  
+  func offset(_ fetchOffset: Int) -> QueryBuilder<M, R> {
+    var query = self
+    query.fetchOffset = fetchOffset
+    return query
   }
   
   func objects() -> QueryBuilder<M, M> {

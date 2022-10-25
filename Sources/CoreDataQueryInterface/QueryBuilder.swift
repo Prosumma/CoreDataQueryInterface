@@ -10,6 +10,8 @@ import PredicateQI
 
 public struct QueryBuilder<M: NSManagedObject, R: NSFetchRequestResult> {
   weak var managedObjectContext: NSManagedObjectContext?
+  var fetchLimit: Int = 0
+  var fetchOffset: Int = 0
   var predicates: [NSPredicate] = []
   var sortDescriptors: [NSSortDescriptor] = []
   var propertiesToFetch: [FetchedProperty] = []
@@ -30,7 +32,6 @@ public struct QueryBuilder<M: NSManagedObject, R: NSFetchRequestResult> {
     query.managedObjectContext = moc
     return query
   }
-  
   
   /**
    Resets the set of the receiver so that it can be filtered,

@@ -27,4 +27,10 @@ final class QueryBuilderFetchTests: XCTestCase {
     let dictionaries = try Query(Language.self).context(moc).fetchDictionaries()
     XCTAssertNotEqual(dictionaries.count, 0)
   }
+  
+  func testFetchOffsetAndLimit() throws {
+    let moc = Store.container.viewContext
+    let developer = try Query(Developer.self).offset(1).limit(1).order(.descending, by: \.lastName).fetch(moc).first
+    XCTAssertEqual(developer?.lastName, "Disraeli")
+  }
 }
