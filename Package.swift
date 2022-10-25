@@ -20,6 +20,7 @@ let package = Package(
       name: "CoreDataQueryInterface",
       dependencies: ["PredicateQI"],
       exclude: [
+        "QueryBuilder+Group.swift.gyb",
         "QueryBuilder+Order.swift.gyb",
         "QueryBuilder+Select.swift.gyb"
       ]

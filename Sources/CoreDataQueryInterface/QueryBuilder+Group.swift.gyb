@@ -1,0 +1,63 @@
+//
+//  QueryBuilder+Group.swift
+//  CoreDataQueryInterface
+//
+//  Created by Gregory Higley on 2022-10-24.
+//
+%{
+
+def args(items, fmt=lambda i: f'{i}', sep=', '):
+  return sep.join(map(fmt, items))
+}%
+
+import PredicateQI
+import XCTest
+
+public extension QueryBuilder {
+  func group(by properties: [NSPropertyDescription]) -> QueryBuilder<M, R> {
+    group(by: properties.map(FetchedProperty.property))
+  }
+  
+  func group(by properties: NSPropertyDescription...) -> QueryBuilder<M, R> {
+    group(by: properties)
+  }
+  
+  func group(by properties: [String]) -> QueryBuilder<M, R> {
+    group(by: properties.map(FetchedProperty.string))
+  }
+  
+  func group(by properties: String...) -> QueryBuilder<M, R> {
+    group(by: properties)
+  }
+  
+  func group<V: Expression>(by keyPath: KeyPath<Object<M>, V>, name: String, type: NSAttributeDescription.AttributeType) -> QueryBuilder<M, R> {
+    let description = NSExpressionDescription()
+    description.expression = Object<M>()[keyPath: keyPath].pqiExpression
+    description.resultType = type
+    description.name = name
+    return group(by: description)
+  }
+  
+  func group<V: Expression>(by keyPath: KeyPath<Object<M>, V>) -> QueryBuilder<M, R> {
+    let object = Object<M>()
+    let expression = object[keyPath: keyPath]
+    return group(by: "\(expression.pqiExpression)")
+  }
+% for i in range(2, 8):
+
+  func group<${args(range(1, i + 1), lambda i: f'V{i}: Expression')}>(
+    by ${args(range(1, i + 1), lambda i: f'keyPath{i}: KeyPath<Object<M>, V{i}>', ',\n    _ ')}
+  ) -> QueryBuilder<M, R> {
+    group(by: keyPath1)
+% for k in range(2, i + 1):
+      .group(by: keyPath${k})
+% end
+  }
+% end
+
+  private func group(by properties: [FetchedProperty]) -> QueryBuilder<M, R> {
+    var query = self
+    query.propertiesToGroupBy.append(contentsOf: properties)
+    return query
+  }
+}

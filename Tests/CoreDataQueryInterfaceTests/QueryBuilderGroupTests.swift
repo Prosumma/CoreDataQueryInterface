@@ -11,12 +11,14 @@ import XCTest
 
 final class QueryBuilderGroupTests: XCTestCase {
   func testGroupByName() throws {
-    watusi(type: Developer.self, \.languages.name.pqiCount)
-  }
-  
-  func watusi<M: NSObject, V: Expression>(type: M.Type, _ keyPath: KeyPath<Object<M>, V>) {
-    let o = Object<M>()
-    let v = o[keyPath: keyPath]
-    print(v.pqiExpression)
+    let moc = Store.container.viewContext
+    let query = Query(Developer.self)
+      .group(by: \.lastName, \.firstName)
+      .select(\.firstName, \.lastName)
+      .select(\.languages.name.pqiCount, name: "count", type: .integer32)
+      .filter { ci($0.lastName == "higley")}
+    let result = try query.fetchDictionaries(moc)
+    let count = result[0]["count"] as! Int
+    XCTAssertEqual(count, 3)
   }
 }

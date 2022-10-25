@@ -27,111 +27,111 @@ public extension QueryBuilder {
     order(by: sortDescriptors)
   }
   
-  func order<V>(_ direction: SortDirection = .ascending, by keyPath: KeyPath<M, V>) -> QueryBuilder<M, R> {
-    let sortDescriptor = NSSortDescriptor(keyPath: keyPath, ascending: direction.isAscending)
+  func order<V: Expression>(_ direction: SortDirection = .ascending, by keyPath: KeyPath<Object<M>, V>) -> QueryBuilder<M, R> {
+    let sortDescriptor = NSSortDescriptor(objectKeyPath: keyPath, ascending: direction.isAscending)
     var query = self
     query.sortDescriptors.append(sortDescriptor)
     return query
   }
 
-  func order<V1, V2>(
+  func order<V1: Expression, V2: Expression>(
     _ direction: SortDirection = .ascending,
-    by keyPath1: KeyPath<M, V1>,
-    _ keyPath2: KeyPath<M, V2>
+    by keyPath1: KeyPath<Object<M>, V1>,
+    _ keyPath2: KeyPath<Object<M>, V2>
   ) -> QueryBuilder<M, R> {
     let sortDescriptors = [
-      NSSortDescriptor(keyPath: keyPath1, ascending: direction.isAscending),
-      NSSortDescriptor(keyPath: keyPath2, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath1, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath2, ascending: direction.isAscending),
     ]
     return order(by: sortDescriptors)
   }
 
-  func order<V1, V2, V3>(
+  func order<V1: Expression, V2: Expression, V3: Expression>(
     _ direction: SortDirection = .ascending,
-    by keyPath1: KeyPath<M, V1>,
-    _ keyPath2: KeyPath<M, V2>,
-    _ keyPath3: KeyPath<M, V3>
+    by keyPath1: KeyPath<Object<M>, V1>,
+    _ keyPath2: KeyPath<Object<M>, V2>,
+    _ keyPath3: KeyPath<Object<M>, V3>
   ) -> QueryBuilder<M, R> {
     let sortDescriptors = [
-      NSSortDescriptor(keyPath: keyPath1, ascending: direction.isAscending),
-      NSSortDescriptor(keyPath: keyPath2, ascending: direction.isAscending),
-      NSSortDescriptor(keyPath: keyPath3, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath1, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath2, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath3, ascending: direction.isAscending),
     ]
     return order(by: sortDescriptors)
   }
 
-  func order<V1, V2, V3, V4>(
+  func order<V1: Expression, V2: Expression, V3: Expression, V4: Expression>(
     _ direction: SortDirection = .ascending,
-    by keyPath1: KeyPath<M, V1>,
-    _ keyPath2: KeyPath<M, V2>,
-    _ keyPath3: KeyPath<M, V3>,
-    _ keyPath4: KeyPath<M, V4>
+    by keyPath1: KeyPath<Object<M>, V1>,
+    _ keyPath2: KeyPath<Object<M>, V2>,
+    _ keyPath3: KeyPath<Object<M>, V3>,
+    _ keyPath4: KeyPath<Object<M>, V4>
   ) -> QueryBuilder<M, R> {
     let sortDescriptors = [
-      NSSortDescriptor(keyPath: keyPath1, ascending: direction.isAscending),
-      NSSortDescriptor(keyPath: keyPath2, ascending: direction.isAscending),
-      NSSortDescriptor(keyPath: keyPath3, ascending: direction.isAscending),
-      NSSortDescriptor(keyPath: keyPath4, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath1, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath2, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath3, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath4, ascending: direction.isAscending),
     ]
     return order(by: sortDescriptors)
   }
 
-  func order<V1, V2, V3, V4, V5>(
+  func order<V1: Expression, V2: Expression, V3: Expression, V4: Expression, V5: Expression>(
     _ direction: SortDirection = .ascending,
-    by keyPath1: KeyPath<M, V1>,
-    _ keyPath2: KeyPath<M, V2>,
-    _ keyPath3: KeyPath<M, V3>,
-    _ keyPath4: KeyPath<M, V4>,
-    _ keyPath5: KeyPath<M, V5>
+    by keyPath1: KeyPath<Object<M>, V1>,
+    _ keyPath2: KeyPath<Object<M>, V2>,
+    _ keyPath3: KeyPath<Object<M>, V3>,
+    _ keyPath4: KeyPath<Object<M>, V4>,
+    _ keyPath5: KeyPath<Object<M>, V5>
   ) -> QueryBuilder<M, R> {
     let sortDescriptors = [
-      NSSortDescriptor(keyPath: keyPath1, ascending: direction.isAscending),
-      NSSortDescriptor(keyPath: keyPath2, ascending: direction.isAscending),
-      NSSortDescriptor(keyPath: keyPath3, ascending: direction.isAscending),
-      NSSortDescriptor(keyPath: keyPath4, ascending: direction.isAscending),
-      NSSortDescriptor(keyPath: keyPath5, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath1, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath2, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath3, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath4, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath5, ascending: direction.isAscending),
     ]
     return order(by: sortDescriptors)
   }
 
-  func order<V1, V2, V3, V4, V5, V6>(
+  func order<V1: Expression, V2: Expression, V3: Expression, V4: Expression, V5: Expression, V6: Expression>(
     _ direction: SortDirection = .ascending,
-    by keyPath1: KeyPath<M, V1>,
-    _ keyPath2: KeyPath<M, V2>,
-    _ keyPath3: KeyPath<M, V3>,
-    _ keyPath4: KeyPath<M, V4>,
-    _ keyPath5: KeyPath<M, V5>,
-    _ keyPath6: KeyPath<M, V6>
+    by keyPath1: KeyPath<Object<M>, V1>,
+    _ keyPath2: KeyPath<Object<M>, V2>,
+    _ keyPath3: KeyPath<Object<M>, V3>,
+    _ keyPath4: KeyPath<Object<M>, V4>,
+    _ keyPath5: KeyPath<Object<M>, V5>,
+    _ keyPath6: KeyPath<Object<M>, V6>
   ) -> QueryBuilder<M, R> {
     let sortDescriptors = [
-      NSSortDescriptor(keyPath: keyPath1, ascending: direction.isAscending),
-      NSSortDescriptor(keyPath: keyPath2, ascending: direction.isAscending),
-      NSSortDescriptor(keyPath: keyPath3, ascending: direction.isAscending),
-      NSSortDescriptor(keyPath: keyPath4, ascending: direction.isAscending),
-      NSSortDescriptor(keyPath: keyPath5, ascending: direction.isAscending),
-      NSSortDescriptor(keyPath: keyPath6, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath1, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath2, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath3, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath4, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath5, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath6, ascending: direction.isAscending),
     ]
     return order(by: sortDescriptors)
   }
 
-  func order<V1, V2, V3, V4, V5, V6, V7>(
+  func order<V1: Expression, V2: Expression, V3: Expression, V4: Expression, V5: Expression, V6: Expression, V7: Expression>(
     _ direction: SortDirection = .ascending,
-    by keyPath1: KeyPath<M, V1>,
-    _ keyPath2: KeyPath<M, V2>,
-    _ keyPath3: KeyPath<M, V3>,
-    _ keyPath4: KeyPath<M, V4>,
-    _ keyPath5: KeyPath<M, V5>,
-    _ keyPath6: KeyPath<M, V6>,
-    _ keyPath7: KeyPath<M, V7>
+    by keyPath1: KeyPath<Object<M>, V1>,
+    _ keyPath2: KeyPath<Object<M>, V2>,
+    _ keyPath3: KeyPath<Object<M>, V3>,
+    _ keyPath4: KeyPath<Object<M>, V4>,
+    _ keyPath5: KeyPath<Object<M>, V5>,
+    _ keyPath6: KeyPath<Object<M>, V6>,
+    _ keyPath7: KeyPath<Object<M>, V7>
   ) -> QueryBuilder<M, R> {
     let sortDescriptors = [
-      NSSortDescriptor(keyPath: keyPath1, ascending: direction.isAscending),
-      NSSortDescriptor(keyPath: keyPath2, ascending: direction.isAscending),
-      NSSortDescriptor(keyPath: keyPath3, ascending: direction.isAscending),
-      NSSortDescriptor(keyPath: keyPath4, ascending: direction.isAscending),
-      NSSortDescriptor(keyPath: keyPath5, ascending: direction.isAscending),
-      NSSortDescriptor(keyPath: keyPath6, ascending: direction.isAscending),
-      NSSortDescriptor(keyPath: keyPath7, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath1, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath2, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath3, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath4, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath5, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath6, ascending: direction.isAscending),
+      NSSortDescriptor(objectKeyPath: keyPath7, ascending: direction.isAscending),
     ]
     return order(by: sortDescriptors)
   }
