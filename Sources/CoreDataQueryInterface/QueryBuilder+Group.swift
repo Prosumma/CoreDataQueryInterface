@@ -25,39 +25,39 @@ public extension QueryBuilder {
     group(by: properties)
   }
   
-  func group<V: Expression>(by keyPath: KeyPath<Object<M>, V>, name: String, type: NSAttributeDescription.AttributeType) -> QueryBuilder<M, R> {
+  func group<V: E>(by keyPath: KeyPath<O, V>, name: String, type: NSAttributeDescription.AttributeType) -> QueryBuilder<M, R> {
     return group(by: NSExpressionDescription(objectKeyPath: keyPath, name: name, type: type))
   }
   
-  func group<V: Expression>(by keyPath: KeyPath<Object<M>, V>) -> QueryBuilder<M, R> {
-    let object = Object<M>()
+  func group<V: E>(by keyPath: KeyPath<O, V>) -> QueryBuilder<M, R> {
+    let object = O()
     let expression = object[keyPath: keyPath]
     return group(by: "\(expression.pqiExpression)")
   }
 
-  func group<V1: Expression, V2: Expression>(
-    by keyPath1: KeyPath<Object<M>, V1>,
-    _ keyPath2: KeyPath<Object<M>, V2>
+  func group<V1: E, V2: E>(
+    by keyPath1: KeyPath<O, V1>,
+    _ keyPath2: KeyPath<O, V2>
   ) -> QueryBuilder<M, R> {
     group(by: keyPath1)
       .group(by: keyPath2)
   }
 
-  func group<V1: Expression, V2: Expression, V3: Expression>(
-    by keyPath1: KeyPath<Object<M>, V1>,
-    _ keyPath2: KeyPath<Object<M>, V2>,
-    _ keyPath3: KeyPath<Object<M>, V3>
+  func group<V1: E, V2: E, V3: E>(
+    by keyPath1: KeyPath<O, V1>,
+    _ keyPath2: KeyPath<O, V2>,
+    _ keyPath3: KeyPath<O, V3>
   ) -> QueryBuilder<M, R> {
     group(by: keyPath1)
       .group(by: keyPath2)
       .group(by: keyPath3)
   }
 
-  func group<V1: Expression, V2: Expression, V3: Expression, V4: Expression>(
-    by keyPath1: KeyPath<Object<M>, V1>,
-    _ keyPath2: KeyPath<Object<M>, V2>,
-    _ keyPath3: KeyPath<Object<M>, V3>,
-    _ keyPath4: KeyPath<Object<M>, V4>
+  func group<V1: E, V2: E, V3: E, V4: E>(
+    by keyPath1: KeyPath<O, V1>,
+    _ keyPath2: KeyPath<O, V2>,
+    _ keyPath3: KeyPath<O, V3>,
+    _ keyPath4: KeyPath<O, V4>
   ) -> QueryBuilder<M, R> {
     group(by: keyPath1)
       .group(by: keyPath2)
@@ -65,12 +65,12 @@ public extension QueryBuilder {
       .group(by: keyPath4)
   }
 
-  func group<V1: Expression, V2: Expression, V3: Expression, V4: Expression, V5: Expression>(
-    by keyPath1: KeyPath<Object<M>, V1>,
-    _ keyPath2: KeyPath<Object<M>, V2>,
-    _ keyPath3: KeyPath<Object<M>, V3>,
-    _ keyPath4: KeyPath<Object<M>, V4>,
-    _ keyPath5: KeyPath<Object<M>, V5>
+  func group<V1: E, V2: E, V3: E, V4: E, V5: E>(
+    by keyPath1: KeyPath<O, V1>,
+    _ keyPath2: KeyPath<O, V2>,
+    _ keyPath3: KeyPath<O, V3>,
+    _ keyPath4: KeyPath<O, V4>,
+    _ keyPath5: KeyPath<O, V5>
   ) -> QueryBuilder<M, R> {
     group(by: keyPath1)
       .group(by: keyPath2)
@@ -79,13 +79,13 @@ public extension QueryBuilder {
       .group(by: keyPath5)
   }
 
-  func group<V1: Expression, V2: Expression, V3: Expression, V4: Expression, V5: Expression, V6: Expression>(
-    by keyPath1: KeyPath<Object<M>, V1>,
-    _ keyPath2: KeyPath<Object<M>, V2>,
-    _ keyPath3: KeyPath<Object<M>, V3>,
-    _ keyPath4: KeyPath<Object<M>, V4>,
-    _ keyPath5: KeyPath<Object<M>, V5>,
-    _ keyPath6: KeyPath<Object<M>, V6>
+  func group<V1: E, V2: E, V3: E, V4: E, V5: E, V6: E>(
+    by keyPath1: KeyPath<O, V1>,
+    _ keyPath2: KeyPath<O, V2>,
+    _ keyPath3: KeyPath<O, V3>,
+    _ keyPath4: KeyPath<O, V4>,
+    _ keyPath5: KeyPath<O, V5>,
+    _ keyPath6: KeyPath<O, V6>
   ) -> QueryBuilder<M, R> {
     group(by: keyPath1)
       .group(by: keyPath2)
@@ -95,14 +95,14 @@ public extension QueryBuilder {
       .group(by: keyPath6)
   }
 
-  func group<V1: Expression, V2: Expression, V3: Expression, V4: Expression, V5: Expression, V6: Expression, V7: Expression>(
-    by keyPath1: KeyPath<Object<M>, V1>,
-    _ keyPath2: KeyPath<Object<M>, V2>,
-    _ keyPath3: KeyPath<Object<M>, V3>,
-    _ keyPath4: KeyPath<Object<M>, V4>,
-    _ keyPath5: KeyPath<Object<M>, V5>,
-    _ keyPath6: KeyPath<Object<M>, V6>,
-    _ keyPath7: KeyPath<Object<M>, V7>
+  func group<V1: E, V2: E, V3: E, V4: E, V5: E, V6: E, V7: E>(
+    by keyPath1: KeyPath<O, V1>,
+    _ keyPath2: KeyPath<O, V2>,
+    _ keyPath3: KeyPath<O, V3>,
+    _ keyPath4: KeyPath<O, V4>,
+    _ keyPath5: KeyPath<O, V5>,
+    _ keyPath6: KeyPath<O, V6>,
+    _ keyPath7: KeyPath<O, V7>
   ) -> QueryBuilder<M, R> {
     group(by: keyPath1)
       .group(by: keyPath2)

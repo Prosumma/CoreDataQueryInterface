@@ -9,6 +9,9 @@ import CoreData
 import PredicateQI
 
 public struct QueryBuilder<M: NSManagedObject, R: NSFetchRequestResult> {
+  public typealias O = Object<M>
+  public typealias E = Expression
+  
   weak var managedObjectContext: NSManagedObjectContext?
   var fetchLimit: Int = 0
   var fetchOffset: Int = 0
