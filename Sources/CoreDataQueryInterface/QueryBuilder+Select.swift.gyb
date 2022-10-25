@@ -5,7 +5,6 @@
 //  Created by Gregory Higley on 2022-10-22.
 //
 %{
-
 def args(items, fmt=lambda i: f'{i}', sep=', '):
   return sep.join(map(fmt, items))
 }%
