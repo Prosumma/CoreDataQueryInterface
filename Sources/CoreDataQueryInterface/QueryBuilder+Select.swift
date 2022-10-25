@@ -33,11 +33,7 @@ public extension QueryBuilder {
   }
   
   func select<V: Expression>(_ keyPath: KeyPath<Object<M>, V>, name: String, type: NSAttributeDescription.AttributeType) -> QueryBuilder<M, R> {
-    let description = NSExpressionDescription()
-    description.expression = Object<M>()[keyPath: keyPath].pqiExpression
-    description.resultType = type
-    description.name = name
-    return select(description)
+    select(NSExpressionDescription(objectKeyPath: keyPath, name: name, type: type))
   }
   
   func select<V: Expression>(_ keyPath: KeyPath<Object<M>, V>) -> QueryBuilder<M, R> {

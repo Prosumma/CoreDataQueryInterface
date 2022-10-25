@@ -9,8 +9,8 @@ import Foundation
 import PredicateQI
 
 public extension NSSortDescriptor {
-  convenience init<M: NSObject, V: Expression>(objectKeyPath: KeyPath<Object<M>, V>, ascending: Bool) {
-    let expression = Object<M>()[keyPath: objectKeyPath].pqiExpression
+  convenience init<M: NSObject, V: Expression>(objectKeyPath keyPath: KeyPath<Object<M>, V>, ascending: Bool) {
+    let expression = Object<M>()[keyPath: keyPath].pqiExpression
     self.init(key: expression.keyPath, ascending: ascending)
   }
 }

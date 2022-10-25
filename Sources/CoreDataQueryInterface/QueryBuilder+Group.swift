@@ -26,11 +26,7 @@ public extension QueryBuilder {
   }
   
   func group<V: Expression>(by keyPath: KeyPath<Object<M>, V>, name: String, type: NSAttributeDescription.AttributeType) -> QueryBuilder<M, R> {
-    let description = NSExpressionDescription()
-    description.expression = Object<M>()[keyPath: keyPath].pqiExpression
-    description.resultType = type
-    description.name = name
-    return group(by: description)
+    return group(by: NSExpressionDescription(objectKeyPath: keyPath, name: name, type: type))
   }
   
   func group<V: Expression>(by keyPath: KeyPath<Object<M>, V>) -> QueryBuilder<M, R> {
