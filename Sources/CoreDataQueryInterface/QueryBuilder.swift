@@ -15,6 +15,7 @@ public struct QueryBuilder<M: NSManagedObject, R: NSFetchRequestResult> {
   var predicates: [NSPredicate] = []
   var sortDescriptors: [NSSortDescriptor] = []
   var propertiesToFetch: [FetchedProperty] = []
+  var propertiesToGroupBy: [FetchedProperty] = []
   var returnsDistinctResults = false
   
   init() {}
@@ -57,6 +58,8 @@ public struct QueryBuilder<M: NSManagedObject, R: NSFetchRequestResult> {
         query.sortDescriptors = []
       case .select:
         query.propertiesToFetch = []
+      case .group:
+        query.propertiesToGroupBy = []
       }
     }
     return query
@@ -82,5 +85,34 @@ public func Query<M: NSManagedObject>(_ entityType: M.Type) -> QueryBuilder<M, M
 }
 
 public enum QueryBuilderState: CaseIterable {
-  case filter, order, select
+  case filter, order, select, group
+}
+
+enum FetchedProperty {
+  case string(String)
+  case property(NSPropertyDescription)
+  
+  var asAny: Any {
+    switch self {
+    case .string(let value):
+      return value
+    case .property(let value):
+      return value
+    }
+  }
+}
+
+extension FetchedProperty: Equatable {
+  public static func == (lhs: FetchedProperty, rhs: FetchedProperty) -> Bool {
+    let equal: Bool
+    switch (lhs, rhs) {
+    case let (.string(value1), .string(value2)):
+      equal = value1 == value2
+    case let (.property(value1), .property(value2)):
+      equal = value1 == value2
+    default:
+      equal = false
+    }
+    return equal
+  }
 }

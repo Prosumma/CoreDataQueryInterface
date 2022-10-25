@@ -7,6 +7,7 @@
 
 import CoreData
 import Foundation
+import PredicateQI
 
 public extension QueryBuilder {
   func distinct(_ returnsDistinctResults: Bool = true) -> QueryBuilder<M, R> {
@@ -31,37 +32,35 @@ public extension QueryBuilder {
     select(properties)
   }
   
-  func select<V>(_ keyPath: KeyPath<M, V>) -> QueryBuilder<M, R> {
-    guard let keyPathString = keyPath._kvcKeyPathString else {
-      preconditionFailure("\(keyPath) is not valid for Key-Value Coding.")
-    }
-    return select(keyPathString)
+  func select<V: Expression>(_ keyPath: KeyPath<Object<M>, V>) -> QueryBuilder<M, R> {
+    let object = Object<M>()
+    let expression = object[keyPath: keyPath]
+    return select("\(expression.pqiExpression)")
   }
-  
 
-  func select<V1, V2>(
-    _ keyPath1: KeyPath<M, V1>,
-    _ keyPath2: KeyPath<M, V2>
+  func select<V1: Expression, V2: Expression>(
+    _ keyPath1: KeyPath<Object<M>, V1>,
+    _ keyPath2: KeyPath<Object<M>, V2>
   ) -> QueryBuilder<M, R> {
     select(keyPath1)
       .select(keyPath2)
   }
 
-  func select<V1, V2, V3>(
-    _ keyPath1: KeyPath<M, V1>,
-    _ keyPath2: KeyPath<M, V2>,
-    _ keyPath3: KeyPath<M, V3>
+  func select<V1: Expression, V2: Expression, V3: Expression>(
+    _ keyPath1: KeyPath<Object<M>, V1>,
+    _ keyPath2: KeyPath<Object<M>, V2>,
+    _ keyPath3: KeyPath<Object<M>, V3>
   ) -> QueryBuilder<M, R> {
     select(keyPath1)
       .select(keyPath2)
       .select(keyPath3)
   }
 
-  func select<V1, V2, V3, V4>(
-    _ keyPath1: KeyPath<M, V1>,
-    _ keyPath2: KeyPath<M, V2>,
-    _ keyPath3: KeyPath<M, V3>,
-    _ keyPath4: KeyPath<M, V4>
+  func select<V1: Expression, V2: Expression, V3: Expression, V4: Expression>(
+    _ keyPath1: KeyPath<Object<M>, V1>,
+    _ keyPath2: KeyPath<Object<M>, V2>,
+    _ keyPath3: KeyPath<Object<M>, V3>,
+    _ keyPath4: KeyPath<Object<M>, V4>
   ) -> QueryBuilder<M, R> {
     select(keyPath1)
       .select(keyPath2)
@@ -69,12 +68,12 @@ public extension QueryBuilder {
       .select(keyPath4)
   }
 
-  func select<V1, V2, V3, V4, V5>(
-    _ keyPath1: KeyPath<M, V1>,
-    _ keyPath2: KeyPath<M, V2>,
-    _ keyPath3: KeyPath<M, V3>,
-    _ keyPath4: KeyPath<M, V4>,
-    _ keyPath5: KeyPath<M, V5>
+  func select<V1: Expression, V2: Expression, V3: Expression, V4: Expression, V5: Expression>(
+    _ keyPath1: KeyPath<Object<M>, V1>,
+    _ keyPath2: KeyPath<Object<M>, V2>,
+    _ keyPath3: KeyPath<Object<M>, V3>,
+    _ keyPath4: KeyPath<Object<M>, V4>,
+    _ keyPath5: KeyPath<Object<M>, V5>
   ) -> QueryBuilder<M, R> {
     select(keyPath1)
       .select(keyPath2)
@@ -83,13 +82,13 @@ public extension QueryBuilder {
       .select(keyPath5)
   }
 
-  func select<V1, V2, V3, V4, V5, V6>(
-    _ keyPath1: KeyPath<M, V1>,
-    _ keyPath2: KeyPath<M, V2>,
-    _ keyPath3: KeyPath<M, V3>,
-    _ keyPath4: KeyPath<M, V4>,
-    _ keyPath5: KeyPath<M, V5>,
-    _ keyPath6: KeyPath<M, V6>
+  func select<V1: Expression, V2: Expression, V3: Expression, V4: Expression, V5: Expression, V6: Expression>(
+    _ keyPath1: KeyPath<Object<M>, V1>,
+    _ keyPath2: KeyPath<Object<M>, V2>,
+    _ keyPath3: KeyPath<Object<M>, V3>,
+    _ keyPath4: KeyPath<Object<M>, V4>,
+    _ keyPath5: KeyPath<Object<M>, V5>,
+    _ keyPath6: KeyPath<Object<M>, V6>
   ) -> QueryBuilder<M, R> {
     select(keyPath1)
       .select(keyPath2)
@@ -99,14 +98,14 @@ public extension QueryBuilder {
       .select(keyPath6)
   }
 
-  func select<V1, V2, V3, V4, V5, V6, V7>(
-    _ keyPath1: KeyPath<M, V1>,
-    _ keyPath2: KeyPath<M, V2>,
-    _ keyPath3: KeyPath<M, V3>,
-    _ keyPath4: KeyPath<M, V4>,
-    _ keyPath5: KeyPath<M, V5>,
-    _ keyPath6: KeyPath<M, V6>,
-    _ keyPath7: KeyPath<M, V7>
+  func select<V1: Expression, V2: Expression, V3: Expression, V4: Expression, V5: Expression, V6: Expression, V7: Expression>(
+    _ keyPath1: KeyPath<Object<M>, V1>,
+    _ keyPath2: KeyPath<Object<M>, V2>,
+    _ keyPath3: KeyPath<Object<M>, V3>,
+    _ keyPath4: KeyPath<Object<M>, V4>,
+    _ keyPath5: KeyPath<Object<M>, V5>,
+    _ keyPath6: KeyPath<Object<M>, V6>,
+    _ keyPath7: KeyPath<Object<M>, V7>
   ) -> QueryBuilder<M, R> {
     select(keyPath1)
       .select(keyPath2)
@@ -121,34 +120,5 @@ public extension QueryBuilder {
     var query = self
     query.propertiesToFetch.append(contentsOf: properties)
     return query
-  }
-}
-
-enum FetchedProperty {
-  case string(String)
-  case property(NSPropertyDescription)
-  
-  var asAny: Any {
-    switch self {
-    case .string(let value):
-      return value
-    case .property(let value):
-      return value
-    }
-  }
-}
-
-extension FetchedProperty: Equatable {
-  static func == (lhs: FetchedProperty, rhs: FetchedProperty) -> Bool {
-    let equal: Bool
-    switch (lhs, rhs) {
-    case let (.string(value1), .string(value2)):
-      equal = value1 == value2
-    case let (.property(value1), .property(value2)):
-      equal = value1 == value2
-    default:
-      equal = false
-    }
-    return equal
   }
 }

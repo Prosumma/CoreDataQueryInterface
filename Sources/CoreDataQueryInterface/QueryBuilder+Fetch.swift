@@ -20,6 +20,10 @@ public extension QueryBuilder {
       let properties = propertiesToFetch.map(\.asAny)
       fetchRequest.propertiesToFetch = properties
     }
+    if !propertiesToGroupBy.isEmpty {
+      let properties = propertiesToGroupBy.map(\.asAny)
+      fetchRequest.propertiesToGroupBy = properties
+    }
     if !sortDescriptors.isEmpty {
       fetchRequest.sortDescriptors = sortDescriptors
     }

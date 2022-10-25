@@ -12,6 +12,7 @@ def args(items, fmt=lambda i: f'{i}', sep=', '):
 
 import CoreData
 import Foundation
+import PredicateQI
 
 public extension QueryBuilder {
   func distinct(_ returnsDistinctResults: Bool = true) -> QueryBuilder<M, R> {
@@ -36,17 +37,15 @@ public extension QueryBuilder {
     select(properties)
   }
   
-  func select<V>(_ keyPath: KeyPath<M, V>) -> QueryBuilder<M, R> {
-    guard let keyPathString = keyPath._kvcKeyPathString else {
-      preconditionFailure("\(keyPath) is not valid for Key-Value Coding.")
-    }
-    return select(keyPathString)
+  func select<V: Expression>(_ keyPath: KeyPath<Object<M>, V>) -> QueryBuilder<M, R> {
+    let object = Object<M>()
+    let expression = object[keyPath: keyPath]
+    return select("\(expression.pqiExpression)")
   }
-  
 % for i in range(2, 8):
 
-  func select<${args(range(1, i + 1), lambda i: f'V{i}')}>(
-    _ ${args(range(1, i + 1), lambda i: f'keyPath{i}: KeyPath<M, V{i}>', ',\n    _ ')}
+  func select<${args(range(1, i + 1), lambda i: f'V{i}: Expression')}>(
+    _ ${args(range(1, i + 1), lambda i: f'keyPath{i}: KeyPath<Object<M>, V{i}>', ',\n    _ ')}
   ) -> QueryBuilder<M, R> {
     select(keyPath1)
 % for k in range(2, i + 1):
@@ -59,19 +58,5 @@ public extension QueryBuilder {
     var query = self
     query.propertiesToFetch.append(contentsOf: properties)
     return query
-  }
-}
-
-enum FetchedProperty {
-  case string(String)
-  case property(NSPropertyDescription)
-  
-  var asAny: Any {
-    switch self {
-    case .string(let value):
-      return value
-    case .property(let value):
-      return value
-    }
   }
 }
