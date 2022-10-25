@@ -16,7 +16,7 @@ public extension NSExpressionDescription {
   ) {
     self.init()
     self.expression = Object<M>()[keyPath: keyPath].pqiExpression
-    self.name = self.name
+    self.name = name
     self.resultType = type
   }
 }
