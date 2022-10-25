@@ -13,7 +13,7 @@ import XCTest
 final class QueryBuilderTests: XCTestCase {
   func testReset() {
     let q1 = Query(Language.self).filter { $0.name |~> "us" }.select(\.name).order(by: \.name)
-    let q2 = q1.re(.filter, .order, .select)
+    let q2 = q1.un(.filter, .order, .select)
     
     // Predicates
     XCTAssertNotEqual(q1.predicates, q2.predicates)

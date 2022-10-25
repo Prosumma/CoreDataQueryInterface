@@ -48,10 +48,10 @@ public struct QueryBuilder<M: NSManagedObject, R: NSFetchRequestResult> {
    
    The `filter` function is cumulative. Each new application of it
    adds a new filter (implicitly using the AND conjunction). Calling
-   `re(.filter)` erases all previous filters, allowing new ones to
+   `un(.filter)` erases all previous filters, allowing new ones to
    be added.
    */
-  public func re(_ states: [QueryBuilderState]) -> QueryBuilder<M, R> {
+  public func un(_ states: [QueryBuilderState]) -> QueryBuilder<M, R> {
     var query = self
     for state in states {
       switch state {
@@ -68,8 +68,8 @@ public struct QueryBuilder<M: NSManagedObject, R: NSFetchRequestResult> {
     return query
   }
   
-  public func re(_ states: QueryBuilderState...) -> QueryBuilder<M, R> {
-    re(states)
+  public func un(_ states: QueryBuilderState...) -> QueryBuilder<M, R> {
+    un(states)
   }
 }
 
