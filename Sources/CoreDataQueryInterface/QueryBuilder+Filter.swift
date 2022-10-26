@@ -19,7 +19,7 @@ public extension QueryBuilder {
     filter(NSPredicate(format: format, argumentArray: args))
   }
   
-  func filter(_ isIncluded: (Object<M>) -> PredicateBuilder) -> QueryBuilder<M, R> {
+  func filter(_ isIncluded: (O) -> PredicateBuilder) -> QueryBuilder<M, R> {
     filter(pred(isIncluded(.init())))
   }
 }
