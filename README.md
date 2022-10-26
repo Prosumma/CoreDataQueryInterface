@@ -10,7 +10,7 @@ CDQI uses the [PredicateQI](https://github.com/prosumma/PredicateQI) (PQI) packa
 
 - [x] [Fluent interface](http://en.wikipedia.org/wiki/Fluent_interface), i.e., chainable methods
 - [x] Large number of useful overloads
-- [x] Type-safety in filter comparisons.
+- [x] Type-safety &mdash; really, type guidance (see below) &mdash; in filter comparisons.
 - [x] Filtering, sorting, grouping, aggregate expressions, limits, etc.
 - [x] Optionally eliminates the use of magic strings so common in Core Data
 - [x] Query reuse, i.e., no side-effects from chaining
@@ -36,9 +36,12 @@ class Developer: NSManagedObject {
 }
 ```
 
-Given this data model, we can start making some queries:
+Given this data model, we can start making some queries. But first, remember to `import PredicateQI`! Without this import, the compiler magic that allows the comparison expressions to be translated into the `NSPredicate` language won't work and in most cases you'll get mysterious compilation errors.
 
 ```swift
+import CoreDataQueryInterface
+import PredicateQI
+
 // Which languages are known by at least two of the developers?
 // developers.@count >= 2
 Query(Language.self).filter { $0.developers.pqiCount >= 2 }
@@ -51,6 +54,9 @@ Query(Language.self).filter { any(ci($0.developers.lastName %* "*s*")) }
 We can get the `NSFetchRequest` produced by the query by asking for its `fetchRequest` property. But it's usually easier just to execute the fetch request directly:
 
 ```swift
+import CoreDataQueryInterface
+import PredicateQI
+
 let cooldevs = try Query(Developer.self)
     .filter { 
       // ANY languages.name IN {"Rust","Haskell"}
