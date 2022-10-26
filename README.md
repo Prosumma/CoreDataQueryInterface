@@ -51,9 +51,10 @@ Query(Language.self).filter { any(ci($0.developers.lastName %* "*s*")) }
 We can get the `NSFetchRequest` produced by the query by asking for its `fetchRequest` property. But it's usually easier just to execute the fetch request directly:
 
 ```swift
-let rustaceans = try Query(Developer.self)
+let cooldevs = try Query(Developer.self)
     .filter { 
-      any($0.languages.name == "Rust") && $0.experience >= 3 
+      // ANY languages.name IN {"Rust","Haskell"}
+      any($0.languages.name <~| ["Rust", "Haskell"])
     }
     .fetch(moc)
 ```
