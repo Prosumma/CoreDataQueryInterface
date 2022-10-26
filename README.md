@@ -14,7 +14,7 @@ CDQI uses the [PredicateQI](https://github.com/prosumma/PredicateQI) (PQI) packa
 - [x] Filtering, sorting, grouping, aggregate expressions, limits, etc.
 - [x] Optionally eliminates the use of magic strings so common in Core Data
 - [x] Query reuse, i.e., no side-effects from chaining
-- [x] TODO: minimum OS support
+- [x] macOS 12+, iOS 15+, tvOS 15+, watchOS 8+
 - [x] Swift 5.7
 
 ## Overview

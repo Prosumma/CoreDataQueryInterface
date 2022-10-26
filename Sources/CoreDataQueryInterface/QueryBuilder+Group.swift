@@ -5,6 +5,7 @@
 //  Created by Gregory Higley on 2022-10-24.
 //
 
+import CoreData
 import PredicateQI
 import XCTest
 
