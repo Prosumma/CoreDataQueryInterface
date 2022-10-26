@@ -25,9 +25,12 @@ public struct QueryBuilder<M: NSManagedObject, R: NSFetchRequestResult> {
   
   init<R2>(copying query: QueryBuilder<M, R2>) {
     managedObjectContext = query.managedObjectContext
+    fetchLimit = query.fetchLimit
+    fetchOffset = query.fetchOffset
     predicates = query.predicates
     sortDescriptors = query.sortDescriptors
     propertiesToFetch = query.propertiesToFetch
+    propertiesToGroupBy = query.propertiesToGroupBy
     returnsDistinctResults = query.returnsDistinctResults
   }
   
