@@ -13,7 +13,7 @@ let package = Package(
     ),
   ],
   dependencies: [
-    .package(url: "https://github.com/prosumma/PredicateQI", exact: "1.0.0")
+    .package(url: "https://github.com/prosumma/PredicateQI", from: "1.0.0")
   ],
   targets: [
     .target(
