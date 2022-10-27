@@ -47,7 +47,7 @@ enum Store {
       let languageNames = info["ls"] as! [String]
       var languages: Set<Language> = []
       for name in languageNames {
-        let language = try! moc.query(Language.self).filter { $0.name == name }.fetch().first!
+        let language = try! moc.query(Language.self).filter { $0.name == name }.fetchFirst()!
         languages.insert(language)
       }
       let developer = Developer(context: moc)

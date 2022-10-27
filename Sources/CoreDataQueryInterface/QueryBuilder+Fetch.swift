@@ -91,6 +91,10 @@ public extension QueryBuilder {
     try dictionaries().fetch(managedObjectContext) as! [[String: Any]]
   }
   
+  func fetchFirst(_ managedObjectContext: NSManagedObjectContext? = nil) throws -> R? {
+    try limit(1).fetch(managedObjectContext).first
+  }
+  
   func count(_ managedObjectContext: NSManagedObjectContext? = nil) throws -> Int {
     guard let moc = self.managedObjectContext ?? managedObjectContext else {
       preconditionFailure("No NSManagedObjectContext instance on which to execute the request.")
