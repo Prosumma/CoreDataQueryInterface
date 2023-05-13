@@ -11,6 +11,8 @@ import PredicateQI
 
 enum Store {
   private static func initPersistentContainer() -> NSPersistentContainer {
+    PredicateQIConfiguration.logPredicatesToConsole = true
+    
     let mom = NSManagedObjectModel.mergedModel(from: [Bundle.module])!
     let container = NSPersistentContainer(name: "developers", managedObjectModel: mom)
     let store = NSPersistentStoreDescription(url: URL(fileURLWithPath: "/dev/null"))
