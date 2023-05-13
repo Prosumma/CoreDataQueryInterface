@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/prosumma/PredicateQI",
       "state" : {
-        "revision" : "bf8351a4f1b9ba05de346bb47bfd8af590c92bcb",
-        "version" : "1.0.5"
+        "revision" : "b4470fa9244631aa180b8b9cc7891c1fd7f979c6",
+        "version" : "1.0.2"
       }
     }
   ],

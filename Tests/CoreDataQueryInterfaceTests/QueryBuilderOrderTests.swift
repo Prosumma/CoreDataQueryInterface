@@ -16,4 +16,11 @@ final class QueryBuilderOrderTests: XCTestCase {
     XCTAssertFalse(languages.isEmpty)
     XCTAssertEqual(languages.first?.name, "Haskell")
   }
+  
+  func testOrderDescendingByName() throws {
+    let moc = Store.container.viewContext
+    let languages = try moc.query(Language.self).order(.descending, by: \.name).fetch()
+    XCTAssertFalse(languages.isEmpty)
+    XCTAssertEqual(languages.first?.name, "Visual Basic")
+  }
 }
