@@ -14,11 +14,11 @@ final class QueryBuilderGroupTests: XCTestCase {
     let moc = Store.container.viewContext
     let query = Query(Developer.self)
       .group(by: \.lastName, \.firstName)
-      .select(\.firstName, \.lastName)
-      .select(\.languages.name.pqiCount, name: "count", type: .integer32)
+      .select(\.firstName, \.lastName, \.languages.name.pqiCount.pqiFloat)
       .filter { ci($0.lastName == "higley")}
     let result = try query.fetchDictionaries(moc)
-    let count = result[0]["count"] as! Int
+    print(result[0].keys)
+    let count = result[0]["@count"] as! Int64
     XCTAssertEqual(count, 3)
   }
 }

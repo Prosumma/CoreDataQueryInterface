@@ -8,4 +8,4 @@
 import CoreData
 import PredicateQI
 
-extension NSManagedObjectID: TypeComparable {}
+extension NSManagedObjectID: ConstantExpression, TypeComparable {}

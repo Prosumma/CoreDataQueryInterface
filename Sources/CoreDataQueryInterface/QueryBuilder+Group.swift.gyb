@@ -29,7 +29,7 @@ public extension QueryBuilder {
     group(by: properties)
   }
   
-  func group<V: E>(by keyPath: KeyPath<O, V>, name: String, type: NSAttributeDescription.AttributeType) -> QueryBuilder<M, R> {
+  func group<V: E>(by keyPath: KeyPath<O, V>, name: String? = nil, type: NSAttributeDescription.AttributeType? = nil) -> QueryBuilder<M, R> {
     return group(by: NSExpressionDescription(objectKeyPath: keyPath, name: name, type: type))
   }
   
